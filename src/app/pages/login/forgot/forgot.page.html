@@ -1,0 +1,40 @@
+
+
+<ion-content class=" ion-justify-content-center ion-align-items-center">
+  <div class="back-button top-bar-back-button"><div class="back-button"></div>
+    <ion-back-button defaultHref="/" name="chevron-back-outline"></ion-back-button></div>
+  <img src="../../assets/imgs/forget.png" class="forget-image"/>      
+  <div class="forget-password">
+  <h1>Forget  Password</h1>
+  <p>Please enter your username and register mobile number & we will sent a paswword to your number.</p>
+  <div class="enter-number">
+  
+   <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" >
+    <label class="mobile-number-label">Username </label>
+    <ion-item>
+      <ion-input  [(ngModel)]="username" name="username" type="text" placeholder="Username" ngModel required></ion-input>
+    </ion-item>
+    <label class="mobile-number-label">Mobile Number </label>
+    <ion-item>
+         <ion-input  [(ngModel)]="mobileNumber" [pattern]="mobNumberPattern" #mobNumber="ngModel"  name="number" type="Number" placeholder="Mobile Number" ngModel required></ion-input>
+    </ion-item>
+    
+    <div *ngIf="mobNumber.errors && userForm.submitted && !isValidFormSubmitted" [ngClass] = "'error'">  
+      <div *ngIf="mobNumber.errors.pattern">  
+        Mobile number not valid.  
+      </div>   
+    </div> 
+    <div class="btn_cover ion-text-center">
+     <button type="submit"  class="ion-margin ion-align-center btn login_btn forget-button">Send Password</button>
+    <!-- </a> -->
+    </div>
+   
+  </form>
+  </div>
+  
+  </div>
+  
+  <!--- main tab menu-->
+  
+  
+  </ion-content>

@@ -1,0 +1,54 @@
+<ion-content>
+  <div class="add_beneficiary_page">
+    <!--===bg_theme_small===-->
+    <div class="bg_theme bg_theme_small comman_page_padding">
+      <ion-row class="">
+        <ion-col size="10">
+          <a [routerLink]="['/beneficiary-list-banks']"><img src="../../../../../assets/imgs/back-button.svg"></a>
+        </ion-col>
+        <ion-col size="2">
+          <div class="notification_numbur"> <span class="">12</span></div>
+          <img class="bell_icon relative" src="../../../../../assets/imgs/bell.svg">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <h1>Add Bank Beneficiary</h1>
+      </ion-row>
+    </div>
+    <!--===bg_theme_small End==-->
+    <div class="comman_page_headline">
+      <h2>Fill Details Below</h2>
+    </div>
+    <div class="rd_fd_form comman_page_padding ">
+      <ion-item lines="none">
+        <ion-label position="floating">Beneficiary Name</ion-label>
+        <ion-input required [(ngModel)]="name" type="text"></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label position="floating">Beneficiary Mobile No.</ion-label>
+        <ion-input maxlength="10" required [(ngModel)]="mobile_no" type="tel" pattern="[0-9]*" ></ion-input>
+      </ion-item>
+      <ion-item lines="none" class="item_bank">
+        <ion-label (click)="presentPopover()">Select Bank Name</ion-label>
+        <p class="ion-padding ion-margin bank_name">{{ bank_name }}</p>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label position="floating">IFSC Code</ion-label>
+        <ion-input  maxlength="11" required [(ngModel)]="ifsc_code" type="text" ></ion-input>
+        <img src="../../../../../assets/imgs/ifsc_icon.svg" class="ifsc_icon">
+        <span class="form_sub_heading">(IFSC is an 11 digit alpha numeric code)</span>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label position="floating">Beneficiary Account No.</ion-label>
+        <ion-input minlength="10" required pattern="[0-9]*" [(ngModel)]="account_no" type="tel" ></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label position="floating">Re Enter Account No.</ion-label>
+        <ion-input required  pattern="[0-9]*" [(ngModel)]="chk_account_no" type="tel" ></ion-input>
+      </ion-item>
+    </div>
+    <div class="page_footer_btn ion-text-center">
+      <button class="gradient_fill_btn large_btn_filled" (click)="add_new()">Submit</button>
+    </div>
+  </div>
+</ion-content>

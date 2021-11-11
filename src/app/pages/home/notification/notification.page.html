@@ -1,0 +1,13 @@
+
+
+<ion-content>
+  <ion-list *ngIf="notification != ''" class="noti_box">
+    <ion-button class="notification_btn" (click)="clear_notification()">Clear All</ion-button>
+    <ul class="notification fade-color">
+      <li *ngFor="let notification of notification">{{notification.message}}</li>
+  </ul>
+  </ion-list>
+  <div *ngIf="notification == ''">
+    <p class="fade-color blank_box">Nothing new here yet! Please check back in sometime</p>
+  </div>
+</ion-content>

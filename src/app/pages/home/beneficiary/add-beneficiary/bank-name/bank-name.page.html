@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-searchbar  [(ngModel)]="searchQuery" (click)="click_bar()" (ionCancel)="onCancel($event)" (ngModelChange)="change_query($event)" showCancelButton="focus" placeholder="Entrer search query"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+   <div class="ion-padding">
+      <div >
+          <ion-list>
+            <ion-item *ngFor="let list_to_show of list_to_show" > <ion-label (click)="click_item(list_to_show)" >{{ list_to_show }}</ion-label>
+            </ion-item>
+          </ion-list>
+      </div>
+
+  </div>
+</ion-content>

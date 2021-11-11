@@ -1,0 +1,73 @@
+<ion-toolbar>
+  <!--- acconts header-->
+
+  <div class="accounts-header ">
+    <ion-row>
+      <ion-col size="1">
+       <div class="back-button">
+         <ion-back-button defaultHref="dashboard/home" name="chevron-back-outline"></ion-back-button></div>
+      </ion-col>
+      <ion-col size="2">
+        <img src="../../assets/imgs/logo.png"/>
+      </ion-col>
+      <ion-col size="7">
+        
+      </ion-col>
+      <ion-col size="1">
+        <img src="../../assets/icon/bellb.svg"/>
+      </ion-col>
+      <ion-col size="1" class="blue-wallet" (click)="gohome()">
+          <img src="../../assets/icon/walletb.svg"/>
+      </ion-col>
+    </ion-row>
+   
+   </div>
+   <!--- accounts header end-->
+</ion-toolbar>
+
+<ion-content>
+  <div class="tabs">
+    <div class="tab">
+      <input type="checkbox" id="chck1">
+      <label class="tab-label" for="chck1">Check Your Password</label>
+      <div class="tab-content">
+        Your first line of security is your online password. Many people mistakenly use a password that’s not as secure as you'd think. Using personal information like your birthday or a pets name might be easy to remember, but it’s also a recipe for disaster; Many people know that information or it is easy to find just by looking at someone's social media profile. 
+        The same password as your email or social media accounts
+        A strong password will be an unusual mix of words, special characters, and numbers. Get into the habit of changing your password regularly, at least every 2 months. Many services even allow you to double secure your account with two-factor authentication. This might mean you enter both a password and a pin number or that you have to type a code texted to you. This extra step is a smart idea.
+      </div>
+    </div>
+    <div class="tab">
+      <input type="checkbox" id="chck2">
+      <label class="tab-label" for="chck2">Beware Of Phishing</label>
+      <div class="tab-content">
+        Have you ever received a spammy looking text message or email? If so, you’re not alone. In fact, phishing and social engineering is the most common method used to compromise personal information. Sometimes it’s easy to spot a phishing scam, but other times it can look like a legitimate email from a friend, employer, or service provider. If you receive a message from someone you don’t know, or something seems to be off, don’t click any links.
+        This most often happens via email, and they can sometimes appear to be from legit companies like Apple or Microsoft. These phishing attempts will typically create a sense of urgency by either pretending that you've won a prize, a friend is having an emergency, or that there is an issue with your account. Before you rush to provide your account information, check if it’s a phishing scam.
+      </div>
+    </div>
+    <div class="tab">
+      <input type="checkbox" id="chck3">
+      <label class="tab-label" for="chck3">Pay Attention To Your Location</label>
+      <div class="tab-content">
+        Keep your device close to you at all times. It’s easy for someone to quickly snatch it while you’re in public, so never let it out of your sight even for a moment. Beware of where you’re located when using mobile banking apps. Depositing on the go is convenient, but it’s not always safe. People can see your sensitive information just by looking over your shoulder as you deposit a check in a coffee shop, for instance.
+
+        Similarly, when you’re reviewing a business or personal invoice, make sure you’re familiar with the best practices. You should always ensure your invoice is secure and that you don’t include unnecessary information. That also means paying attention to your location. It’s easy for prying eyes to peek at your invoice or banking information if you’re utilizing mobile banking in a public place like a coffee shop. If possible, save all banking activity for when you’re at home and you don’t have to worry about anyone peeking at your password information.
+      </div>
+    </div>
+    <div class="tab">
+      <input type="checkbox" id="chck4">
+      <label class="tab-label" for="chck4">Secure Your Device</label>
+      <div class="tab-content">
+        Finally, you need to make sure your devices are secure when utilizing any form of online banking. Install an anti-malware software on your home computer, and make sure your wireless connection is secure. You don’t want strangers able to utilize your wireless network since this gives them access to your private information. The Papertrail log aggregator can make sure your system is free from errors.
+        When using your mobile phone, make sure you check your mobile app permissions often. These apps can sometimes access information in the background, and you never want to leave yourself open to data sharing. A final step is to make sure you have a remote wiping option in case something goes wrong. With Apple, you can remotely clean your device via Find My iPhone>, and this can protect your information if your phone gets into the wrong hands.
+      </div>
+    </div>
+    <div class="tab">
+      <input type="checkbox" id="chck5">
+      <label class="tab-label" for="chck5">Use The Bank's App</label>
+      <div class="tab-content">
+        One of the most secure ways to do your mobile banking is through your financial institution's official mobile app. While you maybe be able to have the same functionality through a web browser, the app will provide an extra level of encryption.
+      </div>
+    </div>
+   
+  </div>
+</ion-content>

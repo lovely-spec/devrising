@@ -1,0 +1,29 @@
+<ion-toolbar>
+  <!--- acconts header-->
+
+  <div class="accounts-header ">
+    <ion-row>
+      <ion-col size="1">
+       <div class="back-button">
+         <ion-back-button defaultHref="dashboard/home" name="chevron-back-outline"></ion-back-button></div>
+      </ion-col>
+      <ion-col size="2">
+        <img src="../../assets/imgs/logo.png"/>
+      </ion-col>
+      <ion-col size="7">
+        
+      </ion-col>
+      <ion-col size="1" (click)="presentPopover('any')">
+        <img src="../../assets/icon/bellb.svg"/>
+      </ion-col>
+      <ion-col size="1" class="blue-wallet" (click)="gohome()">
+          <img src="../../assets/icon/walletb.svg"/>
+      </ion-col>
+    </ion-row>
+   
+   </div>
+   <!--- accounts header end-->
+</ion-toolbar>
+<ion-content>
+
+</ion-content>

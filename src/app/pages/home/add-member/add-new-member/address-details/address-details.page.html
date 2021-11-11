@@ -1,0 +1,101 @@
+<ion-content>
+  <div class="add_new_member_page">
+    <div class="bg_theme comman_page_padding bg_theme_small">
+      <ion-row>
+        <h1>Add New Member</h1>
+      </ion-row>
+    </div>
+    <ion-row class="row_progress">
+      <ion-col>
+        <div class="circle_white relative"><span>1</span></div>
+        <div class="circle_purple relative"><span>2</span></div>
+        <div class="circle_white relative"><span>3</span></div>
+      </ion-col>
+      <ion-progress-bar class=""  value="0.7"></ion-progress-bar>
+    </ion-row>
+    <div class="comman_page_headline_2">
+      <h2 class="ion-text-left">Adress Details</h2>
+    </div>
+    <div class="add_member_form member_address_form comman_page_padding">
+      <ion-card class="card_purple comman_input_field box_shadow">
+        <ion-card-content>
+          <ion-item lines="none">
+            <ion-label position="floating">Village/House No./Town</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="floating">Post Office (P.O.)</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="floating">Panchayat</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="floating">Tehsil</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-select class="custom-options" placeholder="Distt.">
+              <ion-select-option value="brown">Shimla</ion-select-option>
+              <ion-select-option value="blonde">Kullu</ion-select-option>
+              <ion-select-option value="abc">Bilaspur</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="floating">Pin</ion-label>
+            <ion-input type="number"></ion-input>
+          </ion-item>
+          <div class="address_confirmation">
+            <p>Is Your present and permanent address is same?</p>
+            <div>
+              <ion-radio-group class="adress_radio_input">
+                <ion-item lines="none" class="radio">
+                  <ion-label>Yes</ion-label> <br>
+                  <ion-radio slot="start"  (click)=showform(1) class="input_type_radio"></ion-radio>
+                </ion-item>
+                <ion-item lines="none" class="radio">
+                  <ion-label>NO</ion-label> <br>
+                  <ion-radio slot="start"   (click)=showform(2) class="input_type_radio"></ion-radio>
+                </ion-item>
+              </ion-radio-group>
+            </div>
+          </div>
+          <div class="slider_form" *ngIf=show_detail>
+            <ion-item lines="none">
+              <ion-label position="floating">Village/House No./Town</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label position="floating">Post Office (P.O.)</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label position="floating">Panchayat</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label position="floating">Tehsil</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-select class="custom-options" placeholder="Distt.">
+                <ion-select-option value="brown">Shimla</ion-select-option>
+                <ion-select-option value="blonde">Kullu</ion-select-option>
+                <ion-select-option value="abc">Bilaspur</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item lines="none">
+              <ion-label position="floating">Pin</ion-label>
+              <ion-input type="number"></ion-input>
+            </ion-item>
+          </div>
+          <div class="add_member_form_btns">
+            <button class="small_btn_gray" [routerLink]="['/add-new-member']">Back</button>
+            <button class="gradient_fill_btn small_btn_filled" [routerLink]="['../add-member/add-new-member/member-kyc']">Next</button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

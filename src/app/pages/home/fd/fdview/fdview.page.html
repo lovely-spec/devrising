@@ -1,0 +1,342 @@
+<!-- <ion-toolbar>
+ 
+
+  <div class="accounts-header ">
+    <ion-row>
+      <ion-col size="1">
+       <div class="back-button">
+         <ion-back-button defaultHref="dashboard/home" name="chevron-back-outline"></ion-back-button></div>
+      </ion-col>
+      <ion-col size="2">
+        <img src="../../assets/imgs/logo.png"/>
+      </ion-col>
+      <ion-col size="7">
+        
+      </ion-col>
+      <ion-col size="1" (click)="presentPopover('any')">
+        <img src="../../assets/icon/bellb.svg"/>
+      </ion-col>
+      <ion-col size="1" class="blue-wallet" (click)="gohome()">
+          <img src="../../assets/icon/walletb.svg"/>
+      </ion-col>
+    </ion-row>
+   
+   </div>
+   <div class="acoounts-header">
+    <h1>FD Accounts</h1>
+    <p class="faded-text">
+     Maturity Amount 
+    </p>
+    <h2 *ngIf="FdDetails"> {{FdDetails.maturity_amount.toLocaleString('en-IN')}}/-</h2>
+    </div>
+   
+</ion-toolbar>
+<div class="home-box" *ngIf="FdDetails">
+  <ion-row>
+   <ion-col size="6" class="ddamount">
+     <h1>₹ {{FdDetails.principal_amount.toLocaleString('en-IN')}}/-</h1>
+     <p>Total Amount</p>
+   </ion-col>
+    <ion-col size="6" class="interest-rate">
+     <h1>{{FdDetails.interest_rate}}%</h1>
+     <p>Interest Rate(%)</p>
+   </ion-col>
+  </ion-row>
+ <div class="house"></div>
+ </div>
+ 
+ 
+ <div class="whole-date-range">
+  <div class="date-filter-title"> Date Filter</div> 
+    <ion-list class="daterangecolums">                         
+      <div class="block-date-items">               
+          <div class="label-date">
+          Start Date
+          </div>
+          <div class="flex-center">
+            <ion-datetime value="1990-02-19" placeholder="Select Date" class="actual-time-label" [(ngModel)]="start_date" (ionChange)="StartDate()">
+            </ion-datetime> <ion-icon name="calendar-outline" class="blue-calender"></ion-icon>   
+          </div>                          
+      </div>
+    
+      <div class="block-date-items">
+              <div class="label-date">
+                End Date
+              </div>
+        <div class="flex-center">
+                <ion-datetime value="1990-02-20" placeholder="Select Date" class="actual-time-label" [(ngModel)]="end_date" (ionChange)="EndDate()"></ion-datetime>
+                  <ion-icon name="calendar-outline">
+                <ion-icon name="calendar-outline" class="blue-calender"></ion-icon> </ion-icon>
+        </div>
+      </div>
+      
+    </ion-list>
+    <div class="ion-text-center">
+    <a class="discover-button ion-text-center" id="filter" (click)="Apply_Date()">
+      Apply Filter
+    </a>
+  </div>
+  </div>
+
+<div class="transaction-list">
+
+  <ion-row>
+   <ion-col size="5">
+     <h3 class="blue-text">
+      FD Accounts
+     </h3>
+   </ion-col>
+   <ion-col size="3">
+      </ion-col>
+   <ion-col size="4">
+    <h3 class="blue-text ion-text-right">
+    All Details <ion-icon name="chevron-down-outline"></ion-icon>
+    </h3>
+   </ion-col>
+ </ion-row>
+ 
+ 
+ 
+ <div *ngIf="FdTransactions.length == 0 || FdTransactions == '' ">
+  <h5 class="ion-text-center">No transactions yet.</h5>
+</div>
+ <ion-row *ngFor= "let FdTransactions of FdTransactions; let i=index"  >
+  <div class="inner_wrap" *ngIf="show_filter">
+    <div class="new_list" *ngIf="i<10">
+      <ion-col size="5">
+        <h3 class="blue-text">
+        {{FdTransactions.transaction_date}}
+        </h3>
+        <p class="faded-text">
+          {{FdTransactions.transaction_type}}
+        </p>
+      </ion-col>
+      <ion-col size="3">
+      <p class="faded-text">
+        {{FdTransactions.payment_mode}}
+      </p>
+        </ion-col>
+      <ion-col size="4">
+      <p class="details-green-text">
+        {{FdTransactions.amount.toLocaleString('en-IN')}}
+      </p>
+      </ion-col>
+    </div>
+  </div>
+ </ion-row>
+ <ion-row *ngFor= "let FdTransactions of FdTransactions; let i=index"  >
+  <div class="inner_wrap" *ngIf="show_filter ==  false">
+    <div class="new_list">
+      <ion-col size="5">
+        <h3 class="blue-text">
+        {{FdTransactions.transaction_date}}
+        </h3>
+        <p class="faded-text">
+          {{FdTransactions.transaction_type}}
+        </p>
+      </ion-col>
+      <ion-col size="3">
+      <p class="faded-text">
+        {{FdTransactions.payment_mode}}
+      </p>
+        </ion-col>
+      <ion-col size="4">
+      <p class="details-green-text">
+        {{FdTransactions.amount.toLocaleString('en-IN')}}
+      </p>
+      </ion-col>
+    </div>
+  </div>
+ </ion-row>
+ 
+
+ 
+ 
+ </div>
+ <div class="btn_cover ion-text-center" *ngIf="FdTransactions.length > 0">
+  <button ion-button full (click)="createPdf()" class="ion-margin ion-align-center btn login_btn">Create PDF</button>
+  
+ </div>
+<ion-item class="item md ion-focusable hydrated item-interactive">
+</ion-item> -->
+
+
+
+<ion-content>
+  <div class="all_rd_accounts_page">
+    <!--===bg_theme_small===-->
+    <div class="bg_theme bg_theme_small comman_page_padding">
+      <ion-row class="">
+        <ion-col size="10">
+          <a [routerLink]="['/dashboard/home']"><img src="../../../../../assets/imgs/back-button.svg"></a>
+        </ion-col>
+        <ion-col size="2">
+          <div class="notification_numbur"> <span class="">12</span></div>
+          <img class="bell_icon relative" src="../../../../../assets/imgs/bell.svg">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <h1>Recurring Deposit Accounts</h1>
+      </ion-row>
+    </div>
+    <!--===bg_theme_small End==-->
+    <div class="body comman_page_padding">
+      <ion-row>
+        <ion-col size="8"></ion-col>
+        <ion-col size="4">
+          <button  class="small_btn_filled gradient_fill_btn">Open New RD</button>
+        </ion-col>
+      </ion-row>
+      <ion-card   class="account_details_card card_purple" *ngIf="FdResponse">
+      <ion-card  class="account_details_card card_purple"  *ngFor="let FdResponse of FdResponse;let i=index" >
+      
+        <ion-row>
+          <ion-col size="3">
+            <div class="circle ion-text-center">
+              <img src="../../../../../assets/imgs/RD Icon.svg">
+            </div>
+          </ion-col>
+          <ion-col size="9" class="right_side">
+            <div class="card_header flex">
+              <span>Recurring Amount</span>
+              <span class="rd_number">{{ FdResponse.account_number}}</span>
+              <!-- <img class="plus_icon" src="../../assets/images/plus_icon.svg"> -->
+            </div>
+            <div class="amount_figure">
+              <h3>₹ {{ FdResponse.principal_amount }}/-</h3>
+            </div>
+            <div class="amount_details clearfix">
+              <div class="text_left">
+                <span>Maturity Amout</span>
+                <span>Maturity Date</span>
+              </div>
+              <div class="right_bar">
+                <span>: ₹ {{FdResponse.maturity_amount}}/-</span>
+                <span>: {{FdResponse.maturity_date}}</span>
+              </div>
+            </div>
+          </ion-col>
+          <span class="background_font_faded">FD</span>
+        </ion-row>
+        <div class=" accordion" *ngIf="isShown">
+          <ion-row class="dotted">
+            <ion-col size="5">
+              <div>Status</div>
+            </ion-col>
+            <ion-col size="1">
+              <div>:</div>
+            </ion-col>
+            <ion-col size="6">
+              <div *ngIf="FdResponse.status == 'Active'"><div class="color_theme_green">{{FdResponse.status}}</div></div>
+              <div *ngIf="FdResponse.status == 'Closed'" ><div class="color_theme_red">{{FdResponse.status}}</div></div>
+              <div *ngIf="FdResponse.status == 'Fore closed'" ><div class="color_theme_red">{{FdResponse.status}}</div></div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="dotted">
+            <ion-col size="5">
+              <div>Scheme</div>
+            </ion-col>
+            <ion-col size="1">
+              <div>:</div>
+            </ion-col>
+            <ion-col size="6">
+              <div>{{FdResponse.scheme}}</div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="dotted">
+            <ion-col size="5">
+              <div>Interest Rate</div>
+            </ion-col>
+            <ion-col size="1">
+              <div>:</div>
+            </ion-col>
+            <ion-col size="6">
+              <div>{{FdResponse.interest_rate}}%</div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="dotted">
+            <ion-col size="5">
+              <div>RD Amount</div>
+            </ion-col>
+            <ion-col size="1">
+              <div>:</div>
+            </ion-col>
+            <ion-col size="6">
+              <div>₹ {{ FdResponse.principal_amount}}/-</div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="dotted">
+            <ion-col size="5">
+              <div>Deposit Amount</div>
+            </ion-col>
+            <ion-col size="1">
+              <div>:</div>
+            </ion-col>
+            <ion-col size="6">
+              <div>₹ {{FdResponse.total_amount}}/-</div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="dotted">
+            <ion-col size="5">
+              <div>Open Date</div>
+            </ion-col>
+            <ion-col size="1">
+              <div>:</div>
+            </ion-col>
+            <ion-col size="6">
+              <div>{{FdResponse.open_date}}</div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="dotted">
+            <ion-col size="5">
+              <div>Maturity Amt <span class="color_theme_red inline_block">*</span></div>
+            </ion-col>
+            <ion-col size="1">
+              <div>:</div>
+            </ion-col>
+            <ion-col size="6">
+              <div>₹ {{FdResponse.maturity_amount}}/-</div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="5">
+              <div>TDS Deduction</div>
+            </ion-col>
+            <ion-col size="1">
+              <div>:</div>
+            </ion-col>
+            <ion-col size="6">
+              <div>Yes</div>
+            </ion-col>
+          </ion-row>
+        </div>
+        <div class="card_bottom_btns" [style.margin-top]="mgTop" [style.margin-bottom]="mgBotm">
+          <button class="medium_filled_btn gradient_fill_btn" [routerLink]="['fullstatement']" (click)="FdClick('fd', FdResponse.slug)"
+            [ngStyle]="{'visibility':isthisbtnshow? 'visible' : 'hidden'}">Full Statement</button>
+            <button class="medium_filled_btn gradient_fill_btn" [routerLink]="['/rd-statement']"
+            [ngStyle]="{'visibility':isthisbtnshow? 'visible' : 'hidden'}">Deposit Installment</button>
+          <button class="extra_small_gray_btn" (click)="accordionShow()"
+            (click)="change_text()">{{changed_text}}</button>
+        </div>
+        
+        <div><div class="progressbar">
+          <ion-progress-bar value="0.6"></ion-progress-bar>
+        </div></div>
+
+        <div *ngIf="FdResponse.status == 'Closed'" ><div class="progressbar_red">
+          <ion-progress-bar value="1"></ion-progress-bar>
+        </div></div>
+
+        <div *ngIf="FdResponse.status == 'Fore closed'" ><div class="progressbar_red">
+          <ion-progress-bar value="1"></ion-progress-bar>
+        </div></div>
+      
+      </ion-card>
+      </ion-card>
+      <!--===ion-card close===-->
+      
+      <!--===ion-card close===-->
+    </div>
+    <!--===body close====-->
+  </div>
+</ion-content>

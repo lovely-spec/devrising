@@ -1,0 +1,33 @@
+@mixin h-one {
+ color:White;
+ font-family: 'Montserrat', sans-serif;
+ font-size:26px;
+ font-weight:400;
+ text-align:center;
+ }
+
+ @mixin h-one-blue {
+ color:#1D3F88;
+ font-family: 'Montserrat', sans-serif;
+ font-size:26px;
+ font-weight:400;
+ }
+
+ @mixin button-text{
+color:white;
+font-size:18px;
+font-family: 'Montserrat', sans-serif; 
+ }
+ @mixin button-text-blue{
+  color:#1D3F88;
+  font-size:18px;
+  font-family: 'Montserrat', sans-serif; 
+   }
+
+   @mixin  fadecolorb{
+   color:#A5B6D6;
+   font-size: 16px;
+     font-family: Montserrat;
+   }
+    
+   

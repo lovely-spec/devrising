@@ -1,0 +1,369 @@
+<ion-toolbar>
+  <!--- acconts header-->
+
+  <div class="accounts-header ">
+    <ion-row>
+      <ion-col size="1">
+       <div class="back-button">
+         <ion-back-button defaultHref="dashboard/home" name="chevron-back-outline"></ion-back-button></div>
+      </ion-col>
+      <ion-col size="2">
+        <img src="../../assets/imgs/logo.png"/>
+      </ion-col>
+      <ion-col size="7">
+        
+      </ion-col>
+      <ion-col size="1" (click)="presentPopover('any')">
+        <img src="../../assets/icon/bellb.svg"/>
+      </ion-col>
+      <ion-col size="1" class="blue-wallet" (click)="gohome()">
+          <img src="../../assets/icon/walletb.svg"/>
+      </ion-col>
+    </ion-row>
+   
+   </div>
+   <!--- accounts header end-->
+</ion-toolbar>
+<ion-content>
+<div class="acoounts-header">
+  <h1>My Loan Accounts</h1>
+</div>
+<!-- Other Loan -->
+<div class="main_div" *ngIf="UserResponse.OL != '' || UserResponse.OL != '' || UserResponse.GL != '' || UserResponse.PL != '' || UserResponse.FL != '' || UserResponse.DL != ''">
+<a *ngIf="OL" >
+<div *ngFor="let OL of OL"> 
+<ion-row class="amount-details md hydrated first-column" *ngIf="OL.status == 'Active'" (click)="olclick('ol', OL.slug)">
+  <ion-col size="8" class="md hydrated" style="flex: 0 0 calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%);">
+    <p class="fade-text-one">
+      OL current Debit
+    </p>
+    <p class="blue-text-nm">
+      ₹{{OL.current_debt}}/-
+    </p>
+    <p class="fade-text-one">
+      Total Amount
+    </p>
+    <h2 class="amount-blue">₹{{OL.loan_amount}}/-</h2>
+      </ion-col>
+  <ion-col size="4" class="md hydrated" style="flex: 0 0 calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%);">
+    <p class="blue-text-nm">
+      {{OL.account_number}}
+    </p>
+    <p class="fade-text-two">
+      Open Date
+    </p>
+    <p class="blue-text-nm">
+      {{OL.open_date}}
+    </p>
+    <p class="fade-text-two">
+      Status
+    </p>
+    <p class="blue-text-nm">
+      {{OL.status}}
+    </p>
+  </ion-col>
+</ion-row>
+<ion-row *ngIf="OL.status != 'Active'" class="amount-details md hydrated first-column closed" >
+  <ion-col size="8" class="md hydrated" style="flex: 0 0 calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%);">
+    <p class="fade-text-one">
+      OL current Debit
+    </p>
+    <p class="blue-text-nm">
+      ₹{{OL.current_debt}}/-
+    </p>
+    <p class="fade-text-one">
+      Total Amount
+    </p>
+    <h2 class="amount-blue">₹{{OL.loan_amount}}/-</h2>
+      </ion-col>
+  <ion-col size="4" class="md hydrated" style="flex: 0 0 calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%);">
+    <p class="blue-text-nm">
+      {{OL.account_number}}
+    </p>
+    <p class="fade-text-two">
+      Open Date
+    </p>
+    <p class="blue-text-nm">
+      {{OL.open_date}}
+    </p>
+    <p class="fade-text-two">
+      Status
+    </p>
+    <p class="blue-text-nm">
+      {{OL.status}}
+    </p>
+  </ion-col>
+</ion-row>
+</div>
+</a>
+<!-- Deposit Loan -->
+<a *ngIf="DL" >
+  <div *ngFor="let DL of DL"> 
+  <ion-row class="amount-details md hydrated first-column" *ngIf="DL.status == 'Active'" (click)="dlclick('dl', DL.slug)">
+    <ion-col size="8" class="md hydrated" style="flex: 0 0 calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%);">
+      <p class="fade-text-one">
+        DL current Debit
+      </p>
+      <p class="blue-text-nm">
+        ₹{{DL.current_debt}}/-
+      </p>
+      <p class="fade-text-one">
+        Total Amount
+      </p>
+      <h2 class="amount-blue">₹{{DL.loan_amount}}/-</h2>
+        </ion-col>
+    <ion-col size="4" class="md hydrated" style="flex: 0 0 calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%);">
+      <p class="blue-text-nm">
+        {{DL.account_number}}
+      </p>
+      <p class="fade-text-two">
+        Open Date
+      </p>
+      <p class="blue-text-nm">
+        {{DL.open_date}}
+      </p>
+      <p class="fade-text-two">
+        Status
+      </p>
+      <p class="blue-text-nm">
+        {{DL.status}}
+      </p>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="DL.status != 'Active'" class="amount-details md hydrated first-column closed" >
+    <ion-col size="8" class="md hydrated" style="flex: 0 0 calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%);">
+      <p class="fade-text-one">
+        DL current Debit
+      </p>
+      <p class="blue-text-nm">
+        ₹{{DL.current_debt}}/-
+      </p>
+      <p class="fade-text-one">
+        Total Amount
+      </p>
+      <h2 class="amount-blue">₹{{DL.loan_amount}}/-</h2>
+        </ion-col>
+    <ion-col size="4" class="md hydrated" style="flex: 0 0 calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%);">
+      <p class="blue-text-nm">
+        {{DL.account_number}}
+      </p>
+      <p class="fade-text-two">
+        Open Date
+      </p>
+      <p class="blue-text-nm">
+        {{DL.open_date}}
+      </p>
+      <p class="fade-text-two">
+        Status
+      </p>
+      <p class="blue-text-nm">
+        {{DL.status}}
+      </p>
+    </ion-col>
+  </ion-row>
+  </div>
+</a>
+<!-- Gold Loan -->
+<a *ngIf="GL" >
+  <div *ngFor="let GL of GL"> 
+  <ion-row class="amount-details md hydrated first-column" *ngIf="GL.status == 'Active'" (click)="glclick('gl', GL.slug)">
+    <ion-col size="8" class="md hydrated" style="flex: 0 0 calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%);">
+      <p class="fade-text-one">
+        GL current Debit
+      </p>
+      <p class="blue-text-nm">
+        ₹{{GL.current_debt}}/-
+      </p>
+      <p class="fade-text-one">
+        Total Amount
+      </p>
+      <h2 class="amount-blue">₹{{GL.loan_amount}}/-</h2>
+        </ion-col>
+    <ion-col size="4" class="md hydrated" style="flex: 0 0 calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%);">
+      <p class="blue-text-nm">
+        {{GL.account_number}}
+      </p>
+      <p class="fade-text-two">
+        Open Date
+      </p>
+      <p class="blue-text-nm">
+        {{GL.open_date}}
+      </p>
+      <p class="fade-text-two">
+        Status
+      </p>
+      <p class="blue-text-nm">
+        {{GL.status}}
+      </p>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="GL.status != 'Active'" class="amount-details md hydrated first-column closed" >
+    <ion-col size="8" class="md hydrated" style="flex: 0 0 calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%);">
+      <p class="fade-text-one">
+        GL current Debit
+      </p>
+      <p class="blue-text-nm">
+        ₹{{GL.current_debt}}/-
+      </p>
+      <p class="fade-text-one">
+        Total Amount
+      </p>
+      <h2 class="amount-blue">₹{{GL.loan_amount}}/-</h2>
+        </ion-col>
+    <ion-col size="4" class="md hydrated" style="flex: 0 0 calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%);">
+      <p class="blue-text-nm">
+        {{GL.account_number}}
+      </p>
+      <p class="fade-text-two">
+        Open Date
+      </p>
+      <p class="blue-text-nm">
+        {{GL.open_date}}
+      </p>
+      <p class="fade-text-two">
+        Status
+      </p>
+      <p class="blue-text-nm">
+        {{GL.status}}
+      </p>
+    </ion-col>
+  </ion-row>
+  </div>
+</a>
+<!--  Fixed Loan -->
+<a *ngIf="FL" >
+  <div *ngFor="let FL of FL"> 
+  <ion-row class="amount-details md hydrated first-column" *ngIf="FL.status == 'Active'" (click)="flclick('fl', FL.slug)">
+    <ion-col size="8" class="md hydrated" style="flex: 0 0 calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%);">
+      <p class="fade-text-one">
+        FL current Debit
+      </p>
+      <p class="blue-text-nm">
+        ₹{{FL.current_debt}}/-
+      </p>
+      <p class="fade-text-one">
+        Total Amount
+      </p>
+      <h2 class="amount-blue">₹{{FL.loan_amount}}/-</h2>
+        </ion-col>
+    <ion-col size="4" class="md hydrated" style="flex: 0 0 calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%);">
+      <p class="blue-text-nm">
+        {{FL.account_number}}
+      </p>
+      <p class="fade-text-two">
+        Open Date
+      </p>
+      <p class="blue-text-nm">
+        {{FL.open_date}}
+      </p>
+      <p class="fade-text-two">
+        Status
+      </p>
+      <p class="blue-text-nm">
+        {{FL.status}}
+      </p>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="FL.status != 'Active'" class="amount-details md hydrated first-column closed" >
+    <ion-col size="8" class="md hydrated" style="flex: 0 0 calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%);">
+      <p class="fade-text-one">
+        FL current Debit
+      </p>
+      <p class="blue-text-nm">
+        ₹{{FL.current_debt}}/-
+      </p>
+      <p class="fade-text-one">
+        Total Amount
+      </p>
+      <h2 class="amount-blue">₹{{FL.loan_amount}}/-</h2>
+        </ion-col>
+    <ion-col size="4" class="md hydrated" style="flex: 0 0 calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%);">
+      <p class="blue-text-nm">
+        {{FL.account_number}}
+      </p>
+      <p class="fade-text-two">
+        Open Date
+      </p>
+      <p class="blue-text-nm">
+        {{FL.open_date}}
+      </p>
+      <p class="fade-text-two">
+        Status
+      </p>
+      <p class="blue-text-nm">
+        {{FL.status}}
+      </p>
+    </ion-col>
+  </ion-row>
+  </div>
+</a>
+<!-- Property Loan -->
+<a *ngIf="PL" >
+  <div *ngFor="let PL of PL"> 
+  <ion-row class="amount-details md hydrated first-column" *ngIf="PL.status == 'Active'" (click)="plclick('fl', FL.slug)">
+    <ion-col size="8" class="md hydrated" style="flex: 0 0 calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%);">
+      <p class="fade-text-one">
+        PL current Debit
+      </p>
+      <p class="blue-text-nm">
+        ₹{{PL.current_debt}}/-
+      </p>
+      <p class="fade-text-one">
+        Total Amount
+      </p>
+      <h2 class="amount-blue">₹{{PL.loan_amount}}/-</h2>
+        </ion-col>
+    <ion-col size="4" class="md hydrated" style="flex: 0 0 calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%);">
+      <p class="blue-text-nm">
+        {{PL.account_number}}
+      </p>
+      <p class="fade-text-two">
+        Open Date
+      </p>
+      <p class="blue-text-nm">
+        {{PL.open_date}}
+      </p>
+      <p class="fade-text-two">
+        Status
+      </p>
+      <p class="blue-text-nm">
+        {{PL.status}}
+      </p>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="PL.status != 'Active'" class="amount-details md hydrated first-column closed" >
+    <ion-col size="8" class="md hydrated" style="flex: 0 0 calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%);">
+      <p class="fade-text-one">
+        PL current Debit
+      </p>
+      <p class="blue-text-nm">
+        ₹{{PL.current_debt}}/-
+      </p>
+      <p class="fade-text-one">
+        Total Amount
+      </p>
+      <h2 class="amount-blue">₹{{PL.loan_amount}}/-</h2>
+        </ion-col>
+    <ion-col size="4" class="md hydrated" style="flex: 0 0 calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%);">
+      <p class="blue-text-nm">
+        {{PL.account_number}}
+      </p>
+      <p class="fade-text-two">
+        Open Date
+      </p>
+      <p class="blue-text-nm">
+        {{PL.open_date}}
+      </p>
+      <p class="fade-text-two">
+        Status
+      </p>
+      <p class="blue-text-nm">
+        {{PL.status}}
+      </p>
+    </ion-col>
+  </ion-row>
+  </div>
+</a>
+</div>
+<h4 class="ion-text-center" *ngIf="UserResponse.OL == ''">You do not have any loan accounts yet.</h4>
+</ion-content>

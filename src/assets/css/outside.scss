@@ -1,0 +1,129 @@
+
+
+
+.tabs {
+  width: 95%;
+  color: black;
+  overflow: hidden;
+  background: white !important;
+   margin-bottom: 23px;
+  margin: 10px;
+  border-radius: 5px;
+  margin-bottom: 33px;
+  border-radius: 5px;
+}
+.tab {
+  width: 95%;
+  color: #1D4695;
+  overflow: hidden;
+  margin-bottom: 24px !important;
+  margin: 10px;
+  margin-top: 10px;
+  -webkit-box-shadow: 0px 0px 14px -9px #787878;
+  box-shadow: 0px 0px 10px -6px #787878;
+  &-label {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+       font-weight: bold;
+    cursor: pointer;
+    /* Icon */
+       &::after {
+      content: "\276F";
+      width: 1em;
+      height: 1em;
+      text-align: center;
+      transition: all .35s;
+    }
+  }
+  &-content {
+    max-height: 0;
+    padding: 0 1em;
+    color: black;
+    background: white;
+    transition: all .35s;
+  }
+  &-close {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1em;
+    font-size: 0.75em;
+    background:black;
+    cursor: pointer;
+    &:hover {
+      background: darken(white, 10%);
+    }
+  }
+}
+
+// :checked
+input:checked {
+  + .tab-label {
+    background: darken(white, 0%);
+       
+    &::after {
+      transform: rotate(90deg);
+    }
+  }
+  ~ .tab-content {
+    max-height: 100vh;
+    padding: 1em;
+  }
+}
+.tabs input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+
+
+/* progress bar *//*===== The CSS =====*/
+.progress_cal {
+  width: 79px;
+  height: 65px;
+}
+.progress_cal .track, .progress .fill{
+  fill: rgba(240, 23, 23, 0.12);
+  stroke: #d8d8d859 !important;
+  stroke-width: 10px;
+  -webkit-transform: rotate(90deg) translate(0px, -80px);
+  transform: rotate(90deg) translate(0px, -80px);
+}
+.progress_cal .track {
+  stroke: #1d469500;
+  stroke-width: 11px;
+}
+.progress_cal .fill {
+	stroke: rgb(255, 255, 255);
+	stroke-dasharray: 174.990784;
+	stroke-dashoffset: -219.99078369140625;
+  transition: stroke-dashoffset 1s;
+  stroke-linecap: round !important;
+}
+.progress_cal.blue .fill {
+  stroke: #d5d5d5;
+  stroke-width: 8px;
+  fill: white;
+    text-align: center;
+}
+.progress_cal.green .fill {
+	stroke: rgb(186, 223, 172);
+}
+.proprogress_cal .gress .value, .progress .text {
+	font-family: 'Open Sans';
+	fill: rgb(255, 255, 255);
+	text-anchor: middle;
+}
+.progress_cal .text {
+	font-size: 12px;
+}
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+		cursor: default;
+}

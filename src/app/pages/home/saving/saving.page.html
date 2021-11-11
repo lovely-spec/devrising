@@ -1,0 +1,286 @@
+<!-- <ion-toolbar> -->
+  <!--- acconts header-->
+
+  <!-- <div class="accounts-header ">
+    <ion-row>
+      <ion-col size="1">
+       <div class="back-button">
+         <ion-back-button defaultHref="dashboard/home" name="chevron-back-outline"></ion-back-button></div>
+      </ion-col>
+      <ion-col size="2">
+        <img src="../../assets/imgs/logo.png"/>
+      </ion-col>
+      <ion-col size="7">
+        
+      </ion-col>
+      <ion-col size="1" (click)="presentPopover('any')">
+        <img src="../../assets/icon/bellb.svg"/>
+      </ion-col>
+      <ion-col size="1" class="blue-wallet" (click)="gohome()">
+          <img src="../../assets/icon/walletb.svg"/>
+      </ion-col>
+    </ion-row>
+   
+   </div> -->
+   <!--- accounts header end-->
+<!-- </ion-toolbar>
+<ion-content class=" ion-justify-content-center ion-align-items-center">
+
+<div class="acoounts-header">
+<h1>Saving Accounts</h1>
+<p *ngIf="SavingDetails">{{SavingDetails.account_number}}</p>
+<p class="faded-text">
+ Available Balance
+</p>
+<h2 *ngIf="SavingDetails"> {{SavingDetails.balance_available.toLocaleString('en-IN')}} /-</h2>
+</div>
+
+
+<div class="whole-date-range">
+<div class="date-filter-title"> Date Filter</div> 
+  <ion-list class="daterangecolums">                         
+    <div class="block-date-items">               
+        <div class="label-date">
+        Start Date
+        </div>
+        <div class="flex-center">
+          <ion-datetime value="1990-02-19" placeholder="Select Date" class="actual-time-label" [(ngModel)]="start_date" (ionChange)="StartDate()">
+          </ion-datetime> <ion-icon name="calendar-outline" class="blue-calender"></ion-icon>   
+        </div>                          
+    </div>
+  
+    <div class="block-date-items">
+            <div class="label-date">
+              End Date
+            </div>
+      <div class="flex-center">
+              <ion-datetime value="1990-02-20" placeholder="Select Date" class="actual-time-label" [(ngModel)]="end_date" (ionChange)="EndDate()"></ion-datetime>
+                <ion-icon name="calendar-outline">
+              <ion-icon name="calendar-outline" class="blue-calender"></ion-icon> </ion-icon>
+      </div>
+    </div>
+    
+  </ion-list>
+  <a class="discover-button" id="filter" (click)="Apply_Date()">
+    Apply Filter
+  </a>
+</div>
+
+<div class="transaction-list"> -->
+<!-- top table row-->
+<!-- <ion-row class="md hydrated">
+<ion-col size="5" class="md hydrated" style="flex: 0 0 calc(calc(5 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(5 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(5 / var(--ion-grid-columns, 12)) * 100%);">
+  <h3 class="blue-text">
+   Saving Transactions
+  </h3>
+</ion-col>
+<ion-col size="3" class="md hydrated" style="flex: 0 0 calc(calc(3 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(3 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(3 / var(--ion-grid-columns, 12)) * 100%);">
+   </ion-col>
+<ion-col size="4" class="md hydrated" style="flex: 0 0 calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%);">
+ <h3 class="blue-text ion-text-right">
+ All Details <ion-icon name="chevron-down-outline" role="img" class="md hydrated" aria-label="chevron down outline"></ion-icon>
+ </h3>
+</ion-col>
+</ion-row>
+
+
+<div *ngIf="SavingTransactions.length == 0">
+  <h5 class="ion-text-center">No transactions yet.</h5>
+</div>
+<div class="show" *ngIf="SavingTransactions.length > 0">
+<ion-row class="md hydrated"  *ngFor="let result of SavingTransactions; let i=index"  >
+  <div class="inner_wrap" *ngIf="show_filter">
+    <div class="new_list" *ngIf="i<10">
+      <ion-col size="5" class="md hydrated" style="flex: 0 0 calc(calc(5 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(5 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(5 / var(--ion-grid-columns, 12)) * 100%);">
+      <h3 class="blue-text">
+        {{result.transaction_date}}
+      </h3>
+      <p class="faded-text">
+        {{result.transaction_type}}
+      </p>
+      </ion-col>
+      <ion-col size="3" class="md hydrated" style="flex: 0 0 calc(calc(3 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(3 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(3 / var(--ion-grid-columns, 12)) * 100%);">
+      <p class="faded-text">
+        {{result.payment_mode}}
+      </p>
+        </ion-col>
+      <ion-col size="4" class="md hydrated" style="flex: 0 0 calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%);">
+      <p class="details-green-text" *ngIf="result.transaction_type == 'credit'">
+        {{result.amount.toLocaleString('en-IN')}}
+      </p>
+
+      <p class="details-red-text" *ngIf="result.transaction_type == 'debit'">
+        {{result.amount.toLocaleString('en-IN')}}
+      </p>
+      </ion-col>
+    </div>
+  </div>
+</ion-row>
+<ion-row class="md hydrated"  *ngFor="let result of SavingTransactions; let i=index"  >
+  <div class="inner_wrap" *ngIf="show_filter == false">
+    <div class="new_list">
+      <ion-col size="5" class="md hydrated" style="flex: 0 0 calc(calc(5 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(5 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(5 / var(--ion-grid-columns, 12)) * 100%);">
+      <h3 class="blue-text">
+        {{result.transaction_date}}
+      </h3>
+      <p class="faded-text">
+        {{result.transaction_type}}
+      </p>
+      </ion-col>
+      <ion-col size="3" class="md hydrated" style="flex: 0 0 calc(calc(3 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(3 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(3 / var(--ion-grid-columns, 12)) * 100%);">
+      <p class="faded-text">
+        {{result.payment_mode}}
+      </p>
+        </ion-col>
+      <ion-col size="4" class="md hydrated" style="flex: 0 0 calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%);">
+      <p class="details-green-text" *ngIf="result.transaction_type == 'credit'">
+        {{result.amount.toLocaleString('en-IN')}}
+      </p>
+
+      <p class="details-red-text" *ngIf="result.transaction_type == 'debit'">
+        {{result.amount.toLocaleString('en-IN')}}
+      </p>
+      </ion-col>
+    </div>
+  </div>
+</ion-row>
+</div>
+
+
+
+
+
+</div> -->
+
+
+<!-- <button ion-button full (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">Download PDF</button> -->
+<!-- <div class="btn_cover ion-text-center" *ngIf="SavingResponse.length > 0">
+  <button ion-button full (click)="createPdf()" class="ion-margin ion-align-center btn login_btn">Create PDF</button>
+</div>
+  </ion-content> -->
+
+
+  <ion-content>
+    <!--===bg_theme_small===-->
+    <div class="bg_theme bg_theme_small comman_page_padding">
+      <ion-row class="">
+        <ion-col size="10">
+          <a [routerLink]="['/dashboard/home']"><img src="../../../../assets/imgs/back-button.svg"></a>
+        </ion-col>
+        <ion-col size="2" (click)="presentPopover('any')">
+          <div class="notification_numbur" >  <span class="">12</span></div>
+          <img class="bell_icon relative" src="../../../../assets/imgs/bell.svg">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <h1 *ngIf="SavingDetails" >{{SavingDetails.account_number}}</h1>
+      </ion-row>
+    </div>
+    <!--===bg_theme_small End==-->
+    <!--===savings accounts page====-->
+    <div id="saving-account-page">
+      <div class="comman_page_headline">
+        <h2 *ngIf="SavingDetails" >Available Balance : {{SavingDetails.balance_available.toLocaleString('en-IN')}} /-</h2>
+      </div>
+      <div class="comman_page_padding">
+        <!--===card_purple===-->
+        <ion-card class="card_purple box_shadow">
+          <!--===ion-card-header===-->
+          <ion-card-header class="comman_card_header">
+            <ion-row>
+              <ion-col size="9">
+                <h3>Recent Transaction</h3>
+              </ion-col>
+              <ion-col size="3" class="card_h_icons">
+                <img src="../../../../assets/imgs/calander_icon.svg">
+                <img src="../../../../assets/imgs/pdf_icon.svg">
+              </ion-col>
+            </ion-row>
+          </ion-card-header>
+          <!--===ion-card-content===-->
+          <ion-card-content>
+            <div class="searchbar">
+              <ion-input type="search" placeholder="search....."><img src="../../../../assets/imgs/search_icon.svg">
+              </ion-input>
+            </div>
+            <!--===savings_account_details===-->
+            <div class="comman_card_details">
+              <ion-row class="dotted row">
+                <ion-col size="6">
+                  <span>Cash Deposit</span>
+                  <p class="color_brown">Cash | <span class="color_purple"> 06/06/2020</span></p>
+                </ion-col>
+                <ion-col size="5" class="right_col">
+                  <span>5,0000/-</span>
+                  <span>Balance : 30,000.00</span>
+                </ion-col>
+                <ion-col size="1">
+                  <img class="" src="../../../../assets/imgs/plus_green.svg">
+                </ion-col>
+              </ion-row>
+              <ion-row class="dotted row">
+                <ion-col size="6">
+                  <span>Cash Withdrawal</span>
+                  <p class="color_brown">System | <span class="color_purple"> 06/06/2020</span></p>
+                </ion-col>
+                <ion-col size="5" class="right_col">
+                  <span>5,0000/-</span>
+                  <span>Balance : 25,000.00</span>
+                </ion-col>
+                <ion-col size="1">
+                  <img class="" src="../../../../assets/imgs/minus_red.svg">
+                </ion-col>
+              </ion-row>
+              <ion-row class="dotted row">
+                <ion-col size="6">
+                  <span>Online Transfer</span>
+                  <p class="color_brown">Bank | <span class="color_purple"> 06/06/2020</span></p>
+                </ion-col>
+                <ion-col size="5" class="right_col">
+                  <span>5,0000/-</span>
+                  <span>Balance : 30,000.00</span>
+                </ion-col>
+                <ion-col size="1">
+                  <img class="" src="../../../../assets/imgs/plus_green.svg">
+                </ion-col>
+              </ion-row>
+              <ion-row class="dotted row">
+                <ion-col size="6">
+                  <span>Cash Withdrawal</span>
+                  <p class="color_brown">Cash | <span class="color_purple"> 06/06/2020</span></p>
+                </ion-col>
+                <ion-col size="5" class="right_col">
+                  <span>5,0000/-</span>
+                  <span>Balance : 25,000.00</span>
+                </ion-col>
+                <ion-col size="1">
+                  <img class="" src="../../../../assets/imgs/minus_red.svg">
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="12" class="adjust_margin">
+                  <span>Auto Debit EMI - 20 for Other Loan
+                  </span>
+                </ion-col>
+                <ion-col size="6">
+                  <span>A/C No - OL00136.</span>
+                  <p class="color_brown">System | <span class="color_purple"> 06/06/2020</span></p>
+                </ion-col>
+                <ion-col size="5" class="right_col">
+                  <span>5,0000/-</span>
+                  <span>Balance : 30,000.00</span>
+                </ion-col>
+                <ion-col size="1">
+                  <img class="" src="../../../../assets/imgs/plus_green.svg">
+                </ion-col>
+              </ion-row>
+            </div>
+          </ion-card-content>
+        </ion-card>
+        <!--===card_purple close===-->
+      </div>
+      <!--===savings accounts page End-->
+    </div>
+  </ion-content>
+
+ 

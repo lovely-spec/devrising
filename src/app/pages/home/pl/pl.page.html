@@ -1,0 +1,153 @@
+<ion-toolbar>
+  <!--- acconts header-->
+
+  <div class="accounts-header ">
+    <ion-row>
+      <ion-col size="1">
+       <div class="back-button">
+         <ion-back-button defaultHref="dashboard/home" name="chevron-back-outline"></ion-back-button></div>
+      </ion-col>
+      <ion-col size="2">
+        <img src="../../assets/imgs/logo.png"/>
+      </ion-col>
+      <ion-col size="7">
+        
+      </ion-col>
+      <ion-col size="1" (click)="presentPopover('any')">
+        <img src="../../assets/icon/bellb.svg"/>
+      </ion-col>
+      <ion-col size="1" class="blue-wallet" (click)="gohome()">
+          <img src="../../assets/icon/walletb.svg"/>
+      </ion-col>
+    </ion-row>
+   
+   </div>
+   <div class="acoounts-header">
+    <h1 *ngIf="PlDetails">{{PlDetails.account_number}}</h1>
+    <p class="faded-text">
+     Total Loan Amount 
+    </p>
+    <h2 *ngIf="PlDetails"> {{PlDetails.loan_amount.toLocaleString('en-IN')}}/-</h2>
+    <ion-button size="small" color="warning" (click)="add_installment()">Deposit EMI</ion-button>
+    </div>
+   <!--- accounts header end-->
+</ion-toolbar>
+<div class="home-box" *ngIf="PlDetails">
+  <ion-row>
+   <ion-col size="6" class="ddamount">
+     <h1>₹ {{PlDetails.current_debt.toLocaleString('en-IN')}}/-</h1>
+     <p>Current Debit Amount</p>
+   </ion-col>
+    <ion-col size="6" class="interest-rate">
+     <h1>{{PlDetails.interest_rate}}%</h1>
+     <p>Interest Rate(%)</p>
+   </ion-col>
+  </ion-row>
+ <div class="house"></div>
+ <ion-row>
+   <ion-col size="6" class="installmentamount">
+    <h1>{{PlDetails.total_emi}}</h1>
+    <p>Total EMI</p>
+  </ion-col>
+   <ion-col size="6" class="pending-installment">
+    <h1>{{PlDetails.unpaid_emi}}</h1>
+    <p>Pending EMI</p>
+  </ion-col>
+ </ion-row>
+ </div>
+ 
+ <!---- house box ends-->
+ <div class="whole-date-range">
+  <div class="date-filter-title"> Date Filter</div> 
+    <ion-list class="daterangecolums">                         
+      <div class="block-date-items">               
+          <div class="label-date">
+          Start Date
+          </div>
+          <div class="flex-center">
+            <ion-datetime value="1990-02-19" placeholder="Select Date" class="actual-time-label" [(ngModel)]="start_date" (ionChange)="StartDate()">
+            </ion-datetime> <ion-icon name="calendar-outline" class="blue-calender"></ion-icon>   
+          </div>                          
+      </div>
+    
+      <div class="block-date-items">
+              <div class="label-date">
+                End Date
+              </div>
+        <div class="flex-center">
+                <ion-datetime value="1990-02-20" placeholder="Select Date" class="actual-time-label" [(ngModel)]="end_date" (ionChange)="EndDate()"></ion-datetime>
+                  <ion-icon name="calendar-outline">
+                <ion-icon name="calendar-outline" class="blue-calender"></ion-icon> </ion-icon>
+        </div>
+      </div>
+      
+    </ion-list>
+    <div class="ion-text-center">
+    <a class="discover-button ion-text-center" id="filter" (click)="Apply_Date()">
+      Apply Filter
+    </a>
+  </div>
+  </div>
+ <!--- transaction  details starts -->
+<div class="transaction-list">
+  <!-- top table row-->
+  <ion-row>
+   <ion-col size="5">
+     <h3 class="blue-text">
+      OL Accounts
+     </h3>
+   </ion-col>
+   <ion-col size="3">
+      </ion-col>
+   <ion-col size="4">
+    <h3 class="blue-text ion-text-right">
+    All Details <ion-icon name="chevron-down-outline"></ion-icon>
+    </h3>
+   </ion-col>
+ </ion-row> 
+
+ <div *ngIf="PlTransactions.length == 0 || PlTransactions == '' ">
+  <h5 class="ion-text-center">No transactions yet.</h5>
+</div>
+ <ion-row *ngFor= "let PlTransactions of PlTransactions|slice:0:show let i=index ">
+  <ion-col size="5">
+    <h3 class="blue-text">
+     {{PlTransactions.transaction_date}}
+    </h3>
+    <p class="faded-text">
+      {{PlTransactions.transaction_type}}
+    </p>
+  </ion-col>
+  <ion-col size="3">
+   <p class="faded-text">
+    {{PlTransactions.payment_mode}}
+   </p>
+     </ion-col>
+  <ion-col size="4">
+    <p class="details-green-text" *ngIf="PlTransactions.transaction_type == 'credit'">
+      {{PlTransactions.amount.toLocaleString('en-IN')}}
+    </p>
+    
+    <p class="details-red-text" *ngIf="PlTransactions.transaction_type == 'debit'">
+      {{PlTransactions.amount.toLocaleString('en-IN')}}
+    </p>
+  </ion-col>
+ 
+    <button *ngIf="i==19 && show == 20" class="ion-margin ion-align-center btn login_btn1" (click)="showmore(PlTransactions.length)">Show All</button>
+    
+ </ion-row>
+ 
+
+ 
+ 
+ </div>
+ <div class="btn_cover ion-text-center" *ngIf="PlTransactions.length > 0">
+  <button ion-button full (click)="createPdf()" class="ion-margin ion-align-center btn login_btn">Create PDF</button>
+  
+ </div>
+<ion-item class="item md ion-focusable hydrated item-interactive">
+  <ion-range min="0" max="100" step="2" class="md in-item hydrated">
+    <ion-icon size="small" slot="start" name="" role="img" class="md icon-small hydrated"></ion-icon>
+    <ion-icon slot="end" name="" role="img" class="md hydrated"></ion-icon>
+  <input type="hidden" class="aux-input" name="" value="40"></ion-range>
+</ion-item>

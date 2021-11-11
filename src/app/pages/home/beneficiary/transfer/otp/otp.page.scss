@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:200');
+
+$BaseBG: #ff982e;
+
+body, html {
+	height: 100%;
+	margin: 0;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 200;
+}
+
+body {
+	background-color: $BaseBG;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.digit-group {
+    text-align: center;
+	input {
+		width: 30px;
+		height: 50px;
+		background-color: lighten($BaseBG, 5%);
+		border: none;
+		line-height: 50px;
+		text-align: center;
+		font-size: 24px;
+		font-family: 'Raleway', sans-serif;
+		font-weight: 200;
+		color: white;
+		margin: 0 2px;
+	}
+
+	.splitter {
+		padding: 0 5px;
+        color: #ff982e;
+        font-size: 24px;
+	}
+}
+
+.prompt {
+	margin-bottom: 20px;
+	font-size: 20px;
+    color:black;
+    text-align: center;
+}

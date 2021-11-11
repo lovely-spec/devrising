@@ -1,0 +1,39 @@
+<ion-content class=" ion-justify-content-center ion-align-items-center"   >
+  <div>
+    <ion-tabs>
+
+      <ion-tab-bar slot="bottom" class="footer-menu-bottom">
+       <ul class="nav-mobile">
+      <span class="menu-toggle">
+      <ion-tab-button tab="home">
+        <li><img src="../../assets/icon/home2.svg">
+        <p>Home</p></li> 
+      </ion-tab-button>
+      <ion-tab-button tab="transaction" >
+        <li><img src="../../assets/icon/transaction.png">
+          <p>Transaction</p></li>
+      </ion-tab-button>
+        <ion-tab-button (click)="available_soon()">
+        <li class="dashboard-logo"><img src="../../assets/icon/logo.png"></li> 
+      </ion-tab-button> 
+      <ion-tab-button (click)="available_soon()">
+        <li ><img src="../../assets/icon/card.png">
+          <p>Card</p>
+        </li>  
+      </ion-tab-button>
+      </span>        
+      <ion-tab-button>
+        <li class="menu-container">
+        <ion-menu-button></ion-menu-button>
+        </li>
+    </ion-tab-button>
+    </ul>
+  </ion-tab-bar>
+    
+</ion-tabs>
+  </div>
+</ion-content>
+
+
+
+

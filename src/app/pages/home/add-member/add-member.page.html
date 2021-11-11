@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>add-member</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+   <div class="add_new_member_page">
+    <div class="bg_theme comman_page_padding bg_theme_small">
+      <ion-row>
+        <h1>Add New Member</h1>
+      </ion-row>
+    </div>
+
+    <div class="add_member_form comman_page_padding">
+      <ion-card class="card_purple comman_input_field box_shadow">
+        <ion-card-content>
+          <ion-item lines="none">
+            <ion-label position="floating">Enter Phone Number</ion-label>
+            <ion-input type="number" [(ngModel)]="number" ></ion-input>
+          </ion-item>
+          <div class="page_footer_btn ion-text-center">
+            <button class="gradient_fill_btn large_btn_filled" (click)="checkno()" >Register</button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+   </div>
+</ion-content>

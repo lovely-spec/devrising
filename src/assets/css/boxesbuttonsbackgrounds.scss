@@ -1,0 +1,44 @@
+@mixin box-one {
+  box-shadow: 0px 0px 9px -3px lightgrey;
+    border-radius: 17px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+@mixin button-gradient-blue {
+  background-image: linear-gradient(to right, #71aadc, #1c408f);
+  border-radius: 33px;
+  width: 208px;
+  height: 50px;
+  color: white;
+}
+@mixin radius-button {
+   border-radius: 33px;
+  width: 208px;
+  height: 50px;
+  color:#1D418C;
+  font-weight: 600;
+  border:1px solid #1D418C;
+}
+
+@mixin main-subheader-background {
+  background: #1D4695;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: color-burn;
+  background-image: url(/assets/imgs/background.png);
+  border-radius: 0 0 240px 50%/40px;
+  height:357px;
+}
+
+@mixin input-boxes {
+  box-shadow: 0px 0px 9px 0px #00000012;
+  margin-bottom: 13px;
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 23px;
+  border-radius: 3px;
+  border: none;
+  color: #1D4695;
+}
+

@@ -1,0 +1,35 @@
+.header-row {
+    background: #7163AA;
+    color: #fff;
+    font-size: 18px;
+  }
+  
+  .main_div ion-col {
+    border: 1px solid #ECEEEF;
+  }
+  ion-grid{
+      overflow-x: scroll;
+  } 
+
+.header .col {
+    background-color:lightgrey;
+}
+
+.col {
+    border: solid 1px grey;
+    border-bottom-style: none;
+    border-right-style: none;
+    display: inline-block;
+}
+.main_div{
+  width: 560px;
+  overflow: scroll;
+}
+
+.col:last-child {
+    border-right: solid 1px grey;
+}
+
+.row:last-child .col {
+    border-bottom: solid 1px grey;
+}

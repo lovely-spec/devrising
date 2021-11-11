@@ -1,0 +1,82 @@
+<ion-content>
+  <div class="add_new_member_page">
+    <div class="bg_theme comman_page_padding bg_theme_small">
+      <ion-row>
+        <h1>Add New Member</h1>
+      </ion-row>
+    </div>
+    <ion-row class="row_progress">
+      <ion-col>
+        <div class="circle_purple relative"><span>1</span></div>
+        <div class="circle_white relative"><span>2</span></div>
+        <div class="circle_white relative"><span>3</span></div>
+      </ion-col>
+      <ion-progress-bar class=""  value="0.3"></ion-progress-bar>
+    </ion-row>
+    <div class="comman_page_headline_2">
+      <h2 class="ion-text-left">Personal Details</h2>
+    </div>
+    <div class="add_member_form comman_page_padding">
+      <ion-card class="card_purple comman_input_field box_shadow">
+        <ion-card-content>
+          <ion-item lines="none">
+            <ion-label position="floating">Enter Your Name</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="floating">Last Name</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="floating">Father Name</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="floating">Husband/wife Name</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="floating">Date of Birth</ion-label>
+            <ion-input type="number"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-select class="custom-options" placeholder="Marital Status">
+              <ion-select-option value="brown">Married</ion-select-option>
+              <ion-select-option value="blonde">Unmarried</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-select class="custom-options" placeholder="Occupation">
+              <ion-select-option value="brown">Job</ion-select-option>
+              <ion-select-option value="blonde">Business</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="email"></ion-input>
+          </ion-item>
+          <div class="">
+            <ion-radio-group class="gender_radio_inputs">
+              <ion-item lines="none" class="radio">
+                <ion-label>Male</ion-label> <br>
+                <ion-radio slot="start" class="input_type_radio"></ion-radio>
+              </ion-item>
+              <ion-item lines="none" class="radio">
+                <ion-label>Female</ion-label> <br>
+                <ion-radio slot="start" class="input_type_radio"></ion-radio>
+              </ion-item>
+              <ion-item lines="none" class="radio">
+                <ion-label>Others</ion-label> <br>
+                <ion-radio slot="start" class="input_type_radio"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </div>
+          <div class="add_member_form_btns">
+            <button class="small_btn_gray" [routerLink]="['/dashboard']">Back</button>
+            <button class="gradient_fill_btn small_btn_filled" [routerLink]="['./address-details']">Next</button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

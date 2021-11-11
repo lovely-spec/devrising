@@ -1,0 +1,401 @@
+
+<ion-content class=" ion-justify-content-center ion-align-items-center">
+<!-- <button (click)="UserApi()">Test</button> -->
+  <!--- subheader with wallet -->
+  <ion-grid class="header-sub-inner" *ngFor="let Saving of Saving">
+   <ion-row class="walletplusprice">
+    <ion-col size="5">
+     <div class="price-s2"(click)="SavingClick('sv', Saving.slug)" >
+      <span class="price">₹{{today_interest}}/-</span>
+      <span class="i_rate">
+       <p>Interest Rate /-</p>
+       <p>{{Saving.interest_rate}}%</p>
+      </span>
+     </div>
+    </ion-col>
+    <ion-col size="3">
+
+    </ion-col>
+    <ion-col size="4" class="flex-center bell-wallet">
+      <div class="bells" (click)="presentPopover('any')">
+        <a> </a>
+             </div>
+       <div class="wallet">
+        <a> </a>
+     </div>
+
+    </ion-col>
+  </ion-row>
+
+
+  <ion-row>
+   <ion-col size="5">
+    <p class="fade-color">Today Interest</p></ion-col>
+   <ion-col size="3">
+
+   </ion-col>
+   <ion-col size="4" (click)="SavingClick('sv', Saving.slug)">
+     <p class="white-text ion-text-right ">₹{{Saving.balance_available.toLocaleString('en-IN') }} /-</p>
+          </ion-col>
+ </ion-row>
+
+ <a class="discover-button" (click)="SavingClick('sv', Saving.slug)">
+   Discover More
+ </a>
+ </ion-grid>
+
+
+ <!--- sub header close with wallet -->
+<!--- white section-->
+
+<!--- blue section-->
+<ion-slides *ngIf="DdResponse.length > 0" #slideWithNav pager="true" pager="{{DdResponse.length > 1 ? true : false}}" [options]="slideOptsOne" class="my-slides" >
+  <ion-slide #slidepage *ngFor="let DdResponse of DdResponse; let i=index " (click)="DdClick('dd', DdResponse.slug)">
+    <div class="deposit-section blue-background-deposit">
+    <ion-row>
+      <ion-col size="4">
+      <p class="deposit-titles ">DD</p>
+      </ion-col>
+      <ion-col size="5">
+        <p class="daily-deposit">Daily Deposit</p>
+      </ion-col>
+      <ion-col size="3">
+        <!-- <div class="plus-modal">+</div>  -->
+        <p class="brown-text right-text ion-text-right ">{{DdResponse.account_number}}</p>
+        <p class="maturity-date"> Maturity Date</p>
+        <p class="maturity-date-view"> {{DdResponse.maturity_date}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+    <ion-col size="4">
+      <svg class="progress_cal blue noselect" attr.data-progress='{{DdPercent[i]}}' x="0px" y="0px" viewBox="0 0 80 80">
+        <path class="track blue-track" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+        <path class="fill blue-fill" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+        <text class="value blue-text" x="23%" y="58%">0%</text>
+
+      </svg>
+    </ion-col>
+    <ion-col size="5 " class="maturity-second-section">
+      <p class="in2-white-text">Deposit Amount</p>
+      <h2  class="in2-white-text">₹{{ DdResponse.total_amount.toLocaleString('en-IN') }}</h2>
+    </ion-col>
+    <ion-col size="3">
+      <p class="maturity-amount">Maturity Amount</p>
+      <p class="maturity-amount-price">₹{{DdResponse.maturity_amount.toLocaleString('en-IN') }}/-</p>
+    </ion-col>
+    </ion-row>
+    </div>
+  </ion-slide>
+  <!-- <div style="position: absolute;top: 50%;left: 16px;font-size: 25px;z-index: 2;" (click)="slidePrev()">
+    <ion-icon name="arrow-back"></ion-icon>
+  </div>
+  <div style="position: absolute;top: 50%;right: 16px;font-size: 25px;z-index: 2;" (click)="slideNext()">
+    <ion-icon name="arrow-forward"></ion-icon>
+  </div> -->
+</ion-slides>
+<!--- green section -->
+<ion-slides #slideWithNav2 pager="{{RdResponse.length > 1 ? true : false}}" [options]="slideOptsOne" class="my-slides" *ngIf="RdResponse.length > 0">
+  <ion-slide *ngFor="let RdResponse of RdResponse;let i=index" (click)="RdClick('rd', RdResponse.slug)">
+  <div class="deposit-section green-background-deposit">
+    <ion-row>
+     <ion-col size="4">
+     <p class="deposit-titles ">RD</p>
+     </ion-col>
+     <ion-col size="5">
+       <p class="daily-deposit">Recurring Deposit</p>
+      </ion-col>
+     <ion-col size="3">
+      <!-- <div class="plus-modal">+</div>  -->
+       <p class="brown-text right-text ion-text-right ">{{RdResponse.account_number}}</p>
+       <p *ngIf="RdResponse.status == 'Closed'" class="maturity-date"> CLOSED</p>
+       <p *ngIf="RdResponse.status != 'Closed'" class="maturity-date"> Maturity Date</p>
+       <p *ngIf="RdResponse.status != 'Closed'" class="maturity-date-view"> {{RdResponse.maturity_date}}</p>
+     </ion-col>
+   </ion-row>
+
+   <ion-row>
+    <ion-col size="4">
+     <svg class="progress_cal blue noselect" attr.data-progress='{{RdPercent[i]}}' x="0px" y="0px" viewBox="0 0 80 80">
+       <path class="track blue-track" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+       <path class="fill blue-fill" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+       <text class="value blue-text" x="23%" y="58%">0%</text>
+
+     </svg>
+    </ion-col>
+    <ion-col size="5 " class="maturity-second-section">
+     <p class="in2-white-text">Deposit Amount</p>
+     <h2  class="in2-white-text">₹{{RdResponse.total_amount.toLocaleString('en-IN') }}/-</h2>
+    </ion-col>
+    <ion-col size="3">
+      <p class="maturity-amount">Maturity Amount</p>
+      <p class="maturity-amount-price">₹{{RdResponse.maturity_amount.toLocaleString('en-IN') }}/-</p>
+    </ion-col>
+   </ion-row>
+   </div>
+  </ion-slide>
+  </ion-slides>
+  <!---orange section -->
+<ion-slides #slideWithNav3 pager="{{FdResponse.length > 1 ? true : false}}" [options]="slideOptsOne" class="my-slides" *ngIf="FdResponse.length > 0">
+<ion-slide *ngFor="let FdResponse of FdResponse; let i=index" (click)="FdClick('fd', FdResponse.slug)">
+<div class="deposit-section orange-background-deposit">
+  <ion-row>
+    <ion-col size="4">
+    <p class="deposit-titles ">FD</p>
+    </ion-col>
+    <ion-col size="5">
+      <p class="daily-deposit">Fixed Deposit</p>
+    </ion-col>
+    <ion-col size="3">
+    <!-- <div class="plus-modal">+</div>  -->
+      <p class="brown-text right-text ion-text-right ">{{FdResponse.account_number}}</p>
+      <p *ngIf="FdResponse.status == 'Closed'" class="maturity-date"> CLOSED</p>
+      <p *ngIf="FdResponse.status != 'Closed'" class="maturity-date"> Maturity Date</p>
+      <p *ngIf="FdResponse.status != 'Closed'" class="maturity-date-view"> {{FdResponse.maturity_date}}</p>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+  <ion-col size="4">
+    <svg class="progress_cal blue noselect" attr.data-progress='{{FdPercent[i]}}' x="0px" y="0px" viewBox="0 0 80 80">
+      <path class="track blue-track" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+      <path class="fill blue-fill" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+      <text class="value blue-text" x="23%" y="58%">0%</text>
+
+    </svg>
+  </ion-col>
+  <ion-col size="5 " class="maturity-second-section">
+    <p class="in2-white-text">Deposit Amount</p>
+    <h2  class="in2-white-text">₹{{FdResponse.total_amount.toLocaleString('en-IN') }}/-</h2>
+  </ion-col>
+  <ion-col size="3">
+    <p class="maturity-amount">Maturity Amount</p>
+    <p class="maturity-amount-price">₹{{FdResponse.maturity_amount.toLocaleString('en-IN') }}/-</p>
+  </ion-col>
+  </ion-row>
+  </div>
+</ion-slide>
+</ion-slides>
+   <!---red section -->
+  <a *ngFor="let OlResponse of OlResponse; let i=index " (click)="OlClick('ol', OlResponse.slug)" >
+  <div class="deposit-section red-background-deposit">
+    <ion-row>
+     <ion-col size="4">
+     <p class="deposit-titles ">OL</p>
+     </ion-col>
+     <ion-col size="5">
+       <p class="daily-deposit">Other Loan</p>
+      </ion-col>
+     <ion-col size="3">
+      <!-- <div class="plus-modal">+</div>  -->
+       <p class="brown-text right-text ion-text-right">{{OlResponse.account_number}}</p>
+       <p *ngIf="OlResponse.status == 'Closed'" class="maturity-date"> CLOSED</p>
+       <p *ngIf="OlResponse.status != 'Closed'" class="maturity-date"> Opening Date</p>
+       <p *ngIf="OlResponse.status != 'Closed'" class="maturity-date-view"> {{OlResponse.open_date}}</p>
+     </ion-col>
+   </ion-row>
+
+   <ion-row>
+    <ion-col size="4">
+     <svg class="progress_cal blue noselect" attr.data-progress='{{OlPercent[i]}}' x="0px" y="0px" viewBox="0 0 80 80">
+       <path class="track blue-track" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+       <path class="fill blue-fill" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+       <text class="value blue-text" x="23%" y="58%">0%</text>
+
+     </svg>
+    </ion-col>
+    <ion-col size="5 " class="maturity-second-section">
+     <p class="in2-white-text">Current Debit Amount</p>
+     <h2  class="in2-white-text">₹{{OlResponse.current_debt.toLocaleString('en-IN') }}/-</h2>
+    </ion-col>
+    <ion-col size="3">
+      <p class="maturity-amount">Total Amount</p>
+      <p class="maturity-amount-price">₹{{OlResponse.loan_amount.toLocaleString('en-IN') }}/-</p>
+    </ion-col>
+   </ion-row>
+
+
+
+   </div>
+  </a>
+
+  <a *ngFor="let PlResponse of PlResponse; let i=index " (click)="PlClick('pl', PlResponse.slug)" >
+    <div class="deposit-section red-background-deposit">
+      <ion-row>
+       <ion-col size="4">
+       <p class="deposit-titles ">PL</p>
+       </ion-col>
+       <ion-col size="5">
+         <p class="daily-deposit">Property Loan</p>
+        </ion-col>
+       <ion-col size="3">
+        <!-- <div class="plus-modal">+</div>  -->
+         <p class="brown-text right-text ion-text-right">{{PlResponse.account_number}}</p>
+         <p *ngIf="PlResponse.status == 'Closed'" class="maturity-date"> CLOSED</p>
+         <p *ngIf="PlResponse.status != 'Closed'" class="maturity-date"> Opening Date</p>
+         <p *ngIf="PlResponse.status != 'Closed'" class="maturity-date-view"> {{PlResponse.open_date}}</p>
+       </ion-col>
+     </ion-row>
+
+     <ion-row>
+      <ion-col size="4">
+       <svg class="progress_cal blue noselect" attr.data-progress='{{PlPercent[i]}}' x="0px" y="0px" viewBox="0 0 80 80">
+         <path class="track blue-track" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+         <path class="fill blue-fill" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+         <text class="value blue-text" x="23%" y="58%">0%</text>
+
+       </svg>
+      </ion-col>
+      <ion-col size="5 " class="maturity-second-section">
+       <p class="in2-white-text">Current Debit Amount</p>
+       <h2  class="in2-white-text">₹{{PlResponse.current_debt.toLocaleString('en-IN') }}/-</h2>
+      </ion-col>
+      <ion-col size="3">
+        <p class="maturity-amount">Total Amount</p>
+        <p class="maturity-amount-price">₹{{PlResponse.loan_amount.toLocaleString('en-IN') }}/-</p>
+      </ion-col>
+     </ion-row>
+
+
+
+     </div>
+    </a>
+
+    <a *ngFor="let GlResponse of GlResponse; let i=index " (click)="GlClick('gl', GlResponse.slug)" >
+      <div class="deposit-section red-background-deposit">
+        <ion-row>
+         <ion-col size="4">
+         <p class="deposit-titles ">GL</p>
+         </ion-col>
+         <ion-col size="5">
+           <p class="daily-deposit">Gold Loan</p>
+          </ion-col>
+         <ion-col size="3">
+          <!-- <div class="plus-modal">+</div>  -->
+           <p class="brown-text right-text ion-text-right">{{OlResponse.account_number}}</p>
+           <p *ngIf="GlResponse.status == 'Closed'" class="maturity-date"> CLOSED</p>
+           <p *ngIf="GlResponse.status != 'Closed'" class="maturity-date"> Opening Date</p>
+           <p *ngIf="GlResponse.status != 'Closed'" class="maturity-date-view"> {{GlResponse.open_date}}</p>
+         </ion-col>
+       </ion-row>
+
+       <ion-row>
+        <ion-col size="4">
+         <svg class="progress_cal blue noselect" attr.data-progress='{{GlPercent[i]}}' x="0px" y="0px" viewBox="0 0 80 80">
+           <path class="track blue-track" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+           <path class="fill blue-fill" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+           <text class="value blue-text" x="23%" y="58%">0%</text>
+
+         </svg>
+        </ion-col>
+        <ion-col size="5 " class="maturity-second-section">
+         <p class="in2-white-text">Current Debit Amount</p>
+         <h2  class="in2-white-text">₹{{GlResponse.current_debt.toLocaleString('en-IN') }}/-</h2>
+        </ion-col>
+        <ion-col size="3">
+          <p class="maturity-amount">Total Amount</p>
+          <p class="maturity-amount-price">₹{{GlResponse.loan_amount.toLocaleString('en-IN') }}/-</p>
+        </ion-col>
+       </ion-row>
+
+
+
+       </div>
+      </a>
+
+      <a *ngFor="let DlResponse of DlResponse; let i=index " (click)="DlClick('dl', DlResponse.slug)" >
+        <div class="deposit-section red-background-deposit">
+          <ion-row>
+           <ion-col size="4">
+           <p class="deposit-titles ">DL</p>
+           </ion-col>
+           <ion-col size="5">
+             <p class="daily-deposit">Deposit Loan</p>
+            </ion-col>
+           <ion-col size="3">
+            <!-- <div class="plus-modal">+</div>  -->
+             <p class="brown-text right-text ion-text-right">{{DlResponse.account_number}}</p>
+             <p *ngIf="DlResponse.status == 'Closed'" class="maturity-date"> CLOSED</p>
+             <p *ngIf="DlResponse.status != 'Closed'" class="maturity-date"> Opening Date</p>
+             <p *ngIf="DlResponse.status != 'Closed'" class="maturity-date-view"> {{DlResponse.open_date}}</p>
+           </ion-col>
+         </ion-row>
+
+         <ion-row>
+          <ion-col size="4">
+           <svg class="progress_cal blue noselect" attr.data-progress='{{DlPercent[i]}}' x="0px" y="0px" viewBox="0 0 80 80">
+             <path class="track blue-track" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+             <path class="fill blue-fill" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+             <text class="value blue-text" x="23%" y="58%">0%</text>
+
+           </svg>
+          </ion-col>
+          <ion-col size="5 " class="maturity-second-section">
+           <p class="in2-white-text">Current Debit Amount</p>
+           <h2  class="in2-white-text">₹{{DlResponse.current_debt.toLocaleString('en-IN') }}/-</h2>
+          </ion-col>
+          <ion-col size="3">
+            <p class="maturity-amount">Total Amount</p>
+            <p class="maturity-amount-price">₹{{DlResponse.loan_amount.toLocaleString('en-IN') }}/-</p>
+          </ion-col>
+         </ion-row>
+
+
+
+         </div>
+        </a>
+  <!--- transaction  details-->
+
+
+ <!---- crousel section-->
+<!-- <ion-slides class="recharge-paynow md slides-md swiper-container hydrated swiper-container-initialized swiper-container-horizontal">
+  <div class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px);">
+<div class="slider-bacgroundaimage1">
+  <ion-slide class="md swiper-slide swiper-zoom-container hydrated swiper-slide-active" style="width: 324px;">
+    <div class="slide">
+      <div class="slider-bacgroundaimage"> <h2>Do your Bit</h2>
+        <h1>Keep shimla Connected</h1>
+        <p>Pay Bills For your loved ones</p>
+        <button>Pay Now</button></div>
+
+        <img width="100" src="../../assets/imgs/card_man.png" alt="">
+
+    </div>
+  </ion-slide>
+
+  <ion-slide class="md swiper-slide swiper-zoom-container hydrated swiper-slide-next" style="width: 324px;">
+    <h2>Do your Bit</h2>
+    <h1>Keep shimla Connected</h1>
+    <p>Pay Bills For your loved ones</p>
+    <button>Pay Now</button>
+  </ion-slide>
+
+  <ion-slide class="md swiper-slide swiper-zoom-container hydrated" style="width: 324px;">
+    <h2>Do your Bit</h2>
+    <h1>Keep shimla Connected</h1>
+    <p>Pay Bills For your loved ones</p>
+    <button>Pay Now</button>
+  </ion-slide>
+
+  <ion-slide class="md swiper-slide swiper-zoom-container hydrated" style="width: 324px;">
+        <h2>Ready to Play?</h2>
+    <ion-button fill="clear" class="md button button-clear ion-activatable ion-focusable hydrated">Continue <ion-icon slot="end" name="arrow-forward" role="img" class="md hydrated" aria-label="arrow forward"></ion-icon></ion-button>
+  </ion-slide>
+
+</div>
+
+
+</div>
+</ion-slides> -->
+
+<!-- bottom menu tab -->
+
+
+</ion-content>
+
+
+
+  <!-- <div class="btn_cover ion-text-center">
+    <button (click) = "logout()" class="ion-margin ion-align-center btn login_btn" >Logout</button>
+
+   </div> -->

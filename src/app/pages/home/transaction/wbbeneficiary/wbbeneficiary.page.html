@@ -1,0 +1,64 @@
+<ion-content>
+  <div class="bank_beneficiary_list_page">
+     <!--===bg_theme_small===-->
+     <div class="bg_theme bg_theme_small comman_page_padding">
+      <ion-row class="">
+        <ion-col size="10">
+          <a [routerLink]="['/transaction']"><img src="../../../../assets/imgs/back-button.svg"></a>
+        </ion-col>
+        <ion-col size="2">
+          <div class="notification_numbur"> <span class="">12</span></div>
+          <img class="bell_icon relative" src="../../../../assets/imgs/bell.svg">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <h1>Beneficiary List within Dev Rising Nidhi</h1>
+      </ion-row>
+    </div>
+    <!--===bg_theme_small End==-->
+    <!--===Benificiaryuser_profiles_page===-->
+  <div class="user_profiles_page comman_page_padding">
+    <ion-row class="profile_page_header">
+      <ion-col size="12">
+        <button class="gradient_fill_btn small_btn_filled float_right" (click) = "add_ben()">Add Benificiary</button>
+      </ion-col>
+      <ion-col size="12">
+        <div class="searchbar">
+          <ion-input type="search" placeholder="Search Beneficiary...."><img src="../../../../assets/imgs/search_icon.svg">
+          </ion-input>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-card class="card_purple card_padding" >
+      <ion-row class="amount-details md hydrated first-column new_column" *ngFor="let beneficiary_list of beneficiary_list">
+        <ion-col size="8" class="md hydrated" style="flex: 0 0 calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%);">
+        
+          <p class="fade-text-one">
+            Account Number
+          </p>
+          <h2 class="amount-blue acc_no">{{beneficiary_list.account_no}}</h2>
+          <p class="blue-text-nm">
+            <ion-button class="custom_button" color="danger" size="small" (click)="delete(beneficiary_list.beneficiary_id)">Delete</ion-button>
+          </p>
+            </ion-col>
+        <ion-col size="4" class="md hydrated" style="flex: 0 0 calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%);">
+          <p class="blue-text-nm">
+            {{beneficiary_list.name}}
+          </p>
+          <p class="fade-text-two">
+            Mobile Number
+          </p>
+          <p class="blue-text-nm">
+            {{beneficiary_list.mobile_no}}
+          </p>
+         
+          <p class="blue-text-nm">
+            <ion-button class="custom_button" size="small" color="warning" (click)="transfer(beneficiary_list)">Transfer</ion-button>
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </div>
+  <!--===user_profiles_page End===-->
+  </div>
+</ion-content>

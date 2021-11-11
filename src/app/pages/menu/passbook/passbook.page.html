@@ -1,0 +1,158 @@
+<ion-toolbar>
+  <!--- acconts header-->
+
+  <div class="accounts-header ">
+    <ion-row>
+      <ion-col size="1">
+       <div class="back-button">
+         <ion-back-button defaultHref="dashboard/home" name="chevron-back-outline"></ion-back-button></div>
+      </ion-col>
+      <ion-col size="2">
+        <img src="../../assets/imgs/logo.png"/>
+      </ion-col>
+      <ion-col size="7">
+        
+      </ion-col>
+      <ion-col size="1" (click)="presentPopover('any')">
+        <img src="../../assets/icon/bellb.svg"/>
+      </ion-col>
+      <ion-col size="1" class="blue-wallet" (click)="gohome()">
+          <img src="../../assets/icon/walletb.svg"/>
+      </ion-col>
+    </ion-row>
+   
+   </div>
+   <!--- accounts header end-->
+</ion-toolbar>
+<ion-content class=" ion-justify-content-center ion-align-items-center">
+
+<div class="acoounts-header">
+<h1>Get Your Passbook</h1>
+<p class="faded-text">
+  Please select an account<br/> from below to get passbook
+</div>
+<ion-list class="acc_passbook">
+  <ion-radio-group [(ngModel)]="radioValue" (ionChange)="showValue()">
+
+    <ion-item>
+      <ion-label>Saving</ion-label>
+      <ion-radio slot="start" selected value="saving"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>RD/DD</ion-label>
+      <ion-radio slot="start" value="rd"></ion-radio>
+    </ion-item>
+
+    <!-- <ion-item>
+      <ion-label>DD</ion-label>
+      <ion-radio slot="start" value="dd"></ion-radio>
+    </ion-item> -->
+
+    <ion-item>
+      <ion-label>FD</ion-label>
+      <ion-radio slot="start" value="fd"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>OL</ion-label>
+      <ion-radio slot="start" value="ol"></ion-radio>
+    </ion-item>
+
+    
+  </ion-radio-group>
+</ion-list>
+<hr/>
+<ion-list *ngIf="Response.length != 0" class="ion-text-center">
+  <p class="instruction">Click on account number to see transactions</p>
+<ion-button *ngFor="let Response of Response"  size="small" (click)="account_click(Response.type, Response.slug)" shape="round">{{Response.account_number}}</ion-button>
+</ion-list>
+<div class="main_div" *ngIf="Response.length != 0">
+  <div *ngIf="Transactions.length == 0 || Transactions == '' ">
+    <h5 class="ion-text-center">No transactions yet.</h5>
+  </div>
+<div class="transaction_div" *ngIf="Transactions.length != 0 || Transactions != '' "> 
+<div class="whole-date-range">
+  <div class="date-filter-title"> Date Filter</div> 
+    <ion-list class="daterangecolums">                         
+      <div class="block-date-items">               
+          <div class="label-date">
+          Start Date
+          </div>
+          <div class="flex-center">
+            <ion-datetime value="1990-02-19" placeholder="Select Date" class="actual-time-label" [(ngModel)]="start_date" (ionChange)="StartDate()">
+            </ion-datetime> <ion-icon name="calendar-outline" class="blue-calender"></ion-icon>   
+          </div>                          
+      </div>
+    
+      <div class="block-date-items">
+              <div class="label-date">
+                End Date
+              </div>
+        <div class="flex-center">
+                <ion-datetime value="1990-02-20" placeholder="Select Date" class="actual-time-label" [(ngModel)]="end_date" (ionChange)="EndDate()"></ion-datetime>
+                  <ion-icon name="calendar-outline">
+                <ion-icon name="calendar-outline" class="blue-calender"></ion-icon> </ion-icon>
+        </div>
+      </div>
+      
+    </ion-list>
+    <div class="ion-text-center">
+    <a class="discover-button ion-text-center" id="filter" (click)="Apply_Date()">
+      Apply Filter
+    </a>
+  </div>
+  </div>
+<div class="transaction-list">
+  <ion-row>
+   <ion-col size="5">
+     <h3 class="blue-text">
+      OL Accounts
+     </h3>
+   </ion-col>
+   <ion-col size="3">
+      </ion-col>
+   <ion-col size="4">
+    <h3 class="blue-text ion-text-right">
+    All Details <ion-icon name="chevron-down-outline"></ion-icon>
+    </h3>
+   </ion-col>
+ </ion-row> 
+
+
+ <ion-row *ngFor= "let Transactions of Transactions|slice:0:show let i=index ">
+  <ion-col size="5">
+    <h3 class="blue-text">
+     {{Transactions.transaction_date}}
+    </h3>
+    <p class="faded-text">
+      {{Transactions.transaction_type}}
+    </p>
+  </ion-col>
+  <ion-col size="3">
+   <p class="faded-text">
+    {{Transactions.payment_mode}}
+   </p>
+     </ion-col>
+  <ion-col size="4">
+  <p class="details-green-text">
+    {{Transactions.amount}}
+  </p>
+  </ion-col>
+ 
+    <!-- <button *ngIf="i==19 && show == 20" class="ion-margin ion-align-center btn login_btn1" >Show All</button> -->
+    
+ </ion-row>
+ 
+
+ 
+ 
+ </div>
+ <div class="btn_cover ion-text-center" *ngIf="Transactions.length > 0">
+  <button ion-button full (click)="createPdf()" class="ion-margin ion-align-center btn login_btn">Create Passbook</button>
+ </div>
+</div>
+</div>
+</ion-content>
+
+ 

@@ -1,0 +1,61 @@
+<ion-toolbar>
+  <!--- acconts header-->
+
+  <div class="accounts-header ">
+    <ion-row>
+      <ion-col size="1">
+       <div class="back-button">
+         <ion-back-button defaultHref="dashboard/ol" name="chevron-back-outline"></ion-back-button></div>
+      </ion-col>
+      <ion-col size="2">
+        <img src="../../assets/imgs/logo.png"/>
+      </ion-col>
+      <ion-col size="7">
+        
+      </ion-col>
+      <ion-col size="1" (click)="presentPopover('any')">
+        <img src="../../assets/icon/bellb.svg"/>
+      </ion-col>
+      <ion-col size="1" class="blue-wallet" (click)="gohome()">
+          <img src="../../assets/icon/walletb.svg"/>
+      </ion-col>
+    </ion-row>
+   
+   </div>
+   <!--- accounts header end-->
+</ion-toolbar>
+
+<ion-content>
+  <div class="wrap" *ngIf="Saving.length > 0">
+    <div class="row saving_box">
+      <ion-row class="amount-details md hydrated first-column new_column" *ngFor="let Saving of Saving">
+        <ion-col size="8" class="md hydrated" style="flex: 0 0 calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(8 / var(--ion-grid-columns, 12)) * 100%);">
+        
+          <p class="fade-text-one">
+            Total Amount
+          </p>
+          <h2 class="amount-blue">₹{{ Saving.balance_available.toLocaleString('en-IN') }}/-</h2>
+            </ion-col>
+        <ion-col size="4" class="md hydrated" style="flex: 0 0 calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%); max-width: calc(calc(4 / var(--ion-grid-columns, 12)) * 100%);">
+          <p class="blue-text-nm">
+            Account Number
+          </p>
+          <p class="fade-text-two">
+            {{ Saving.account_number }}
+          </p>
+        </ion-col>
+      </ion-row>
+    </div>
+    <form #form="ngForm" >
+      <ion-item>
+        <ion-input  [(ngModel)]="amount" name="amount" type="text" placeholder="Enter Amount" ngModel required></ion-input>
+      </ion-item>
+      <div class="btn_cover ion-text-center">
+       <button (click) = "AddPayment()" class="ion-margin ion-align-center btn login_btn" >Add Payment</button>
+      </div>
+    </form>
+  </div>
+  <div class="row saving_box"  *ngIf="Saving.length == 0">
+    <h4 class="ion-text-center">You need an saving account to make transactions</h4>
+  </div>
+</ion-content>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36.306" height="26.222" viewBox="0 0 36.306 26.222">
+  <g id="Loan" transform="translate(0.742 0.514)">
+    <path id="Path_370" data-name="Path 370" d="M8.059,33.861.5,26.674,5.911,21.44a8.334,8.334,0,0,1,8.514-1.875l1.194.391h7.32a2.288,2.288,0,0,1,2.307,2.266V22.3a2.346,2.346,0,0,1-2.387,2.187H18.483a.86.86,0,1,0,0,1.719h5.49l7.718-7.891c.875-.937,2.069-1.406,3.1-.625s.955,2.031.08,3.047a.077.077,0,0,1-.08.078l-8.116,9.063a5.683,5.683,0,0,1-4.3,1.953H10.207Z" transform="translate(-0.5 -8.861)" fill="none" stroke="#48026e" stroke-miterlimit="10" stroke-width="1.028"/>
+    <g id="Group_249" data-name="Group 249" transform="translate(20.37 0)">
+      <line id="Line_1" data-name="Line 1" x1="8.116" y2="8.047" transform="translate(0.477 0.469)" fill="none" stroke="#8909b2" stroke-miterlimit="10" stroke-width="1.028"/>
+      <path id="Path_371" data-name="Path 371" d="M29.442,8.141A1.671,1.671,0,1,1,27.771,6.5,1.72,1.72,0,0,1,29.442,8.141Z" transform="translate(-26.1 -6.5)" fill="none" stroke="#8909b2" stroke-miterlimit="10" stroke-width="1.028"/>
+      <path id="Path_372" data-name="Path 372" d="M36.742,15.541A1.671,1.671,0,1,1,35.071,13.9,1.617,1.617,0,0,1,36.742,15.541Z" transform="translate(-27.591 -8.119)" fill="none" stroke="#8909b2" stroke-miterlimit="10" stroke-width="1.028"/>
+    </g>
+  </g>
+</svg>

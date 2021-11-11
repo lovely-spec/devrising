@@ -1,0 +1,9 @@
+{
+  "name": "Dev Rising",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "6c8dab43"
+}

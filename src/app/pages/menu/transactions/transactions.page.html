@@ -1,0 +1,86 @@
+<div class="accounts-header ">
+  <ion-row>
+    <ion-col size="1">
+     <div class="back-button">
+       <ion-back-button defaultHref="dashboard/home" name="chevron-back-outline"></ion-back-button></div>
+    </ion-col>
+    <ion-col size="2">
+      <img src="../../assets/imgs/logo.png"/>
+    </ion-col>
+    <ion-col size="7">
+      
+    </ion-col>
+    <ion-col size="1" (click)="presentPopover('any')">
+      <img src="../../assets/icon/bellb.svg"/>
+    </ion-col>
+    <ion-col size="1" class="blue-wallet">
+      <img src="../../assets/icon/walletb.svg"/>
+    </ion-col>
+  </ion-row>
+ 
+ </div>
+
+<ion-content>
+  <div class="transaction-list">
+    <!-- top table row-->
+    <ion-row>
+     <ion-col size="6">
+       <h3 class="blue-text">
+        Transaction Date
+       </h3>
+     </ion-col>
+     <ion-col size="6">
+      <h3 class="blue-text ion-text-right">
+        Status
+       </h3>
+        </ion-col>
+     <ion-col size="6">
+      <h3 class="blue-text ">
+      Transaction Type
+      </h3>
+     </ion-col>
+     <ion-col size="6">
+      <h3 class="blue-text ion-text-right">
+      Amount
+      </h3>
+     </ion-col>
+   </ion-row>
+   
+   
+   
+   <div *ngIf="transaction_list.length == 0 ">
+    <h5 class="ion-text-center">No transactions yet.</h5>
+  </div>
+   <ion-row *ngFor= "let transaction_list of transaction_list">
+    <ion-col size="3">
+      <h3 class="blue-text">
+       {{ transaction_list.created_at | date }}
+      </h3>
+      <p class="faded-text">
+        {{transaction_list.from_account}}
+      </p>
+    </ion-col>
+    <ion-col size="3">
+     <p class="details-green-text ion-text-left">
+      {{transaction_list.status}}
+     </p>
+       </ion-col>
+    <ion-col size="3" *ngIf="transaction_list.b_type == 'cashfree'">
+    <p class="faded-text">
+      Withdrawal Request
+    </p>
+    </ion-col>
+    <ion-col size="3" *ngIf="transaction_list.b_type == 'within_bank'">
+      <p class="faded-text">
+      Within Bank (Nidhi)
+      </p>
+      </ion-col>
+    <ion-col size="3">
+      <p class="details-green-text">
+        {{ transaction_list.amount.toLocaleString('en-IN') }}
+      </p>
+    </ion-col>
+   </ion-row>
+   
+   </div>
+</ion-content>

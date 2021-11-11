@@ -1,0 +1,118 @@
+<ion-content>
+  <!--===bg_theme_small===-->
+  <div class="bg_theme bg_theme_small comman_page_padding">
+    <ion-row class="">
+      <ion-col size="10">
+        <a [routerLink]="['/all-fd-accounts']"><img src="../../../../../assets/imgs/back-button.svg"></a>
+      </ion-col>
+      <ion-col size="2">
+        <div class="notification_numbur"> <span class="">12</span></div>
+        <img class="bell_icon relative" src="../../../../../assets/imgs/bell.svg">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <h1>FD Accounts</h1>
+    </ion-row>
+  </div>
+  <!--===bg_theme_small End==-->
+  <!--===fd page accounts starrt===-->
+  <div class="fd_page_accounts">
+    <div class="comman_page_headline" *ngIf="FdDetails">
+      <h2>FD Amount : ₹ {{FdDetails.principal_amount.toLocaleString('en-IN')}}/-</h2>
+    </div>
+
+    <div class="comman_page_padding">
+      <!--===card_purple===-->
+      <ion-card class="card_purple box_shadow">
+        <!--===ion-card-header===-->
+        <ion-card-header class="comman_card_header">
+          <ion-row>
+            <ion-col size="9">
+              <h3>Recent Transaction</h3>
+            </ion-col>
+            <div class="btn_cover ion-text-center" *ngIf="FdTransactions.length > 0">
+              <button ion-button full (click)="createPdf()" ><img  (click)="createPdf()"  src="../../../../../assets/imgs/pdf_icon.svg"></button>
+              
+             </div>
+          </ion-row>
+        </ion-card-header>
+        <!--===ion-card-content===-->
+        <ion-card-content>
+          <div class="whole-date-range">
+            <div class="date-filter-title"> Date Filter</div> 
+              <ion-list class="daterangecolums">                         
+                <div class="block-date-items">               
+                    <div class="label-date">
+                    Start Date
+                    </div>
+                    <div class="flex-center">
+                      <ion-datetime value="1990-02-19" placeholder="Select Date" class="actual-time-label" [(ngModel)]="start_date" (ionChange)="StartDate()">
+                      </ion-datetime> <ion-icon name="calendar-outline" class="blue-calender"></ion-icon>   
+                    </div>                          
+                </div>
+              
+                <div class="block-date-items">
+                        <div class="label-date">
+                          End Date
+                        </div>
+                  <div class="flex-center">
+                          <ion-datetime value="1990-02-20" placeholder="Select Date" class="actual-time-label" [(ngModel)]="end_date" (ionChange)="EndDate()"></ion-datetime>
+                            <ion-icon name="calendar-outline">
+                          <ion-icon name="calendar-outline" class="blue-calender"></ion-icon> </ion-icon>
+                  </div>
+                </div>
+                
+              </ion-list>
+              <div class="ion-text-center">
+              <a class="discover-button ion-text-center" id="filter" (click)="Apply_Date()">
+                Apply Filter
+              </a>
+            </div>
+            </div>
+          <!--===savings_account_details===-->
+          <div class="comman_card_details">
+            <ion-row class="dotted row" *ngFor= "let FdTransactions of FdTransactions; let i=index">
+              <div *ngIf="show_filter">
+                <div *ngIf="i < 10">
+                    <ion-col size="6">
+                      <span>{{FdTransactions.message}}</span>
+                      <p class="color_brown">{{FdTransactions.payment_mode}}<span class="color_purple">{{FdTransactions.transaction_date}}</span></p>
+                    </ion-col>
+                    <ion-col size="5" class="right_col">
+                      <span>{{FdTransactions.amount.toLocaleString('en-IN')}}</span>
+                      <span>{{FdTransactions.transaction_type}}</span>
+                    </ion-col>
+                    <ion-col size="1">
+                    <img class="" src="../../../../../assets/imgs/plus_green.svg">
+                   </ion-col>
+              </div>
+            </div>
+              
+            </ion-row>
+            <ion-row  *ngFor= "let FdTransactions of FdTransactions; let i=index"> 
+            <ion-row class="dotted row" > 
+              <div *ngIf="show_filter ==  false">
+                  <ion-col size="6">
+                    <span>{{FdTransactions.message}}</span>
+                    <p class="color_brown">{{FdTransactions.payment_mode}}<span class="color_purple"> {{FdTransactions.transaction_date}}</span></p>
+                    <p class="color_brown">{{FdTransactions.payment_mode}}<span class="color_purple"> {{FdTransactions.transaction_date}}</span></p>
+                  </ion-col>
+                  <ion-col size="5" class="right_col">
+                    <span>{{FdTransactions.amount.toLocaleString('en-IN')}}</span>
+                    
+                  </ion-col>
+                  <ion-col size="1">
+                    <img class=""src="../../../../../assets/imgs/plus_green.svg">
+                  </ion-col>
+              </div>
+              
+            </ion-row>
+            </ion-row>
+
+          </div>
+        </ion-card-content>
+      </ion-card>
+      <!--===card_purple close===-->
+    </div>
+  </div>
+</ion-content>
