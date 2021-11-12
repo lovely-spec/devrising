@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: AddressDetailsPage
+  },
+  {
+    path: 'kyc',
+    loadChildren: () => import('../member-kyc/member-kyc.module').then( m => m.MemberKycPageModule)
   }
 ];
 

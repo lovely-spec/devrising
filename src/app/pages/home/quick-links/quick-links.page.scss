@@ -1,0 +1,37 @@
+
+
+.button_row button {
+    height: 56px;
+    width: 320px;
+    background-color: white;
+    color: #1D418C;
+    border-radius: 50px;
+    font-size: 20px;
+    font-weight: 400;
+    position: relative;
+    margin-top: 18px;
+}
+
+.button_row button img{
+    position: absolute;
+    left: 21px;
+    top: 51%;
+    transform: translateY(-50%);
+}
+
+ion-content{
+    --ion-background-color: #562574;
+
+}
+
+.absolute{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10%;
+}
+
+.modal_close_btn{
+    background-color: #562574;
+    margin-top: 30px;
+}

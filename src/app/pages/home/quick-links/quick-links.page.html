@@ -1,0 +1,23 @@
+<ion-content class="ion-text-center clor">
+  <div class="absolute">
+    <div class="button_row">
+      <div>
+        <Button class="rd_btn" [routerLink]="['/open-new-rd']"  (click)="close()"> <img src="../../assets/images/RD Icon.svg" alt=""> Open New RD</Button>
+      </div>
+      <div>
+        <Button [routerLink]="['/add-new-fd']" (click)="close()"><img src="../../assets/images/FD  icon.svg" alt=""> Open New FD</Button>
+      </div>
+      <div>
+        <Button [routerLink]="['/add-new-member']" (click)="close()"><img src="../../assets/images/add-person-icon.svg" alt=""> Add New Member</Button>
+      </div>
+      <div>
+        <Button ><img src="../../assets/images/loan_request_icon.svg" alt=""> Apply for Loan</Button>
+      </div>
+    </div>
+    <div>
+      <div class="ion-text-center">
+        <button class="modal_close_btn" (click)="close()"><img src="../../assets/images/modal_close_icon.svg"></button>
+      </div>
+    </div>
+  </div>
+</ion-content>

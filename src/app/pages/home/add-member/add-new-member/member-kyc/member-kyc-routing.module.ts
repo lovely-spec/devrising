@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: MemberKycPage
+  },
+  {
+    path: 'preview',
+    loadChildren: () => import('../preview-details/preview-details.module').then( m => m.PreviewDetailsPageModule)
   }
 ];
 

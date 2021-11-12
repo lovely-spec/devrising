@@ -20,43 +20,43 @@
       <ion-card class="card_purple comman_input_field box_shadow">
         <ion-card-content>
           <ion-item lines="none">
-            <ion-label position="floating">Enter Your Name</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-label position="floating">Enter Member Name</ion-label>
+            <ion-input type="text" [(ngModel)]="Member_name"></ion-input>
           </ion-item>
           <ion-item lines="none">
             <ion-label position="floating">Last Name</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input type="text" [(ngModel)]="Last_name"></ion-input>
           </ion-item>
           <ion-item lines="none">
             <ion-label position="floating">Father Name</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input type="text" [(ngModel)]="Father_name"></ion-input>
           </ion-item>
           <ion-item lines="none">
             <ion-label position="floating">Husband/wife Name</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input type="text" [(ngModel)]="Husband_wife_name"></ion-input>
           </ion-item>
           <ion-item lines="none">
             <ion-label position="floating">Date of Birth</ion-label>
-            <ion-input type="number"></ion-input>
+            <ion-input type="number" [(ngModel)]="D_O_B"></ion-input>
           </ion-item>
           <ion-item lines="none">
-            <ion-select class="custom-options" placeholder="Marital Status">
+            <ion-select class="custom-options" placeholder="Marital Status" [(ngModel)]="Marital_status">
               <ion-select-option value="brown">Married</ion-select-option>
               <ion-select-option value="blonde">Unmarried</ion-select-option>
             </ion-select>
           </ion-item>
           <ion-item lines="none">
-            <ion-select class="custom-options" placeholder="Occupation">
+            <ion-select class="custom-options" placeholder="Occupation" [(ngModel)]="Occupation">
               <ion-select-option value="brown">Job</ion-select-option>
               <ion-select-option value="blonde">Business</ion-select-option>
             </ion-select>
           </ion-item>
           <ion-item lines="none">
             <ion-label position="floating">Email</ion-label>
-            <ion-input type="email"></ion-input>
+            <ion-input type="email" [(ngModel)]="Email"></ion-input>
           </ion-item>
           <div class="">
-            <ion-radio-group class="gender_radio_inputs">
+            <ion-radio-group class="gender_radio_inputs" [(ngModel)]="gender">
               <ion-item lines="none" class="radio">
                 <ion-label>Male</ion-label> <br>
                 <ion-radio slot="start" class="input_type_radio"></ion-radio>

@@ -50,6 +50,10 @@ const routes: Routes = [
   {
     path: 'add-member',
     loadChildren: () => import('./add-member/add-member.module').then( m => m.AddMemberPageModule)
+  },
+  {
+    path: 'quick-links',
+    loadChildren: () => import('./quick-links/quick-links.module').then( m => m.QuickLinksPageModule)
   }
 
 
