@@ -1,6 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AddNewMemberPage } from '../add-new-member.page';
-import { AddNewMemberService } from '../add-new-member.service';
+import { ApihelperProvider } from 'src/providers/apihelper/apihelper';
+import { HttpClient,HttpHeaders} from '@angular/common/http';
+import { Storage } from '@ionic/storage';
+import { NavigationExtras, Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-address-details',
@@ -9,13 +14,20 @@ import { AddNewMemberService } from '../add-new-member.service';
 })
 export class AddressDetailsPage implements OnInit {
   @ViewChild('AddNewMemberPage', {static : false}) filterPanel: AddNewMemberPage;
+  panchayt:string;
 
-  constructor(public AddNewMemberService: AddNewMemberService) { }
+  constructor(
+    public http: HttpClient,
+    private storage: Storage,
+    private provider : ApihelperProvider,
+    public router: Router,
+    public modalController: ModalController
+  ) { }
   addressRadio:string;
   show_detail:boolean;
 
   ngOnInit() {
-    console.log('value received ', this.AddNewMemberService.data);
+
     this.show_detail = false;
     }
     showform(f){
@@ -24,6 +36,17 @@ export class AddressDetailsPage implements OnInit {
       }else{
         this.show_detail = false
       } 
+    }
+    next(){
+      var panchayt = this.panchayt;
+      this.provider.check(this.panchayt).subscribe(data=>{
+        console.log('response',data)
+      this.provider.show_alert(data['message'])
+      // let navigationExtras: NavigationExtras = {
+      // };
+      // this.router.navigate(['address-details'], navigationExtras);
+    
+      })
     }
 
 }

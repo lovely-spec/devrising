@@ -21,8 +21,8 @@ import { Router } from '@angular/router';
 export class ApihelperProvider {
   
 
-  private RootURL: string = "http://localhost:3000/api/";
-  // private RootURL: string = "http://staging.devrising.in/api/";
+  // private RootURL: string = "http://localhost:3000/api/";
+  private RootURL: string = "https://staging.devrising.in/api/";
   // private RootURL: string = "https://app.devrising.in/api/";
    loading: any;
    HeaderConfig : any = [];
@@ -466,9 +466,22 @@ check_no (number){
 // end
 
 // personal details api 
-personal_details (First_name:string,){
+personal_details (First_name:string,Last_name:string,Father_name:string,Husband_wife_name:string,D_O_B:string,Marital_status:string,Occupation:string,Email:string,gender:string){
   let postData = new FormData();
   postData.append('First_name',First_name);
+  postData.append('Last_name',Last_name);
+  postData.append('Father_name',Father_name);
+  postData.append('Husband_wife_name',Husband_wife_name);
+  postData.append('D_O_B',D_O_B);
+  postData.append('Marital_status',Marital_status);
+  postData.append('Occupation',Occupation);
+  postData.append('Email',Email);
+  postData.append('gender',gender);
+  return this.http.post(this.RootURL + 'member/personal_details',postData,this.HeaderConfig);
+}
+check(panchayt){
+  let postData = new FormData();
+  postData.append('panchayt',panchayt);
   return this.http.post(this.RootURL + 'member/personal_details',postData,this.HeaderConfig);
 }
 

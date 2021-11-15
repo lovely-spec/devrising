@@ -3,7 +3,7 @@
   <div class="bg_theme bg_theme_small comman_page_padding">
     <ion-row class="">
       <ion-col size="10">
-        <a [routerLink]="['/dashboard/home']"><img src="../../../../../assets/imgs/back-button.svg"></a>
+        <a [routerLink]="['/all-rd-accounts']"><img src="../../../../../assets/imgs/back-button.svg"></a>
       </ion-col>
       <ion-col size="2">
         <div class="notification_numbur"> <span class="">12</span></div>
@@ -37,37 +37,6 @@
           </ion-row>
         </ion-card-header>
         <!--===ion-card-content===-->
-        <div class="whole-date-range">
-          <div class="date-filter-title"> Date Filter</div> 
-            <ion-list class="daterangecolums">                         
-              <div class="block-date-items">               
-                  <div class="label-date">
-                  Start Date
-                  </div>
-                  <div class="flex-center">
-                    <ion-datetime value="1990-02-19" placeholder="Select Date" class="actual-time-label" [(ngModel)]="start_date" (ionChange)="StartDate()">
-                    </ion-datetime> <ion-icon name="calendar-outline" class="blue-calender"></ion-icon>   
-                  </div>                          
-              </div>
-            
-              <div class="block-date-items">
-                      <div class="label-date">
-                        End Date
-                      </div>
-                <div class="flex-center">
-                        <ion-datetime value="1990-02-20" placeholder="Select Date" class="actual-time-label" [(ngModel)]="end_date" (ionChange)="EndDate()"></ion-datetime>
-                          <ion-icon name="calendar-outline">
-                        <ion-icon name="calendar-outline" class="blue-calender"></ion-icon> </ion-icon>
-                </div>
-              </div>
-              
-            </ion-list>
-            <div class="ion-text-center">
-            <a class="discover-button ion-text-center" id="filter" (click)="Apply_Date()">
-              Apply Filter
-            </a>
-          </div>
-          </div>
         <ion-card-content>
           <div class="searchbar">
             <ion-input type="search" placeholder="search....."><img src="../../../../../assets/imgs/search_icon.svg">
@@ -88,7 +57,7 @@
                 <img class="" src="../../../../../assets/imgs/plus_green.svg">
               </ion-col>
             </ion-row>
-            <ion-row class="dotted row">all-fd-accounts
+            <ion-row class="dotted row">
               <ion-col size="6">
                 <span>Cash Withdrawal</span>
                 <p class="color_brown">Cash | <span class="color_purple"> 06/07/2020</span></p>

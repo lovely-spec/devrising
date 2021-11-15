@@ -45,12 +45,12 @@
            <a [routerLink]="['add-member']"> <img src="../../assets/imgs/add member 307.svg"></a>
             <div><span>Add Member</span></div>
           </div>
-          <div class="loan_request">
+         <!----- loan <div class="loan_request">
             <img src="../../assets/imgs/loan_req_icon.svg">
             <div><span>Loan Request</span></div>
-          </div>
+          </div>--->
           <div class="transfer">
-            <a [routerLink]="['/beneficiaries']"><img src="../../assets/imgs/transefer_icon.svg"></a>
+            <a (click)="transaction()"><img src="../../assets/imgs/transefer_icon.svg"></a>
             <div><span>Transfer</span></div>
           </div>
         </div>
@@ -67,14 +67,14 @@
             <ion-row>
               <ion-col size="3">
                 <div class="circle ion-text-center">
-                  <!-- <img src="../../assets/imgs/RD Icon.svg"> -->
+                 <img src="../../assets/imgs/RD Icon.svg" class="rd">
                 </div>
               </ion-col>
               <ion-col size="9" class="right_side">
                 <div class="card_header flex">
                   <span>Recurring Amount</span>
                   <span class="rd_number">{{RdResponse.account_number}}</span>
-                  <!-- <img class="plus_icon" src="../../assets/imgs/plus_icon.svg"> -->
+                  <!--<img class="plus_icon" src="../../assets/imgs/plus_icon.svg">-->
                 </div>
                 <div class="amount_figure">
                   <h3>₹{{RdResponse.total_amount.toLocaleString('en-IN') }}/-</h3>
@@ -100,7 +100,7 @@
               <ion-progress-bar value="0.6"></ion-progress-bar>
             </div>
           </ion-card>
-          <!-- <div> <img class="plus_icon" src="../../assets/imgs/plus_icon.svg"></div> -->
+          <div> <img class="plus_icon" src="../../assets/imgs/plus_icon.svg"></div> 
         </div>
       </ion-slide>
 
@@ -116,7 +116,7 @@
             <ion-row>
               <ion-col size="3">
                 <div class="circle ion-text-center">
-                  <!-- <img src="../../assets/imgs/FD  icon.svg"> -->
+                  <img src="../../assets/imgs/FD  icon.svg"> 
                 </div>
               </ion-col>
               <ion-col size="9" class="right_side">
@@ -145,7 +145,7 @@
               <ion-progress-bar value="0.3"></ion-progress-bar>
             </div>
           </ion-card>
-          <!-- <div> <img class="plus_icon" src="../../assets/imgs/plus_icon.svg"></div> -->
+           <div> <img class="plus_icon" src="../../assets/imgs/plus_icon.svg"></div> 
         </div>
       </ion-slide>
     </ion-slides>
@@ -161,7 +161,7 @@
             <ion-row>
               <ion-col size="3">
                 <div class="circle ion-text-center">
-                  <!-- <img src="../../assets/imgs/FD  icon.svg"> -->
+                  <img src="../../assets/imgs/FD  icon.svg"> 
                 </div>
               </ion-col>
               <ion-col size="9" class="right_side">
@@ -190,7 +190,7 @@
               <ion-progress-bar value="0.3"></ion-progress-bar>
             </div>
           </ion-card>
-          <!-- <div> <img class="plus_icon" src="../../assets/imgs/plus_icon.svg"></div> -->
+         <div> <img class="plus_icon" src="../../assets/imgs/plus_icon.svg"></div> 
         </div>
       </ion-slide>
     </ion-slides>
@@ -205,7 +205,7 @@
             <ion-row>
               <ion-col size="3">
                 <div class="circle ion-text-center">
-                  <!-- <img src="../../assets/imgs/FD  icon.svg"> -->
+                 <img src="../../assets/imgs/FD  icon.svg">
                 </div>
               </ion-col>
               <ion-col size="9" class="right_side">
@@ -234,7 +234,7 @@
               <ion-progress-bar value="0.3"></ion-progress-bar>
             </div>
           </ion-card>
-          <!-- <div> <img class="plus_icon" src="../../assets/imgs/plus_icon.svg"></div> -->
+          <div> <img class="plus_icon" src="../../assets/imgs/plus_icon.svg"></div>
         </div>
       </ion-slide>
     </ion-slides>
@@ -250,7 +250,7 @@
             <ion-row>
               <ion-col size="3">
                 <div class="circle ion-text-center">
-                  <!-- <img src="../../assets/imgs/FD  icon.svg"> -->
+                 <img src="../../assets/imgs/FD  icon.svg">
                 </div>
               </ion-col>
               <ion-col size="9" class="right_side">
@@ -279,7 +279,7 @@
               <ion-progress-bar value="0.3"></ion-progress-bar>
             </div>
           </ion-card>
-          <!-- <div> <img class="plus_icon" src="../../assets/imgs/plus_icon.svg"></div> -->
+        <div> <img class="plus_icon" src="../../assets/imgs/plus_icon.svg"></div> 
         </div>
       </ion-slide>
     </ion-slides>
@@ -295,7 +295,7 @@
             <ion-row>
               <ion-col size="3">
                 <div class="circle ion-text-center">
-                  <!-- <img src="../../assets/imgs/FD  icon.svg"> -->
+                  <img src="../../assets/imgs/FD  icon.svg" class="fd"> 
                 </div>
               </ion-col>
               <ion-col size="9" class="right_side">
@@ -324,7 +324,7 @@
               <ion-progress-bar value="0.3"></ion-progress-bar>
             </div>
           </ion-card>
-          <!-- <div> <img class="plus_icon" src="../../assets/imgs/plus_icon.svg"></div> -->
+          <div> <img class="plus_icon" src="../../assets/imgs/plus_icon.svg"></div> 
         </div>
       </ion-slide>
     </ion-slides>
@@ -340,7 +340,7 @@
             <ion-row>
               <ion-col size="3">
                 <div class="circle ion-text-center">
-                  <!-- <img src="../../assets/imgs/FD  icon.svg"> -->
+                   <img src="../../assets/imgs/FD  icon.svg"> 
                 </div>
               </ion-col>
               <ion-col size="9" class="right_side">
@@ -369,7 +369,7 @@
               <ion-progress-bar value="0.3"></ion-progress-bar>
             </div>
           </ion-card>
-          <!-- <div> <img class="plus_icon" src="../../assets/imgs/plus_icon.svg"></div> -->
+          <div> <img class="plus_icon" src="../../assets/imgs/plus_icon.svg"></div>
         </div>
       </ion-slide>
     </ion-slides>

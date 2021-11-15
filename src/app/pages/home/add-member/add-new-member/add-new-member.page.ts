@@ -22,6 +22,7 @@ export class AddNewMemberPage implements OnInit {
   Occupation:string;
   Email:string;
   gender:string;
+  panchayt:string;
   public personaldetails:string[];
   
   constructor(
@@ -37,20 +38,24 @@ export class AddNewMemberPage implements OnInit {
   }
   next(){
     var First_name = this.First_name;
-    var Last_name = this.First_name;
-    var First_name = this.First_name;
-    var First_name = this.First_name;
-    var First_name = this.First_name;
-    var First_name = this.First_name;
-    var First_name = this.First_name;
-    var First_name = this.First_name;
-    var First_name = this.First_name;
+    var Last_name = this.Last_name;
+    var Father_name = this.Father_name;
+    var Husband_wife_name = this.Husband_wife_name;
+    var D_O_B = this.D_O_B;
+    var Marital_status = this.Marital_status;
+    var Occupation = this.Occupation;
+    var Email = this.Email;
+    var gender = this.gender;
+    var panchayt = this.panchayt;
     console.log(this.First_name)
-    this.provider.personal_details(this.First_name).subscribe(data=>{
+    this.provider.personal_details(First_name,Last_name,Father_name,Husband_wife_name,D_O_B,Marital_status,Occupation,Email,gender).subscribe(data=>{
       console.log('response',data)
-    this.provider.show_alert(data['message'])
+    let navigationExtras: NavigationExtras = {
+    };
+    this.router.navigate(['address-details'], navigationExtras);
   
     })
+    
   }
 
 }

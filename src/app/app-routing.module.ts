@@ -54,6 +54,10 @@ const routes: Routes = [
   {
     path: 'add-new-member',
     loadChildren: () => import('./pages/home/add-member/add-new-member/add-new-member.module').then( m => m.AddNewMemberPageModule)
+  },
+  {
+    path: 'address-details',
+    loadChildren: () => import('./pages/home/add-member/add-new-member/address-details/address-details.module').then( m => m.AddressDetailsPageModule)
   }
 ];
 

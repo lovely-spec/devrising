@@ -53,6 +53,9 @@ ion-card-subtitle.acc_no {
   margin: 0;
   color: #8A2729;
 }
+.my-slides {
+  max-height: 170px !important;
+}
 .dot {
   height: 70px;
   width: 70px;
@@ -68,6 +71,7 @@ ion-card {
   width: 100%;
   border-radius: 15px;
   margin-bottom: 40px;
+  margin-left: unset!important;
 }
 .saving_amt{
   float: right;
@@ -166,3 +170,16 @@ text-align: center;
   color: white;
   content: attr(data-percent) "%";
 }
+/*  media more than 640px */
+  .swiper-wrapper div img
+   {
+    width: 5% !important;
+    min-height: 60px !important;
+    position: absolute !important; 
+    right: 0px !important;   
+    top: 0px !important;
+    margin-top: 0px !important;  
+    display: inline-block !important;
+    z-index: 9999 !important;
+   }
+ 

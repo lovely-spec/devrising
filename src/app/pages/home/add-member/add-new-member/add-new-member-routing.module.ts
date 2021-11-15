@@ -9,10 +9,6 @@ const routes: Routes = [
     component: AddNewMemberPage
   },
   {
-    path: 'address-details',
-    loadChildren: () => import('./address-details/address-details.module').then( m => m.AddressDetailsPageModule)
-  },
-  {
     path: 'member-kyc',
     loadChildren: () => import('./member-kyc/member-kyc.module').then( m => m.MemberKycPageModule)
   },
