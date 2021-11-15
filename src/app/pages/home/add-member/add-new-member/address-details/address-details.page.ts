@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { AddNewMemberPage } from '../add-new-member.page';
+import { AddNewMemberService } from '../add-new-member.service';
 
 @Component({
   selector: 'app-address-details',
@@ -6,12 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./address-details.page.scss'],
 })
 export class AddressDetailsPage implements OnInit {
+  @ViewChild('AddNewMemberPage', {static : false}) filterPanel: AddNewMemberPage;
 
-  constructor() { }
+  constructor(public AddNewMemberService: AddNewMemberService) { }
   addressRadio:string;
   show_detail:boolean;
 
   ngOnInit() {
+    console.log('value received ', this.AddNewMemberService.data);
     this.show_detail = false;
     }
     showform(f){
@@ -21,4 +25,5 @@ export class AddressDetailsPage implements OnInit {
         this.show_detail = false
       } 
     }
+
 }

@@ -1,1 +1,18 @@
-{}
+{
+	"webDir": "www",
+	"appId": "com.example.app",
+	"appName": "devising",
+	"bundledWebRuntime": false,
+	"cordova": {
+		"preferences": {
+			"ScrollEnabled": "false",
+			"android-minSdkVersion": "28",
+			"BackupWebStorage": "none",
+			"SplashMaintainAspectRatio": "false",
+			"FadeSplashScreenDuration": "300",
+			"SplashShowOnlyFirstTime": "false",
+			"SplashScreen": "screen",
+			"SplashScreenDelay": "500"
+		}
+	}
+}

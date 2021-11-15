@@ -21,8 +21,8 @@ import { Router } from '@angular/router';
 export class ApihelperProvider {
   
 
-  // private RootURL: string = "http://localhost:3000/api/";
-  private RootURL: string = "http://staging.devrising.in/api/";
+  private RootURL: string = "http://localhost:3000/api/";
+  // private RootURL: string = "http://staging.devrising.in/api/";
   // private RootURL: string = "https://app.devrising.in/api/";
    loading: any;
    HeaderConfig : any = [];
@@ -455,10 +455,21 @@ Notification(){
   let postData = new FormData();
   return this.http.post(this.RootURL + 'member/notification',postData,this.HeaderConfig);
 }
+// add member api starts 
+
+// phone no check api
 check_no (number){
   let postData = new FormData();
   postData.append('number',number);
   return this.http.post(this.RootURL + 'member/check_no',postData,this.HeaderConfig);
+}
+// end
+
+// personal details api 
+personal_details (First_name:string,){
+  let postData = new FormData();
+  postData.append('First_name',First_name);
+  return this.http.post(this.RootURL + 'member/personal_details',postData,this.HeaderConfig);
 }
 
 ClearNotification(){
