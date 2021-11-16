@@ -5,6 +5,7 @@ import { ModalController } from '@ionic/angular';
 import { ApihelperProvider } from 'src/providers/apihelper/apihelper';
 import { Storage } from '@ionic/storage';
 import { LoginPage} from '../../login/login.page';
+import {SharedService } from './shared.service';
 @Component({
   selector: 'app-add-member',
   templateUrl: './add-member.page.html',
@@ -13,15 +14,16 @@ import { LoginPage} from '../../login/login.page';
 export class AddMemberPage implements OnInit {
    number:string = '';
    HeaderConfig : any = [];
-   @Input() LoginReponse: any;
-   @Input() username : string;
+
 
   constructor(
+    public shared: SharedService,
     public http: HttpClient,
     private storage: Storage,
     private provider : ApihelperProvider,
     public router: Router,
-    public modalController: ModalController
+    public modalController: ModalController,
+
     
     
   ) { }
@@ -31,10 +33,14 @@ export class AddMemberPage implements OnInit {
     }
     checkno(){
       var number = this.number;
+      var re = /^((\\+91-?)|0)?[0-9]{10}$/;
       console.log(number)
       if(number==''){
         this.provider.show_alert('Please Enter Phone No')
-      }else{this.provider.check_no(number).subscribe(data=>{
+      }else if (!re.test(number)){
+        this.provider.show_alert('Please Enter valid Phone No')
+      }
+      else{this.provider.check_no(number).subscribe(data=>{
         console.log('response',data)
         if(data['status'] == true){
           let navigationExtras: NavigationExtras = {
@@ -48,6 +54,7 @@ export class AddMemberPage implements OnInit {
       })
       
     }
+    this.shared.setnumber(this.number)
       
     }
   

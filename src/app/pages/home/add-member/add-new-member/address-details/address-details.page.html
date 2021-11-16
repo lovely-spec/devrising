@@ -21,22 +21,22 @@
         <ion-card-content>
           <ion-item lines="none">
             <ion-label position="floating">Village/House No./Town</ion-label>
-            <ion-input type="text" [(ngModel)]="panchayt"></ion-input>
+            <ion-input type="text" [(ngModel)]="village_house_town"></ion-input>
           </ion-item>
           <ion-item lines="none">
             <ion-label position="floating">Post Office (P.O.)</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input type="text" [(ngModel)]="p_o" ></ion-input>
           </ion-item>
           <ion-item lines="none">
             <ion-label position="floating">Panchayat</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input type="text" [(ngModel)]="panchayat"></ion-input>
           </ion-item>
           <ion-item lines="none">
             <ion-label position="floating">Tehsil</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input type="text" [(ngModel)]="tehsil"></ion-input>
           </ion-item>
           <ion-item lines="none">
-            <ion-select class="custom-options" placeholder="Distt.">
+            <ion-select class="custom-options" placeholder="Distt." [(ngModel)]="distt">
               <ion-select-option value="brown">Shimla</ion-select-option>
               <ion-select-option value="blonde">Kullu</ion-select-option>
               <ion-select-option value="abc">Bilaspur</ion-select-option>
@@ -44,7 +44,7 @@
           </ion-item>
           <ion-item lines="none">
             <ion-label position="floating">Pin</ion-label>
-            <ion-input type="number"></ion-input>
+            <ion-input type="number" [(ngModel)]="pin"></ion-input>
           </ion-item>
           <div class="address_confirmation">
             <p>Is Your present and permanent address is same?</p>
@@ -64,22 +64,22 @@
           <div class="slider_form" *ngIf=show_detail>
             <ion-item lines="none">
               <ion-label position="floating">Village/House No./Town</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input type="text" [(ngModel)]="P_village_house_town"></ion-input>
             </ion-item>
             <ion-item lines="none">
               <ion-label position="floating">Post Office (P.O.)</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input type="text" [(ngModel)]="P_p_o"></ion-input>
             </ion-item>
             <ion-item lines="none">
               <ion-label position="floating">Panchayat</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input type="text" [(ngModel)]="P_panchayat"></ion-input>
             </ion-item>
             <ion-item lines="none">
               <ion-label position="floating">Tehsil</ion-label>
-              <ion-input type="text"></ion-input>
+              <ion-input type="text" [(ngModel)]="P_tehsil"></ion-input>
             </ion-item>
             <ion-item lines="none">
-              <ion-select class="custom-options" placeholder="Distt.">
+              <ion-select class="custom-options" placeholder="Distt." [(ngModel)]="P_distt">
                 <ion-select-option value="brown">Shimla</ion-select-option>
                 <ion-select-option value="blonde">Kullu</ion-select-option>
                 <ion-select-option value="abc">Bilaspur</ion-select-option>
@@ -87,7 +87,7 @@
             </ion-item>
             <ion-item lines="none">
               <ion-label position="floating">Pin</ion-label>
-              <ion-input type="number"></ion-input>
+              <ion-input type="number" [(ngModel)]="P_pin"></ion-input>
             </ion-item>
           </div>
           <div class="add_member_form_btns">

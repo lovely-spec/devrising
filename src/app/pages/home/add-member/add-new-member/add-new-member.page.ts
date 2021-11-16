@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AddNewMemberService } from './add-new-member.service';
+import { SharedService } from '../shared.service';
 import { ApihelperProvider } from 'src/providers/apihelper/apihelper';
 import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { Storage } from '@ionic/storage';
@@ -22,7 +22,7 @@ export class AddNewMemberPage implements OnInit {
   Occupation:string;
   Email:string;
   gender:string;
-  panchayt:string;
+  number:string;
   public personaldetails:string[];
   
   constructor(
@@ -30,14 +30,17 @@ export class AddNewMemberPage implements OnInit {
     private storage: Storage,
     private provider : ApihelperProvider,
     public router: Router,
-    public modalController: ModalController ) {
+    public modalController: ModalController,
+    public SharedService: SharedService ) {
   }
+   
 
   
   ngOnInit() {
+
   }
   next(){
-    var First_name = this.First_name;
+    var first_name = this.First_name;
     var Last_name = this.Last_name;
     var Father_name = this.Father_name;
     var Husband_wife_name = this.Husband_wife_name;
@@ -46,16 +49,29 @@ export class AddNewMemberPage implements OnInit {
     var Occupation = this.Occupation;
     var Email = this.Email;
     var gender = this.gender;
-    var panchayt = this.panchayt;
-    console.log(this.First_name)
-    this.provider.personal_details(First_name,Last_name,Father_name,Husband_wife_name,D_O_B,Marital_status,Occupation,Email,gender).subscribe(data=>{
-      console.log('response',data)
-    let navigationExtras: NavigationExtras = {
-    };
-    this.router.navigate(['address-details'], navigationExtras);
-  
-    })
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    console.log('data',this.gender)
+  //   if (first_name==null||first_name==''|| Last_name==null|| Last_name==''||Father_name==null||Father_name==''||D_O_B==null||D_O_B==''||Occupation==null||Occupation==''||Email==null||Email==''||gender==null||gender==''){
+  //     this.provider.show_alert('Please fill all details')
+  //   }else if (Marital_status=="Married"){
+  //     if(Husband_wife_name==null){
+  //       this.provider.show_alert('Please fill Husband/Wife Name')
+  //     }
+  //   }else if (!re.test(Email)){
+  //     this.provider.show_alert('Please Provide Vailid Email Address')
+  //   }
+  //   else{
     
+    
+  // }
+  let navigationExtras: NavigationExtras = {
+  };
+  this.router.navigate(['address-details'], navigationExtras);
+
+  
+  this.number = this.SharedService.getnumber();
+  console.log(this.number);
+  this.SharedService.setdata(this.First_name);
   }
 
 }

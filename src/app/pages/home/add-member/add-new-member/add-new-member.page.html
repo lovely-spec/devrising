@@ -37,18 +37,21 @@
           </ion-item>
           <ion-item lines="none">
             <ion-label position="floating">Date of Birth</ion-label>
-            <ion-input type="number" [(ngModel)]="D_O_B"></ion-input>
+            <ion-input type="number" ><ion-datetime  placeholder="Select Date" [(ngModel)]="D_O_B" class="actual-time-label" ></ion-datetime></ion-input>
           </ion-item>
           <ion-item lines="none">
             <ion-select class="custom-options" placeholder="Marital Status" [(ngModel)]="Marital_status">
-              <ion-select-option value="brown">Married</ion-select-option>
-              <ion-select-option value="blonde">Unmarried</ion-select-option>
+              <ion-select-option value="Married">Married</ion-select-option>
+              <ion-select-option value="Unmarried">Unmarried</ion-select-option>
             </ion-select>
           </ion-item>
           <ion-item lines="none">
             <ion-select class="custom-options" placeholder="Occupation" [(ngModel)]="Occupation">
-              <ion-select-option value="brown">Job</ion-select-option>
-              <ion-select-option value="blonde">Business</ion-select-option>
+              <ion-select-option value="Employee">Employee</ion-select-option>
+              <ion-select-option value="Business">Business</ion-select-option>
+              <ion-select-option value="Student">Student</ion-select-option>
+              <ion-select-option value="Farmer">Farmer</ion-select-option>
+              <ion-select-option value="SelfEmployed">SelfEmployed</ion-select-option>
             </ion-select>
           </ion-item>
           <ion-item lines="none">
@@ -58,21 +61,21 @@
           <div class="">
             <ion-radio-group class="gender_radio_inputs" [(ngModel)]="gender">
               <ion-item lines="none" class="radio">
-                <ion-label>Male</ion-label> <br>
-                <ion-radio slot="start" class="input_type_radio"></ion-radio>
+                <ion-label >Male</ion-label> <br>
+                <ion-radio slot="start" value="Male" class="input_type_radio"></ion-radio>
               </ion-item>
               <ion-item lines="none" class="radio">
                 <ion-label>Female</ion-label> <br>
-                <ion-radio slot="start" class="input_type_radio"></ion-radio>
+                <ion-radio slot="start" value="Female" class="input_type_radio"></ion-radio>
               </ion-item>
               <ion-item lines="none" class="radio">
                 <ion-label>Others</ion-label> <br>
-                <ion-radio slot="start" class="input_type_radio"></ion-radio>
+                <ion-radio slot="start" value="Others" class="input_type_radio"></ion-radio>
               </ion-item>
             </ion-radio-group>
           </div>
           <div class="add_member_form_btns">
-            <button class="small_btn_gray" [routerLink]="['/dashboard/home']">Back</button>
+            <button class="small_btn_gray" [routerLink]="['/dashboard/home/add-member']">Back</button>
             <button class="gradient_fill_btn small_btn_filled"(click)="next()">Next</button>
           </div>
         </ion-card-content>
