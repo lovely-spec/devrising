@@ -54,30 +54,6 @@ const routes: Routes = [
   {
     path: 'quick-links',
     loadChildren: () => import('./quick-links/quick-links.module').then( m => m.QuickLinksPageModule)
-  },
-  {
-    path: 'open-fd',
-    loadChildren: () => import('./fd/open-fd/open-fd/open-fd.module').then( m => m.OpenFdPageModule)
-  },
-  {
-    path: 'open-rd',
-    loadChildren: () => import('./rd/open-rd/open-rd/open-rd.module').then( m => m.OpenRdPageModule)
-  },
-  {
-    path: 'add-minor',
-    loadChildren: () => import('./fd/open-fd/add-minor/add-minor/add-minor.module').then( m => m.AddMinorPageModule)
-  },
-  {
-    path: 'add-minor',
-    loadChildren: () => import('./rd/open-rd/add-minor/add-minor/add-minor.module').then( m => m.AddMinorPageModule)
-  },
-  {
-    path: 'rd-successful',
-    loadChildren: () => import('./rd/open-rd/rd-successful/rd-successful.module').then( m => m.RdSuccessfulPageModule)
-  },
-  {
-    path: 'fd-successful',
-    loadChildren: () => import('./fd/open-fd/fd-successful/fd-successful.module').then( m => m.FdSuccessfulPageModule)
   }
 
 
