@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: AddNewFdPage
+  },
+  {
+    path: 'fd-open-successfully',
+    loadChildren: () => import('../fd-open-successfully/fd-open-successfully.module').then( m => m.FdOpenSuccessfullyPageModule)
   }
 ];
 
