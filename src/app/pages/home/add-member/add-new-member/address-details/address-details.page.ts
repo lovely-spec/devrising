@@ -66,23 +66,23 @@ export class AddressDetailsPage implements OnInit {
       var P_pin = this.P_pin;
       var details = this.show_detail
       var re = /^\d{6}(?:\s*,\s*\d{6})*$/;
-      if (village_house_town==null||village_house_town==''|| p_o==null|| p_o==''||panchayat==null||panchayat==''||tehsil==null||tehsil==''||distt==null||distt==''||pin==null||pin==''){
-            this.provider.show_alert('Please fill all details')
-          }
-          else if (!re.test(pin)){
-            this.provider.show_alert('Please fill correct pin code')
-          }
-          else if (details==true){
-            if (P_village_house_town==null||P_village_house_town==''|| P_p_o==null|| P_p_o==''||P_panchayat==null||P_panchayat==''||P_tehsil==null||P_tehsil==''||P_distt==null||P_distt==''||P_pin==null||P_pin==''){
-              this.provider.show_alert('Please fill Permanent address details')
-            }else if (!re.test(P_pin)){
-              this.provider.show_alert('Please fill correct pin code')
-            }
-          }else {
-            let navigationExtras: NavigationExtras = {
-              };
-              this.router.navigate(['/address-details/kyc'], navigationExtras);
-          }
+      // if (village_house_town==null||village_house_town==''|| p_o==null|| p_o==''||panchayat==null||panchayat==''||tehsil==null||tehsil==''||distt==null||distt==''||pin==null||pin==''){
+      //       this.provider.show_alert('Please fill all details')
+      //     }
+      //     else if (!re.test(pin)){
+      //       this.provider.show_alert('Please fill correct pin code')
+      //     }
+      //     else if (details==true){
+      //       if (P_village_house_town==null||P_village_house_town==''|| P_p_o==null|| P_p_o==''||P_panchayat==null||P_panchayat==''||P_tehsil==null||P_tehsil==''||P_distt==null||P_distt==''||P_pin==null||P_pin==''){
+      //         this.provider.show_alert('Please fill Permanent address details')
+      //       }else if (!re.test(P_pin)){
+      //         this.provider.show_alert('Please fill correct pin code')
+      //       }
+      //     }else {
+      //       let navigationExtras: NavigationExtras = {
+      //         };
+      //         this.router.navigate(['/address-details/kyc'], navigationExtras);
+      //     }
       // this.provider.check(this.panchayt).subscribe(data=>{
       //   console.log('response',data)
       // this.provider.show_alert(data['message'])
@@ -91,6 +91,9 @@ export class AddressDetailsPage implements OnInit {
       // // this.router.navigate(['address-details'], navigationExtras);
     
       // })
+      let navigationExtras: NavigationExtras = {
+      };
+      this.router.navigate(['/address-details/kyc'], navigationExtras);
       this.firstname = this.shared.getdata();
       console.log('from name',this.firstname);
     }

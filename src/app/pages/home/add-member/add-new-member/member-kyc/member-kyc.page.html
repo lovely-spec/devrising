@@ -19,47 +19,55 @@
     <div class="comman_page_padding member_kyc_form">
       <ion-card class="card_purple comman_input_field box_shadow">
         <ion-item lines="none">
+          <ion-label position="floating">Aadhar NO</ion-label>
+          <ion-input [(ngModel)]="addhar_no" type="text" class="mobile_cam_icon"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
           <ion-label position="floating">Aadhar/ Address Proof (front side)</ion-label>
-          <ion-input type="file" class="mobile_cam_icon" id="file"></ion-input>
+          <ion-input type="file"  value="addhar_front_img" class="mobile_cam_icon" id="file"></ion-input>
         </ion-item>
         <ion-item lines="none">
           <ion-label position="floating">Aadhar/ Address Proof (back side)</ion-label>
-          <ion-input type="file" class="mobile_cam_icon"></ion-input>
+          <ion-input type="file" value="addhar_back_img" class="mobile_cam_icon"></ion-input>
         </ion-item>
         <ion-item lines="none">
           <ion-label position="floating">Pan No.</ion-label>
-          <ion-input type="file" class="mobile_cam_icon"></ion-input>
+          <ion-input  [(ngModel)]="pan_no"  type="text" class="mobile_cam_icon"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label position="floating">Pan Image</ion-label>
+          <ion-input type="file" value="pan_img" class="mobile_cam_icon"></ion-input>
         </ion-item>
         <ion-item lines="none">
           <ion-label position="floating">Upload Photo (with white background)</ion-label>
-          <ion-input type="file" class="mobile_cam_icon"></ion-input>
+          <ion-input type="file" value="member_img" class="mobile_cam_icon"></ion-input>
         </ion-item>
         <ion-item lines="none">
           <ion-label position="floating">Upload Signature (with white background)</ion-label>
-          <ion-input type="file" class="mobile_cam_icon"></ion-input>
+          <ion-input type="file" value="member_sign" class="mobile_cam_icon"></ion-input>
         </ion-item>
         <div class="comman_page_headline_2 margin_for_headline">
           <h2 class="ion-text-left">Add Nominee</h2>
         </div>
         <ion-item lines="none">
           <ion-label position="floating">Nominee Name</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input [(ngModel)]="nominee_name" type="text"></ion-input>
         </ion-item>
         <ion-item lines="none">
           <ion-label position="floating">Father's Name</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input [(ngModel)]="nominee_f_name" type="text"></ion-input>
         </ion-item>
         <ion-item lines="none">
           <ion-label position="floating">Nominee Relation</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input [(ngModel)]="nominee_relation" type="text"></ion-input>
         </ion-item>
         <ion-item lines="none">
           <ion-label position="floating">Nominee Mobile No.</ion-label>
-          <ion-input type="number"></ion-input>
+          <ion-input [(ngModel)]="nominee_number" type="number"></ion-input>
         </ion-item>
         <ion-item lines="none">
           <ion-label position="floating">Nominee Address</ion-label>
-          <ion-textarea class="textarea"></ion-textarea>
+          <ion-textarea [(ngModel)]="nominee_address" class="textarea"></ion-textarea>
         </ion-item>
         <div class="add_member_form_btns">
           <button class="small_btn_gray" [routerLink]="['/address-details']">Back</button>

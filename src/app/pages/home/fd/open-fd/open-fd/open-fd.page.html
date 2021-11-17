@@ -1,0 +1,96 @@
+<ion-content>
+  <div class="open_fd_page">
+     <!--===bg_theme_small===-->
+     <div class="bg_theme bg_theme_small comman_page_padding">
+      <ion-row class="">
+        <ion-col size="10">
+          <a [routerLink]="['/all-fd-accounts']"><img src="../../assets/images/back-button.svg"></a>
+        </ion-col>
+        <ion-col size="2">
+          <div class="notification_numbur"> <span class="">12</span></div>
+          <img class="bell_icon relative" src="../../assets/images/bell.svg">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <h1>Open New FD Account</h1>
+      </ion-row>
+    </div>
+    <!--===bg_theme_small End==-->
+    <div class="comman_page_headline">
+      <h2>Fill Details Below</h2>
+    </div>
+    <div class="rd_fd_form comman_page_padding">
+      <ion-item lines="none">
+        <ion-select class="custom-options" placeholder="Select Scheme*">
+          <ion-select-option value="brown">1 year</ion-select-option>
+          <ion-select-option value="blonde">2 Year</ion-select-option>
+          <ion-select-option value="black">3 year</ion-select-option>
+          <ion-select-option value="red">5 Year</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label position="floating">FD Amount*</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label position="floating">Enter Nominee Name*</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label position="floating">Relation with Nominee<span class="color_theme_red"> *</span></ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-select class="custom-options" placeholder="Select Minor (if any)">
+          <ion-select-option value="brown">1 year</ion-select-option>
+          <ion-select-option value="blonde">2 Year</ion-select-option>
+          <ion-select-option value="black">3 year</ion-select-option>
+          <ion-select-option value="red">5 Year</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-row>
+        <ion-col size="12">
+          <button class="extra_small_gray_btn" [routerLink]="['/add-minor-fd']" routerLinkActive="router-link-active">Add
+            Minor</button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="calc_maturity">
+          <button class="large_gray_btn">Calculate Maturity</button>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div class="rd_fd_amt_details comman_page_padding">
+      <ion-row>
+        <ion-col size="6">
+          <p class="color_theme_gray">Deposited Amount :</p>
+        </ion-col>
+        <ion-col size="6">
+          <p class="color_theme_purple">60,000</p>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <p class="color_theme_gray">Maturity Amount :</p>
+        </ion-col>
+        <ion-col size="6">
+          <p class="color_theme_purple">66,630.00</p>
+        </ion-col>
+      </ion-row>
+    </div>
+    <ion-row class="comman_page_padding page_footer_row">
+      <ion-col size="12">
+        <ion-radio-group>
+          <ion-item lines="none" class="radio">
+            <ion-label>Deposit From Saving Account : S00004</ion-label> <br>
+            <ion-radio slot="start" class="input_type_radio"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+        <span class="margin_for_element">Available Balance : 50,000.00</span>
+      </ion-col>
+    </ion-row>
+    <div class="page_footer_btn ion-text-center">
+      <button class="gradient_fill_btn large_btn_filled" [routerLink]="['/open-fd-successfull']">Open FD</button>
+    </div>
+  </div>
+</ion-content>
