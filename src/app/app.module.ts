@@ -29,6 +29,7 @@ import { Keyboard } from '@ionic-native/keyboard/ngx';
 import { SMS } from '@ionic-native/sms/ngx';
 import { CommonModule } from '@angular/common';
 import { AddBeneficiaryPage } from './pages/home/beneficiary/add-beneficiary/add-beneficiary.page';
+import { Camera } from '@ionic-native/camera/ngx';
 
 
 
@@ -68,7 +69,8 @@ import { AddBeneficiaryPage } from './pages/home/beneficiary/add-beneficiary/add
     SMS,
     CommonModule,
     BrowserModule,
-    AddBeneficiaryPage 
+    AddBeneficiaryPage ,
+    Camera
     
   ]
 })
