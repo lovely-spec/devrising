@@ -19,6 +19,10 @@ const routes: Routes = [
   {
     path: 'address-details',
     loadChildren: () => import('./address-details/address-details.module').then( m => m.AddressDetailsPageModule)
+  },
+  {
+    path: 'member-kyc-document',
+    loadChildren: () => import('./member-kyc-document/member-kyc-document.module').then( m => m.MemberKycDocumentPageModule)
   }
 ];
 

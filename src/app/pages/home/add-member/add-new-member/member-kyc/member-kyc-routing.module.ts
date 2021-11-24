@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'preview',
     loadChildren: () => import('../preview-details/preview-details.module').then( m => m.PreviewDetailsPageModule)
+  },
+  {
+    path: 'kyc-document',
+    loadChildren: () => import('../member-kyc-document/member-kyc-document.module').then( m => m.MemberKycDocumentPageModule)
   }
 ];
 

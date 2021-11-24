@@ -1,0 +1,31 @@
+<ion-content>
+  <div class="member_kyc_page">
+    <div class="bg_theme comman_page_padding bg_theme_small">
+      <ion-row>
+        <h1>Member KYC</h1>
+      </ion-row>
+    </div>
+    <ion-row class="row_progress">
+      <ion-col>
+        <div class="circle_white relative"><span>1</span></div>
+        <div class="circle_white relative"><span>2</span></div>
+        <div class="circle_purple relative"><span>3</span></div>
+        <div class="circle_purple relative"><span>4</span></div>
+      </ion-col>
+      <ion-progress-bar class=""  value="1"></ion-progress-bar>
+    </ion-row>
+    <div class="comman_page_headline_2">
+      <h2 class="ion-text-left">Member's KYC Details</h2>
+    </div>
+    <div class="comman_page_padding member_kyc_form">
+      <ion-card class="card_purple comman_input_field box_shadow">
+        <div class="add_member_form_btns">
+          <button class="small_btn_gray" [routerLink]="['/address-details/kyc']">Back</button>
+          <button class="gradient_fill_btn small_btn_filled"  [routerLink]="['preview']">Submit</button>
+        </div>
+      </ion-card>
+    </div>
+    <!--===member_kyc_form===-->
+  </div>
+  <!--===member KYC page close-->
+</ion-content>

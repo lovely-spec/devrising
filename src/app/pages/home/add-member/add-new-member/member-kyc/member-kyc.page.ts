@@ -7,6 +7,7 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { Storage } from '@ionic/storage';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { finalize } from 'rxjs/operators';
+import { NavigationExtras, Router } from '@angular/router';
 const STORAGE_KEY = 'my_images';
 @Component({
   selector: 'app-member-kyc',
@@ -32,7 +33,8 @@ export class MemberKycPage implements OnInit {
     private plt: Platform,
      private loadingController: LoadingController,
     private ref: ChangeDetectorRef, 
-    private filePath: FilePath) { 
+    private filePath: FilePath,
+    public router: Router,) { 
     
     }
 
@@ -219,6 +221,11 @@ async uploadImageData(formData: FormData) {
               this.presentToast('File upload failed.')
           }
       });
+}
+next(){
+  let navigationExtras: NavigationExtras = {
+  };
+  this.router.navigate(['/address-details/kyc/kyc-document'], navigationExtras);
 }
 
 }

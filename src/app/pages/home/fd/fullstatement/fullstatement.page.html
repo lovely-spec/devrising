@@ -72,23 +72,20 @@
           <!--===savings_account_details===-->
           <div class="comman_card_details">
             <ion-row class="dotted row" *ngFor= "let FdTransactions of FdTransactions; let i=index">
-              <div *ngIf="show_filter">
-                <div *ngIf="i < 10">
-                    <ion-col size="6">
-                      <span>{{FdTransactions.message}}</span>
-                      <p class="color_brown">{{FdTransactions.payment_mode}}<span class="color_purple">{{FdTransactions.transaction_date}}</span></p>
-                    </ion-col>
-                    <ion-col size="5" class="right_col">
-                      <span>{{FdTransactions.amount.toLocaleString('en-IN')}}</span>
-                      <span>{{FdTransactions.transaction_type}}</span>
-                    </ion-col>
+                  <ion-col size="6">
+                    <span>{{FdTransactions.message}}</span>
+                    <p class="color_brown">{{FdTransactions.payment_mode}} | <span class="color_purple">{{FdTransactions.transaction_date}}</span></p>
+                  </ion-col>
+                  <ion-col size="5" class="right_col">
+                    <span>{{FdTransactions.amount.toLocaleString('en-IN')}}</span>
+                    <span>{{FdTransactions.transaction_type}}</span>
+                  </ion-col>
                     <ion-col size="1">
                     <img class="" src="../../../../../assets/imgs/plus_green.svg">
                    </ion-col>
-              </div>
-            </div>
-              
-            </ion-row>
+          </ion-row>
+          
+    
             <ion-row  *ngFor= "let FdTransactions of FdTransactions; let i=index"> 
             <ion-row class="dotted row" > 
               <div *ngIf="show_filter ==  false">
@@ -108,8 +105,7 @@
               
             </ion-row>
             </ion-row>
-
-          </div>
+            </div>
         </ion-card-content>
       </ion-card>
       <!--===card_purple close===-->

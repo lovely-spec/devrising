@@ -34,10 +34,10 @@
         </ion-item>
         <div class="enter_amount_ field comman_input_field">
           <ion-item lines="none" >
-            <form #form="ngForm" >
+           <!-- <form #form="ngForm"> -->
              <ion-label position="floating">Enter Amount</ion-label>
-             <ion-input required pattern="[0-9]*" [(ngModel)]="amount" name="amount" type="tel" ></ion-input>
-            </form>
+            <ion-input required pattern="[0-9]*" [(ngModel)]="amount" name="amount" type="tel" ></ion-input>
+           <!-- </form> -->
             
           </ion-item>
           <ion-row class="page_checkbox">
@@ -52,7 +52,7 @@
     <ion-row>
       <ion-col>
         <div class="ion-text-center">
-          <button class="gradient_fill_btn large_btn_filled" [routerLink]="['/otppage']">Transfer</button>
+          <button class="gradient_fill_btn large_btn_filled" (click)="transfer_money()">Transfer</button>
         </div>
       </ion-col>
     </ion-row>

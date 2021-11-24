@@ -10,8 +10,9 @@
         <div class="circle_white relative"><span>1</span></div>
         <div class="circle_white relative"><span>2</span></div>
         <div class="circle_purple relative"><span>3</span></div>
+        <div class="circle_purple relative"><span>4</span></div>
       </ion-col>
-      <ion-progress-bar class=""  value="1"></ion-progress-bar>
+      <ion-progress-bar class=""  value="0.75"></ion-progress-bar>
     </ion-row>
     <div class="comman_page_headline_2">
       <h2 class="ion-text-left">Member's KYC Details</h2>
@@ -23,43 +24,8 @@
           <ion-input [(ngModel)]="addhar_no" type="text" class="mobile_cam_icon"></ion-input>
         </ion-item>
         <ion-item lines="none">
-          <ion-list>
-            <ion-item *ngFor="let img of images; index as pos" text-wrap>
-              <ion-thumbnail slot="start">
-                <ion-img [src]="img.path"></ion-img>
-              </ion-thumbnail>
-              <ion-label>
-                {{ img.name }}
-              </ion-label>
-              <ion-button slot="end" fill="clear" (click)="startUpload(img)">
-                <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
-              </ion-button>
-              <ion-button slot="end" fill="clear" (click)="deleteImage(img, pos)">
-                <ion-icon color="danger"slot="icon-only" name="trash">dlt</ion-icon>
-              </ion-button>
-            </ion-item>
-          </ion-list>
-          <ion-button color="primary" fill="clear" expand="full" (click)="selectImage()">Select Image</ion-button>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-label position="floating">Aadhar/ Address Proof (back side)</ion-label>
-          <ion-input type="file" value="addhar_back_img" class="mobile_cam_icon"></ion-input>
-        </ion-item>
-        <ion-item lines="none">
           <ion-label position="floating">Pan No.</ion-label>
           <ion-input  [(ngModel)]="pan_no"  type="text" class="mobile_cam_icon"></ion-input>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-label position="floating">Pan Image</ion-label>
-          <ion-input type="file" value="pan_img" class="mobile_cam_icon"></ion-input>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-label position="floating">Upload Photo (with white background)</ion-label>
-          <ion-input type="file" value="member_img" class="mobile_cam_icon"></ion-input>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-label position="floating">Upload Signature (with white background)</ion-label>
-          <ion-input type="file" value="member_sign" class="mobile_cam_icon"></ion-input>
         </ion-item>
         <div class="comman_page_headline_2 margin_for_headline">
           <h2 class="ion-text-left">Add Nominee</h2>
@@ -86,7 +52,7 @@
         </ion-item>
         <div class="add_member_form_btns">
           <button class="small_btn_gray" [routerLink]="['/address-details']">Back</button>
-          <button class="gradient_fill_btn small_btn_filled" [routerLink]="['preview']">Next</button>
+          <button class="gradient_fill_btn small_btn_filled"  (click)="next()">Next</button>
         </div>
       </ion-card>
     </div>

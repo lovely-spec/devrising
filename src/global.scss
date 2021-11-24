@@ -883,11 +883,11 @@ ion-card.login_card.ios.hydrated {
     margin: auto;
     border-radius: 17px;
 }
-.btn_cover{
+/*.btn_cover{
     position: relative;
     height: 80px;
     width: 100%;
-}
+}*/
 .logo_img.ion-margin.ion-text-center {
     margin-top: 30px;
 }
@@ -1713,7 +1713,7 @@ p.maturity-date, p.maturity-date-view  {
 .swiper-wrapper div img {
   max-width: 100%;
    position: absolute;
-   right: 5px;
+   right: 20px;
    top: 0px;
    margin-top: 7px !important;
    display: inline-block;
@@ -2834,8 +2834,8 @@ button.chat-with-us {
 }
 
 .medium_filled_btn{
-	height: 30px;
-	width: 125px;
+	height: 35px;
+	width: 100px;
 	color: white;
 	font-size: 11px;
 	font-weight: 500;
@@ -2864,7 +2864,7 @@ button.chat-with-us {
 }
 
 .extra_small_gray_btn {
-	height: 23px;
+	height: 30px;
 	width: 76px;
 	font-size: 11px;
 	color: #48026E;
@@ -3120,11 +3120,11 @@ button.chat-with-us {
     top: 0px;
     background: red;
     border-radius: 50%;
-    padding: 0px 7px;
+    padding: 0px 2px 2px 2px;
 }
 
 .bg_theme .notification_bell span{
-    font-size: 14px !important;
+    font-size: 11px !important;
     font-weight: 400 !important;
 }
 
@@ -3500,7 +3500,7 @@ button.chat-with-us {
 }
 
 .payement_page_content .payment_details ion-label{
-	font-size: 14px;
+	font-size: 12px;
 	color: #000000;
 }
 
@@ -4196,8 +4196,8 @@ margin-left: 10px;
 .all_fd_accounts_page ion-card .card_bottom_btns{
 	display: flex;
 	justify-content: space-between;
-	margin-top: 10px;
-    margin-bottom: 16px;
+	margin-top: 10px !important;
+  
 }
 
 .all_rd_accounts_page ion-card .card_bottom_btns button,
