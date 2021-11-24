@@ -71,7 +71,15 @@ export class AddNewMemberPage implements OnInit {
   
   this.number = this.SharedService.getnumber();
   console.log(this.number);
-  this.SharedService.setdata(this.First_name);
+  this.SharedService.setfname(this.First_name);
+  this.SharedService.setlname(this.Last_name);
+  this.SharedService.setftname(this.Father_name);
+  this.SharedService.sethwname(this.Husband_wife_name);
+  this.SharedService.setdob(this.D_O_B);
+  this.SharedService.setms(this.Marital_status);
+  this.SharedService.setoc(this.Occupation);
+  this.SharedService.setftname(this.Email);
+  this.SharedService.setftname(this.gender);
   }
 
 }
