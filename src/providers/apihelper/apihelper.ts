@@ -21,8 +21,8 @@ import { Router } from '@angular/router';
 export class ApihelperProvider {
   
 
-  // private RootURL: string = "http://localhost:3000/api/";
-  private RootURL: string = "https://staging.devrising.in/api/";
+  private RootURL: string = "http://localhost:3000/api/";
+  // private RootURL: string = "https://staging.devrising.in/api/";
   // private RootURL: string = "https://app.devrising.in/api/";
    loading: any;
    HeaderConfig : any = [];
@@ -466,8 +466,29 @@ check_no (number){
 // end
 
 // personal details api 
-personal_details (first_name:string,Last_name:string,Father_name:string,Husband_wife_name:string,D_O_B:string,Marital_status:string,Occupation:string,Email:string,gender:string){
+add_new_member (number:string,first_name:string,Last_name:string,Father_name:string,Husband_wife_name:string,D_O_B:string,Marital_status:string,Occupation:string,Email:string,gender:string,title:string,
+  village_house_town:string,
+  p_o:string,
+  panchayat:string,
+  tehsil:string,
+  distt:string,
+  pin:string,
+  P_village_house_town:string,
+  P_p_o:string,
+  P_panchayat:string,
+  P_tehsil:string,
+  P_distt:string,
+  P_pin:string,
+  addhar_no:string,
+  pan_no:string,
+  nominee_name:string,
+  nominee_f_name:string,
+  nominee_relation:string,
+  nominee_number:string,
+  nominee_address:string,){
   let postData = new FormData();
+  // personal details
+  postData.append('number',number);
   postData.append('First_name',first_name);
   postData.append('Last_name',Last_name);
   postData.append('Father_name',Father_name);
@@ -477,7 +498,32 @@ personal_details (first_name:string,Last_name:string,Father_name:string,Husband_
   postData.append('Occupation',Occupation);
   postData.append('Email',Email);
   postData.append('gender',gender);
-  return this.http.post(this.RootURL + 'member/personal_details',postData,this.HeaderConfig);
+  postData.append('title',title);
+  // address details 
+  postData.append('village_house_town',village_house_town);
+  postData.append('p_o',p_o);
+  postData.append('panchayat',panchayat);
+  postData.append('tehsil',tehsil);
+  postData.append('distt',distt);
+  postData.append('pin',pin);
+  postData.append('P_village_house_town',P_village_house_town);
+  postData.append('P_p_o',P_p_o); 
+  postData.append('P_panchayat',P_panchayat);
+  postData.append('P_tehsil',P_tehsil);
+  postData.append('P_distt',P_distt);
+  postData.append('P_pin',P_pin);
+
+  // kyc details
+
+  postData.append('addhar_no',addhar_no);
+  postData.append('pan_no',pan_no);
+  postData.append('nominee_name',nominee_name);
+  postData.append('nominee_f_name',nominee_f_name);
+  postData.append('nominee_relation',nominee_relation);
+  postData.append('nominee_number',nominee_number);  
+  postData.append('nominee_address',nominee_address); 
+   
+  return this.http.post(this.RootURL + 'member/addmember',postData,this.HeaderConfig);
 }
 check(panchayt){
   let postData = new FormData();

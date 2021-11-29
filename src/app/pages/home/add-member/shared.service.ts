@@ -16,6 +16,7 @@ export class SharedService {
   Occupation:string;
   Email:string;
   gender:string;
+  title:string;
   // address details 
   village_house_town:string;
   p_o:string;
@@ -94,7 +95,13 @@ export class SharedService {
   getgender(){
     return this.gender
   }
-  //address details
+  settitle(data){
+    this.title=data
+  }
+  gettitle(){
+    return this.title
+  }
+  //address{} details
 
   setvht(data){
     this.village_house_town=data
@@ -132,10 +139,10 @@ export class SharedService {
   getpin(){
     return this.pin
   }
-  setpvpt(data){
+  setpvht(data){
     this.P_village_house_town=data
   }
-  getpvpt(){
+  getpvht(){
     return this.P_village_house_town
   }
   setppo(data){
@@ -144,7 +151,7 @@ export class SharedService {
   getppo(){
     return this.P_p_o
   }
-  setfppan(data){
+  setppan(data){
     this.P_panchayat=data
   }
   getppan(){
