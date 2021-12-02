@@ -66,36 +66,39 @@ export class AddressDetailsPage implements OnInit {
       var P_pin = this.P_pin;
       var details = this.show_detail
       var re = /^\d{6}(?:\s*,\s*\d{6})*$/;
-      if (village_house_town==null||village_house_town==''|| p_o==null|| p_o==''||panchayat==null||panchayat==''||tehsil==null||tehsil==''||distt==null||distt==''||pin==null||pin==''){
-            this.provider.show_alert('Please fill all details')
-          }
-          else if (!re.test(pin)){
-            this.provider.show_alert('Please fill correct pin code')
-          }
-          else if (details==true){
-            if (P_village_house_town==null||P_village_house_town==''|| P_p_o==null|| P_p_o==''||P_panchayat==null||P_panchayat==''||P_tehsil==null||P_tehsil==''||P_distt==null||P_distt==''||P_pin==null||P_pin==''){
-              this.provider.show_alert('Please fill Permanent address details')
-            }else if (!re.test(P_pin)){
-              this.provider.show_alert('Please fill correct pin code')
-            }
-          // }else if (details==false ){
-          //   var P_village_house_town = this.village_house_town;
-          //   var P_p_o = this.p_o;
-          //   var P_panchayat = this.panchayat;
-          //   var P_tehsil = this.tehsil;
-          //   var P_distt = this.distt;
-          //   var P_pin = this.pin;
+      // if (village_house_town==null||village_house_town==''|| p_o==null|| p_o==''||panchayat==null||panchayat==''||tehsil==null||tehsil==''||distt==null||distt==''||pin==null||pin==''){
+      //       this.provider.show_alert('Please fill all details')
+      //     }
+      //     else if (!re.test(pin)){
+      //       this.provider.show_alert('Please fill correct pin code')
+      //     }
+      //     else if (details==true){
+      //       if (P_village_house_town==null||P_village_house_town==''|| P_p_o==null|| P_p_o==''||P_panchayat==null||P_panchayat==''||P_tehsil==null||P_tehsil==''||P_distt==null||P_distt==''||P_pin==null||P_pin==''){
+      //         this.provider.show_alert('Please fill Permanent address details')
+      //       }else if (!re.test(P_pin)){
+      //         this.provider.show_alert('Please fill correct pin code')
+      //       }
+      //     // }else if (details==false ){
+      //     //   var P_village_house_town = this.village_house_town;
+      //     //   var P_p_o = this.p_o;
+      //     //   var P_panchayat = this.panchayat;
+      //     //   var P_tehsil = this.tehsil;
+      //     //   var P_distt = this.distt;
+      //     //   var P_pin = this.pin;
+      //     //   let navigationExtras: NavigationExtras = {
+      //     //   };
+      //     //   console.log('paddress',this.P_village_house_town);
+      //     //   this.router.navigate(['/address-details/kyc'], navigationExtras);
+      //     //   // console.log('paddress',this.show_detail);
+      //     }
+          // else {
           //   let navigationExtras: NavigationExtras = {
           //   };
-          //   console.log('paddress',this.P_village_house_town);
           //   this.router.navigate(['/address-details/kyc'], navigationExtras);
-          //   // console.log('paddress',this.show_detail);
-          }
-          else {
-            let navigationExtras: NavigationExtras = {
-            };
-            this.router.navigate(['/address-details/kyc'], navigationExtras);
-          }
+          // }
+          let navigationExtras: NavigationExtras = {
+          };
+          this.router.navigate(['/address-details/kyc'], navigationExtras);
       
       this.SharedService.setvht(this.village_house_town);
       this.SharedService.setpo(this.p_o);

@@ -9,7 +9,7 @@
       <ion-col>
         <div class="circle_white relative"><span>1</span></div>
         <div class="circle_white relative"><span>2</span></div>
-        <div class="circle_purple relative"><span>3</span></div>
+        <div class="circle_white relative"><span>3</span></div>
         <div class="circle_purple relative"><span>4</span></div>
       </ion-col>
       <ion-progress-bar class=""  value="1"></ion-progress-bar>
@@ -19,47 +19,6 @@
     </div>
     <div class="comman_page_padding member_kyc_form">
       <ion-card class="card_purple comman_input_field box_shadow">
-        <ion-list>
-          <ion-item *ngFor="let img of images; index as pos" text-wrap>
-            <ion-thumbnail slot="start">
-              <ion-img [src]="img.path"></ion-img>
-            </ion-thumbnail>
-            <ion-label>
-              {{ img.name }}
-            </ion-label>
-            <ion-button slot="end" fill="clear" (click)="startUpload(img)">
-              <ion-icon slot="icon-only" name="cloud-upload"></ion-icon>
-            </ion-button>
-            <ion-button slot="end" fill="clear" (click)="deleteImage(img, pos)">
-              <ion-icon slot="icon-only" name="trash"></ion-icon>
-            </ion-button>
-          </ion-item>
-        </ion-list>
-        <ion-item color="primary">
-          <ion-button fill="clear" expand="full" color="light" (click)="selectImage()">
-            <ion-icon slot="start" name="camera"></ion-icon>
-            Select Aadhar Front Image </ion-button>
-        </ion-item>
-        <ion-item color="primary">
-          <ion-button fill="clear" expand="full" color="light" (click)="selectImage()">
-            <ion-icon slot="start" name="camera"></ion-icon>
-            Select Aadhar Back-side Image </ion-button>
-        </ion-item>
-        <ion-item color="primary">
-          <ion-button fill="clear" expand="full" color="light" (click)="selectImage()">
-            <ion-icon slot="start" name="camera"></ion-icon>
-            Select Pan Image </ion-button>
-          </ion-item>
-        <ion-item color="primary">
-          <ion-button fill="clear" expand="full" color="light" (click)="selectImage()">
-            <ion-icon slot="start" name="camera"></ion-icon>
-            Selec Member Image </ion-button>
-        </ion-item>
-        <ion-item color="primary">
-          <ion-button fill="clear" expand="full" color="light" (click)="selectImage()">
-            <ion-icon slot="start" name="camera"></ion-icon>
-            Select Member Sign Image </ion-button>
-        </ion-item>
         <div class="add_member_form_btns">
           <button class="small_btn_gray" [routerLink]="['/address-details/kyc']">Back</button>
           <button class="gradient_fill_btn small_btn_filled"  [routerLink]="['preview']">Submit</button>

@@ -219,7 +219,7 @@ export class MemberKycDocumentPage implements OnInit {
   next(){
     let navigationExtras: NavigationExtras = {
     };
-    this.router.navigate(['/address-details/kyc/kyc-document'], navigationExtras);
+    this.router.navigate(['/address-details/kyc/kyc-document/preview'], navigationExtras);
   }
   
   }

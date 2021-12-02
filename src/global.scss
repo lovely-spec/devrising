@@ -3120,7 +3120,7 @@ button.chat-with-us {
     top: 0px;
     background: red;
     border-radius: 50%;
-    padding: 0px 2px 2px 2px;
+    padding: 0px 8px;
 }
 
 .bg_theme .notification_bell span{
@@ -3906,7 +3906,7 @@ input[type='file'] {
   .textarea{
 	  border:1px solid #D2D2D2;
 	  border-radius: 5px;
-		padding-bottom: 70px;
+		padding-bottom: 0px;
 	}
 
   .member_kyc_form{
@@ -4213,4 +4213,52 @@ margin-left: 10px;
     right: 18px;
     top: 11px;
     opacity: 0.05;
+}
+.from
+{
+  width: 100% !important;
+}
+.center_from span
+{
+   
+    font-size: 12px;
+    color: #311b1b!important;
+    text-align: right;
+    line-height: 18px;
+}
+.from_img
+ {
+  border-radius: 50%;
+  width: 30%;
+}
+ion-item.ion-untouched.ion-pristine.ion-valid.item-interactive.item-select.item-has-placeholder.item.md.item-lines-none.ion-activatable.ion-focusable.hydrated
+ {
+  box-shadow: 0 0 9px 0 #00000012;
+  width: 90%;
+  margin: 0 auto 23px;
+  border-radius: 3px;
+  border: none;
+  color: #1d4695;
+  height: 100px;
+  margin: 10px auto 23px!important;
+}
+ion-item.item-interactive.item-select.item-has-placeholder.item.md.item-lines-none.ion-activatable.ion-focusable.hydrated.ion-pristine.ion-valid.ion-touched {
+  box-shadow: 0 0 9px 0 #00000012;
+  width: 90%;
+  margin: 0 auto 23px;
+  border-radius: 3px;
+  border: none;
+  color: #1d4695;
+  height: 100px;
+  margin: 10px auto 23px!important; 
+}
+ion-item.item-interactive.item-select.item-has-placeholder.item.md.item-lines-none.ion-activatable.ion-focusable.hydrated {
+  box-shadow: 0 0 9px 0 #00000012;
+  width: 90%;
+  margin: 0 auto 23px;
+  border-radius: 3px;
+  border: none;
+  color: #1d4695;
+  margin: 10px auto 23px!important;
+  height: 100px;
 }

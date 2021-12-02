@@ -8,6 +8,10 @@ const routes: Routes = [
     path: '',
     component: MenuPage
   },
+  {
+    path: 'member-requests',
+    loadChildren: () => import('./member-requests/member-requests.module').then( m => m.MemberRequestsPageModule)
+  },
   
 ];
 
