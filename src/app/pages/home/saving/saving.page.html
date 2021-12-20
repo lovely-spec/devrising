@@ -172,115 +172,49 @@
           <img class="bell_icon relative" src="../../../../assets/imgs/bell.svg">
         </ion-col>
       </ion-row>
-      <ion-row>
-        <h1 *ngIf="SavingDetails" >{{SavingDetails.account_number}}</h1>
-      </ion-row>
     </div>
     <!--===bg_theme_small End==-->
     <!--===savings accounts page====-->
     <div id="saving-account-page">
-      <div class="comman_page_headline">
-        <h2 *ngIf="SavingDetails" >Available Balance : {{SavingDetails.balance_available.toLocaleString('en-IN')}} /-</h2>
-      </div>
-      <div class="comman_page_padding">
-        <!--===card_purple===-->
-        <ion-card class="card_purple box_shadow">
-          <!--===ion-card-header===-->
-          <ion-card-header class="comman_card_header">
-            <ion-row>
-              <ion-col size="9">
-                <h3>Recent Transaction</h3>
-              </ion-col>
-              <ion-col size="3" class="card_h_icons">
-                <img src="../../../../assets/imgs/calander_icon.svg">
-                <img src="../../../../assets/imgs/pdf_icon.svg">
-              </ion-col>
-            </ion-row>
-          </ion-card-header>
-          <!--===ion-card-content===-->
-          <ion-card-content>
-            <div class="searchbar">
-              <ion-input type="search" placeholder="search....."><img src="../../../../assets/imgs/search_icon.svg">
-              </ion-input>
+      <ion-row class="">
+        <ion-col size="10">
+          <h1 *ngIf="SavingDetails" class="acc">{{SavingDetails.account_number}}</h1>
+          </ion-col>
+          <ion-col size="2">
+            <h2 *ngIf="SavingDetails" class="bal" >Available Balance : {{SavingDetails.balance_available.toLocaleString('en-IN')}} /-</h2>
+          </ion-col>
+          </ion-row>
+          </div>
+          <div class="card_purple">
+          <div class="options-1">
+            <div class="ion-card">
+              <div class="box-1">
+              <h1 class="add"> Add Member</h1>
+              <div class="plus_img" ><img class="plus" src="../../assets/imgs/plus_icon.svg"></div>
             </div>
-            <!--===savings_account_details===-->
-            <div class="comman_card_details">
-              <ion-row class="dotted row">
-                <ion-col size="6">
-                  <span>Cash Deposit</span>
-                  <p class="color_brown">Cash | <span class="color_purple"> 06/06/2020</span></p>
-                </ion-col>
-                <ion-col size="5" class="right_col">
-                  <span>5,0000/-</span>
-                  <span>Balance : 30,000.00</span>
-                </ion-col>
-                <ion-col size="1">
-                  <img class="" src="../../../../assets/imgs/plus_green.svg">
-                </ion-col>
-              </ion-row>
-              <ion-row class="dotted row">
-                <ion-col size="6">
-                  <span>Cash Withdrawal</span>
-                  <p class="color_brown">System | <span class="color_purple"> 06/06/2020</span></p>
-                </ion-col>
-                <ion-col size="5" class="right_col">
-                  <span>5,0000/-</span>
-                  <span>Balance : 25,000.00</span>
-                </ion-col>
-                <ion-col size="1">
-                  <img class="" src="../../../../assets/imgs/minus_red.svg">
-                </ion-col>
-              </ion-row>
-              <ion-row class="dotted row">
-                <ion-col size="6">
-                  <span>Online Transfer</span>
-                  <p class="color_brown">Bank | <span class="color_purple"> 06/06/2020</span></p>
-                </ion-col>
-                <ion-col size="5" class="right_col">
-                  <span>5,0000/-</span>
-                  <span>Balance : 30,000.00</span>
-                </ion-col>
-                <ion-col size="1">
-                  <img class="" src="../../../../assets/imgs/plus_green.svg">
-                </ion-col>
-              </ion-row>
-              <ion-row class="dotted row">
-                <ion-col size="6">
-                  <span>Cash Withdrawal</span>
-                  <p class="color_brown">Cash | <span class="color_purple"> 06/06/2020</span></p>
-                </ion-col>
-                <ion-col size="5" class="right_col">
-                  <span>5,0000/-</span>
-                  <span>Balance : 25,000.00</span>
-                </ion-col>
-                <ion-col size="1">
-                  <img class="" src="../../../../assets/imgs/minus_red.svg">
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col size="12" class="adjust_margin">
-                  <span>Auto Debit EMI - 20 for Other Loan
-                  </span>
-                </ion-col>
-                <ion-col size="6">
-                  <span>A/C No - OL00136.</span>
-                  <p class="color_brown">System | <span class="color_purple"> 06/06/2020</span></p>
-                </ion-col>
-                <ion-col size="5" class="right_col">
-                  <span>5,0000/-</span>
-                  <span>Balance : 30,000.00</span>
-                </ion-col>
-                <ion-col size="1">
-                  <img class="" src="../../../../assets/imgs/plus_green.svg">
-                </ion-col>
-              </ion-row>
             </div>
-          </ion-card-content>
-        </ion-card>
-        <!--===card_purple close===-->
-      </div>
-      <!--===savings accounts page End-->
-    </div>
-  </ion-content>
+            <div class="ion-card">
+              <div class="box-1">
+                <h1 class="add"> RD</h1>
+              <div class="plus_img" ><img class="plus" src="../../assets/imgs/plus_icon.svg"></div>
+            </div>
+            </div>
+            <div class="ion-card">
+              <div class="box-1">
+                <h1 class="add"> FD</h1>
+              <div class="plus_img" ><img class="plus" src="../../assets/imgs/plus_icon.svg"></div>
+            </div>
+            </div>
+            <div class="ion-card">
+              <div class="box-1">
+                <h1 class="add"> Transactions</h1>
+              <div class="plus_img" ><img class="plus" src="../../assets/imgs/plus_icon.svg"></div>
+            </div>
+            </div>
+          
+            
+          </div>
+              </div>
+          </ion-content>
 
- 
+   

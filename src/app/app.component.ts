@@ -37,6 +37,12 @@ export class AppComponent {
       icon: 'heart'
     },
     {
+      title: 'Member Requets',
+      url: '/dashboard/request',
+      iconsrc: './assets/icon/bank-details.svg',
+      icon: 'heart'
+    },
+    {
       title: 'Passbook',
       url: '/dashboard/passbook',
       iconsrc: './assets/icon/Passbook.svg',

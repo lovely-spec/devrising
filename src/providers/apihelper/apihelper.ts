@@ -35,6 +35,7 @@ export class ApihelperProvider {
    GL: any = []; 
    FL: any = []; 
    PL: any = []; 
+   schemes: any = [];
 
 
   constructor(public http: HttpClient, public router: Router, public alertController: AlertController, private toastCtrl: ToastController, public loadingCtrl : LoadingController, private storage: Storage) {
@@ -69,6 +70,16 @@ export class ApihelperProvider {
     let postData = new FormData();
     let data =this.http.post(this.RootURL + 'member/dashboard',postData,this.HeaderConfig);
     return  data;
+  }
+  fd_schemes(){
+    let postData = new FormData();
+    let data =this.http.post(this.RootURL + 'member/fd_schemes',postData,this.HeaderConfig);
+    return  data;
+
+  }
+  scheme_details(data){
+    this.schemes = data.details;
+    return this.schemes;
   }
   User_details(data){
     let response : UserResponse = [];

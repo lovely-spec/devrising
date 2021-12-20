@@ -321,8 +321,7 @@ span.profile_name {
   }
   
   .login_btn {
-    background-image: -webkit-gradient(linear, left top, right top, from(#71aadc), to(#1c408f));
-    background-image: linear-gradient(to right, #71aadc, #1c408f);
+    background-image: linear-gradient(to right, #49026D, #8B09B3) !important;
     border-radius: 33px;
     width: 208px;
     height: 50px;
@@ -330,7 +329,7 @@ span.profile_name {
     
   }
   .login_btn1 {
-    background-image: linear-gradient(to right, #71aadc, #1c408f);
+    background-image: linear-gradient(to right, #49026D, #8B09B3);
     border-radius: 33px;
     width: 85px;
     height: 22px;
@@ -662,8 +661,8 @@ span.profile_name {
   }
   
   .transaction-list {
-    -webkit-box-shadow: 0px 0px 9px -3px lightgrey;
-            box-shadow: 0px 0px 9px -3px lightgrey;
+    border: 1px solid #d9b5ef;
+    box-shadow: 0 0 6px 4px #e9e8e8 !important;
     border-radius: 17px;
     width: 95%;
     margin: 0 auto;
@@ -870,7 +869,7 @@ span.profile_name {
     font-size: 26px;
 }
 .login_btn{
-    background: #1B3E8E;
+    
     color: white;
     border-radius: 80px;
     width: 60%;
@@ -1198,7 +1197,7 @@ h1 {
     margin-bottom: 15px;  
 }
 button.change-password-button {
-  background: #1a3995 !important;
+  background-image: linear-gradient(to right, #49026D, #8B09B3) !important;
   color: white !important;
 }
 .transaction-view-button {
@@ -1214,7 +1213,7 @@ button.change-password-button {
 
 
 button.white-button {
-    padding: 9px 30px;
+    padding: 15px 30px;
     background: white;
     font-size: 20px;
     color: #1D4695;
@@ -1224,6 +1223,7 @@ button.white-button {
     margin: 0 auto;
     display: block;
     margin-top: 38px;
+    border-radius: 25px;
 }
 
 
@@ -2746,7 +2746,7 @@ button.chat-with-us {
 
 #filter{
   color: white;
-  background: #15338e;
+  background-image: linear-gradient(to right, #49026D, #8B09B3);
   padding: 8px 21px;
   border: none;
   font-size: 11px;
@@ -2826,6 +2826,7 @@ button.chat-with-us {
 	font-weight: 400;
 	font-size: 14px;
 	width: 100%;
+  margin-bottom: 10px;
 }
 
 .gradient_fill_btn {
@@ -2867,21 +2868,22 @@ button.chat-with-us {
 	height: 30px;
 	width: 76px;
 	font-size: 11px;
-	color: #48026E;
+	color: #fff;
 	font-weight: 400;
 	border-radius: 50px;
-	background-color: white;
-	border: 1px solid #ADADAD;
+  background-image: linear-gradient( 90deg,#49026d,#8b09b3);
+    border: 1px solid #8f09b8;
+
 }
 
 .large_gray_btn {
 	height: 36px;
 	width: 199px;
 	border-radius: 50px;
-	border: 1px solid #ADADAD;
 	font-size: 16px;
-	color: #48026E;
-	background-color: white;
+	color: #fff;
+	background-color: white;background-image: linear-gradient( 90deg,#49026d,#8b09b3);
+  border: 1px solid #8f09b8;
 }
 
 .extra_large_btn_gray{
@@ -3270,7 +3272,7 @@ button.chat-with-us {
   left: 30px!important;
 }
 .account_details_card .right_side {
-	padding-left: 35px;
+	padding-left: 50px;
 	line-height: 15px;
 }
 
@@ -3537,7 +3539,7 @@ button.chat-with-us {
 }
 
 .beneficiaries_page .benf_page_content h3{
-	font-size: 16px;
+	font-size: 13px;
 	color: #212121;
 	text-align: center;
 	margin: 0;
@@ -3610,7 +3612,6 @@ button.chat-with-us {
 	font-size: 10px;
 	font-weight: 400;
   overflow: hidden !important;
-  width: 100px !important;
   text-overflow: ellipsis !important;
 }
 
@@ -3668,7 +3669,7 @@ button.chat-with-us {
 }
 
 .rd_fd_amt_details p {
-	font-size: 14px;
+	font-size: 12px;
 	margin: 1px 0;
 }
 
@@ -3708,7 +3709,7 @@ button.chat-with-us {
 }
 
 .radio ion-label {
-	font-size: 13px !important;
+	font-size: 12px !important;
 	font-weight: 400 !important;
 	color: #6D6D6D !important;
 }
@@ -3719,7 +3720,7 @@ button.chat-with-us {
 }
 
 .page_footer_row span {
-	font-size: 13px;
+	font-size: 12px;
 	font-weight: 400;
 	color: #6D6D6D;
 }
@@ -3920,6 +3921,7 @@ input[type='file'] {
 	font-size: 16px;
 	color: #5A5A5A;
 	font-weight: 500;
+  text-align: center !important;
 }
 
 
@@ -4261,4 +4263,110 @@ ion-item.item-interactive.item-select.item-has-placeholder.item.md.item-lines-no
   color: #1d4695;
   margin: 10px auto 23px!important;
   height: 100px;
+}
+h1.title-1 
+{
+  font-family: Montserrat,sans-serif;
+  font-size: 25px!important;
+  font-weight: 900;
+  text-align: center;
+  color: #000;
+}
+p.title-3 {
+  color: #000;
+  font-family: Montserrat,sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  text-align: center;
+}
+h1.acc
+{
+    color: #000;
+    font-family: Montserrat,sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+    text-align: left;
+
+}
+h2.bal
+{
+  color: #000;
+    font-family: Montserrat,sans-serif;
+    font-size: 10px !important;
+    font-size: 10px !important;
+    font-weight: 400;
+}
+.box-1
+{
+  
+  border: 1px solid #d9b5ef;
+  box-shadow: 0 2px 17px 4px #dbd9d9;
+  border-radius: 18px;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+ 
+}
+.options-1 {
+  padding: 50px 50px;
+
+}
+
+h1.add
+{
+    color: #000;
+    font-family: Montserrat,sans-serif;
+    font-size: 20px !important;
+    font-weight: 900;
+    text-align: center;
+}
+
+.plus_img {
+  text-align: center;
+}
+ion-card.card-1.md.hydrated
+{
+  border: 1px solid #d9b5ef;
+  box-shadow: 0 2px 17px 4px #dbd9d9;
+  border-radius: 18px;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+}
+h1.title-row{
+  font-weight: bold;
+  font-size: 15px !important;
+  color: #000;
+}
+h1.ap {
+  font-size: 14px !important;
+    font-weight: 500;
+    color: #000;
+}
+h1.ap-1 {
+  color: green;
+  font-size: 14px!important;
+}
+h1.pe-1 {
+  color: blue;
+  font-size: 14px!important;
+}
+h1.dis-1 {
+  color: red;
+  font-size: 14px!important;
+}
+ion-row.pe.md.hydrated {
+  font-size: 13px;
+  font-weight: 500;
+}
+ion-row.dis.md.hydrated {
+  font-size: 13px;
+  font-weight: 500;
+}
+ion-col.ap-1.md.hydrated {
+  color: green;
+}
+ion-col.pe-1.md.hydrated {
+  color: #1d4695;
+}
+ion-col.dis-1.md.hydrated {
+  color: red;
 }

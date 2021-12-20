@@ -53,7 +53,7 @@
 <hr/>
 <ion-list *ngIf="Response.length != 0" class="ion-text-center">
   <p class="instruction">Click on account number to see transactions</p>
-<ion-button *ngFor="let Response of Response"  size="small" (click)="account_click(Response.type, Response.slug)" shape="round">{{Response.account_number}}</ion-button>
+<ion-button *ngFor="let Response of Response"  size="small" (click)="account_click(Response.type, Response.slug)" shape="round" color="btn">{{Response.account_number}}</ion-button>
 </ion-list>
 <div class="main_div" *ngIf="Response.length != 0">
   <div *ngIf="Transactions.length == 0 || Transactions == '' ">

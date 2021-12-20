@@ -24,17 +24,17 @@
       <div class="payment_details">
         <ion-item lines="none" class="dotted">
           <ion-row class="from">
-          <ion-col size="4">
-       <!---<ion-avatar slot="start">-->
-            <img src="../../../../../assets/imgs/profile_image.png" alt="avatar.png" class="from_img">
-       <!-- </ion-avatar>-->
+            <ion-col size="4">
+         <!---<ion-avatar slot="start">-->
+              <img src="../../../../../assets/imgs/profile_image.png" alt="avatar.png" class="from_img">
+         <!-- </ion-avatar>-->
           <ion-label class="name" *ngIf="bene_data">{{bene_data.name}}</ion-label>
+        </ion-col>
+        <ion-col size="4" class="center_from">
+               <span class="from_text">From</span><br>
+               <span class="from_text">To</span>
           </ion-col>
-          <ion-col size="4" class="center_from">
-                 <span class="from_text">From</span><br>
-                 <span class="from_text">To</span>
-            </ion-col>
-            <ion-col size="4" class="right_from">
+          <ion-col size="4" class="right_from">
           <div class="left_bar">
             <span>Dev Rising Nidhi Ltd.</span>
             <span *ngIf="bene_data">{{bene_data.account_no}}</span>

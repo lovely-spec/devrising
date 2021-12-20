@@ -42,6 +42,10 @@ const routes: Routes = [
         path: 'tandc',
         loadChildren: () => import('../menu/tandc/tandc.module').then(m => m.TandcPageModule)
       },
+      {
+        path: 'request',
+        loadChildren: () => import('../menu/member-requests/member-requests.module').then(m => m.MemberRequestsPageModule)
+      },
       // End Routes For Menu Bar
 
       {
