@@ -223,8 +223,6 @@
         </ion-row>
         <ion-card   class="account_details_card card_purple" *ngIf="Rdresponse">
         <ion-card  class="account_details_card card_purple"  *ngFor="let RdResponse of Rdresponse;let i=index">
-        <ion-card  class="account_details_card card_purple"  *ngif="RdResponse">
-        </ion-card>
           <ion-row>
             <ion-col size="3">
               <div class="circle ion-text-center">
@@ -372,8 +370,8 @@
               [ngStyle]="{'visibility':isthisbtnshow? 'visible' : 'hidden'}">Full Statement</button>
               <button class="medium_filled_btn gradient_fill_btn" [routerLink]="['fullstatement']"
               [ngStyle]="{'visibility':isthisbtnshow? 'visible' : 'hidden'}">Deposit Installment</button>
-            <button class="extra_small_gray_btn" (click)="accordionShow()"
-              (click)="change_text()">{{changed_text}}</button>
+            <button type="button" class="extra_small_gray_btn" (click)="accordionShow()"
+              (click)="change_text()" id={{RdResponse.account_number}}>{{changed_text}}</button>
           </div>
           
           <div ><div class="progressbar">

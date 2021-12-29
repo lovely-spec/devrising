@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'fd-open-successfully',
     loadChildren: () => import('../fd-open-successfully/fd-open-successfully.module').then( m => m.FdOpenSuccessfullyPageModule)
+  },
+  {
+    path: 'add-minor',
+    loadChildren: () => import('../../../add-minor/add-minor.module').then( m => m.AddMinorPageModule)
   }
 ];
 

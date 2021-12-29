@@ -1,0 +1,69 @@
+<ion-content>
+  <div class="add_minor_page">
+    <div class="bg_theme bg_theme_small comman_page_padding">
+      <ion-row class="">
+        <ion-col size="10">
+          <img src="../../../../assets/imgs/back-button.svg" />
+        </ion-col>
+        <ion-col size="2">
+          <div class="notification_numbur"><span class="">12</span></div>
+          <img class="bell_icon" src="../../../../assets/imgs/bell.svg" />
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <h1>Add Minor</h1>
+      </ion-row>
+    </div>
+    <div class="add_minor_form">
+      <div class="comman_page_headline_2 ion-text-center">
+        <h2>Add Minor Details</h2>
+      </div>
+      <div class="comman_page_padding">
+        <ion-card class="card_purple box_shadow comman_input_field">
+          <ion-item lines="none">
+            <ion-label position="floating">Enter First Name</ion-label>
+            <ion-input type="text" [(ngModel)]="first_name"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="floating">Last Name</ion-label>
+            <ion-input type="text"[(ngModel)]="last_name"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="floating">Father Name</ion-label>
+            <ion-input type="text" [(ngModel)]="father_name"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-label position="floating">Date of Birth</ion-label>
+            <ion-input type="number" ><ion-datetime  placeholder="Select Date" [(ngModel)]="d_o_b" class="actual-time-label" ></ion-datetime></ion-input>
+          </ion-item>
+          <ion-radio-group class="gender_radio_inputs" [(ngModel)]="gender">
+            <ion-item lines="none" class="radio">
+              <ion-label>Male</ion-label> <br />
+              <ion-radio slot="start" class="input_type_radio" value="male"></ion-radio>
+            </ion-item>
+            <ion-item lines="none" class="radio">
+              <ion-label>Female</ion-label> <br />
+              <ion-radio slot="start" class="input_type_radio" value="female"></ion-radio>
+            </ion-item>
+            <ion-item lines="none" class="radio">
+              <ion-label>Others</ion-label> <br />
+              <ion-radio slot="start" class="input_type_radio" value="other"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+          <ion-item lines="none">
+            <ion-label position="floating">Aadhar No.</ion-label>
+            <ion-input type="number" [(ngModel)]="aadhar_no" ></ion-input>
+          </ion-item>
+          <ion-item lines="none" class="textarea_input">
+            <ion-label position="floating" value="address">Address</ion-label>
+            <ion-input type="text" [(ngModel)]="address" ></ion-input>
+          </ion-item>
+          <div class="add_minor_form_btns">
+            <button class="small_btn_gray"  [routerLink]="['/dashboard/home/fdview/add-new-fd']">Back</button>
+            <button class="gradient_fill_btn small_btn_filled" (click)="add_minor()">Next</button>
+          </div>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+</ion-content>

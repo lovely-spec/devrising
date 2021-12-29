@@ -20,14 +20,16 @@
       <h2>Fill Details Below</h2>
     </div>
     <div class="rd_fd_form comman_page_padding">
-      <ion-item lines="none">
-        <ion-select class="custom-options" placeholder="Select Scheme*">
-          <ion-select-option value="brown">1 year</ion-select-option>
-          <ion-select-option value="blonde">2 Year</ion-select-option>
-          <ion-select-option value="black">3 year</ion-select-option>
-          <ion-select-option value="red">5 Year</ion-select-option>
+      <ion-item lines="none" *ngIf="schemesdetails">
+        <ion-select class="custom-options" placeholder="Select Scheme*" >
+          <ion-select-option  *ngFor="let schemesdetail of schemesdetails;let i=index" value={{schemesdetail.id}} required>  {{schemesdetail.scheme_name}}, Time Period {{schemesdetail.period}}, {{schemesdetail.tenure_type}} </ion-select-option>
         </ion-select>
       </ion-item>
+      <!-- <ion-row><ion-item lines="none" >
+        <ion-col > 
+
+        </ion-col>
+      </ion-item></ion-row> -->
       <ion-item lines="none">
         <ion-label position="floating">FD Amount*</ion-label>
         <ion-input type="text"></ion-input>
@@ -35,18 +37,19 @@
       <div class="address_confirmation">
         <p>Nominee Available</p>
         <div>
-          <ion-radio-group class="adress_radio_input">
+          <ion-radio-group class="adress_radio_input" style="display: flex;">
             <ion-item lines="none" class="radio">
-              <ion-label>Yes</ion-label> <br>
-              <ion-radio slot="start"   class="input_type_radio"></ion-radio>
+              <ion-label>Yes</ion-label> 
+              <ion-radio slot="start"   class="input_type_radio" (click)=showform(2)></ion-radio>
             </ion-item>
             <ion-item lines="none" class="radio">
-              <ion-label>NO</ion-label> <br>
-              <ion-radio slot="start"  class="input_type_radio"></ion-radio>
+              <ion-label>NO</ion-label> 
+              <ion-radio slot="start"  class="input_type_radio" (click)=showform(1)></ion-radio>
             </ion-item>
           </ion-radio-group>
         </div>
       </div>
+      <div class="slider_form" *ngIf=show_detail>
       <ion-item lines="none">
         <ion-label position="floating">Enter Nominee Name*</ion-label>
         <ion-input type="text"></ion-input>
@@ -59,20 +62,33 @@
         <ion-label position="floating">Nominee Address*</ion-label>
         <ion-input type="text"></ion-input>
       </ion-item>
-      <ion-item lines="none">
+    </div>
+    <div>
+      <ion-radio-group class="adress_radio_input" style="display: flex;">
+        <ion-item lines="none" class="radio">
+          <ion-label>Yes</ion-label> 
+          <ion-radio slot="start"   class="input_type_radio" (click)=showform1(2)></ion-radio>
+        </ion-item>
+        <ion-item lines="none" class="radio">
+          <ion-label>NO</ion-label> 
+          <ion-radio slot="start"  class="input_type_radio" (click)=showform1(1)></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </div>
+    <p>Fd for Minor</p>
+    <div class="slider_form" *ngIf=form >
+      <ion-item lines="none"*ngIf="minordetails">
         <ion-select class="custom-options" placeholder="Select Minor (if any)">
-          <ion-select-option value="brown">1 year</ion-select-option>
-          <ion-select-option value="blonde">2 Year</ion-select-option>
-          <ion-select-option value="black">3 year</ion-select-option>
-          <ion-select-option value="red">5 Year</ion-select-option>
+          <ion-select-option *ngFor="let minordetail of minordetails;let i=index" value={{minordetail.id}}>{{minordetail.first_name}} {{minordetail.last_name}}</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-row>
         <ion-col size="12">
-          <button class="extra_small_gray_btn" [routerLink]="['/add-minor-fd']" routerLinkActive="router-link-active">Add
+          <button class="extra_small_gray_btn" (click)="add_minor()">Add
             Minor</button>
         </ion-col>
       </ion-row>
+    </div>
       <ion-row>
         <ion-col size="12" class="calc_maturity">
           <button class="large_gray_btn">Calculate Maturity</button>

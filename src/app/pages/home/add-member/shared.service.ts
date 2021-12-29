@@ -30,7 +30,21 @@ export class SharedService {
   P_tehsil:string;
   P_distt:string;
   P_pin:string;
+  fd:boolean;
+  rd:boolean;
   constructor() { }
+  setfd(data){
+  this.fd=data
+  }
+  getfd(){
+    return this.fd
+  }
+  setrd(data){
+    this.rd=data
+  }
+  getrd(){
+        return this.rd
+  }
   setdata(data){
     this.filterdata=data
   }

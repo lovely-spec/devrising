@@ -16,6 +16,7 @@ export class MemberKycPage implements OnInit {
   nominee_relation:string;
   nominee_number:string;
   nominee_address:string;
+  nominee_aadhar:string;
   number:string;
   
   constructor(
@@ -85,35 +86,36 @@ next(){
       var nominee_relation = this.nominee_relation;
       var nominee_number = this.nominee_number;
       var nominee_address = this.nominee_address;
+      var nominee_aadhar = this.nominee_aadhar;
       var re = /^\d{12}(?:\s*,\s*\d{12)*$/;
       var pan = /[A-Z]{5}[0-9]{4}[A-Z]{1}/;
   console.log('fname',first_name,Last_name,Father_name,Marital_status,Occupation,D_O_B,title);
-  // if (addhar_no==null||addhar_no==''|| pan_no==null|| pan_no==''||nominee_name==null||nominee_name==''||nominee_f_name==null||nominee_f_name==''||nominee_relation==null||nominee_relation==''||nominee_number==null||nominee_number==''||nominee_address==null||nominee_address==''){
-  //         this.provider.show_alert('Please fill all details')
+  if (addhar_no==null||addhar_no==''|| pan_no==null|| pan_no==''||nominee_name==null||nominee_name==''||nominee_f_name==null||nominee_f_name==''||nominee_relation==null||nominee_relation==''||nominee_number==null||nominee_number==''||nominee_address==null||nominee_address==''){
+          this.provider.show_alert('Please fill all details')
         
-  //  if (!re.test(addhar_no)){
-  //         this.provider.show_alert('Please fill correct Aadhar No')
-  //       }
-  //      else if (!pan.test(pan_no)){
-  //         this.provider.show_alert('Please fill correct Pan No')
-  //       }
-  //     }else{this.provider.add_new_member(number,first_name,Last_name,Father_name,Husband_wife_name,D_O_B,Marital_status,Occupation,Email,gender,title,village_house_town,p_o,panchayat,tehsil,distt,pin,P_village_house_town,P_p_o,P_panchayat,P_tehsil,P_distt,P_pin,addhar_no,pan_no,nominee_name,nominee_f_name,nominee_relation,nominee_number,nominee_address).subscribe(data=>{
-  //       console.log('response',data)
-  //       if(data['status'] == true){
-  //         let navigationExtras: NavigationExtras = {
+   if (!re.test(addhar_no)){
+          this.provider.show_alert('Please fill correct Aadhar No')
+        }
+       else if (!pan.test(pan_no)){
+          this.provider.show_alert('Please fill correct Pan No')
+        }
+      }else{this.provider.add_new_member(number,first_name,Last_name,Father_name,Husband_wife_name,D_O_B,Marital_status,Occupation,Email,gender,title,village_house_town,p_o,panchayat,tehsil,distt,pin,P_village_house_town,P_p_o,P_panchayat,P_tehsil,P_distt,P_pin,addhar_no,pan_no,nominee_name,nominee_f_name,nominee_relation,nominee_number,nominee_address,nominee_address,).subscribe(data=>{
+        console.log('response',data)
+        if(data['status'] == true){
+          let navigationExtras: NavigationExtras = {
             
-  //         };
-  //         this.router.navigate(['add-new-member'], navigationExtras);
+          };
+          this.router.navigate(['/address-details/kyc/kyc-document'], navigationExtras);
 
-  //     }else{
-  //     this.provider.show_alert(data['message'])
-  //   }
-  //     })
+      }else{
+      this.provider.show_alert(data['message'])
+    }
+      })
 
-  //       }
-  let navigationExtras: NavigationExtras = {
-  };
-  this.router.navigate(['/address-details/kyc/kyc-document'], navigationExtras);
+        }
+  // let navigationExtras: NavigationExtras = {
+  // };
+  // this.router.navigate(['/address-details/kyc/kyc-document'], navigationExtras);
 }
 
 }

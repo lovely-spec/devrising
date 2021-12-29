@@ -36,6 +36,8 @@ export class ApihelperProvider {
    FL: any = []; 
    PL: any = []; 
    schemes: any = [];
+   rdschemes: any = [];
+   minors: any = [];
 
 
   constructor(public http: HttpClient, public router: Router, public alertController: AlertController, private toastCtrl: ToastController, public loadingCtrl : LoadingController, private storage: Storage) {
@@ -80,6 +82,25 @@ export class ApihelperProvider {
   scheme_details(data){
     this.schemes = data.details;
     return this.schemes;
+  }
+  rd_schemes(){
+    let postData = new FormData();
+    let data =this.http.post(this.RootURL + 'member/rdschemes',postData,this.HeaderConfig);
+    return  data;
+
+  }
+  rd_scheme_details(data){
+    this.rdschemes = data.details;
+    return this.rdschemes;
+  }
+  minor(){
+    let postData = new FormData();
+    let data =this.http.post(this.RootURL + 'member/minors',postData,this.HeaderConfig);
+    return  data;
+  }
+  minor_details(data){
+    this.minors = data.details;
+    return this.minors;
   }
   User_details(data){
     let response : UserResponse = [];
@@ -496,7 +517,8 @@ add_new_member (number:string,first_name:string,Last_name:string,Father_name:str
   nominee_f_name:string,
   nominee_relation:string,
   nominee_number:string,
-  nominee_address:string,){
+  nominee_address:string,
+  nominee_aadhar:string,){
   let postData = new FormData();
   // personal details
   postData.append('number',number);
@@ -533,8 +555,30 @@ add_new_member (number:string,first_name:string,Last_name:string,Father_name:str
   postData.append('nominee_relation',nominee_relation);
   postData.append('nominee_number',nominee_number);  
   postData.append('nominee_address',nominee_address); 
+  postData.append('nominee_aadhar',nominee_aadhar); 
    
   return this.http.post(this.RootURL + 'member/addmember',postData,this.HeaderConfig);
+}
+add_minor(father_name:string,
+  first_name:string,
+  last_name:string,
+  d_o_b:string,
+  gender:string,
+  address:string,
+  tittle:string,
+  aadhar_no:string){
+    let postData = new FormData()
+
+  
+  postData.append('first_name',first_name);
+  postData.append('last_name',last_name);
+  postData.append('father_name',father_name);
+  postData.append('d_o_b',d_o_b);
+  postData.append('address',address);
+  postData.append('aadhar_no',aadhar_no);
+  postData.append('gender',gender);
+  postData.append('tittle',tittle);
+  return this.http.post(this.RootURL + 'member/addminor',postData,this.HeaderConfig);
 }
 check(panchayt){
   let postData = new FormData();

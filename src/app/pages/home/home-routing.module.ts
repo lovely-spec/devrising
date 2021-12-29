@@ -54,6 +54,10 @@ const routes: Routes = [
   {
     path: 'quick-links',
     loadChildren: () => import('./quick-links/quick-links.module').then( m => m.QuickLinksPageModule)
+  },
+  {
+    path: 'add-minor',
+    loadChildren: () => import('./add-minor/add-minor.module').then( m => m.AddMinorPageModule)
   }
 
 
