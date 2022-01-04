@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: 'add-minor',
     loadChildren: () => import('../../../add-minor/add-minor.module').then( m => m.AddMinorPageModule)
+  },
+  {
+    path: 'schemes',
+    loadChildren: () => import('../../../schemes/schemes-routing.module').then( m => m.SchemesPageRoutingModule)
   }
 ];
 

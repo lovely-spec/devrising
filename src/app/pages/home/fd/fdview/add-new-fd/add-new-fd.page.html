@@ -19,10 +19,16 @@
     <div class="comman_page_headline">
       <h2>Fill Details Below</h2>
     </div>
+    <ion-row>
+      <ion-col size="7"></ion-col>
+      <ion-col size="5">
+        <button  class="small_btn_filled gradient_fill_btn" (click)="schemes()" >FD Schemes</button>
+      </ion-col>
+    </ion-row>
     <div class="rd_fd_form comman_page_padding">
       <ion-item lines="none" *ngIf="schemesdetails">
-        <ion-select class="custom-options" placeholder="Select Scheme*" >
-          <ion-select-option  *ngFor="let schemesdetail of schemesdetails;let i=index" value={{schemesdetail.id}} required>  {{schemesdetail.scheme_name}}, Time Period {{schemesdetail.period}}, {{schemesdetail.tenure_type}} </ion-select-option>
+        <ion-select class="custom-options" placeholder="Select Scheme*" [(ngModel)]="scheme" >
+          <ion-select-option  *ngFor="let schemesdetail of schemesdetails;let i=index" value={{schemesdetail.id}} required>  {{schemesdetail.scheme_name}}</ion-select-option>
         </ion-select>
       </ion-item>
       <!-- <ion-row><ion-item lines="none" >
@@ -32,12 +38,12 @@
       </ion-item></ion-row> -->
       <ion-item lines="none">
         <ion-label position="floating">FD Amount*</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="amount"></ion-input>
       </ion-item>
       <div class="address_confirmation">
         <p>Nominee Available</p>
         <div>
-          <ion-radio-group class="adress_radio_input" style="display: flex;">
+          <ion-radio-group class="adress_radio_input" style="display: flex;" [(ngModel)]="is_nominee">
             <ion-item lines="none" class="radio">
               <ion-label>Yes</ion-label> 
               <ion-radio slot="start"   class="input_type_radio" (click)=showform(2)></ion-radio>
@@ -52,19 +58,21 @@
       <div class="slider_form" *ngIf=show_detail>
       <ion-item lines="none">
         <ion-label position="floating">Enter Nominee Name*</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="n_name"></ion-input>
       </ion-item>
       <ion-item lines="none">
         <ion-label position="floating">Relation with Nominee*</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="rel_nomineee"></ion-input>
       </ion-item>
       <ion-item lines="none">
         <ion-label position="floating">Nominee Address*</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="a_nominee"></ion-input>
       </ion-item>
     </div>
-    <div>
-      <ion-radio-group class="adress_radio_input" style="display: flex;">
+    
+    <div class="address_confirmation">
+      <p>Fd for Minor</p>
+      <ion-radio-group class="adress_radio_input" style="display: flex;" [(ngModel)]="is_minor">
         <ion-item lines="none" class="radio">
           <ion-label>Yes</ion-label> 
           <ion-radio slot="start"   class="input_type_radio" (click)=showform1(2)></ion-radio>
@@ -75,10 +83,10 @@
         </ion-item>
       </ion-radio-group>
     </div>
-    <p>Fd for Minor</p>
+    
     <div class="slider_form" *ngIf=form >
       <ion-item lines="none"*ngIf="minordetails">
-        <ion-select class="custom-options" placeholder="Select Minor (if any)">
+        <ion-select class="custom-options" placeholder="Select Minor (if any)" [(ngModel)]="minor">
           <ion-select-option *ngFor="let minordetail of minordetails;let i=index" value={{minordetail.id}}>{{minordetail.first_name}} {{minordetail.last_name}}</ion-select-option>
         </ion-select>
       </ion-item>
@@ -91,7 +99,7 @@
     </div>
       <ion-row>
         <ion-col size="12" class="calc_maturity">
-          <button class="large_gray_btn">Calculate Maturity</button>
+          <button class="large_gray_btn" (click)="calculate()">Calculate Maturity</button>
         </ion-col>
       </ion-row>
     </div>
@@ -113,15 +121,15 @@
         </ion-col>
       </ion-row>
     </div>
-    <ion-row class="comman_page_padding page_footer_row">
-      <ion-col size="12">
+    <ion-row class="comman_page_padding page_footer_row" *ngIf="SavingDetails">
+      <ion-col size="12" *ngFor="let SavingDetails of SavingDetails;let i=index">
         <ion-radio-group>
           <ion-item lines="none" class="radio">
-            <ion-label>Deposit From Saving Account : S00004</ion-label> <br>
+            <ion-label >Deposit From Saving Account : {{SavingDetails.account_number}}</ion-label> <br>
             <ion-radio slot="start" class="input_type_radio"></ion-radio>
           </ion-item>
         </ion-radio-group>
-        <span class="margin_for_element">Available Balance : 50,000.00</span>
+        <span class="margin_for_element">Available Balance :  {{SavingDetails.balance_available}}</span>
       </ion-col>
     </ion-row>
     <div class="page_footer_btn ion-text-center">

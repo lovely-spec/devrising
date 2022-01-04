@@ -14,7 +14,7 @@ import { NavigationExtras, Router } from '@angular/router';
 export class AddNewRdPage implements OnInit {
   public UserResponse: UserResponse;
   savingdata: any;
-  SavingDetails: any = [];
+  SavingDetails: any ;
   MemberSavingResponse: MemberSavingResponse;
   schemesdetails: any= [];
   minordetails: any= [];
@@ -36,7 +36,7 @@ export class AddNewRdPage implements OnInit {
     this.provider.UserPanel().subscribe(data=>{
       this.UserResponse = this.provider.User_details(data);
       if(this.UserResponse){
-        this.SavingDetails = []
+        
         this.SavingDetails = this.UserResponse.Saving;
       }
       console.log('FD',this.SavingDetails)
@@ -49,6 +49,7 @@ export class AddNewRdPage implements OnInit {
       this.minordetails = this.provider.minor_details(data);
       console.log('minors',this.minordetails);
     });
+    this.shared.setrd(this.rd);
   }
   ngOnInit() {
     this.show_detail = false;
@@ -71,10 +72,17 @@ export class AddNewRdPage implements OnInit {
     } 
   }
   add_minor(){
-    this.shared.setfd(this.rd);
+    this.shared.setrd(this.rd);
     console.log(this.rd);
     let navigationExtras: NavigationExtras = {
         };
         this.router.navigate(['/dashboard/home/rdview/add-new-rd/add-minor'], navigationExtras);
+  }
+  schemes(){
+    this.shared.setrd(this.rd);
+    let navigationExtras: NavigationExtras = {
+    };
+    this.router.navigate(['/dashboard/home/rdview/add-new-rd/schemes'], navigationExtras);
+
   }
 }

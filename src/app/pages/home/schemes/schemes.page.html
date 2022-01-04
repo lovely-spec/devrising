@@ -1,0 +1,94 @@
+<ion-content>
+  <div class="all_rd_accounts_page">
+    <!--===bg_theme_small===-->
+    <div class="bg_theme bg_theme_small comman_page_padding">
+      <ion-row class="">
+        <ion-col size="10">
+          <a (click)="back()"><img src="../../../../assets/imgs/back-button.svg"></a>
+        </ion-col>
+        <ion-col size="2">
+          <div class="notification_numbur"> <span class="">12</span></div>
+          <img class="bell_icon relative" src="../../../../assets/imgs/bell.svg">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <h1>Schemes</h1>
+      </ion-row>
+    </div>
+    <!--===bg_theme_small End==-->
+    <div *ngIf="rd == true">
+    <div >
+      <h2>RD Schemes</h2>
+      </div>
+      <ion-card  class="account_details_card card_purple" *ngFor="let schemesdetail of rdschemesdetails;let i=index" >
+        <ion-row>
+          <ion-col size="3">
+            <div class="circle ion-text-center">
+              <img src="../../../../assets/imgs/RD Icon.svg">
+            </div>
+          </ion-col>
+          <ion-col size="9" class="right_side">
+            <div class="card_header flex">
+              <span>Scheme Name</span>
+              <span class="rd_number">: {{schemesdetail.scheme_name}}</span>
+              <!-- <img class="plus_icon" src="../../assets/images/plus_icon.svg"> -->
+            </div>
+            <div class="amount_details clearfix">
+              <div class="text_left">
+                <span>Interest Rate</span>
+                <span>Time Period</span>
+                <span>Minumum Amount</span>
+              </div>
+              <div class="right_bar">
+                <span>: {{schemesdetail.interest_rate}}</span>
+                <span>: {{schemesdetail.period}} {{schemesdetail.tenure_type}}</span>
+                <span>: {{schemesdetail.min_amount}}</span>
+              </div>
+            </div>
+          </ion-col>
+          <span class="background_font_faded">RD</span>
+        </ion-row>
+      
+      </ion-card>
+    </div>
+    <div *ngIf="fd == true">
+    <div>
+    <h2>FD Schemes</h2>
+    </div>
+    <ion-card  class="account_details_card card_purple" *ngFor="let schemesdetail of schemesdetails;let i=index" >
+      <ion-row>
+        <ion-col size="3">
+          <div class="circle ion-text-center">
+            <img src="../../../../assets/imgs/RD Icon.svg">
+          </div>
+        </ion-col>
+        <ion-col size="9" class="right_side">
+          <div class="card_header flex">
+            <span>Scheme Name</span>
+            <span class="rd_number">: {{schemesdetail.scheme_name}}</span>
+            <!-- <img class="plus_icon" src="../../assets/images/plus_icon.svg"> -->
+          </div>
+          <div class="amount_details clearfix">
+            <div class="text_left">
+              <span>Interest Rate</span>
+              <span>Time Period</span>
+              <span>Minumum Amount</span>
+            </div>
+            <div class="right_bar">
+              <span>: {{schemesdetail.interest_rate}}</span>
+              <span>: {{schemesdetail.period}} {{schemesdetail.tenure_type}}</span>
+              <span>: {{schemesdetail.min_amount}}</span>
+            </div>
+          </div>
+        </ion-col>
+        <span class="background_font_faded">FD</span>
+      </ion-row>
+    
+    </ion-card>
+    </div>
+    
+      <!--===ion-card close===-->
+    
+    <!--===body close====-->
+  </div>
+</ion-content>

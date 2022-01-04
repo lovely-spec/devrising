@@ -58,6 +58,14 @@ const routes: Routes = [
   {
     path: 'add-minor',
     loadChildren: () => import('./add-minor/add-minor.module').then( m => m.AddMinorPageModule)
+  },
+  {
+    path: 'schemes',
+    loadChildren: () => import('./schemes/schemes.module').then( m => m.SchemesPageModule)
+  },
+  {
+    path: 'saving-credit',
+    loadChildren: () => import('./saving-credit/saving-credit.module').then( m => m.SavingCreditPageModule)
   }
 
 

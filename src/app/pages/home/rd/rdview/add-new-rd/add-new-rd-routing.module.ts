@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: 'rd-open-successfully',
     loadChildren: () => import('../rd-open-successfully/rd-open-successfully.module').then( m => m.RdOpenSuccessfullyPageModule)
+  },
+  {
+    path: 'schemes',
+    loadChildren: () => import('../../../schemes/schemes-routing.module').then( m => m.SchemesPageRoutingModule)
   }
 ];
 

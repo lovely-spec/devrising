@@ -19,6 +19,14 @@ export class AddNewFdPage implements OnInit {
   schemesdetails: any= [];
   minordetails: any= [];
   optionValue: any;
+  scheme: any;
+  amount:string;
+  is_nominee:string;
+  n_name:string;
+  rel_nomineee:string;
+  a_nominee:string;
+  is_minor:string;
+  minor:string;
   constructor(
     public platform: Platform,
     public navCtrl: NavController,
@@ -75,6 +83,44 @@ export class AddNewFdPage implements OnInit {
     let navigationExtras: NavigationExtras = {
         };
         this.router.navigate(['/dashboard/home/fdview/add-new-fd/add-minor'], navigationExtras);
+  }
+  schemes(){
+    this.shared.setfd(this.fd);
+    let navigationExtras: NavigationExtras = {
+    };
+    this.router.navigate(['/dashboard/home/fdview/add-new-fd/schemes'], navigationExtras);
+
+  }
+  
+  calculate(){
+    var amount = this.amount
+    var first = 21;
+    var second = 24;
+    var result1 = '';
+    var result2 = '';
+    
+    if (this.scheme!=null||this.scheme!=''){
+      console.log(amount)
+       if (this.scheme == first ){
+          var int = 8.5;
+          var ten = 12;
+          var cal = ten/3;
+          var res = int/cal;
+          var amt = amount;
+          console.log(amt);
+          // for (let i = 3; i = ten; i+3){
+          //   var res2 = amt * i ;
+          // }
+       }
+       if (this.scheme == second ){
+         var int = 8.0;
+         var ten = 24;
+       var cal = ten/3;
+       var res = int/cal;
+       }
+      
+    }
+    
   }
   
 

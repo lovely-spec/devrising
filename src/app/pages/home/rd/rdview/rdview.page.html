@@ -221,7 +221,7 @@
             <button  class="small_btn_filled gradient_fill_btn" [routerLink]="['add-new-rd']" >Open New RD</button>
           </ion-col>
         </ion-row>
-        <ion-card   class="account_details_card card_purple" *ngIf="Rdresponse">
+        <div *ngIf="Rdresponse" >
         <ion-card  class="account_details_card card_purple"  *ngFor="let RdResponse of Rdresponse;let i=index">
           <ion-row>
             <ion-col size="3">
@@ -387,7 +387,7 @@
           </div></div>
         
         </ion-card>
-      </ion-card>
+      </div>
         <!--===ion-card close===-->
       </div>
       <!--===body close====-->
