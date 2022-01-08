@@ -13,6 +13,7 @@
   },
   "private": true,
   "dependencies": {
+    "-": "0.0.1",
     "@angular/animations": "^12.2.2",
     "@angular/cdk": "^12.2.2",
     "@angular/common": "^12.2.2",
@@ -82,6 +83,7 @@
     "ng-circle-progress": "^1.6.0",
     "pdfmake": "^0.1.72",
     "rxjs": "~6.5.1",
+    "save": "^2.4.0",
     "scratchcard-js": "^1.4.10",
     "tslib": "^1.14.1",
     "zone.js": "~0.11.4"

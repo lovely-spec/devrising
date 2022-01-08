@@ -53,7 +53,7 @@
 }
 .avatar, .p_header{
     height: 122px;
-    background: url(/assets/imgs/login_back.jpg);
+    background: url(/assets/imgs/BG.svg)!important;
     background-size: cover;
 }
 .boxes-two {
@@ -63,7 +63,7 @@
 
   ion-list#inbox-list .sc-ion-label-md-h {
     font-family: Montserrat !important;
-    color: #00309a;
+    color: #48026e;
     font-weight: 500 !important;
     border-bottom: 1px solid #70707059 !important;
     line-height: 34px;
@@ -113,7 +113,7 @@ span.profile_name {
   float: left;
 }
 .instruction{
-  color: #1B3E8E;
+  color: #48026e;
 }
   .progressdiv:after {
     position: absolute;
@@ -153,7 +153,7 @@ span.profile_name {
   
   .tab {
     width: 95%;
-    color: #1D4695;
+    color: #48026e !important;
     overflow: hidden;
     margin-bottom: 24px !important;
     margin: 10px;
@@ -672,7 +672,7 @@ span.profile_name {
   }
   
   .transaction-list h3.blue-text {
-    color: #1D4695;
+    color: #48026e !important;
     font-size: 12px;
     margin: 0px;
   }
@@ -748,11 +748,11 @@ span.profile_name {
   }
   
   .acoounts-header {
-    background: #1D4695;
+    background: #48026e !important;
     background-size: cover;
     background-repeat: no-repeat;
     background-blend-mode: color-burn;
-    background-image: url(/assets/imgs/background.png);
+    background-image: url(/assets/imgs/background.png)!important;
     border-radius: 0 0 240px 50%/40px;
     height: 357px;
     border-radius: 0px;
@@ -768,7 +768,7 @@ span.profile_name {
   }
   
   .acoounts-header p {
-    color: #A7B4C8;
+    color: #fff;
     font-size: 14px;
   }
   
@@ -1437,7 +1437,7 @@ span.price {
  .house:before {
    content: "";
    height: 2px;
-   background: #a7b4c8;
+   background: #48026e;
    width: 36%;
    z-index: 0;
    left: 14px;
@@ -1446,7 +1446,7 @@ span.price {
 .house:after {
    content: "";
    height: 2px;
-   background: #a7b4c8;
+   background: #48026e;
    width: 36%;
    z-index: 0;
    right: 14px;
@@ -1459,7 +1459,7 @@ span.price {
      content: "";
    position: absolute;
    width: 2px;
-   background: #a7b4c8;
+   background: #48026e;
    height: 71%;
    left: 0;
    top: 10px;
@@ -1468,7 +1468,7 @@ span.price {
    content: "";
  position: absolute;
  width: 2px;
- background: #a7b4c8;
+ background: #48026e;
  height: 71%;
  left: 0;
  top: 16px;
@@ -2101,7 +2101,7 @@ img.sidebar-icons {
 }
 /* profile page 7/8/2020 */
 .profile-header {
-  background: #1D4695;
+  background: #48026e;
   background-size: cover;
   background-repeat: no-repeat;
   background-blend-mode: color-burn;
@@ -2123,7 +2123,7 @@ img.sidebar-icons {
 }
 
 h2.profile-title {
-  color: #1D4695;
+  color: #48026e;
   text-align: center;
   font-weight: 500;
   margin-top: 20px !important;
@@ -2147,7 +2147,7 @@ ion-back-button{
 }
 
 .customer-details {
-  color: #1B3E8E;
+  color: #48026e;
   font-size: 18px;
   font-weight: 400;
   padding: 10px;
@@ -2225,7 +2225,7 @@ ion-back-button{
 }
 
 .actual-time-label {
-  color: #1D4695;
+  color: #48026e;
   font-size: 14px;
   font-weight: 900;
   padding: 0px;
@@ -2240,12 +2240,12 @@ ion-back-button{
 .date-filter-title {
   text-align: center;
   font-size: 18px;
-  color: #1B3E8E;
+  color: #48026e;
   font-weight: 700;
 }
 
 .blue-calender {
-  color: #1b3e8e;
+  color: #48026e;
   margin-left: 4px;
 }
 
@@ -2710,7 +2710,7 @@ label.mobile-number-label {
 }
 
 .helpandsupport h2 {
-  color: $blue-color;
+  color: #48026e;
   text-align: center;
   font-weight: 700;
   font-size: 30px;
@@ -3117,12 +3117,12 @@ button.chat-with-us {
 // dashboard page bg_theme / header part css
 // =========================================
 .bg_theme .notification_numbur{
-    position: absolute;
-    right: 28px;
-    top: 0px;
-    background: red;
-    border-radius: 50%;
-    padding: 0px 8px;
+  position: absolute;
+  right: 25px;
+  top: -4px;
+  background: red;
+  border-radius: 50%;
+  padding: 2px 8px;
 }
 
 .bg_theme .notification_bell span{
@@ -3143,6 +3143,7 @@ button.chat-with-us {
 .dashboard_page .wallet_bal h1 {
 	margin: 0;
 	padding: 0;
+  font-size: 15px!important;
 
 }
 
@@ -3539,7 +3540,7 @@ button.chat-with-us {
 }
 
 .beneficiaries_page .benf_page_content h3{
-	font-size: 13px;
+	font-size: 11px;
 	color: #212121;
 	text-align: center;
 	margin: 0;
@@ -4369,4 +4370,69 @@ ion-col.pe-1.md.hydrated {
 }
 ion-col.dis-1.md.hydrated {
   color: red;
+}
+.address_confirmation 
+{
+  box-shadow: 0px 0px 9px 0px #00000012;
+  margin-bottom: 13px;
+  width: 90%;
+  margin: 22px auto 19px !important;
+  border-radius: 3px;
+  border: none;
+  color: #1D4695;
+  height: 100px;
+  padding: 1;
+  padding: 5px 10px;
+}
+.minor 
+{
+  box-shadow: 0px 0px 9px 0px #00000012;
+  margin-bottom: 13px;
+  width: 90%;
+  margin: 22px auto 19px !important;
+  border-radius: 3px;
+  border: none;
+  color: #1D4695;
+  height: 100px;
+  padding: 1;
+  padding: 5px 10px;
+}
+.minor p {
+  margin-left: 18px;
+  margin-top: 20px;
+  margin-bottom: 0;
+  font-size: 13px;
+  color: #6d6d6d;
+}
+ion-item.gender_select.item.md.item-lines-none.ion-focusable.hydrated.item-label
+{
+  box-shadow: 0px 0px 9px 0px #00000012;
+  margin-bottom: 13px;
+  width: 90%;
+  margin: 22px auto 19px !important;
+  border-radius: 3px;
+  border: none;
+  color: #1D4695;
+  height: 100px;
+  padding: 1;
+  padding: 5px 10px;
+}
+select#gender
+ {
+  margin-top: 25px;
+  color: #000;
+  border: 1px solid #d2d2d2;
+}
+.row-1 {
+  background: #48026e;
+  border: 2px solid #48026e;
+  border-top-right-radius: 30px 20px;
+  border-bottom-right-radius: 30px 20px;
+}
+h1.rupee {
+  font-size: 12px!important;
+}
+span.rupes {
+  font-weight: bold;
+  font-size: 14px;
 }

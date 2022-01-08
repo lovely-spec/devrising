@@ -19,6 +19,14 @@ export class AddNewRdPage implements OnInit {
   schemesdetails: any= [];
   minordetails: any= [];
   optionValue: any;
+  scheme: any;
+  amount:number;
+  is_nominee:string;
+  n_name:string;
+  rel_nomineee:string;
+  a_nominee:string;
+  is_minor:string;
+  minor:string;
 
   constructor(
     public platform: Platform,
@@ -85,4 +93,47 @@ export class AddNewRdPage implements OnInit {
     this.router.navigate(['/dashboard/home/rdview/add-new-rd/schemes'], navigationExtras);
 
   }
+  ngAfterViewInit() {
+    
+    $("#cal").click(function(){
+    
+     var amount = $('.amount').val();
+    var scheme = $('.scheme').val();
+    var first = 59;
+    var second = 60;
+    var result1 = '';
+    var result2 = '';
+    console.log(amount,scheme)
+    if (scheme!=null||scheme!=''){
+      console.log(amount)
+       if (scheme == first ){
+          var int = 8.5;
+          var ten = 12;
+          var cal = ten/3;
+          var res = int/cal;
+          var amt = amount as number;
+           
+          
+          console.log('res',res);
+          for (let i = 0; i < ten+1; i+=3){
+            // var res2 =  (amount*i) ;
+            console.log('res', i)
+            var res2 = amt*i;
+            var res3 = (res/100)*res2;
+            
+            console.log('res2', res3);
+            
+          }
+       }
+       if (scheme == second ){
+         var int = 8.0;
+         var ten = 24;
+       var cal = ten/3;
+       var res = int/cal;
+       }
+      
+    }
+   
+  });
+}
 }

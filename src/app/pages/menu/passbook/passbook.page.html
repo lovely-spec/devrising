@@ -3,7 +3,7 @@
     <div class="bg_theme bg_theme_small comman_page_padding">
       <ion-row class="">
         <ion-col size="10">
-          <a [routerLink]="['/beneficiary']"><img src="../../../../../../assets/imgs/back-button.svg"></a>
+          <a [routerLink]="['/dashboard/home']"><img src="../../../../../../assets/imgs/back-button.svg"></a>
         </ion-col>
         <ion-col size="2">
           <div class="notification_numbur"> <span class="">12</span></div>
@@ -13,7 +13,6 @@
     </div>
 </ion-toolbar>
 <ion-content class=" ion-justify-content-center ion-align-items-center">
-
 <div class="acoounts-header">
 <h1>Get Your Passbook</h1>
 <p class="faded-text">
@@ -79,8 +78,8 @@
               </div>
         <div class="flex-center">
                 <ion-datetime value="1990-02-20" placeholder="Select Date" class="actual-time-label" [(ngModel)]="end_date" (ionChange)="EndDate()"></ion-datetime>
-                  <ion-icon name="calendar-outline">
-                <ion-icon name="calendar-outline" class="blue-calender"></ion-icon> </ion-icon>
+                
+                <ion-icon name="calendar-outline" class="blue-calender"></ion-icon> 
         </div>
       </div>
       

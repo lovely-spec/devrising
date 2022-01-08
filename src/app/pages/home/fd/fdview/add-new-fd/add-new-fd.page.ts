@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MemberSavingResponse } from '../../../../../../providers/Models/MemberSaving';
 import { NavParams, NavController, PopoverController, Platform } from '@ionic/angular';
@@ -122,6 +122,41 @@ export class AddNewFdPage implements OnInit {
     }
     
   }
+  ngAfterViewInit() {
+    
+    $("#cal").click(function(){
+    var amount = $('.amount').val();
+    var scheme = $('.scheme').val();
+    var first = 21;
+    var second = 24;
+    var result1 = '';
+    var result2 = '';
+    console.log(amount,scheme)
+    if (scheme!=null||scheme!=''){
+      console.log(amount)
+       if (scheme == first ){
+          var int = 8.5;
+          var ten = 12;
+          var cal = ten/3;
+          var res = int/cal;
+          var amt = amount;
+          console.log('res',res);
+          // for (let i = 3; i = ten; i+3){
+          //   // var res2 =  (amount*i) ;
+          //   console.log('res', res)
+          // }
+       }
+       if (scheme == second ){
+         var int = 8.0;
+         var ten = 24;
+       var cal = ten/3;
+       var res = int/cal;
+       }
+      
+    }
+   
+  });
+}
   
 
 }

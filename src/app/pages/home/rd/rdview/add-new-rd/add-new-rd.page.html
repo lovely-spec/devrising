@@ -27,13 +27,13 @@
     </ion-row>
     <div class="rd_fd_form comman_page_padding">
       <ion-item lines="none" *ngIf="schemesdetails">
-        <ion-select class="custom-options" placeholder="Select Scheme*" >
+        <ion-select class="custom-options" placeholder="Select Scheme*" class="scheme" >
           <ion-select-option  *ngFor="let schemesdetail of schemesdetails;let i=index" value={{schemesdetail.id}} required>  {{schemesdetail.scheme_name}}</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item lines="none">
         <ion-label position="floating">RD Amount*</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="number" class="amount" [(ngModel)]="amount"></ion-input>
       </ion-item>
       <div class="address_confirmation">
         <p>Is Nominee Available</p>
@@ -95,7 +95,7 @@
     </div>
       <ion-row>
         <ion-col size="12" class="calc_maturity">
-          <button class="large_gray_btn">Calculate Maturity</button>
+          <button class="large_gray_btn" id="cal">Calculate Maturity</button>
         </ion-col>
       </ion-row>
     </div>
