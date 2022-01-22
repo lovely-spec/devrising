@@ -496,6 +496,41 @@ check_no (number){
   return this.http.post(this.RootURL + 'member/check_no',postData,this.HeaderConfig);
 }
 // end
+// create rd
+createrd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id){
+  let postData = new FormData();
+  postData.append('scheme',scheme);
+  postData.append('amount',amount);
+  postData.append('is_nominee',is_nominee);
+  postData.append('is_minor',is_minor);
+  postData.append('is_saving',is_saving);
+  postData.append('nominee_type',nominee_type);
+  postData.append('n_name',n_name);
+  postData.append('rel_nomineee',rel_nomineee);
+  postData.append('a_nominee',a_nominee);
+  postData.append('minor_id',minor_id);
+  return this.http.post(this.RootURL + 'member/createrd',postData,this.HeaderConfig);
+}
+
+//end rd
+
+//creat fd
+createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id){
+  let postData = new FormData();
+  postData.append('scheme',scheme);
+  postData.append('amount',amount);
+  postData.append('is_nominee',is_nominee);
+  postData.append('is_minor',is_minor);
+  postData.append('is_saving',is_saving);
+  postData.append('nominee_type',nominee_type);
+  postData.append('n_name',n_name);
+  postData.append('rel_nomineee',rel_nomineee);
+  postData.append('a_nominee',a_nominee);
+  postData.append('minor_id',minor_id);
+  return this.http.post(this.RootURL + 'member/createfd',postData,this.HeaderConfig);
+}
+
+// end fd
 
 // personal details api 
 add_new_member (number:string,first_name:string,Last_name:string,Father_name:string,Husband_wife_name:string,D_O_B:string,Marital_status:string,Occupation:string,Email:string,gender:string,title:string,

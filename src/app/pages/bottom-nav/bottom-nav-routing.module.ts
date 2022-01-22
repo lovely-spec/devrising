@@ -46,6 +46,11 @@ const routes: Routes = [
         path: 'request',
         loadChildren: () => import('../menu/member-requests/member-requests.module').then(m => m.MemberRequestsPageModule)
       },
+      {
+        path: 'other-requests',
+        loadChildren: () => import('../menu/other-requests/other-requests.module').then(m => m.OtherRequestsPageModule)
+      },
+      
       // End Routes For Menu Bar
 
       {

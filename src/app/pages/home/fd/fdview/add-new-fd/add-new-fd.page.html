@@ -46,11 +46,11 @@
           <ion-radio-group class="adress_radio_input" style="display: flex;" [(ngModel)]="is_nominee">
             <ion-item lines="none" class="radio">
               <ion-label>Yes</ion-label> 
-              <ion-radio slot="start"   class="input_type_radio" (click)=showform(2)></ion-radio>
+              <ion-radio slot="start"   class="input_type_radio" value="1"  (click)=showform(2)></ion-radio>
             </ion-item>
             <ion-item lines="none" class="radio">
               <ion-label>NO</ion-label> 
-              <ion-radio slot="start"  class="input_type_radio" (click)=showform(1)></ion-radio>
+              <ion-radio slot="start"  class="input_type_radio" value="0" (click)=showform(1)></ion-radio>
             </ion-item>
           </ion-radio-group>
         </div>
@@ -75,11 +75,11 @@
       <ion-radio-group class="adress_radio_input" style="display: flex;" [(ngModel)]="is_minor">
         <ion-item lines="none" class="radio">
           <ion-label>Yes</ion-label> 
-          <ion-radio slot="start"   class="input_type_radio" (click)=showform1(2)></ion-radio>
+          <ion-radio slot="start"   class="input_type_radio" value="1" (click)=showform1(2)></ion-radio>
         </ion-item>
         <ion-item lines="none" class="radio">
           <ion-label>NO</ion-label> 
-          <ion-radio slot="start"  class="input_type_radio" (click)=showform1(1)></ion-radio>
+          <ion-radio slot="start"  class="input_type_radio" value="0" (click)=showform1(1)></ion-radio>
         </ion-item>
       </ion-radio-group>
     </div>
@@ -123,17 +123,17 @@
     </div>
     <ion-row class="comman_page_padding page_footer_row" *ngIf="SavingDetails">
       <ion-col size="12" *ngFor="let SavingDetails of SavingDetails;let i=index">
-        <ion-radio-group>
+        <ion-radio-group [(ngModel)]="is_saving">
           <ion-item lines="none" class="radio">
             <ion-label >Deposit From Saving Account : {{SavingDetails.account_number}}</ion-label> <br>
-            <ion-radio slot="start" class="input_type_radio"></ion-radio>
+            <ion-radio slot="start" class="input_type_radio"value="{{SavingDetails.account_number}}">{{SavingDetails.account_number}}</ion-radio>
           </ion-item>
         </ion-radio-group>
         <span class="margin_for_element">Available Balance :  {{SavingDetails.balance_available}}</span>
       </ion-col>
     </ion-row>
     <div class="page_footer_btn ion-text-center">
-      <button class="gradient_fill_btn large_btn_filled" [routerLink]="['fd-open-successfully']">Open FD</button>
+      <button class="gradient_fill_btn large_btn_filled" (click)="openfd()">Open FD</button>
     </div>
   </div>
 </ion-content>

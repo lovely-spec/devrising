@@ -6,6 +6,7 @@ import { ApihelperProvider } from 'src/providers/apihelper/apihelper';
 import { UserResponse } from '../../../../../../providers/Models/UserDetails';
 import {SharedService } from '../../../add-member/shared.service';
 import { NavigationExtras, Router } from '@angular/router';
+import { TouchSequence } from 'selenium-webdriver';
 @Component({
   selector: 'app-add-new-rd',
   templateUrl: './add-new-rd.page.html',
@@ -26,6 +27,7 @@ export class AddNewRdPage implements OnInit {
   rel_nomineee:string;
   a_nominee:string;
   is_minor:string;
+  is_saving:string;
   minor:string;
 
   constructor(
@@ -40,11 +42,12 @@ export class AddNewRdPage implements OnInit {
   show_detail:boolean;
   form:boolean;
   rd:boolean;
+  sch:any;
   ionViewDidEnter() {
     this.provider.UserPanel().subscribe(data=>{
       this.UserResponse = this.provider.User_details(data);
       if(this.UserResponse){
-        
+        this.SavingDetails = []
         this.SavingDetails = this.UserResponse.Saving;
       }
       console.log('FD',this.SavingDetails)
@@ -58,12 +61,16 @@ export class AddNewRdPage implements OnInit {
       console.log('minors',this.minordetails);
     });
     this.shared.setrd(this.rd);
+    this.sch = this.scheme;
   }
   ngOnInit() {
     this.show_detail = false;
     this.form = false;
     this.rd = true;
     
+  }
+  onChange(){
+    console.log(this.scheme);
   }
   showform(f){
     if(f == 2){
@@ -93,6 +100,51 @@ export class AddNewRdPage implements OnInit {
     this.router.navigate(['/dashboard/home/rdview/add-new-rd/schemes'], navigationExtras);
 
   }
+  openrd(){
+  var scheme = this.scheme;
+  var amount = this.amount;
+  var is_nominee =  this.is_nominee;
+  var n_name = this.n_name;
+  var rel_nomineee = this.rel_nomineee;
+  var a_nominee = this.a_nominee;
+  var is_minor = this.is_minor;
+  var minor_id = this.minor;
+  var is_saving= this.is_saving;
+  var nominee_type = 'RdAccount';
+  var nominee = this.show_detail;
+  var minor = this.form;
+  console.log('res2', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee); 
+  if (scheme==null||scheme==''|| amount==null||is_nominee==null||is_nominee==''||is_minor==null||is_minor==''|| is_saving==null||is_saving==''){
+    this.provider.show_alert('All fields required ') 
+    // console.log('res2', scheme,amount,is_nominee,is_minor,); 
+   if (nominee == true){
+          if (n_name==null||n_name==''|| rel_nomineee==null||rel_nomineee==null||a_nominee==''||a_nominee==null){
+            this.provider.show_alert('Please fill Nominee details')
+          }
+  } 
+  if (minor == true){
+    if (minor_id==null||minor_id==''){
+      this.provider.show_alert('Please fill Nominee details')
+    }
+}
+}else{ console.log('res2', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee);
+    this.provider.createrd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id).subscribe(data=>{
+    console.log('response',data)
+    if(data['status'] == true){
+      let navigationExtras: NavigationExtras = {
+        
+      };
+      this.router.navigate(['/dashboard/home/rdview/add-new-rd/rd-open-successfully'], navigationExtras);
+
+  }else{
+  this.provider.show_alert(data['message'])
+
+  }
+})
+
+}
+
+}
   ngAfterViewInit() {
     
     $("#cal").click(function(){
@@ -134,6 +186,10 @@ export class AddNewRdPage implements OnInit {
       
     }
    
+  });
+  $("#scheme").click(function(){
+    var scheme = $('.scheme').val();
+    console.log(scheme);
   });
 }
 }
