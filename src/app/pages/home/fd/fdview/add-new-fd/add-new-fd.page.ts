@@ -28,6 +28,9 @@ export class AddNewFdPage implements OnInit {
   is_minor:string;
   is_saving:string;
   minor:string;
+  joint:string = null;
+  jac:string;
+  senior:string;
   constructor(
     public platform: Platform,
     public navCtrl: NavController,
@@ -37,9 +40,13 @@ export class AddNewFdPage implements OnInit {
     private provider: ApihelperProvider,
   ) { }
   addressRadio:string;
-  show_detail:boolean;
-  form:boolean;
+  show_detail:boolean=false;
+  show_joint:boolean;
+  form:boolean=false;
   fd:boolean;
+  resp:boolean = false;
+  j:boolean = false;
+  s:boolean = false; 
   ionViewDidEnter() {
     this.provider.UserPanel().subscribe(data=>{
       this.UserResponse = this.provider.User_details(data);
@@ -62,6 +69,9 @@ export class AddNewFdPage implements OnInit {
   ngOnInit() {
     this.show_detail = false;
     this.form = false;
+    this.resp = false;
+    this.j = false;
+    this.s = false;
     this.fd = true;
   }
   showform(f){
@@ -76,6 +86,27 @@ export class AddNewFdPage implements OnInit {
       this.form = true;
     }else{
       this.form = false;
+    } 
+  }
+  saving(r){
+    if(r == 1){
+      this.resp = true;
+    }else{
+      this.resp = false;
+    } 
+  }
+  jointac(r){
+    if(r == 2){
+      this.j = true;
+    }else{
+      this.j = false;
+    } 
+  }
+  issenior(r){
+    if(r == 2){
+      this.s = true;
+    }else{
+      this.s = false;
     } 
   }
   add_minor(){
@@ -102,25 +133,104 @@ export class AddNewFdPage implements OnInit {
     var is_minor = this.is_minor;
     var minor_id = this.minor;
     var is_saving= this.is_saving;
+    var saving = this.resp;
     var nominee_type = 'FdAccount';
     var nominee = this.show_detail;
     var minor = this.form;
-    console.log('res2', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee); 
+    var j = this.j;
+    var joint = this.joint;
+    var jac = this.jac
+    var senior = this.senior
+    var re = /^\d{4}(?:\s*,\s*\d{4)*$/;
+    console.log('res2', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee,this.j); 
     if (scheme==null||scheme==''|| amount==null||is_nominee==null||is_nominee==''||is_minor==null||is_minor==''|| is_saving==null||is_saving==''){
       this.provider.show_alert('All fields required ') 
       // console.log('res2', scheme,amount,is_nominee,is_minor,); 
-     if (nominee == true){
-            if (n_name==null||n_name==''|| rel_nomineee==null||rel_nomineee==null||a_nominee==''||a_nominee==null){
-              this.provider.show_alert('Please fill Nominee details')
-            }
-    } 
-    if (minor == true){
-      if (minor_id==null||minor_id==''){
-        this.provider.show_alert('Please fill Nominee details')
+    }else if(amount!=null){
+        console.log('sdsdf')
+        if (nominee == true){
+          if (n_name==null||n_name==''|| rel_nomineee==null||rel_nomineee==null||a_nominee==''||a_nominee==null){
+            this.provider.show_alert('Please fill Nominee details')
+          }else{ console.log('res', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee,is_saving,joint,jac,j);
+          this.provider.createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving,joint,jac,senior).subscribe(data=>{
+          console.log('response',data)
+          if(data['status'] == true){
+            let navigationExtras: NavigationExtras = {
+              
+            };
+            this.router.navigate(['/dashboard/home/fdview/add-new-fd/fd-open-successfully'], navigationExtras);
+      
+        }else{
+        this.provider.show_alert(data['message'])
+      
+        }
+      })
+      
       }
+        } 
+  else if (minor == true){
+    if (minor_id==null||minor_id==''){
+      this.provider.show_alert('Please fill Minor details')
+    }else{ console.log('res', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee,is_saving,joint,jac,j);
+    this.provider.createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving,joint,jac,senior).subscribe(data=>{
+    console.log('response',data)
+    if(data['status'] == true){
+      let navigationExtras: NavigationExtras = {
+        
+      };
+      this.router.navigate(['/dashboard/home/fdview/add-new-fd/fd-open-successfully'], navigationExtras);
+
+  }else{
+  this.provider.show_alert(data['message'])
+
   }
-  }else{ console.log('res2', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee);
-      this.provider.createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id).subscribe(data=>{
+})
+
+}
+  }
+  else if (this.j == true ){
+  console.log('joint',joint); 
+  if (!re.test(joint) || joint==null||joint==''){
+    this.provider.show_alert('Please fill Member ID details')
+  }else{ console.log('res', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee,is_saving,joint,jac,j);
+  this.provider.createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving,joint,jac,senior).subscribe(data=>{
+  console.log('response',data)
+  if(data['status'] == true){
+    let navigationExtras: NavigationExtras = {
+      
+    };
+    this.router.navigate(['/dashboard/home/fdview/add-new-fd/fd-open-successfully'], navigationExtras);
+
+}else{
+this.provider.show_alert(data['message'])
+
+}
+})
+
+}
+  }
+  else if (this.s == true){
+  if (senior==null||senior==''){
+  this.provider.show_alert('Please fill Member ID details')
+  }
+  }else{ console.log('res', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee,is_saving,joint,jac,j);
+  this.provider.createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving,joint,jac,senior).subscribe(data=>{
+  console.log('response',data)
+  if(data['status'] == true){
+    let navigationExtras: NavigationExtras = {
+      
+    };
+    this.router.navigate(['/dashboard/home/fdview/add-new-fd/fd-open-successfully'], navigationExtras);
+
+}else{
+this.provider.show_alert(data['message'])
+
+}
+})
+
+}
+  }else{ console.log('res', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee,is_saving,joint,jac,j);
+      this.provider.createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving,joint,jac,senior).subscribe(data=>{
       console.log('response',data)
       if(data['status'] == true){
         let navigationExtras: NavigationExtras = {
@@ -135,6 +245,7 @@ export class AddNewFdPage implements OnInit {
   })
   
   }
+  
   
   }
   

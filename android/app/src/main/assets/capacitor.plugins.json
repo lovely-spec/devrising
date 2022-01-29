@@ -1,5 +1,9 @@
 [
 	{
+		"pkg": "@capacitor-community/native-market",
+		"classpath": "com.getcapacitor.community.nativemarket.NativeMarket"
+	},
+	{
 		"pkg": "capacitor-data-storage-sqlite",
 		"classpath": "com.jeep.plugin.capacitor.CapacitorDataStorageSqlite"
 	}

@@ -15,23 +15,26 @@
     </ion-toolbar>
   
     <ion-content>
-    <ion-card class="card-1">
+      <div class="request" *ngIf="rq">
+    <ion-card class="card-1" *ngFor="let rqs of rq;let i=index" >
         <ion-row>
                <ion-col size="6">
-                 <h1 class="title-row">M Id</h1>
+                 <h1 class="title-row">Member Id</h1>
                  <h1 class="title-row">Name</h1>
                  <h1 class="title-row">Status</h1>
                  <h1 class="title-row">Reason</h1>
                </ion-col>
                <ion-col size="6">
-               <h1 class="ap">001</h1>
-               <h1 class="ap">Rakesh</h1>
-               <h1 class="ap-1" >Approval</h1>
-               <h1 class="ap" ></h1>
+               <h1 class="ap">{{rqs.member_number}}</h1>
+               <h1 class="ap">{{rqs.first_name}} {{rqs.last_name}}</h1>
+               <h1 *ngIf="rqs.status == 'pending'" class="pe-1" >{{rqs.status}}</h1>
+               <h1 *ngIf="rqs.status == 'dissapproved'" class="dis-1" >{{rqs.status}}</h1>
+               <h1 *ngIf="rqs.status == 'active'" class="ap-1" >{{rqs.status}}</h1>
+               <h1 class="ap" >{{rqs.remarks}}</h1>
               </ion-col>
         </ion-row>  
     </ion-card>
-    <ion-card class="card-1">
+    <!-- <ion-card class="card-1">
       <ion-row>
              <ion-col size="6">
                <h1 class="title-row">M Id</h1>
@@ -62,7 +65,8 @@
            <h1 class="ap" > Photo not match</h1>
           </ion-col>
     </ion-row>  
-  </ion-card>
+  </ion-card> -->
+  </div>
     </ion-content>
   
   

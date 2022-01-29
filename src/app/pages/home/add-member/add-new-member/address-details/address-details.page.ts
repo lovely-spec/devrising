@@ -78,40 +78,43 @@ export class AddressDetailsPage implements OnInit {
       //       }else if (!re.test(P_pin)){
       //         this.provider.show_alert('Please fill correct pin code')
       //       }
-      //     // }else if (details==false ){
-      //     //   var P_village_house_town = this.village_house_town;
-      //     //   var P_p_o = this.p_o;
-      //     //   var P_panchayat = this.panchayat;
-      //     //   var P_tehsil = this.tehsil;
-      //     //   var P_distt = this.distt;
-      //     //   var P_pin = this.pin;
-      //     //   let navigationExtras: NavigationExtras = {
-      //     //   };
-      //     //   console.log('paddress',this.P_village_house_town);
-      //     //   this.router.navigate(['/address-details/kyc'], navigationExtras);
-      //     //   // console.log('paddress',this.show_detail);
+      //       let navigationExtras: NavigationExtras = {
+      //       };
+      //       this.router.navigate(['/address-details/kyc'], navigationExtras);
+      //     }else if (details==false ){
+      //       var P_village_house_town = this.village_house_town;
+      //       var P_p_o = this.p_o;
+      //       var P_panchayat = this.panchayat;
+      //       var P_tehsil = this.tehsil;
+      //       var P_distt = this.distt;
+      //       var P_pin = this.pin;
+      //       let navigationExtras: NavigationExtras = {
+      //       };
+      //       console.log('paddress',this.P_village_house_town);
+      //       this.router.navigate(['/address-details/kyc'], navigationExtras);
+      //       // console.log('paddress',this.show_detail);
       //     }
-          // else {
-          //   let navigationExtras: NavigationExtras = {
-          //   };
-          //   this.router.navigate(['/address-details/kyc'], navigationExtras);
-          // }
+      //     else {
+      //       let navigationExtras: NavigationExtras = {
+      //       };
+      //       this.router.navigate(['/address-details/kyc'], navigationExtras);
+      //     }
           let navigationExtras: NavigationExtras = {
           };
           this.router.navigate(['/address-details/kyc'], navigationExtras);
       
-      this.SharedService.setvht(this.village_house_town);
-      this.SharedService.setpo(this.p_o);
-      this.SharedService.setpan(this.panchayat);
-      this.SharedService.setteh(this.tehsil);
-      this.SharedService.setdistt(this.distt);
-      this.SharedService.setpin(this.pin);
-      this.SharedService.setpvht(this.P_village_house_town);
-      this.SharedService.setppo(this.P_p_o);
-      this.SharedService.setppan(this.P_panchayat);
-      this.SharedService.setpteh(this.P_tehsil);
-      this.SharedService.setpdiss(this.P_distt);
-      this.SharedService.setppin(this.P_pin);
+      // this.SharedService.setvht(this.village_house_town);
+      // this.SharedService.setpo(this.p_o);
+      // this.SharedService.setpan(this.panchayat);
+      // this.SharedService.setteh(this.tehsil);
+      // this.SharedService.setdistt(this.distt);
+      // this.SharedService.setpin(this.pin);
+      // this.SharedService.setpvht(this.P_village_house_town);
+      // this.SharedService.setppo(this.P_p_o);
+      // this.SharedService.setppan(this.P_panchayat);
+      // this.SharedService.setpteh(this.P_tehsil);
+      // this.SharedService.setpdiss(this.P_distt);
+      // this.SharedService.setppin(this.P_pin);
       
     }
 

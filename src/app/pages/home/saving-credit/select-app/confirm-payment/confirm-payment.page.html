@@ -1,9 +1,65 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>confirm-payment</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-toolbar>
+  <div class="beneficiaries_page">
+    <!--===bg_theme_small===-->
+    <div class="bg_theme bg_theme_small comman_page_padding">
+      <ion-row class="">
+        <ion-col size="10">
+          <a [routerLink]="['/transaction/saving-credit/select-app']"><img src="../../../assets/imgs/back-button.svg"></a>
+        </ion-col>
+        <ion-col size="2">
+          <div class="notification_numbur"> <span class="">12</span></div>
+         <img class="bell_icon relative" src="../../../assets/imgs/bell.svg" >
+        </ion-col>
+      </ion-row>
+     </div>
+     </div>
+</ion-toolbar>
 
 <ion-content>
-
+<div class="confirm-payment-section">
+  <h6 class="trans">Transaction ID: 12345678</h6>
+  <ion-row>
+    <ion-col size="8">
+  <h6 class="upi-id">UPI ID: ys130585@oksbi</h6>
+  </ion-col>
+  <ion-col size="4">
+  <button class="copy">copy</button>
+  </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="8">
+  <h6 class="rupe">&#8377;5000</h6>
+  </ion-col>
+  <ion-col size="4">
+  <button class="copy">copy</button>
+  </ion-col>
+  </ion-row>
+</div>
+      <div class="ion-text-center">
+        <ion-row>
+          <ion-col>
+        <button class="gradient_fill_btn large_btn_filled-2" >Make Payment</button>
+    </ion-col>
+  </ion-row>
+  </div>
+  <div class="ion-text-center">
+    <h1 class="upload">Upload Screenshot of Your Transactions.</h1>
+  </div>
+  <div class="ion-text-center select_box">
+     <div class="select">
+    <ion-row>
+      <ion-col>
+         <img src="../../../../../../assets/imgs/plus_icon.svg">
+         <h6 class="select_text">Select</h6>
+      </ion-col>
+    </ion-row>
+    </div>
+  </div>
+  <div class="ion-text-center">
+  <ion-row>
+    <ion-col>
+        <button class="gradient_fill_btn large_btn_filled-2" [routerLink]="['successful-page']" >Upload</button>
+    </ion-col>
+  </ion-row>
+  </div>
 </ion-content>

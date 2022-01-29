@@ -36,6 +36,27 @@
         <ion-label position="floating">RD Amount*</ion-label>
         <ion-input type="number" class="amount" [(ngModel)]="amount"></ion-input>
       </ion-item>
+
+      <div class="address_confirmation">
+        <p>Joint A/C</p>
+        <ion-radio-group class="adress_radio_input" style="display: flex;" [(ngModel)]="jac" >
+          <ion-item lines="none" class="radio">
+            <ion-label>Yes</ion-label> 
+            <ion-radio slot="start"   class="input_type_radio" value="1" (click)=jointac(2)></ion-radio>
+          </ion-item>
+          <ion-item lines="none" class="radio">
+            <ion-label>NO</ion-label> 
+            <ion-radio slot="start"  class="input_type_radio" value="0" (click)=jointac(1)></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </div>
+      <div class="slider_form" *ngIf=show_detail>
+        <ion-item lines="none">
+          <ion-label position="floating">Enter Member ID</ion-label>
+          <ion-input type="number" [(ngModel)]="joint"></ion-input>
+        </ion-item>
+      </div>
+
       <div class="address_confirmation">
         <p>Is Nominee Available</p>
         <div>

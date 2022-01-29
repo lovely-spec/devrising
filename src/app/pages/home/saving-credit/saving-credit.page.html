@@ -1,9 +1,38 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>saving-credit</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
-</ion-content>
+  <div class="beneficiaries_page">
+    <!--===bg_theme_small===-->
+    <div class="bg_theme bg_theme_small comman_page_padding">
+      <ion-row class="">
+        <ion-col size="10">
+          <a [routerLink]="['/transaction']"><img src="../../../assets/imgs/back-button.svg"></a>
+        </ion-col>
+        <ion-col size="2">
+          <div class="notification_numbur"> <span class="">12</span></div>
+         <img class="bell_icon relative" src="../../../assets/imgs/bell.svg" >
+        </ion-col>
+      </ion-row>
+     </div>
+     <div class="saving_credit_field">
+      <div class="enter_amount_ field comman_input_field">
+      <ion-item lines="none" >
+       <!-- <form #form="ngForm"> -->
+         <ion-label position="floating">Enter Amount</ion-label>
+         <ion-input required pattern="[0-9]*" name="amount" type="number" ></ion-input>
+       </ion-item>
+  <ion-row class="page_checkbox">
+            <ion-col size="12" class="algn">
+              <ion-checkbox (click)="($event)" ></ion-checkbox>
+              <ion-label> I accept all <a>term and Conditions.</a></ion-label>
+            </ion-col>
+          </ion-row>
+  </div>
+  <ion-row>
+    <ion-col>
+      <div class="ion-text-center">
+        <button class="gradient_fill_btn large_btn_filled"[routerLink]="['select-app']" >Transfer</button>
+      </div>
+    </ion-col>
+  </ion-row>
+  </div>
+</div>
+  </ion-content>

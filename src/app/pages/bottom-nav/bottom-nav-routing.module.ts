@@ -168,6 +168,15 @@ const routes: Routes = [
       {
         path: 'repayment-schedule',
         loadChildren: () => import('../home/repayment-schedule/repayment-schedule.module').then( m => m.RepaymentSchedulePageModule)
+      },
+      {
+        path: 'add-new-member',
+        loadChildren: () => import('../home/add-member/add-new-member/add-new-member.module').then( m => m.AddNewMemberPageModule)
+      }
+      ,
+      {
+        path: 'new-member-address',
+        loadChildren: () => import('../home/add-member/add-new-member/address-details/address-details.module').then( m => m.AddressDetailsPageModule)
       }
     ]
   },

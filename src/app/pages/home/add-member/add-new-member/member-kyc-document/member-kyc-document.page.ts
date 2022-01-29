@@ -8,6 +8,8 @@ import { Storage } from '@ionic/storage';
 import { FilePath } from '@ionic-native/file-path/ngx';
 import { finalize } from 'rxjs/operators';
 import { NavigationExtras, Router } from '@angular/router';
+import { SharedService } from '../../shared.service';
+import { ApihelperProvider } from 'src/providers/apihelper/apihelper';
 const STORAGE_KEY = 'my_images';
 
 @Component({
@@ -17,6 +19,13 @@ const STORAGE_KEY = 'my_images';
 })
 export class MemberKycDocumentPage implements OnInit {
     images:any = '';
+    aadhar_f:string;
+    adhar_f_show: string=  "no";
+    adhar_b_show: string=  "no";
+    selfie_show: string=  "no";
+    pan_show: string=  "no";
+    sign_show: string=  "no";
+    master_satatus: string= "no";
     constructor(private camera: Camera,
        private file: File, 
        private http: HttpClient,
@@ -28,25 +37,56 @@ export class MemberKycDocumentPage implements OnInit {
        private loadingController: LoadingController,
       private ref: ChangeDetectorRef, 
       private filePath: FilePath,
-      public router: Router,) { 
-      
+      public router: Router,
+      private provider : ApihelperProvider,
+      private SharedService: SharedService) { 
       }
   
+
+      ionViewDidEnter() {
+        if (this.adhar_f_show == 'no'){
+          this.adhar_f_show = 'yes';
+          this.adhar_b_show = 'no';
+          this.selfie_show = 'no';
+          this.pan_show = 'no';
+          this.sign_show = 'no';
+        }
+      }
+
     ngOnInit() 
     {
       this.plt.ready().then(() => {
         this.loadStoredImages();
       });
     }
+    aadhar(){
+      if(this.images){
+        this.adhar_f_show = 'no';
+      }
+    }
     loadStoredImages() {
+      var id = this.SharedService.getmid();
       this.storage.get(STORAGE_KEY).then(images => {
         if (images) {
           let arr = JSON.parse(images);
           this.images = '';
+          let i = 0;
           for (let img of arr) {
+            if(i == 0){
+              img = "adhar_f";
+            }else if(i == 1){
+              img = "adhar_b";
+            }else if(i == 2){
+              img = "pan";
+            }else if(i == 3){
+              img = "selfie";
+            }else if(i == 4){
+              img = "sign";
+            }
             let filePath = this.file.dataDirectory + img;
             let resPath = this.pathForImage(filePath);
             this.images.push({ name: img, path: resPath, filePath: filePath });
+            i++;
           }
         }
       });
@@ -171,9 +211,54 @@ export class MemberKycDocumentPage implements OnInit {
             this.presentToast('File removed.');
         });
     });
+    if(imgEntry.name == 'adhar_f'){
+      this.adhar_f_show = 'yes';
+      this.adhar_b_show = 'no';
+      this.selfie_show = 'no';
+      this.pan_show = 'no';
+      this.sign_show = 'no';
+    }else if(imgEntry.name == 'adhar_b'){
+      this.adhar_f_show = 'no';
+      this.adhar_b_show = 'yes';
+      this.selfie_show = 'no';
+      this.pan_show = 'no';
+      this.sign_show = 'no';
+    }else if(imgEntry.name == 'pan'){
+      this.adhar_f_show = 'no';
+      this.adhar_b_show = 'no';
+      this.selfie_show = 'no';
+      this.pan_show = 'yes';
+      this.sign_show = 'no';
+    }else if(imgEntry.name == 'selfie'){
+      this.adhar_f_show = 'no';
+      this.adhar_b_show = 'no';
+      this.selfie_show = 'yes';
+      this.pan_show = 'no';
+      this.sign_show = 'no';
+      
+    }else if(imgEntry.name == 'sign'){
+      this.adhar_f_show = 'no';
+      this.adhar_b_show = 'no';
+      this.selfie_show = 'no';
+      this.pan_show = 'no';
+      this.sign_show = 'yes';
+      
+    }
   }
   
   startUpload(imgEntry) {
+    console.log('sad')
+    if(imgEntry.name == 'adhar_f'){
+
+    }else if(imgEntry.name == 'adhar_b'){
+
+    }else if(imgEntry.name == 'pan'){
+      
+    }else if(imgEntry.name == 'selfie'){
+      
+    }else if(imgEntry.name == 'sign'){
+      
+    }
     this.file.resolveLocalFilesystemUrl(imgEntry.filePath)
         .then(entry => {
             ( < FileEntry > entry).file(file => this.readFile(file))
@@ -184,19 +269,31 @@ export class MemberKycDocumentPage implements OnInit {
   }
   
   readFile(file: any) {
+    console.log('sad1')
     const reader = new FileReader();
     reader.onload = () => {
         const formData = new FormData();
         const imgBlob = new Blob([reader.result], {
             type: file.type
         });
+        console.log('sad2',file.name)
         formData.append('file', imgBlob, file.name);
         this.uploadImageData(formData);
     };
+    console.log('sad1df')
     reader.readAsArrayBuffer(file);
   }
   
   async uploadImageData(formData: FormData) {
+    console.log('sad2')
+    console.log('sad3',formData)
+    // var member_id = this.SharedService.getmid();
+    // this.provider.uploadImages(formData,member_id).subscribe(data=>{
+    //   console.log('response',data)
+    //   if(data['status'] == true){
+    //   }
+    // })
+      
     const loading = await this.loadingController.create({
         message: 'Uploading image...',
     });

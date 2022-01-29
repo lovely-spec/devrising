@@ -12,6 +12,12 @@ const routes: Routes = [
     path: 'wbbeneficiary',
     loadChildren: () => import('./wbbeneficiary/wbbeneficiary.module').then( m => m.WbbeneficiaryPageModule)
   }
+  ,
+  {
+    path: 'saving-credit',
+    loadChildren: () => import('../saving-credit/saving-credit.module').then( m => m.SavingCreditPageModule)
+  }
+
 ];
 
 @NgModule({

@@ -21,8 +21,8 @@ import { Router } from '@angular/router';
 export class ApihelperProvider {
   
 
-  private RootURL: string = "http://localhost:3000/api/";
-  // private RootURL: string = "https://staging.devrising.in/api/";
+  // private RootURL: string = "http://localhost:3000/api/";
+  private RootURL: string = "https://staging.devrising.in/api/";
   // private RootURL: string = "https://app.devrising.in/api/";
    loading: any;
    HeaderConfig : any = [];
@@ -37,6 +37,9 @@ export class ApihelperProvider {
    PL: any = []; 
    schemes: any = [];
    rdschemes: any = [];
+   rqd: any = [];
+   rdreq: any = [];
+   fdreq: any = [];
    minors: any = [];
 
 
@@ -92,6 +95,36 @@ export class ApihelperProvider {
   rd_scheme_details(data){
     this.rdschemes = data.details;
     return this.rdschemes;
+  }
+  rq(){
+    let postData = new FormData();
+    let data =this.http.post(this.RootURL + 'member/rq',postData,this.HeaderConfig);
+    return  data;
+
+  }
+  rq_details(data){
+    this.rqd = data.details;
+    return this.rqd;
+  }
+  rdre(){
+    let postData = new FormData();
+    let data =this.http.post(this.RootURL + 'member/rdreq',postData,this.HeaderConfig);
+    return  data;
+
+  }
+  rdre_details(data){
+    this.rdreq = data.details;
+    return this.rdreq;
+  }
+  fdre(){
+    let postData = new FormData();
+    let data =this.http.post(this.RootURL + 'member/fdreq',postData,this.HeaderConfig);
+    return  data;
+
+  }
+  fdre_details(data){
+    this.fdreq = data.details;
+    return this.fdreq;
   }
   minor(){
     let postData = new FormData();
@@ -515,7 +548,7 @@ createrd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nom
 //end rd
 
 //creat fd
-createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id){
+createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving,joint,jac,senior){
   let postData = new FormData();
   postData.append('scheme',scheme);
   postData.append('amount',amount);
@@ -527,6 +560,10 @@ createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nom
   postData.append('rel_nomineee',rel_nomineee);
   postData.append('a_nominee',a_nominee);
   postData.append('minor_id',minor_id);
+  postData.append('saving',saving);
+  postData.append('joint',joint);
+  postData.append('jac',jac);
+  postData.append('senior',senior);
   return this.http.post(this.RootURL + 'member/createfd',postData,this.HeaderConfig);
 }
 
@@ -553,7 +590,7 @@ add_new_member (number:string,first_name:string,Last_name:string,Father_name:str
   nominee_relation:string,
   nominee_number:string,
   nominee_address:string,
-  nominee_aadhar:string,){
+  nominee_aadhar:string,member_no){
   let postData = new FormData();
   // personal details
   postData.append('number',number);
@@ -591,6 +628,7 @@ add_new_member (number:string,first_name:string,Last_name:string,Father_name:str
   postData.append('nominee_number',nominee_number);  
   postData.append('nominee_address',nominee_address); 
   postData.append('nominee_aadhar',nominee_aadhar); 
+  postData.append('member_no',member_no); 
    
   return this.http.post(this.RootURL + 'member/addmember',postData,this.HeaderConfig);
 }
@@ -640,6 +678,15 @@ ClearNotification(){
   // postData.append('daily_transaction[payment_mode]' , data.payMode);
   // call Api
  return this.http.post(this.RootURL + 'single-collection-transaction',postData,this.HeaderConfig);
+ }
+
+ // Save Member Images
+ uploadImages(formData:FormData,member_id:any){
+  // let postData = new FormData();
+  let postData = formData;
+  postData.append('member_id' , member_id);
+  // call Api
+ return this.http.post(this.RootURL + 'member/save-member-docs',postData,this.HeaderConfig);
  }
 
  // collection list by date

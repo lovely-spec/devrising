@@ -1,9 +1,72 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>other-requests</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
-
-</ion-content>
+      <!--===bg_theme_small===-->
+      <ion-toolbar>
+        <div class="bg_theme bg_theme_small comman_page_padding">
+          <ion-row class="">
+            <ion-col size="10">
+              <a [routerLink]="['/dashboard/home']"><img src="../../../../../../assets/imgs/back-button.svg"></a>
+            </ion-col>
+            <ion-col size="2">
+              <div class="notification_numbur"> <span class="">12</span></div>
+              <img class="bell_icon relative" src="../../../../../../assets/imgs/bell.svg">
+            </ion-col>
+          </ion-row>
+        </div>
+    </ion-toolbar>
+  
+    <ion-content>
+      <ion-col size="5">
+        <button  class="small_btn_filled gradient_fill_btn" (click)=showrd() >RD Request</button>
+      </ion-col>
+      <ion-col size="5">
+        <button  class="small_btn_filled gradient_fill_btn" (click)=showfd()>FD Request</button>
+      </ion-col>
+       <div *ngIf="rdb">
+          <div class="request" *ngIf="rd">
+            <ion-card class="card-1"  *ngFor="let rds of rd;let i=index" >
+                <ion-row *ngIf="rds.on_hold == true">
+                      <ion-col size="6">
+                        <h1 class="title-row">Rd Account</h1>
+                        <h1 class="title-row">Amount</h1>
+                        <h1 class="title-row">Status</h1>
+                        <h1 class="title-row">Reason</h1>
+                      </ion-col>
+                      <ion-col size="6">
+                      <h1 class="ap">{{rds.account_number}}</h1>
+                      <h1 class="ap">{{rds.first_name}} {{rds.principal_amount}}</h1>
+                      <h1 *ngIf="rds.status == 'pending_for_approval'" class="pe-1" >Pending</h1>
+                      <h1 *ngIf="rds.status == 'disapproved'" class="dis-1" >{{rds.status}}</h1>
+                      <h1 *ngIf="rds.status == 'active'" class="ap-1" >{{rds.status}}</h1>
+                      <h1 class="ap" >{{rds.remarks}}</h1>
+                      </ion-col>
+                </ion-row>  
+            </ion-card>
+          </div>
+        </div>
+        <div *ngIf="fdb">
+          <div class="request" *ngIf="rd">
+            <ion-card class="card-1"  *ngFor="let fds of fd;let i=index" >
+                <ion-row *ngIf="fds.on_hold == true">
+                      <ion-col size="6">
+                        <h1 class="title-row">Rd Account</h1>
+                        <h1 class="title-row">Amount</h1>
+                        <h1 class="title-row">Status</h1>
+                        <h1 class="title-row">Reason</h1>
+                      </ion-col>
+                      <ion-col size="6">
+                      <h1 class="ap">{{fds.account_number}}</h1>
+                      <h1 class="ap">{{fds.first_name}} {{fds.principal_amount}}</h1>
+                      <h1 *ngIf="fds.status == 'pending_for_approval'" class="pe-1" >Pending</h1>
+                      <h1 *ngIf="fds.status == 'disapproved'" class="dis-1" >{{fds.status}}</h1>
+                      <h1 *ngIf="fds.status == 'active'" class="ap-1" >{{fds.status}}</h1>
+                      <h1 class="ap" >{{fds.remarks}}</h1>
+                      </ion-col>
+                </ion-row>  
+            </ion-card>
+          </div>
+        </div>
+    
+  
+    </ion-content>
+  
+  

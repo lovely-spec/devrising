@@ -29,7 +29,8 @@ export class AddNewRdPage implements OnInit {
   is_minor:string;
   is_saving:string;
   minor:string;
-
+  joint:string;
+  jac:string;
   constructor(
     public platform: Platform,
     public navCtrl: NavController,
@@ -43,6 +44,7 @@ export class AddNewRdPage implements OnInit {
   form:boolean;
   rd:boolean;
   sch:any;
+  j:boolean;
   ionViewDidEnter() {
     this.provider.UserPanel().subscribe(data=>{
       this.UserResponse = this.provider.User_details(data);
@@ -86,6 +88,13 @@ export class AddNewRdPage implements OnInit {
       this.form = false;
     } 
   }
+  jointac(r){
+    if(r == 2){
+      this.j = true;
+    }else{
+      this.j = false;
+    } 
+  }
   add_minor(){
     this.shared.setrd(this.rd);
     console.log(this.rd);
@@ -113,6 +122,9 @@ export class AddNewRdPage implements OnInit {
   var nominee_type = 'RdAccount';
   var nominee = this.show_detail;
   var minor = this.form;
+  var j = this.j;
+    var joint = this.joint;
+    var jac = this.jac;
   console.log('res2', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee); 
   if (scheme==null||scheme==''|| amount==null||is_nominee==null||is_nominee==''||is_minor==null||is_minor==''|| is_saving==null||is_saving==''){
     this.provider.show_alert('All fields required ') 

@@ -30,6 +30,7 @@ export class SharedService {
   P_tehsil:string;
   P_distt:string;
   P_pin:string;
+  mid:string;
   fd:boolean;
   rd:boolean;
   constructor() { }
@@ -38,6 +39,12 @@ export class SharedService {
   }
   getfd(){
     return this.fd
+  }
+  setmid(data){
+  this.mid=data
+  }
+  getmid(){
+    return this.mid
   }
   setrd(data){
     this.rd=data

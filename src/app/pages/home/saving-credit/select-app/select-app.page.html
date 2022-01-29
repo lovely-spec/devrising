@@ -1,9 +1,52 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>select-app</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
+  <ion-toolbar>
+    <div class="beneficiaries_page">
+      <!--===bg_theme_small===-->
+      <div class="bg_theme bg_theme_small comman_page_padding">
+        <ion-row class="">
+          <ion-col size="10">
+            <a [routerLink]="['/transaction/saving-credit']"><img src="../../../assets/imgs/back-button.svg"></a>
+          </ion-col>
+          <ion-col size="2">
+            <div class="notification_numbur"> <span class="">12</span></div>
+           <img class="bell_icon relative" src="../../../assets/imgs/bell.svg" >
+          </ion-col>
+        </ion-row>
+       </div>
+       </div>
+  </ion-toolbar>
+  <ion-content>
+<div class="select_app">
+     <h2>Select Payment Method</h2>
+</div>
+<div class="select_app_outer">
+  <ion-list class="select_option">
+    <ion-radio-group>
+    <ion-item>
+      <ion-label><img src="../../../../../assets/imgs/phone_pay.jpg" class="select_img"></ion-label>
+      <ion-radio slot="end"  value="phone_pay" (click)="launchApp()"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label><img src="../../../../../assets/imgs/paytm.jpg" class="select_img"></ion-label>
+      <ion-radio slot="end" value="paytm"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label><img src="../../../../../assets/imgs/amazon-pay.png" class="select_img"></ion-label>
+      <ion-radio slot="end" value="amazon-pay"></ion-radio>
+    </ion-item>
+
+    <ion-item  lines="none">
+      <ion-label><img src="../../../../../assets/imgs/g_pay.jpg" class="select_img"></ion-label>
+      <ion-radio slot="end" value="g_pay"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+</ion-list>
+</div>
+<div class="upi">
+     <img src="../../../../../assets/imgs/upi.jpg" class="upi_img" [routerLink]="['confirm-payment']">  
+</div>
+
 
 </ion-content>
