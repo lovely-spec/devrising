@@ -20,32 +20,32 @@
      <h2>Select Payment Method</h2>
 </div>
 <div class="select_app_outer">
-  <ion-list class="select_option">
-    <ion-radio-group>
+  <ion-list class="select_option" >
+    <ion-radio-group [(ngModel)]="app_response" > 
     <ion-item>
-      <ion-label><img src="../../../../../assets/imgs/phone_pay.jpg" class="select_img"></ion-label>
-      <ion-radio slot="end"  value="phone_pay" (click)="launchApp()"></ion-radio>
+      <ion-label><img src="../../../../../assets/imgs/phone_pay.jpg" class="select_img" ></ion-label>
+      <ion-radio slot="end"  value="phone_pay" ></ion-radio>
     </ion-item>
 
     <ion-item>
       <ion-label><img src="../../../../../assets/imgs/paytm.jpg" class="select_img"></ion-label>
-      <ion-radio slot="end" value="paytm"></ion-radio>
+      <ion-radio slot="end" value="paytm" ></ion-radio>
     </ion-item>
 
     <ion-item>
       <ion-label><img src="../../../../../assets/imgs/amazon-pay.png" class="select_img"></ion-label>
-      <ion-radio slot="end" value="amazon-pay"></ion-radio>
+      <ion-radio slot="end" value="amazon_pay" ></ion-radio>
     </ion-item>
 
     <ion-item  lines="none">
       <ion-label><img src="../../../../../assets/imgs/g_pay.jpg" class="select_img"></ion-label>
-      <ion-radio slot="end" value="g_pay"></ion-radio>
+      <ion-radio slot="end" value="g_pay" ></ion-radio>
     </ion-item>
   </ion-radio-group>
 </ion-list>
 </div>
 <div class="upi">
-     <img src="../../../../../assets/imgs/upi.jpg" class="upi_img" [routerLink]="['confirm-payment']">  
+  <button class="gradient_fill_btn large_btn_filled-2" (click)="next()" >Make Payment</button>
 </div>
 
 

@@ -21,8 +21,8 @@ import { Router } from '@angular/router';
 export class ApihelperProvider {
   
 
-  // private RootURL: string = "http://localhost:3000/api/";
-  private RootURL: string = "https://staging.devrising.in/api/";
+  private RootURL: string = "http://localhost:3000/api/";
+  // private RootURL: string = "https://staging.devrising.in/api/";
   // private RootURL: string = "https://app.devrising.in/api/";
    loading: any;
    HeaderConfig : any = [];
@@ -36,6 +36,7 @@ export class ApihelperProvider {
    FL: any = []; 
    PL: any = []; 
    schemes: any = [];
+   trans: any = [];
    rdschemes: any = [];
    rqd: any = [];
    rdreq: any = [];
@@ -126,6 +127,18 @@ export class ApihelperProvider {
     this.fdreq = data.details;
     return this.fdreq;
   }
+newmember(id){
+  let postData = new FormData();
+  postData.append('id' , id);
+    let data =this.http.post(this.RootURL + 'member/newmember',postData,this.HeaderConfig);
+    return  data;
+}
+contact(id){
+  let postData = new FormData();
+  postData.append('id' , id);
+    let data =this.http.post(this.RootURL + 'member/contact',postData,this.HeaderConfig);
+    return  data;
+}
   minor(){
     let postData = new FormData();
     let data =this.http.post(this.RootURL + 'member/minors',postData,this.HeaderConfig);
@@ -520,6 +533,10 @@ Notification(){
   let postData = new FormData();
   return this.http.post(this.RootURL + 'member/notification',postData,this.HeaderConfig);
 }
+creditreq(){
+  let postData = new FormData();
+  return this.http.post(this.RootURL + 'member/creditreq',postData,this.HeaderConfig);
+}
 // add member api starts 
 
 // phone no check api
@@ -568,6 +585,24 @@ createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nom
 }
 
 // end fd
+// transection start
+transec(member_id:string,saving_account_id:string,payment_mode:string,amount:string){
+  let postData = new FormData();
+  postData.append('member_id',member_id);
+  postData.append('saving_account_id',saving_account_id);
+  postData.append('payment_mode',payment_mode);
+  postData.append('amount',amount);
+  return this.http.post(this.RootURL + 'member/trans',postData,this.HeaderConfig);
+  
+}
+// end transection 
+
+utrno(slug:string,utr_no:string,){
+  let postData = new FormData();
+  postData.append('slug',slug);
+  postData.append('utr_no',utr_no);
+  return this.http.post(this.RootURL + 'member/utr',postData,this.HeaderConfig);
+}
 
 // personal details api 
 add_new_member (number:string,first_name:string,Last_name:string,Father_name:string,Husband_wife_name:string,D_O_B:string,Marital_status:string,Occupation:string,Email:string,gender:string,title:string,
@@ -590,7 +625,7 @@ add_new_member (number:string,first_name:string,Last_name:string,Father_name:str
   nominee_relation:string,
   nominee_number:string,
   nominee_address:string,
-  nominee_aadhar:string,member_no){
+  nominee_aadhar:string,member_no,nominee_pan,P_state){
   let postData = new FormData();
   // personal details
   postData.append('number',number);
@@ -617,6 +652,7 @@ add_new_member (number:string,first_name:string,Last_name:string,Father_name:str
   postData.append('P_tehsil',P_tehsil);
   postData.append('P_distt',P_distt);
   postData.append('P_pin',P_pin);
+  postData.append('P_state',P_state);
 
   // kyc details
 
@@ -628,10 +664,83 @@ add_new_member (number:string,first_name:string,Last_name:string,Father_name:str
   postData.append('nominee_number',nominee_number);  
   postData.append('nominee_address',nominee_address); 
   postData.append('nominee_aadhar',nominee_aadhar); 
+  postData.append('nominee_pan',nominee_pan); 
   postData.append('member_no',member_no); 
    
   return this.http.post(this.RootURL + 'member/addmember',postData,this.HeaderConfig);
 }
+// edit member
+editm(id){
+  let postData = new FormData();
+  postData.append('id',id);
+  return this.http.post(this.RootURL + 'member/editmember',postData,this.HeaderConfig);
+}
+save_edit_member (number:string,first_name:string,Last_name:string,Father_name:string,Husband_wife_name:string,D_O_B:string,Marital_status:string,Occupation:string,Email:string,gender:string,title:string,
+  village_house_town:string,
+  p_o:string,
+  panchayat:string,
+  tehsil:string,
+  distt:string,
+  pin:string,
+  P_village_house_town:string,
+  P_p_o:string,
+  P_panchayat:string,
+  P_tehsil:string,
+  P_distt:string,
+  P_pin:string,
+  addhar_no:string,
+  pan_no:string,
+  nominee_name:string,
+  nominee_f_name:string,
+  nominee_relation:string,
+  nominee_number:string,
+  nominee_address:string,
+  nominee_aadhar:string,member_no,nominee_pan,P_state,id){
+  let postData = new FormData();
+  // personal details
+  postData.append('id',id);
+  postData.append('number',number);
+  postData.append('First_name',first_name);
+  postData.append('Last_name',Last_name);
+  postData.append('Father_name',Father_name);
+  postData.append('Husband_wife_name',Husband_wife_name);
+  postData.append('D_O_B',D_O_B);
+  postData.append('Marital_status',Marital_status);
+  postData.append('Occupation',Occupation);
+  postData.append('Email',Email);
+  postData.append('gender',gender);
+  postData.append('title',title);
+  // address details 
+  postData.append('village_house_town',village_house_town);
+  postData.append('p_o',p_o);
+  postData.append('panchayat',panchayat);
+  postData.append('tehsil',tehsil);
+  postData.append('distt',distt);
+  postData.append('pin',pin);
+  postData.append('P_village_house_town',P_village_house_town);
+  postData.append('P_p_o',P_p_o); 
+  postData.append('P_panchayat',P_panchayat);
+  postData.append('P_tehsil',P_tehsil);
+  postData.append('P_distt',P_distt);
+  postData.append('P_pin',P_pin);
+  postData.append('P_state',P_state);
+
+  // kyc details
+
+  postData.append('addhar_no',addhar_no);
+  postData.append('pan_no',pan_no);
+  postData.append('nominee_name',nominee_name);
+  postData.append('nominee_f_name',nominee_f_name);
+  postData.append('nominee_relation',nominee_relation);
+  postData.append('nominee_number',nominee_number);  
+  postData.append('nominee_address',nominee_address); 
+  postData.append('nominee_aadhar',nominee_aadhar); 
+  postData.append('nominee_pan',nominee_pan); 
+  postData.append('member_no',member_no); 
+   
+  return this.http.post(this.RootURL + 'member/saveeditmember',postData,this.HeaderConfig);
+}
+
 add_minor(father_name:string,
   first_name:string,
   last_name:string,

@@ -15,6 +15,7 @@ export class OtherRequestsPage implements OnInit {
   dis:string;
   rdb: boolean;
   fdb:boolean;
+  rqb:boolean;
 
   constructor(
     private provider: ApihelperProvider
@@ -30,16 +31,29 @@ export class OtherRequestsPage implements OnInit {
       console.log('rd',this.fd);
       
     });
+    this.provider.creditreq().subscribe(data=>{
+      this.rq = data['data'];
+      console.log('rq',this.rq);
+      
+    });
     this.rdb = false;
-    this.fdb = false
+    this.fdb = false;
+    this.rqb = false;
   }
   showrd(){
     this.rdb = true;
     this.fdb = false;
+    this.rqb = false;
   }
   showfd(){
     this.fdb = true;
     this.rdb = false;
+    this.rqb = false;
+  }
+  showrq(){
+    this.fdb = false;
+    this.rdb = false;
+    this.rqb = true;
   }
   ngOnInit() {
   }

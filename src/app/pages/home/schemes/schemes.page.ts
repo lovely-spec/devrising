@@ -46,7 +46,7 @@ export class SchemesPage implements OnInit {
     this.rd = rd;
     this.fd = fd;
     console.log('rd',rd)
-    console.log('fd',rd)
+    console.log('fd',fd)
   }
 
   ngOnInit() {

@@ -11,6 +11,7 @@ import { Router, NavigationExtras } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { NotificationPage } from './notification/notification.page';
 import { IonSlides } from '@ionic/angular';
+import {SharedService } from './add-member/shared.service';
 
 @Component({
   selector: 'app-tabs',
@@ -26,6 +27,8 @@ export class HomePage {
   slideOptsOne : any ;
   slideOptsOne2: any ;
   slideOptsOne3: any ;
+  member_id: string ;
+  slug: string ;
   public UserResponse: UserResponse;
   public RdResponse: any = [];
   public RdDdResponse: any = []; 
@@ -54,7 +57,8 @@ export class HomePage {
     public provider : ApihelperProvider,
     private router: Router,
     public popoverController: PopoverController,
-    public platform: Platform
+    public platform: Platform,
+    public shared: SharedService
     
     ){
       
@@ -108,6 +112,11 @@ this.provider.UserPanel().subscribe(data=>{
     
     this.RdDdResponse = this.UserResponse.RDDD;
     console.log('both',this.RdDdResponse)
+    this.member_id = this.UserResponse.current_member.id
+    this.slug = this.UserResponse.current_member.slug
+    this.shared.setmember_id(this.member_id)
+    this.shared.setslug(this.slug)
+    console.log('mem',this.member_id,this.slug)
     this.DdResponse = [];
     this.RdResponse = []
     this.FdResponse = this.UserResponse.FD;

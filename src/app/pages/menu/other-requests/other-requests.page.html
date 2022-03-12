@@ -15,11 +15,14 @@
     </ion-toolbar>
   
     <ion-content>
-      <ion-col size="5">
+      <ion-col size="3">
         <button  class="small_btn_filled gradient_fill_btn" (click)=showrd() >RD Request</button>
       </ion-col>
-      <ion-col size="5">
+      <ion-col size="3">
         <button  class="small_btn_filled gradient_fill_btn" (click)=showfd()>FD Request</button>
+      </ion-col>
+      <ion-col size="3">
+        <button  class="small_btn_filled gradient_fill_btn" (click)=showrq()>Saving Credit Request</button>
       </ion-col>
        <div *ngIf="rdb">
           <div class="request" *ngIf="rd">
@@ -48,7 +51,7 @@
             <ion-card class="card-1"  *ngFor="let fds of fd;let i=index" >
                 <ion-row *ngIf="fds.on_hold == true">
                       <ion-col size="6">
-                        <h1 class="title-row">Rd Account</h1>
+                        <h1 class="title-row">Fd Account</h1>
                         <h1 class="title-row">Amount</h1>
                         <h1 class="title-row">Status</h1>
                         <h1 class="title-row">Reason</h1>
@@ -60,6 +63,28 @@
                       <h1 *ngIf="fds.status == 'disapproved'" class="dis-1" >{{fds.status}}</h1>
                       <h1 *ngIf="fds.status == 'active'" class="ap-1" >{{fds.status}}</h1>
                       <h1 class="ap" >{{fds.remarks}}</h1>
+                      </ion-col>
+                </ion-row>  
+            </ion-card>
+          </div>
+        </div>
+        <div *ngIf="rqb">
+          <div class="request" *ngIf="rq">
+            <ion-card class="card-1"  *ngFor="let rqs of rq;let i=index" >
+                <ion-row>
+                      <ion-col size="6">
+                        <h1 class="title-row">UTR NO</h1>
+                        <h1 class="title-row">Amount</h1>
+                        <h1 class="title-row">Status</h1>
+                        <h1 class="title-row">Reason</h1>
+                      </ion-col>
+                      <ion-col size="6">
+                      <h1 class="ap">{{rqs.utr_no}}</h1>
+                      <h1 class="ap">{{rqs.amount}}</h1>
+                      <h1 *ngIf="rqs.status == 'pending'" class="pe-1" >Pending</h1>
+                      <h1 *ngIf="rqs.status == 'disapproved'" class="dis-1" >Disapproved</h1>
+                      <h1 *ngIf="rqs.status == 'approved'" class="ap-1" >Approved</h1>
+                      <h1 class="ap" >{{rqs.description}}</h1>
                       </ion-col>
                 </ion-row>  
             </ion-card>

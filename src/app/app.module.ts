@@ -30,6 +30,7 @@ import { SMS } from '@ionic-native/sms/ngx';
 import { CommonModule } from '@angular/common';
 import { AddBeneficiaryPage } from './pages/home/beneficiary/add-beneficiary/add-beneficiary.page';
 import { Camera } from '@ionic-native/camera/ngx';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 
 
@@ -70,7 +71,8 @@ import { Camera } from '@ionic-native/camera/ngx';
     CommonModule,
     BrowserModule,
     AddBeneficiaryPage ,
-    Camera
+    Camera,
+    InAppBrowser
     
   ]
 })

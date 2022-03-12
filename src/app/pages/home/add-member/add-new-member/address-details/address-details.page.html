@@ -22,30 +22,30 @@
         <ion-card-content>
           <ion-item lines="none">
             <ion-label position="floating">Village/House No./Town</ion-label>
-            <ion-input type="text" [(ngModel)]="village_house_town"></ion-input>
+            <ion-input type="text" [(ngModel)]="village_house_town" value="{{stng[1]}}"></ion-input>
           </ion-item>
           <ion-item lines="none">
             <ion-label position="floating">Post Office (P.O.)</ion-label>
-            <ion-input type="text" [(ngModel)]="p_o" ></ion-input>
+            <ion-input type="text" [(ngModel)]="p_o" value="{{stng[3]}}" ></ion-input>
           </ion-item>
           <ion-item lines="none">
             <ion-label position="floating">Panchayat</ion-label>
-            <ion-input type="text" [(ngModel)]="panchayat"></ion-input>
+            <ion-input type="text" [(ngModel)]="panchayat" value="{{Contact.panchayat}}"></ion-input>
           </ion-item>
           <ion-item lines="none">
             <ion-label position="floating">Tehsil</ion-label>
-            <ion-input type="text" [(ngModel)]="tehsil"></ion-input>
+            <ion-input type="text" [(ngModel)]="tehsil" value="{{stng[5]}}"></ion-input>
           </ion-item>
           <ion-item lines="none">
-            <ion-select class="custom-options" placeholder="Distt." [(ngModel)]="distt">
-              <ion-select-option value="brown">Shimla</ion-select-option>
-              <ion-select-option value="blonde">Kullu</ion-select-option>
-              <ion-select-option value="abc">Bilaspur</ion-select-option>
+            <ion-select class="custom-options" placeholder="Distt." [(ngModel)]="distt" value="{{stng[7]}}">
+              <ion-select-option value="SHIMLA">Shimla</ion-select-option>
+              <ion-select-option value="KULLU">Kullu</ion-select-option>
+              <ion-select-option value="BILASPUR">Bilaspur</ion-select-option>
             </ion-select>
           </ion-item>
           <ion-item lines="none">
             <ion-label position="floating">Pin</ion-label>
-            <ion-input type="number" [(ngModel)]="pin"></ion-input>
+            <ion-input type="number" [(ngModel)]="pin" value="{{Contact.pincode}}"></ion-input>
           </ion-item>
           <div class="address_confirmation">
             <p>Is Your present and permanent address is same?</p>
@@ -53,11 +53,11 @@
               <ion-radio-group class="adress_radio_input">
                 <ion-item lines="none" class="radio">
                   <ion-label>Yes</ion-label> <br>
-                  <ion-radio slot="start"  (click)=showform(1) class="input_type_radio"></ion-radio>
+                  <ion-radio slot="start"  (click)=showform(2) class="input_type_radio"></ion-radio>
                 </ion-item>
                 <ion-item lines="none" class="radio">
                   <ion-label>NO</ion-label> <br>
-                  <ion-radio slot="start"   (click)=showform(2) class="input_type_radio"></ion-radio>
+                  <ion-radio slot="start"   (click)=showform(1) class="input_type_radio"></ion-radio>
                 </ion-item>
               </ion-radio-group>
             </div>
@@ -65,30 +65,46 @@
           <div class="slider_form" *ngIf=show_detail>
             <ion-item lines="none">
               <ion-label position="floating">Village/House No./Town</ion-label>
-              <ion-input type="text" [(ngModel)]="P_village_house_town"></ion-input>
+              <ion-input type="text" [(ngModel)]="P_village_house_town" value="{{prst[1]}}"></ion-input>
             </ion-item>
             <ion-item lines="none">
               <ion-label position="floating">Post Office (P.O.)</ion-label>
-              <ion-input type="text" [(ngModel)]="P_p_o"></ion-input>
+              <ion-input type="text" [(ngModel)]="P_p_o" value="{{prst[3]}}"></ion-input>
             </ion-item>
             <ion-item lines="none">
               <ion-label position="floating">Panchayat</ion-label>
-              <ion-input type="text" [(ngModel)]="P_panchayat"></ion-input>
+              <ion-input type="text" [(ngModel)]="P_panchayat" value="{{Contact.pincode}}"></ion-input>
             </ion-item>
             <ion-item lines="none">
               <ion-label position="floating">Tehsil</ion-label>
-              <ion-input type="text" [(ngModel)]="P_tehsil"></ion-input>
+              <ion-input type="text" [(ngModel)]="P_tehsil" value="{{prst[5]}}"></ion-input>
             </ion-item>
             <ion-item lines="none">
-              <ion-select class="custom-options" placeholder="Distt." [(ngModel)]="P_distt">
-                <ion-select-option value="brown">Shimla</ion-select-option>
-                <ion-select-option value="blonde">Kullu</ion-select-option>
-                <ion-select-option value="abc">Bilaspur</ion-select-option>
+              <ion-select class="custom-options" placeholder="Distt." [(ngModel)]="P_distt" value="{{prst[7]}}">
+                <ion-select-option value="SHIMLA">Shimla</ion-select-option>
+                <ion-select-option value="SOLAN">Solan</ion-select-option>
+                <ion-select-option value="SIRMAUR">Sirmaur</ion-select-option>
+                <ion-select-option value="CHAMBA">Chamba</ion-select-option>
+                <ion-select-option value="HAMIRPUR">Hamirpur</ion-select-option>
+                <ion-select-option value="KANGRA">Kangra</ion-select-option>
+                <ion-select-option value="KINNAUR">Kinnaur</ion-select-option>
+                <ion-select-option value="KULLU">Kullu</ion-select-option>
+                <ion-select-option value="BILASPUR">Bilaspur</ion-select-option>
+                <ion-select-option value="L&S">Lahaul & Spiti</ion-select-option>
+                <ion-select-option value="MANDI">Mandi</ion-select-option>
+                <ion-select-option value="UNA">Una</ion-select-option>
               </ion-select>
+              <ion-item lines="none">
+                <ion-select class="custom-options" placeholder="State" [(ngModel)]="P_state" value="{{Contact.state}}">
+                  <ion-select-option value="Himachal Pradesh">Himachal Pradesh</ion-select-option>
+                  <ion-select-option value="Bihar">Bihar</ion-select-option>
+                  <ion-select-option value="Uttar Pradesh">Uttar Pradesh</ion-select-option>
+                </ion-select>
+              </ion-item>
             </ion-item>
             <ion-item lines="none">
               <ion-label position="floating">Pin</ion-label>
-              <ion-input type="number" [(ngModel)]="P_pin"></ion-input>
+              <ion-input type="number" [(ngModel)]="P_pin" value="{{Contact.permanent_pincode}}"></ion-input>
             </ion-item>
           </div>
           <div class="add_member_form_btns">

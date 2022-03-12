@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: MemberRequestsPage
+  },
+  {
+    path: 'editm',
+    loadChildren: () => import('../../home/add-member/add-new-member/add-new-member.module').then( m => m.AddNewMemberPageModule)
   }
 ];
 

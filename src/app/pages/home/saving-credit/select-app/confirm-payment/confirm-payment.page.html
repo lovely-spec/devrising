@@ -17,37 +17,38 @@
 
 <ion-content>
 <div class="confirm-payment-section">
-  <h6 class="trans">Transaction ID: 12345678</h6>
   <ion-row>
-    <ion-col size="8">
+  <ion-col size="8">
+  <div id="myDiv" >
   <h6 class="upi-id">UPI ID: ys130585@oksbi</h6>
+  </div>
   </ion-col>
   <ion-col size="4">
-  <button class="copy">copy</button>
+  <button class="copy" (click)="copyMessage('ys130585@oksbi')" >copy</button>
   </ion-col>
   </ion-row>
   <ion-row>
     <ion-col size="8">
-  <h6 class="rupe">&#8377;5000</h6>
-  </ion-col>
-  <ion-col size="4">
-  <button class="copy">copy</button>
+  <h6 class="rupe" id="amount">&#8377;{{am}}</h6>
   </ion-col>
   </ion-row>
 </div>
-      <div class="ion-text-center">
-        <ion-row>
-          <ion-col>
-        <button class="gradient_fill_btn large_btn_filled-2" >Make Payment</button>
-    </ion-col>
-  </ion-row>
+<div class="ion-text-center">
+  <h1 class="upload">Please Click On Make Payment.</h1>
+</div>
+  <div class="ion-text-center">
+    <ion-row>
+      <ion-col>
+        <button class="gradient_fill_btn large_btn_filled-2"  (click)="open()"  >Make Payment</button>
+      </ion-col>
+    </ion-row>
   </div>
   <div class="ion-text-center">
     <h1 class="upload">Upload Screenshot of Your Transactions.</h1>
   </div>
   <div class="ion-text-center select_box">
      <div class="select">
-    <ion-row>
+    <ion-row (click)="upload()">
       <ion-col>
          <img src="../../../../../../assets/imgs/plus_icon.svg">
          <h6 class="select_text">Select</h6>
@@ -58,8 +59,20 @@
   <div class="ion-text-center">
   <ion-row>
     <ion-col>
-        <button class="gradient_fill_btn large_btn_filled-2" [routerLink]="['successful-page']" >Upload</button>
+      
+        <div class="enter_amount_ field comman_input_field">
+          <ion-item lines="none" >
+            <!-- <form #form="ngForm"> -->
+              <ion-label position="floating">Enter UTR No</ion-label>
+              <ion-input required pattern="[0-9]*" name="amount" type="number" [(ngModel)]="utr_no" ></ion-input>
+            </ion-item>
+        </div>
+      
+        <button class="gradient_fill_btn large_btn_filled-2" (click)="submit()" >Submit</button>
     </ion-col>
   </ion-row>
   </div>
+  <script>
+
+  </script>
 </ion-content>

@@ -22,7 +22,8 @@
                  <h1 class="title-row">Member Id</h1>
                  <h1 class="title-row">Name</h1>
                  <h1 class="title-row">Status</h1>
-                 <h1 class="title-row">Reason</h1>
+                 <h1 class="title-row" *ngIf="rqs.status != 'null'">Reason</h1>
+                 <h1 class="title-row">Edit Member</h1>
                </ion-col>
                <ion-col size="6">
                <h1 class="ap">{{rqs.member_number}}</h1>
@@ -31,6 +32,7 @@
                <h1 *ngIf="rqs.status == 'dissapproved'" class="dis-1" >{{rqs.status}}</h1>
                <h1 *ngIf="rqs.status == 'active'" class="ap-1" >{{rqs.status}}</h1>
                <h1 class="ap" >{{rqs.remarks}}</h1>
+               <br><button type="button" class="extra_small_gray_btn" (click)="edit_member(Id=rqs.id)">Edit</button>
               </ion-col>
         </ion-row>  
     </ion-card>

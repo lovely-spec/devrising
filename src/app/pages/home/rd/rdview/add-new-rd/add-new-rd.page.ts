@@ -43,6 +43,7 @@ export class AddNewRdPage implements OnInit {
   show_detail:boolean;
   form:boolean;
   rd:boolean;
+  fd:boolean;
   sch:any;
   j:boolean;
   ionViewDidEnter() {
@@ -69,6 +70,7 @@ export class AddNewRdPage implements OnInit {
     this.show_detail = false;
     this.form = false;
     this.rd = true;
+    this.fd = false
     
   }
   onChange(){
@@ -104,6 +106,7 @@ export class AddNewRdPage implements OnInit {
   }
   schemes(){
     this.shared.setrd(this.rd);
+    this.shared.setfd(this.fd);
     let navigationExtras: NavigationExtras = {
     };
     this.router.navigate(['/dashboard/home/rdview/add-new-rd/schemes'], navigationExtras);

@@ -10,6 +10,7 @@ import { finalize } from 'rxjs/operators';
 import { NavigationExtras, Router } from '@angular/router';
 import { SharedService } from '../../shared.service';
 import { ApihelperProvider } from 'src/providers/apihelper/apihelper';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 const STORAGE_KEY = 'my_images';
 
 @Component({
@@ -39,7 +40,14 @@ export class MemberKycDocumentPage implements OnInit {
       private filePath: FilePath,
       public router: Router,
       private provider : ApihelperProvider,
-      private SharedService: SharedService) { 
+      private SharedService: SharedService,
+      private iab: InAppBrowser) { 
+      }
+      open(){
+        var v = '5eaee3e3-712e-4ae2-8542-38a9ea806bdc'
+        this.iab.create('http://localhost:3000/' + v ,'_blank');
+        
+        
       }
   
 

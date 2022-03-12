@@ -17,7 +17,7 @@
       <ion-item lines="none" >
        <!-- <form #form="ngForm"> -->
          <ion-label position="floating">Enter Amount</ion-label>
-         <ion-input required pattern="[0-9]*" name="amount" type="number" ></ion-input>
+         <ion-input required pattern="[0-9]*" name="amount" type="number" [(ngModel)]="amount" ></ion-input>
        </ion-item>
   <ion-row class="page_checkbox">
             <ion-col size="12" class="algn">
@@ -29,7 +29,7 @@
   <ion-row>
     <ion-col>
       <div class="ion-text-center">
-        <button class="gradient_fill_btn large_btn_filled"[routerLink]="['select-app']" >Transfer</button>
+        <button class="gradient_fill_btn large_btn_filled" (click)="next()" >Transfer</button>
       </div>
     </ion-col>
   </ion-row>

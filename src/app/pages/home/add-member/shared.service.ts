@@ -29,10 +29,17 @@ export class SharedService {
   P_panchayat:string;
   P_tehsil:string;
   P_distt:string;
+  P_state:string;
+  amount:string;
+  slg:string;
   P_pin:string;
   mid:string;
   fd:boolean;
   rd:boolean;
+  slug:boolean;
+  member_id:boolean;
+  edit:boolean;
+  pay:string;
   constructor() { }
   setfd(data){
   this.fd=data
@@ -40,11 +47,41 @@ export class SharedService {
   getfd(){
     return this.fd
   }
+  setamount(data){
+    this.amount=data
+  }
+  getamount(){
+      return this.amount
+  }
+  setslug(data){
+  this.slug=data
+  }
+  getslug(){
+    return this.slug
+  }
+  setslg(data){
+    this.slg=data
+    }
+    getslg(){
+      return this.slg
+    }
+  setmember_id(data){
+  this.member_id=data
+  }
+  getmember_id(){
+    return this.member_id
+  }
   setmid(data){
   this.mid=data
   }
   getmid(){
     return this.mid
+  }
+  setpay(data){
+  this.pay=data
+  }
+  getpay(){
+    return this.pay
   }
   setrd(data){
     this.rd=data
@@ -190,6 +227,12 @@ export class SharedService {
   getpdiss(){
     return this.P_distt
   }
+  setpstate(data){
+    this.P_state=data
+  }
+  getpstate(){
+    return this.P_state
+  }
   setppin(data){
     this.P_pin=data
   }
@@ -198,5 +241,12 @@ export class SharedService {
   }  
   getdata(){
     return this.filterdata 
+  }
+  // edit member 
+  seteditm(data){
+    this.edit=data
+  }
+  geteditm(){
+    return this.edit
   }
 }

@@ -15,7 +15,7 @@
     </ion-row>
   </div>
 </ion-toolbar>
-<ion-content>
+<ion-content *ngIf="Member">
   <div class="details_previews_page">
     <!-- <div class="bg_theme comman_page_padding bg_theme_small">
       <ion-row>
@@ -54,7 +54,7 @@
               <div>First Name</div>
             </ion-col>
             <ion-col size="6">
-              <div>: Rakesh </div>
+              <div>: {{Member.first_name}} </div>
             </ion-col>
           </ion-row>
           <ion-row class="dotted">
@@ -62,7 +62,7 @@
               <div>Last Name</div>
             </ion-col>
             <ion-col size="6">
-              <div>: Kumar </div>
+              <div>: {{Member.last_name}} </div>
             </ion-col>
           </ion-row>
           <ion-row class="dotted">
@@ -70,15 +70,15 @@
               <div>Father Name</div>
             </ion-col>
             <ion-col size="6">
-              <div>: Ram Lal </div>
+              <div>: {{Member.father_name}} </div>
             </ion-col>
           </ion-row>
-          <ion-row class="dotted">
+          <ion-row class="dotted" *ngIf="Member.spouse_name != ''">
             <ion-col size="6">
               <div>Husband/Wife Name</div>
             </ion-col>
             <ion-col size="6">
-              <div>: Sheetal </div>
+              <div>: {{Member.spouse_name}} </div>
             </ion-col>
           </ion-row>
           <ion-row class="dotted">
@@ -86,7 +86,7 @@
               <div>Date of Birth</div>
             </ion-col>
             <ion-col size="6">
-              <div>: 07/06/2001 </div>
+              <div>: {{Member.dob}} </div>
             </ion-col>
           </ion-row>
           <ion-row class="dotted">
@@ -94,7 +94,7 @@
               <div>Marital Status</div>
             </ion-col>
             <ion-col size="6">
-              <div>: Married </div>
+              <div>: {{Member.marital_status}} </div>
             </ion-col>
           </ion-row>
           <ion-row class="dotted">
@@ -102,7 +102,7 @@
               <div>Gender</div>
             </ion-col>
             <ion-col size="6">
-              <div>: Male </div>
+              <div>: {{Member.gender}} </div>
             </ion-col>
           </ion-row>
           <ion-row class="dotted">
@@ -110,7 +110,7 @@
               <div>Email</div>
             </ion-col>
             <ion-col size="6">
-              <div>: xyz@gmail.com </div>
+              <div>: {{Member.last_name}} </div>
             </ion-col>
           </ion-row>
           <ion-row class="dotted">
@@ -118,7 +118,7 @@
               <div>Occupation</div>
             </ion-col>
             <ion-col size="6">
-              <div>: Shopkeeper </div>
+              <div>: {{Member.occupation}} </div>
             </ion-col>
           </ion-row>
           <ion-row class="dotted">
@@ -126,7 +126,7 @@
               <div>Pan NO</div>
             </ion-col>
             <ion-col size="6">
-              <div>: 123456789 </div>
+              <div>: {{Member.pan_no}} </div>
             </ion-col>
           </ion-row>
           <ion-row class="">
@@ -134,7 +134,7 @@
               <div>Aadhar NO</div>
             </ion-col>
             <ion-col size="6">
-              <div>: 123456789 </div>
+              <div>: {{Member.aadhar_no}} </div>
             </ion-col>
           </ion-row>
         </div>
@@ -151,7 +151,7 @@
               <div>Village/House No./Town</div>
             </ion-col>
             <ion-col size="6">
-              <div>: Nehra </div>
+              <div>: {{prst[1]}} </div>
             </ion-col>
           </ion-row>
           <ion-row class="dotted">
@@ -159,7 +159,7 @@
               <div>Post Office (P.O.)</div>
             </ion-col>
             <ion-col size="6">
-              <div>: Nehra </div>
+              <div>: {{prst[3]}} </div>
             </ion-col>
           </ion-row>
           <ion-row class="dotted">
@@ -167,7 +167,7 @@
               <div>Panchayat</div>
             </ion-col>
             <ion-col size="6">
-              <div>: Totu</div>
+              <div>: {{contact.panchayat}}</div>
             </ion-col>
           </ion-row>
           <ion-row class="dotted">
@@ -175,7 +175,7 @@
               <div>Tehsil</div>
             </ion-col>
             <ion-col size="6">
-              <div>: Distt. </div>
+              <div>: {{prst[5]}} </div>
             </ion-col>
           </ion-row>
           <ion-row class="">
@@ -183,7 +183,7 @@
               <div>Pin Code</div>
             </ion-col>
             <ion-col size="6">
-              <div>: 171001 </div>
+              <div>: {{contact.pincode}} </div>
             </ion-col>
           </ion-row>
         </div>
@@ -200,7 +200,7 @@
               <div>Village/House No./Town</div>
             </ion-col>
             <ion-col size="6">
-              <div>: Nehra </div>
+              <div>: {{stng[1]}} </div>
             </ion-col>
           </ion-row>
           <ion-row class="dotted">
@@ -208,7 +208,7 @@
               <div>Post Office (P.O.)</div>
             </ion-col>
             <ion-col size="6">
-              <div>: Nehra </div>
+              <div>: {{stng[3]}}</div>
             </ion-col>
           </ion-row>
           <ion-row class="dotted">
@@ -216,7 +216,7 @@
               <div>Panchayat</div>
             </ion-col>
             <ion-col size="6">
-              <div>: Totu</div>
+              <div>: {{contact.permanent_panchayat}</div>
             </ion-col>
           </ion-row>
           <ion-row class="dotted">
@@ -224,7 +224,7 @@
               <div>Tehsil</div>
             </ion-col>
             <ion-col size="6">
-              <div>: Distt. </div>
+              <div>: {{stng[5]}}</div>
             </ion-col>
           </ion-row>
           <ion-row class="">
@@ -232,7 +232,7 @@
               <div>Pin Code</div>
             </ion-col>
             <ion-col size="6">
-              <div>: 171001 </div>
+              <div>: {{contact.permanent_pincode}} </div>
             </ion-col>
           </ion-row>
         </div>
@@ -308,7 +308,7 @@
               <div>Nominee Name</div>
             </ion-col>
             <ion-col size="6">
-              <div>: Rakesh </div>
+              <div>: {{Member.nominee_name}}</div>
             </ion-col>
           </ion-row>
           <ion-row class="dotted">
@@ -316,7 +316,7 @@
               <div>Relation</div>
             </ion-col>
             <ion-col size="6">
-              <div>: Son </div>
+              <div>: {{Member.nominee_relation}} </div>
             </ion-col>
           </ion-row>
           <ion-row class="dotted">
@@ -324,7 +324,7 @@
               <div>Father Name</div>
             </ion-col>
             <ion-col size="6">
-              <div>: Ram Lal</div>
+              <div>:{{Member.nominee_father}}</div>
             </ion-col>
           </ion-row>
           <ion-row class="dotted">
@@ -332,7 +332,23 @@
               <div>Mobile No.</div>
             </ion-col>
             <ion-col size="6">
-              <div>: NA </div>
+              <div>: {{Member.nominee_mobile_no}} </div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="dotted">
+            <ion-col size="6">
+              <div>Aadhar No.</div>
+            </ion-col>
+            <ion-col size="6">
+              <div>: {{Member.nominee_aadhar_no}} </div>
+            </ion-col>
+          </ion-row>
+          <ion-row class="dotted">
+            <ion-col size="6">
+              <div>Pan No.</div>
+            </ion-col>
+            <ion-col size="6">
+              <div>: {{Member.nominee_pan_no}} </div>
             </ion-col>
           </ion-row>
           <ion-row class="last_row">
@@ -340,7 +356,7 @@
               <div>Address</div>
             </ion-col>
             <ion-col size="6" class="last_col">
-              <div><p>: Village Demo <br>Po Demo Teh and Distt. <br> Demo 171001</p></div>
+              <div><p>: {{Member.nominee_address}}</p> </div>
             </ion-col>
           </ion-row>
         <ion-row class="terms_checkbox">

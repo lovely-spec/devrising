@@ -23,6 +23,9 @@ export class AddNewMemberPage implements OnInit {
   Email:string;
   gender:string;
   number:string;
+  edit: boolean = false;
+  Member: any =[];
+  Contact: any =[];
   public personaldetails:string[];
   
   constructor(
@@ -34,8 +37,23 @@ export class AddNewMemberPage implements OnInit {
     public SharedService: SharedService ) {
   }
    
+  ionViewDidEnter() {
+    this.edit = this.SharedService.geteditm();
+    if (this.edit == true){
+      var id = this.SharedService.getmid();
+    this.provider.editm(id).subscribe(data=>{
+      console.log('member',data);
+      this.Member = data['message'];
+      console.log('Member',this.Member);
 
-  
+    })
+    this.provider.contact(id).subscribe(data=>{
+      console.log('contact',data);
+      this.Contact = data['message']
+      console.log('Contact',data);
+    })
+    }
+  }
   ngOnInit() {
 
   }
@@ -52,42 +70,53 @@ export class AddNewMemberPage implements OnInit {
     var title = '';
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     console.log('data',this.gender,this.First_name,this.Last_name,this.Father_name,this.Marital_status,this.Occupation)
-  //   if (first_name==null||first_name==''|| Last_name==null|| Last_name==''||Father_name==null||Father_name==''||D_O_B==null||D_O_B==''||Occupation==null||Occupation==''||Email==null||Email==''||gender==null||gender==''){
-  //     this.provider.show_alert('Please fill all details')
-  //   }else if (Marital_status=="Married"){
-  //     if(Husband_wife_name==null){
-  //       this.provider.show_alert('Please fill Husband/Wife Name')
-  //     }
-  //   }else if (!re.test(Email)){
-  //     this.provider.show_alert('Please Provide Vailid Email Address')
-  //   }
-  //   else{
-  //     if (gender == 'Male'){
-  //       title = 'Mr'
-  //     }
-  //     else{
-  //       title = "Ms"
-  //     }
-  //     this.number = this.SharedService.getnumber();
-  //     console.log('this.number', this.number);
-  //     this.SharedService.setfname(this.First_name);
-  //     this.SharedService.setlname(this.Last_name);
-  //     this.SharedService.setftname(this.Father_name);
-  //     this.SharedService.sethwname(Husband_wife_name);
-  //     this.SharedService.setdob(this.D_O_B);
-  //     this.SharedService.setms(this.Marital_status);
-  //     this.SharedService.setoc(this.Occupation);
-  //     this.SharedService.setemail(this.Email);
-  //     this.SharedService.setgender(this.gender);
-  //     this.SharedService.settitle(title);
-  //     let navigationExtras: NavigationExtras = {
-  //     };
-  //     this.router.navigate(['address-details'], navigationExtras);
+    if (first_name==null||first_name==''|| Last_name==null|| Last_name==''||Father_name==null||Father_name==''||D_O_B==null||D_O_B==''||Occupation==null||Occupation==''||Email==null||Email==''||gender==null||gender=='' ||Marital_status==null||Marital_status==''){
+      this.provider.show_alert('Please fill all details')
+      if (!re.test(Email)){
+        this.provider.show_alert('Please Provide Vailid Email Address')
+      }if (Marital_status=="MARRIED"){
+        // this.provider.show_alert('Please fill Husband/Wife Name')
+        if (this.H_W_name== null){
+          this.provider.show_alert('Please fill Husband/Wife Name')
+        }
+      }
+    }
+    
+    
+  //   if (Marital_status=="Married" ){
+      
+  //   }else if ( Husband_wife_name=='' ){
+      
+  //     this.provider.show_alert('Please fill Husband/Wife Name')
     
   // }
-  let navigationExtras: NavigationExtras = {
-  };
-  this.router.navigate(['address-details'], navigationExtras);
+    else{
+      if (gender == 'male'){
+        title = 'mr'
+      }
+      else{
+        title = "ms"
+      }
+      this.number = this.SharedService.getnumber();
+      console.log('this.number', this.number);
+      this.SharedService.setfname(this.First_name);
+      this.SharedService.setlname(this.Last_name);
+      this.SharedService.setftname(this.Father_name);
+      this.SharedService.sethwname(Husband_wife_name);
+      this.SharedService.setdob(this.D_O_B);
+      this.SharedService.setms(this.Marital_status);
+      this.SharedService.setoc(this.Occupation);
+      this.SharedService.setemail(this.Email);
+      this.SharedService.setgender(this.gender);
+      this.SharedService.settitle(title);
+      let navigationExtras: NavigationExtras = {
+      };
+      this.router.navigate(['address-details'], navigationExtras);
+    
+  }
+  // let navigationExtras: NavigationExtras = {
+  // };
+  // this.router.navigate(['address-details'], navigationExtras);
   }
 
 }
