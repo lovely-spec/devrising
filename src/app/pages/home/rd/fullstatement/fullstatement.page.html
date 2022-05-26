@@ -6,23 +6,58 @@
         <a [routerLink]="['/dashboard/home/rdview']"><img src="../../../../../assets/imgs/back-button.svg"></a>
       </ion-col>
       <ion-col size="2">
-        <div class="notification_numbur"> <span class="">12</span></div>
-        <img class="bell_icon relative" src="../../../../../assets/imgs/bell.svg">
+       
       </ion-col>
     </ion-row>
     <ion-row>
-      <h1>Recurring Deposit : RD00005</h1>
+      <h1>Recurring Deposit : {{RdDetails.account_number}}</h1>
     </ion-row>
   </div>
   <!--===bg_theme_small End==-->
   <!--====reccuring deposit page====-->
-  <div class="reccurring_deposit_page">
+  <div class="reccurring_deposit_page" >
     <div class="comman_page_headline">
-      <h2>Available Balance : 30,000.00/-</h2>
+      <h2>Available Balance : {{RdDetails.principal_amount}}/-</h2>
+    </div>
+    <div class="ion-text-center">
+      <a class="discover-button ion-text-center" id="filter" (click)="add_installment()">
+        Deposit Installment
+      </a>
     </div>
 
     <div class="comman_page_padding">
       <!--===card_purple===-->
+      <div class="whole-date-range">
+      <div class="date-filter-title"> Date Filter</div> 
+              <ion-list class="daterangecolums">                         
+                <div class="block-date-items">               
+                    <div class="label-date">
+                    Start Date
+                    </div>
+                    <div class="flex-center">
+                      <ion-datetime value="1990-02-19" placeholder="Select Date" class="actual-time-label" [(ngModel)]="start_date" (ionChange)="StartDate()">
+                      </ion-datetime> <ion-icon name="calendar-outline" class="blue-calender"></ion-icon>   
+                    </div>                          
+                </div>
+              
+                <div class="block-date-items">
+                        <div class="label-date">
+                          End Date
+                        </div>
+                  <div class="flex-center">
+                          <ion-datetime value="1990-02-20" placeholder="Select Date" class="actual-time-label" [(ngModel)]="end_date" (ionChange)="EndDate()"></ion-datetime>
+                            <ion-icon name="calendar-outline">
+                          <ion-icon name="calendar-outline" class="blue-calender"></ion-icon> </ion-icon>
+                  </div>
+                </div>
+                
+              </ion-list>
+              <div class="ion-text-center">
+              <a class="discover-button ion-text-center" id="filter" (click)="Apply_Date()">
+                Apply Filter
+              </a>
+            </div>
+            </div>
       <ion-card class="card_purple box_shadow">
         <!--===ion-card-header===-->
         <ion-card-header class="comman_card_header">
@@ -31,8 +66,7 @@
               <h3>Recent Transaction</h3>
             </ion-col>
             <ion-col size="3" class="card_h_icons">
-              <img src="../../../../../assets/imgs/calander_icon.svg">
-              <img src="../../../../../assets/imgs/pdf_icon.svg">
+              <img (click)="createPdf()"src="../../../../../assets/imgs/pdf_icon.svg">
             </ion-col>
           </ion-row>
         </ion-card-header>
@@ -43,76 +77,24 @@
             </ion-input>
           </div>
           <!--===savings_account_details===-->
-          <div class="comman_card_details">
+          <div class="comman_card_details"  *ngIf="RdTransactions" >
+            <div  *ngFor="let RdTransaction of RdTransactions;let i=index" >
             <ion-row class="dotted row">
               <ion-col size="6">
-                <span>Credit from saving a/c - S00296.</span>
-                <p class="color_brown">Cash | <span class="color_purple"> 06/06/2020</span></p>
+                <span *ngIf="RdTransaction.transaction_type == 'credit'">{{RdTransaction.message}}</span>
+                <span *ngIf="RdTransaction.transaction_type == 'debit'">{{RdTransaction.message}}</span>
+                <p class="color_brown">{{RdTransaction.payment_mode}} | <span class="color_purple"> {{RdTransaction.transaction_date}}</span></p>
               </ion-col>
               <ion-col size="5" class="right_col">
-                <span>5,000.00</span>
-                <span>Balance : 5,000.00</span>
+                <span>{{RdTransaction.amount}}</span>
+                <span>Balance : {{RdDetails.principal_amount}}</span>
               </ion-col>
               <ion-col size="1">
-                <img class="" src="../../../../../assets/imgs/plus_green.svg">
+                <img  *ngIf="RdTransaction.transaction_type == 'credit'" class=""  src="../../../../../assets/imgs/plus_green.svg">
+                <img  *ngIf="RdTransaction.transaction_type == 'debit'" class="" src="../../../../../assets/imgs/minus_red.svg">
               </ion-col>
             </ion-row>
-            <ion-row class="dotted row">
-              <ion-col size="6">
-                <span>Cash Withdrawal</span>
-                <p class="color_brown">Cash | <span class="color_purple"> 06/07/2020</span></p>
-              </ion-col>
-              <ion-col size="5" class="right_col">
-                <span>5,000.00</span>
-                <span>Balance : 25,000.00</span>
-              </ion-col>
-              <ion-col size="1">
-                <img class="" src="../../../../../assets/imgs/minus_red.svg">
-              </ion-col>
-            </ion-row>
-            <ion-row class="dotted row">
-              <ion-col size="6">
-                <span>Online Transfer</span>
-                <p class="color_brown">Bank | <span class="color_purple"> 06/08/2020</span></p>
-              </ion-col>
-              <ion-col size="5" class="right_col">
-                <span>5,000.00</span>
-                <span>Balance : 15,000.00</span>
-              </ion-col>
-              <ion-col size="1">
-                <img class="" src="../../../../../assets/imgs/plus_green.svg">
-              </ion-col>
-            </ion-row>
-            <ion-row class="dotted row">
-              <ion-col size="6">
-                <span>Cash Withdrawal</span>
-                <p class="color_brown">06/09<span class="color_purple">/2020</span></p>
-              </ion-col>
-              <ion-col size="5" class="right_col">
-                <span>5,000.00</span>
-                <span>Balance : 20,000.00</span>
-              </ion-col>
-              <ion-col size="1">
-                <img class="" src="../../../../../assets/imgs/minus_red.svg">
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col size="12" class="adjust_margin">
-                <span>Auto Debit EMI - 20 for Other Loan
-                </span>
-              </ion-col>
-              <ion-col size="6">
-                <span>A/C No - OL00136.</span>
-                <p class="color_brown">System | <span class="color_purple"> 06/06/2020</span></p>
-              </ion-col>
-              <ion-col size="5" class="right_col">
-                <span>5,000.00</span>
-                <span>Balance : 30,000.00</span>
-              </ion-col>
-              <ion-col size="1">
-                <img class="" src="../../../../../assets/imgs/plus_green.svg">
-              </ion-col>
-            </ion-row>
+          </div>
           </div>
         </ion-card-content>
       </ion-card>

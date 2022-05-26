@@ -32,6 +32,9 @@ import { AddBeneficiaryPage } from './pages/home/beneficiary/add-beneficiary/add
 import { Camera } from '@ionic-native/camera/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
+import { HeaderComponent } from './header/header.component';
+
+
 
 
 
@@ -72,7 +75,9 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
     BrowserModule,
     AddBeneficiaryPage ,
     Camera,
-    InAppBrowser
+    InAppBrowser,
+    HeaderComponent,
+    
     
   ]
 })

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApihelperProvider } from 'src/providers/apihelper/apihelper';
 import { NotificationPage } from '../../home/notification/notification.page';
+import { CreatePdf } from 'src/providers/CreatePdf';
 import { PopoverController, NavController } from '@ionic/angular';
 
 @Component({
@@ -14,6 +15,7 @@ export class TransactionsPage implements OnInit {
   constructor(
     public provider: ApihelperProvider,
     public popoverController: PopoverController,
+    private pdfmake : CreatePdf,
     public navCtrl: NavController,
     
   ) { }
@@ -41,5 +43,8 @@ export class TransactionsPage implements OnInit {
       translucent: true
     });
     return await popover.present();
+  }
+  createPdf() {
+    this.pdfmake.createPdf(this.transaction_list); 
   }
 }

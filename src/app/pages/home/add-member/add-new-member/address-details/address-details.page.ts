@@ -4,7 +4,7 @@ import { ApihelperProvider } from 'src/providers/apihelper/apihelper';
 import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { NavigationExtras, Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { SharedService } from '../../shared.service';
 
 
@@ -30,6 +30,7 @@ export class AddressDetailsPage implements OnInit {
   P_pin:string;
   firstname:string;
   edit:boolean = false;
+  back:boolean = false;
   Member: any =[];
   Contact: any =[];
   stng: any =[] ;
@@ -39,6 +40,7 @@ export class AddressDetailsPage implements OnInit {
     private storage: Storage,
     private provider : ApihelperProvider,
     public router: Router,
+    public navCtrl: NavController,
     public modalController: ModalController,
     private SharedService: SharedService
   ) { }
@@ -65,6 +67,19 @@ export class AddressDetailsPage implements OnInit {
       console.log('contactsadasdasd',this.stng);
     })
     }
+    this.village_house_town = this.SharedService.getvht();
+    this.p_o = this.SharedService.getpo();
+    this.panchayat = this.SharedService.getpan();
+    this.tehsil = this.SharedService.getteh();
+    this.distt = this.SharedService.getdistt();
+    this.pin = this.SharedService.getpin();
+    this.P_village_house_town = this.SharedService.getpvht();
+    this.P_p_o = this.SharedService.getppo();
+    this.P_panchayat = this.SharedService.getppan();
+    this.P_tehsil = this.SharedService.getpteh();
+    this.P_distt = this.SharedService.getpdiss();
+    this.P_state = this.SharedService.getpstate();
+    this.P_pin = this.SharedService.getppin();
   }
 
   ngOnInit() {
@@ -92,7 +107,7 @@ export class AddressDetailsPage implements OnInit {
       var P_distt = this.P_distt;
       var P_state = this.P_state;
       var P_pin = this.P_pin;
-      var details = this.show_detail
+      var details = this.show_detail;
       var re = /^\d{6}(?:\s*,\s*\d{6})*$/;
       if (village_house_town==null||village_house_town==''|| p_o==null|| p_o==''||panchayat==null||panchayat==''||tehsil==null||tehsil==''||distt==null||distt==''||pin==null||pin==''){
             this.provider.show_alert('Please fill all details')
@@ -124,6 +139,7 @@ export class AddressDetailsPage implements OnInit {
             // console.log('paddress',this.show_detail);
           }
           else {
+            this.provider.presentLoading();
             let navigationExtras: NavigationExtras = {
             };
             this.router.navigate(['/address-details/kyc'], navigationExtras);
@@ -147,5 +163,24 @@ export class AddressDetailsPage implements OnInit {
       this.SharedService.setpstate(P_state);
       
     }
-
+    go_back() {
+      this.back = true
+      this.SharedService.setback(this.back);
+      this.SharedService.setvht(this.village_house_town);
+      this.SharedService.setpo(this.p_o);
+      // console.log(this.SharedService.setpo(this.p_o));
+      this.SharedService.setpan(this.panchayat);
+      this.SharedService.setteh(this.tehsil);
+      this.SharedService.setdistt(this.distt);
+      this.SharedService.setpin(this.pin);
+      this.SharedService.setpvht(this.P_village_house_town);
+      this.SharedService.setppo(this.P_p_o);
+      this.SharedService.setppan(this.P_panchayat);
+      this.SharedService.setpteh(this.P_tehsil);
+      this.SharedService.setpdiss(this.P_distt);
+      this.SharedService.setppin(this.P_pin);
+      this.SharedService.setpstate(this.P_state);
+      
+      this.navCtrl.navigateRoot('/add-new-member');
+    }
 }

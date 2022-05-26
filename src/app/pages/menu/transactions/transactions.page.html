@@ -1,38 +1,45 @@
-<ion-toolbar>
-  <!--===bg_theme_small===-->
-  <div class="bg_theme bg_theme_small comman_page_padding">
-   <ion-row class="">
-     <ion-col size="10">
-       <a [routerLink]="['/beneficiary']"><img src="../../../../../../assets/imgs/back-button.svg"></a>
-     </ion-col>
-     <ion-col size="2">
-       <div class="notification_numbur"> <span class="">12</span></div>
-       <img class="bell_icon relative" src="../../../../../../assets/imgs/bell.svg">
-     </ion-col>
-   </ion-row>
- </div>
-</ion-toolbar>
+
 
 <ion-content>
+  <div class="bg_theme bg_theme_small comman_page_padding">
+    <ion-row class="">
+      <ion-col size="10">
+        <a [routerLink]="['/dashboard/home']"><img src="../../../../../../assets/imgs/back-button.svg"></a>
+      </ion-col>
+      <ion-col size="2">
+      
+      </ion-col>
+    </ion-row>
+    
+  </div>
+  
   <div class="transaction-list">
+    <ion-card-header class="comman_card_header">
+      <ion-row>
+        <ion-col size="9">
+          <h3>Recent Transaction</h3>
+        </ion-col>
+        
+      </ion-row>
+    </ion-card-header>
     <!-- top table row-->
     <ion-row>
-     <ion-col size="6">
+     <ion-col size="3">
        <h3 class="blue-text">
         Transaction Date
        </h3>
      </ion-col>
-     <ion-col size="6">
+     <ion-col size="3">
       <h3 class="blue-text ion-text-right">
         Status
        </h3>
         </ion-col>
-     <ion-col size="6">
+     <ion-col size="3">
       <h3 class="blue-text ">
       Transaction Type
       </h3>
      </ion-col>
-     <ion-col size="6">
+     <ion-col size="3">
       <h3 class="blue-text ion-text-right">
       Amount
       </h3>
@@ -74,6 +81,6 @@
       </p>
     </ion-col>
    </ion-row>
-   
+    
    </div>
 </ion-content>

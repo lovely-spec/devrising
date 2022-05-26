@@ -17,6 +17,11 @@ export class ConfirmPaymentPage implements OnInit {
   public UserResponse: any = [];
   saving_account_id:string;
   utr_no:string;
+  bank:string;
+  upi:string;
+  account:string;
+  ifsc:string;
+  div:boolean = true;
   payment_mode:string;
   amount:string;
   constructor(
@@ -26,8 +31,17 @@ export class ConfirmPaymentPage implements OnInit {
     private provider : ApihelperProvider,
   ) { }
   ionViewDidEnter() {
-    this.slug = this.shared.getpay()
+    this.slug = this.shared.getslg()
     this.am = this.shared.getamount()
+    this.provider.bank_details().subscribe(data=>{
+      if(data['status'] == true){
+        this.bank = data['data'][0].upi_id;
+        this.upi = this.bank 
+        this.account = data['data'][0].account_number;
+        this.ifsc = data['data'][0].ifsc;
+        console.log('datadada',this.bank)
+      }
+    })
     // this.provider.UserPanel().subscribe(data=>{
     //   this.UserResponse = this.provider.User_details(data);
     //   this.member_id = this.UserResponse.Saving[0].member_id
@@ -73,20 +87,22 @@ export class ConfirmPaymentPage implements OnInit {
   }
   openphonepe(){
     
-    this.iab.create('http://com.phonepe.app' ,'_blank');
+    this.iab.create('http://com.phonepe.app' ,'_system');
     
   }
   openpaytm(){
     
-    this.iab.create('http://net.one97.paytm' ,'_blank');
+    this.iab.create('http://net.one97.paytm' ,'_system');
     
   }
   openamazonpay(){
     
-    this.iab.create('http://in.amazon.mShop.android.shopping' ,'_blank');
+    this.iab.create('http://in.amazon.mShop.android.shopping' ,'_system');
     
   }
-  copyMessage(val: string){
+  copyMessage(){
+    var val:string;
+    val = this.upi
     const selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
     selBox.style.left = '0';
@@ -114,13 +130,14 @@ export class ConfirmPaymentPage implements OnInit {
   // }
   submit(){
     if (this.utr_no !="" ||this.utr_no != null ){
+      this.provider.presentLoading();
     this.provider.utrno(this.slug,this.utr_no).subscribe(data=>{
           console.log('responsed',data)
           if(data['status'] == true){
-            console.log(data)
-            // let navigationExtras: NavigationExtras = {
-            // };
-            // this.router.navigate(['/dashboard/transaction/saving-credit/select-app/confirm-payment/successful-page'], navigationExtras);
+            // console.log(data)
+            let navigationExtras: NavigationExtras = {
+            };
+            this.router.navigate(['/dashboard/transaction/saving-credit/select-app/confirm-payment/successful-page'], navigationExtras);
             // console.log(data)
         }else{
         this.provider.show_alert(data['message'])
@@ -132,8 +149,12 @@ export class ConfirmPaymentPage implements OnInit {
       }
   }
   upload(){
+    this.div = false
     var v = this.shared.getslg()
-    this.iab.create('http://localhost:3000/trans-image/' + v ,'_blank');
+    // this.iab.create('https://staging.devrising.in/trans-image/' + v ,'_blank');
+    this.iab.create('https://app.devrising.in/trans-image/' + v ,'_blank');
+    // this.iab.create('https://app.devrising.in/' + v ,'_blank');
+    // this.iab.create('http://localhost:3000/trans-image/' + v ,'_blank');
   }
 
 

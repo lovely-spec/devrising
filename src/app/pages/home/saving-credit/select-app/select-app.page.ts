@@ -44,7 +44,7 @@ export class SelectAppPage implements OnInit {
   }
   opengpay(){
     
-    this.iab.create('http://com.google.android.apps.nbu.paisa.user' ,'_blank');
+    this.iab.create('upi://pay?pa=UPIID@oksbi&amp;pn=JOHN BRITAS AK &amp;cu=INR' ,'_blank');
     
   }
   openphonepe(){
@@ -62,20 +62,22 @@ export class SelectAppPage implements OnInit {
     this.iab.create('http://in.amazon.mShop.android.shopping' ,'_blank');
     
   }
+  
   next(){
 
     this.payment_mode = this.app_response
     this.amount = this.am
+    this.shared.setpay(this.app_response)
+    console.log('jgfdj0', this.app_response)
     this.provider.transec(this.member_id,this.saving_account_id,this.payment_mode,this.amount,).subscribe(data=>{
       console.log('responsed',data)
       if(data['status'] == true){
         this.slug = data['details'].slug
         console.log('slug', this.slug)
+        this.shared.setslg(this.slug)
         let navigationExtras: NavigationExtras = {
         };
-        this.shared.setslg(this.slug)
-        this.shared.setpay(this.app_response)
-        console.log('jgfdj0', this.app_response)
+
         this.router.navigate(['/dashboard/transaction/saving-credit/select-app/confirm-payment'], navigationExtras);
         console.log(data)
     }else{

@@ -9,8 +9,7 @@
          <a [routerLink]="['/transaction']"><img src="../../../../assets/imgs/back-button.svg"></a>
        </ion-col>
        <ion-col size="2">
-         <div class="notification_numbur"> <span class="">12</span></div>
-         <img class="bell_icon relative" src="../../../../assets/imgs/bell.svg">
+         
        </ion-col>
      </ion-row>
      <ion-row>
@@ -57,12 +56,7 @@
       <ion-col size="12">
         <button class="gradient_fill_btn small_btn_filled float_right" (click) = "add_ben()">Add Benificiary</button>
       </ion-col>
-      <ion-col size="12">
-        <div class="searchbar">
-          <ion-input type="search" placeholder="Search Beneficiary...."><img src="../../../../assets/imgs/search_icon.svg">
-          </ion-input>
-        </div>
-      </ion-col>
+     
     </ion-row>
     <ion-card class="card_purple card_padding">
       <ion-item *ngFor="let beneficiary_list of beneficiary_list" lines="none" class="dotted">

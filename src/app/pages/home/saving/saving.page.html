@@ -168,8 +168,7 @@
           <a [routerLink]="['/dashboard/home']"><img src="../../../../assets/imgs/back-button.svg"></a>
         </ion-col>
         <ion-col size="2" (click)="presentPopover('any')">
-          <div class="notification_numbur" >  <span class="">12</span></div>
-          <img class="bell_icon relative" src="../../../../assets/imgs/bell.svg">
+          
         </ion-col>
       </ion-row>
     </div>
@@ -191,25 +190,25 @@
               <div class="box-1">
               <h1 class="add"> Add Member</h1>
               <div class="plus_img" >
-                <img class="plus" src="../../assets/imgs/plus_icon.svg"></div>
+                <img class="plus" [routerLink]="['/dashboard/home/add-member']" src="../../assets/imgs/plus_icon.svg"></div>
             </div>
             </div>
             <div class="ion-card">
               <div class="box-1">
                 <h1 class="add"> RD</h1>
-              <div class="plus_img" ><img class="plus" src="../../assets/imgs/plus_icon.svg"></div>
+              <div class="plus_img" ><img class="plus" [routerLink]="['/dashboard/home/rdview/add-new-rd']" src="../../assets/imgs/plus_icon.svg"></div>
             </div>
             </div>
             <div class="ion-card">
               <div class="box-1">
                 <h1 class="add"> FD</h1>
-              <div class="plus_img" ><img class="plus" src="../../assets/imgs/plus_icon.svg"></div>
+              <div class="plus_img" ><img class="plus"  [routerLink]="['/dashboard/home/fdview/add-new-fd']" src="../../assets/imgs/plus_icon.svg"></div>
             </div>
             </div>
             <div class="ion-card">
               <div class="box-1">
                 <h1 class="add"> Transactions</h1>
-              <div class="plus_img" ><img class="plus" src="../../assets/imgs/plus_icon.svg"></div>
+              <div class="plus_img" ><img class="plus" [routerLink]="['/dashboard/transactions']" src="../../assets/imgs/plus_icon.svg"></div>
             </div>
             </div>
           

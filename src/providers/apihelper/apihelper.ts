@@ -21,9 +21,9 @@ import { Router } from '@angular/router';
 export class ApihelperProvider {
   
 
-  private RootURL: string = "http://localhost:3000/api/";
+  // private RootURL: string = "http://localhost:3000/api/";
   // private RootURL: string = "https://staging.devrising.in/api/";
-  // private RootURL: string = "https://app.devrising.in/api/";
+  private RootURL: string = "https://app.devrising.in/api/";
    loading: any;
    HeaderConfig : any = [];
    Saving: any = [];
@@ -58,9 +58,20 @@ export class ApihelperProvider {
     let postData = new FormData();
     postData.append('username' , username);
     postData.append('password' , password);
+    postData.append('type' , 'member');
+    postData.append('login_type' , 'member_id');
     console.log(postData);
     // call Api
    return this.http.post(this.RootURL + 'sign-in',postData);
+  }
+  UserLoginOtp(mobile_no:string){
+    console.log('bubh')
+    let postData = new FormData();
+    postData.append('mobile_no' , mobile_no);
+    postData.append('type' , 'member');
+    postData.append('login_type' , 'otp');
+    // call Api
+   return this.http.post(this.RootURL + 'member/login-otp',postData);
   }
   // set header values
   SetHeader(token:string,userid:string){
@@ -69,6 +80,7 @@ export class ApihelperProvider {
           'Authorization': 'Bearer ' + token,
           'user-id': userid,
         }
+        // console.log('hun check kri',token)
       this.HeaderConfig =  { headers: new HttpHeaders(header)};
     }
    UserPanel(){
@@ -76,6 +88,31 @@ export class ApihelperProvider {
     let postData = new FormData();
     let data =this.http.post(this.RootURL + 'member/dashboard',postData,this.HeaderConfig);
     return  data;
+  }
+  bank_details(){
+     
+    let postData = new FormData();
+    let data =this.http.post(this.RootURL + 'member/bank-details',postData,this.HeaderConfig);
+    return  data;
+  }
+  recent_rd(){
+     
+    let postData = new FormData();
+    let data =this.http.post(this.RootURL + 'member/recent_rd',postData,this.HeaderConfig);
+    return  data;
+  }
+  recent_fd(){
+     
+    let postData = new FormData();
+    let data =this.http.post(this.RootURL + 'member/recent_fd',postData,this.HeaderConfig);
+    return  data;
+  }
+  verify_otp(otpmsg,mobile_no){
+     
+    let postData = new FormData();
+    postData.append('otpmsg' , otpmsg);
+    postData.append('mobile_no' , mobile_no);
+    return this.http.post(this.RootURL + 'member/verify_otp',postData);
   }
   fd_schemes(){
     let postData = new FormData();
@@ -445,6 +482,13 @@ AddWBBeneficiary(name,mobile_no,account_no){
   postData.append('account_no' , account_no);
   return this.http.post(this.RootURL + 'member/wbbeneficiary/add',postData,this.HeaderConfig);
 }
+check_saving(mobile_no){
+  let postData = new FormData();
+  
+  postData.append('mobile_no' , mobile_no);
+  
+  return this.http.post(this.RootURL + 'member/checksaving',postData,this.HeaderConfig);
+}
 WBBeneficiaryList(){
   let postData = new FormData();
   return this.http.post(this.RootURL + 'member/wbbeneficiary/list',postData,this.HeaderConfig);
@@ -547,7 +591,7 @@ check_no (number){
 }
 // end
 // create rd
-createrd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id){
+createrd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving_id){
   let postData = new FormData();
   postData.append('scheme',scheme);
   postData.append('amount',amount);
@@ -559,6 +603,7 @@ createrd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nom
   postData.append('rel_nomineee',rel_nomineee);
   postData.append('a_nominee',a_nominee);
   postData.append('minor_id',minor_id);
+  postData.append('saving_id',saving_id);
   return this.http.post(this.RootURL + 'member/createrd',postData,this.HeaderConfig);
 }
 
@@ -675,7 +720,7 @@ editm(id){
   postData.append('id',id);
   return this.http.post(this.RootURL + 'member/editmember',postData,this.HeaderConfig);
 }
-save_edit_member (number:string,first_name:string,Last_name:string,Father_name:string,Husband_wife_name:string,D_O_B:string,Marital_status:string,Occupation:string,Email:string,gender:string,title:string,
+save_edit_member (id,first_name:string,Last_name:string,Father_name:string,Husband_wife_name:string,D_O_B:string,Marital_status:string,Occupation:string,Email:string,gender:string,title:string,
   village_house_town:string,
   p_o:string,
   panchayat:string,
@@ -695,11 +740,10 @@ save_edit_member (number:string,first_name:string,Last_name:string,Father_name:s
   nominee_relation:string,
   nominee_number:string,
   nominee_address:string,
-  nominee_aadhar:string,member_no,nominee_pan,P_state,id){
+  nominee_aadhar:string,member_no,nominee_pan,P_state){
   let postData = new FormData();
   // personal details
   postData.append('id',id);
-  postData.append('number',number);
   postData.append('First_name',first_name);
   postData.append('Last_name',Last_name);
   postData.append('Father_name',Father_name);
@@ -737,6 +781,8 @@ save_edit_member (number:string,first_name:string,Last_name:string,Father_name:s
   postData.append('nominee_aadhar',nominee_aadhar); 
   postData.append('nominee_pan',nominee_pan); 
   postData.append('member_no',member_no); 
+  // console.log('responsed',id,first_name,Last_name,Father_name,Husband_wife_name,D_O_B,Marital_status,Occupation,Email,gender,title,village_house_town,p_o,panchayat,tehsil,distt,pin,P_village_house_town,P_p_o,P_panchayat,P_tehsil,P_distt,P_pin,addhar_no,pan_no,nominee_name,nominee_f_name,nominee_relation,nominee_number,nominee_address,nominee_aadhar,member_no,nominee_pan,P_state)
+  console.log(Email)
    
   return this.http.post(this.RootURL + 'member/saveeditmember',postData,this.HeaderConfig);
 }

@@ -5,6 +5,7 @@ import { SharedService } from '../../shared.service';
 import { ApihelperProvider } from 'src/providers/apihelper/apihelper';
 import { UserResponse } from '../../../../../../providers/Models/UserDetails';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { ModalController, NavController } from '@ionic/angular';
 @Component({
   selector: 'app-member-kyc',
   templateUrl: './member-kyc.page.html',
@@ -25,6 +26,7 @@ export class MemberKycPage implements OnInit {
   nominee_pan:string;
   number:string;
   edit:boolean = false;
+  back:boolean = false;
   Member: any =[];
   Contact: any =[];
   stng: any =[] ;
@@ -35,6 +37,7 @@ export class MemberKycPage implements OnInit {
     private storage: Storage, 
     public router: Router,
     private SharedService: SharedService,
+    public navCtrl: NavController,
     private provider : ApihelperProvider,
     private iab: InAppBrowser) { 
     
@@ -45,9 +48,9 @@ export class MemberKycPage implements OnInit {
       if (this.edit == true){
         var id = this.SharedService.getmid();
       this.provider.editm(id).subscribe(data=>{
-        console.log('member',data);
+        // console.log('member',data);
         this.Member = data['message'];
-        console.log('Member',this.Member);
+        // console.log('Member',this.Member);
   
       })
       // this.provider.contact(id).subscribe(data=>{
@@ -61,6 +64,15 @@ export class MemberKycPage implements OnInit {
       //   console.log('contactsadasdasd',this.prst[0]);
       // })
       }
+      this.addhar_no = this.SharedService.getaddhar_no();
+      this.pan_no =  this.SharedService.getpan_no();
+      this.nominee_name = this.SharedService.getnominee_name();
+      this.nominee_f_name = this.SharedService.getnominee_f_name();
+      this.nominee_relation = this.SharedService.getnominee_relation();
+      this.nominee_address = this.SharedService.getnominee_address();
+      this.nominee_aadhar = this.SharedService.getnominee_aadhar();
+      this.nominee_pan = this.SharedService.getnominee_pan();
+      this.nominee_number = this.SharedService.getnominee_number();
     }
     
   ngOnInit() 
@@ -69,29 +81,8 @@ export class MemberKycPage implements OnInit {
   }
   
 next(){
-  // this.number = this.SharedService.getnumber();
-  // console.log(this.number);
-  // this.First_name = this.SharedService.getfname();
-  // this.Last_name = this.SharedService.getlname();
-  // this.Father_name = this.SharedService.getftname();
-  // this.Husband_wife_name = this.SharedService.gethwname();
-  // this.D_O_B = this.SharedService.getdob();
-  // this.Marital_status = this.SharedService.getoc();
-  // this.Occupation = this.SharedService.getfname();
-  // this.Email = this.SharedService.getemail();
-  // this.gender = this.SharedService.getgender();
-  // this.village_house_town = this.SharedService.getvht();
-  // this.p_o = this.SharedService.getpo();
-  // this.panchayat = this.SharedService.getpan();
-  // this.tehsil = this.SharedService.getteh();
-  // this.distt = this.SharedService.getdistt();
-  // this.pin = this.SharedService.getpin();
-  // this.P_village_house_town = this.SharedService.getpvht();
-  // this.P_p_o = this.SharedService.getppo();
-  // this.P_panchayat = this.SharedService.getppan();
-  // this.P_tehsil = this.SharedService.getpteh();
-  // this.P_distt = this.SharedService.getpdiss();
-  // this.P_pin = this.SharedService.getppin();
+      this.back = false
+      this.SharedService.setback(this.back);
       var number = this.SharedService.getnumber();
       var first_name = this.SharedService.getfname();
       var Last_name = this.SharedService.getlname();
@@ -130,34 +121,38 @@ next(){
       var re = /^\d{12}(?:\s*,\s*\d{12)*$/;
       var pan = /[A-Z]{5}[0-9]{4}[A-Z]{1}/;
       var no = /^((\\+91-?)|0)?[0-9]{10}$/;
-      var id = this.id;
-  console.log('fname',first_name,Last_name,Father_name,Marital_status,Occupation,D_O_B,title,nominee_pan,addhar_no,pan_no,nominee_name,nominee_f_name,nominee_relation,nominee_number,nominee_address,nominee_aadhar,nominee_pan,member_no);
+      var id = this.SharedService.getmid();
+  // console.log('fname',first_name,Last_name,Father_name,Marital_status,Occupation,D_O_B,title,nominee_pan,addhar_no,pan_no,nominee_name,nominee_f_name,nominee_relation,nominee_number,nominee_address,nominee_aadhar,nominee_pan,member_no);
   if (addhar_no==null||addhar_no==''|| pan_no==null|| pan_no==''||nominee_name==null||nominee_name==''||nominee_f_name==null||nominee_f_name==''||nominee_relation==null||nominee_relation==''||nominee_number==null||nominee_number==''||nominee_address==null||nominee_address==''||nominee_pan==null||nominee_pan==''){
           this.provider.show_alert('Please fill all details')
         
-   if (!re.test(addhar_no)){
-          this.provider.show_alert('Please fill correct Aadhar No')
-        }
-        if (!re.test(nominee_aadhar)){
-          this.provider.show_alert('Please fill correct Nominee Aadhar No')
-        }if (!pan.test(nominee_pan)){
-          this.provider.show_alert('Please fill correct Nominee Pan No')
-        }
-        if (!no.test(nominee_number)){
-          this.provider.show_alert('Please fill correct Nominee Phone No')
-        }
-        if (!pan.test(pan_no)){
-          this.provider.show_alert('Please fill correct Pan No')
-        }
-      }else{ 
-        if ( this.edit == true) {this.provider.save_edit_member(number,first_name,Last_name,Father_name,Husband_wife_name,D_O_B,Marital_status,Occupation,Email,gender,title,village_house_town,p_o,panchayat,tehsil,distt,pin,P_village_house_town,P_p_o,P_panchayat,P_tehsil,P_distt,P_pin,addhar_no,pan_no,nominee_name,nominee_f_name,nominee_relation,nominee_number,nominee_address,nominee_aadhar,member_no,nominee_pan,P_state,id).subscribe(data=>{
-        console.log('responsed',data)
+   
+      }
+      else if (!re.test(addhar_no)){
+        this.provider.show_alert('Please fill correct Aadhar No')
+      }
+      else if (!pan.test(pan_no)){
+        this.provider.show_alert('Please fill correct Pan No')
+      }
+      else if (!no.test(nominee_number)){
+        this.provider.show_alert('Please fill correct Nominee Phone No')
+      }
+      else if (!re.test(nominee_aadhar)){
+        this.provider.show_alert('Please fill correct Nominee Aadhar No')
+      }else if (!pan.test(nominee_pan)){
+        this.provider.show_alert('Please fill correct Nominee Pan No')
+      }
+      
+      else{ 
+        // console.log('responsed',id,number,first_name,Last_name,Father_name,Husband_wife_name,D_O_B,Marital_status,Occupation,Email,gender,title,village_house_town,p_o,panchayat,tehsil,distt,pin,P_village_house_town,P_p_o,P_panchayat,P_tehsil,P_distt,P_pin,addhar_no,pan_no,nominee_name,nominee_f_name,nominee_relation,nominee_number,nominee_address,nominee_aadhar,member_no,nominee_pan,P_state)
+        this.provider.presentLoading();
+        if ( this.edit == true) {this.provider.save_edit_member(id,first_name,Last_name,Father_name,Husband_wife_name,D_O_B,Marital_status,Occupation,Email,gender,title,village_house_town,p_o,panchayat,tehsil,distt,pin,P_village_house_town,P_p_o,P_panchayat,P_tehsil,P_distt,P_pin,addhar_no,pan_no,nominee_name,nominee_f_name,nominee_relation,nominee_number,nominee_address,nominee_aadhar,member_no,nominee_pan,P_state).subscribe(data=>{
+        // console.log('responsed',data)
         if(data['status'] == true){
-          let id = data['message'].id;
-          this.SharedService.setmid(id);
-          console.log('id',id)
           var v = data['message'].slug;
-          this.iab.create('http://localhost:3000/' + v ,'_blank');
+          // this.iab.create('http://localhost:3000/' + v ,'_blank');
+          // this.iab.create('https://staging.devrising.in/' + v ,'_blank');
+          this.iab.create('https://app.devrising.in/' + v ,'_blank');
           let navigationExtras: NavigationExtras = {
           };
 
@@ -170,14 +165,18 @@ next(){
 
       }
     else {
+      this.provider.presentLoading();
       this.provider.add_new_member(number,first_name,Last_name,Father_name,Husband_wife_name,D_O_B,Marital_status,Occupation,Email,gender,title,village_house_town,p_o,panchayat,tehsil,distt,pin,P_village_house_town,P_p_o,P_panchayat,P_tehsil,P_distt,P_pin,addhar_no,pan_no,nominee_name,nominee_f_name,nominee_relation,nominee_number,nominee_address,nominee_aadhar,member_no,nominee_pan,P_state,).subscribe(data=>{
-        console.log('responsed',data)
+        // console.log('responsed',data)
         if(data['status'] == true){
+          
           let id = data['message'].id;
           this.SharedService.setmid(id);
-          console.log('id',id)
+          // console.log('id',id)
           var v = data['message'].slug;
-          this.iab.create('http://localhost:3000/' + v ,'_blank');
+          // this.iab.create('http://localhost:3000/' + v ,'_blank');
+          // this.iab.create('https://staging.devrising.in/' + v ,'_blank');
+          this.iab.create('https://app.devrising.in/' + v ,'_blank');
           let navigationExtras: NavigationExtras = {
           };
           this.router.navigate(['/address-details/kyc/kyc-document/preview'], navigationExtras);
@@ -208,4 +207,18 @@ next(){
   // this.router.navigate(['/address-details/kyc/kyc-document'], navigationExtras);
 }
 
+go_back(){
+      this.back = true
+      this.SharedService.setback(this.back);
+      this.SharedService.setaddhar_no(this.addhar_no);
+      this.SharedService.setpan_no(this.pan_no);
+      this.SharedService.setnominee_name(this.nominee_name);
+      this.SharedService.setnominee_f_name(this.nominee_f_name);
+      this.SharedService.setnominee_relation(this.nominee_relation);
+      this.SharedService.setnominee_address(this.nominee_address);
+      this.SharedService.setnominee_aadhar(this.nominee_aadhar);
+      this.SharedService.setnominee_pan(this.nominee_pan);
+      this.SharedService.setnominee_number(this.nominee_number);
+      this.navCtrl.navigateRoot('/address-details');
+}
 }

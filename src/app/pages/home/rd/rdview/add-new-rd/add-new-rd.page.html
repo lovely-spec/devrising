@@ -7,8 +7,7 @@
          <a [routerLink]="['/dashboard/home/rdview']"><img src="../../../../../../assets/imgs/back-button.svg"></a>
         </ion-col>
         <ion-col size="2">
-          <div class="notification_numbur"> <span class="">12</span></div>
-          <img class="bell_icon relative" src="../../../../../../assets/imgs/bell.svg">
+          
         </ion-col>
       </ion-row>
       <ion-row>
@@ -31,13 +30,14 @@
           <ion-select-option  *ngFor="let schemesdetail of schemesdetails;let i=index"    value={{schemesdetail.id}} required >  {{schemesdetail.scheme_name}}</ion-select-option>
         </ion-select>
       </ion-item>
+      <p class="new_rd" style="text-align: center; font-size:14px;">Amount should be greater than 100</p>
       <ion-item lines="none">
-        <p>amount should be greater than 100</p>
+      
         <ion-label position="floating">RD Amount*</ion-label>
         <ion-input type="number" class="amount" [(ngModel)]="amount"></ion-input>
       </ion-item>
 
-      <div class="address_confirmation">
+      <!-- <div class="address_confirmation">
         <p>Joint A/C</p>
         <ion-radio-group class="adress_radio_input" style="display: flex;" [(ngModel)]="jac" >
           <ion-item lines="none" class="radio">
@@ -49,13 +49,13 @@
             <ion-radio slot="start"  class="input_type_radio" value="0" (click)=jointac(1)></ion-radio>
           </ion-item>
         </ion-radio-group>
-      </div>
-      <div class="slider_form" *ngIf=show_detail>
+      </div> -->
+      <!-- <div class="slider_form" *ngIf=j>
         <ion-item lines="none">
           <ion-label position="floating">Enter Member ID</ion-label>
           <ion-input type="number" [(ngModel)]="joint"></ion-input>
         </ion-item>
-      </div>
+      </div> -->
 
       <div class="address_confirmation">
         <p>Is Nominee Available</p>
@@ -115,13 +115,13 @@
         </ion-col>
       </ion-row>
     </div>
-      <ion-row>
+      <!-- <ion-row>
         <ion-col size="12" class="calc_maturity">
           <button class="large_gray_btn" id="cal">Calculate Maturity</button>
         </ion-col>
-      </ion-row>
+      </ion-row> -->
     </div>
-    <div class="rd_fd_amt_details comman_page_padding">
+    <!-- <div class="rd_fd_amt_details comman_page_padding">
       <ion-row>
         <ion-col size="6">
           <p class="color_theme_gray">Deposited Amount :</p>
@@ -138,13 +138,13 @@
           <p class="color_theme_purple">66,630.00</p>
         </ion-col>
       </ion-row>
-    </div>
+    </div> -->
     <ion-row class="comman_page_padding page_footer_row" *ngIf="SavingDetails">
       <ion-col size="12" *ngFor="let SavingDetails of SavingDetails;let i=index">
-        <ion-radio-group [(ngModel)]="is_saving">
+        <ion-radio-group [(ngModel)]="saving_id">
           <ion-item lines="none" class="radio">
             <ion-label >Deposit From Saving Account : {{SavingDetails.account_number}}</ion-label> <br>
-            <ion-radio slot="start" class="input_type_radio" value="{{SavingDetails.account_number}}"> {{SavingDetails.account_number}}</ion-radio>
+            <ion-radio slot="start" class="input_type_radio" value="{{SavingDetails.id}}"> {{SavingDetails.account_number}}</ion-radio>
           </ion-item>
         </ion-radio-group>
         <span class="margin_for_element">Available Balance :  {{SavingDetails.balance_available}}</span>

@@ -21,6 +21,8 @@ export class BottomNavPage implements OnInit {
   }
   available_soon(){
     this.provider.show_alert('This Feature is not available yet!')
+  }transaction(){
+    this.router.navigate(['/dashboard/transaction']);
   }
   async initModal() {
     const modal = await this.modalCtrl.create({

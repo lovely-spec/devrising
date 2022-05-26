@@ -66,7 +66,8 @@ export class SchemesPage implements OnInit {
       let navigationExtras: NavigationExtras = {
         
       };
-      this.router.navigate(['/dashboard/home/fdview/add-new-fd'], navigationExtras);}
+      // this.router.navigate(['/dashboard/home/fdview/add-new-fd'], navigationExtras);
+    }
       if (rd == true){
         let navigationExtras: NavigationExtras = {
           
@@ -76,7 +77,7 @@ export class SchemesPage implements OnInit {
         let navigationExtras: NavigationExtras = {
         
         };
-        this.router.navigate(['/dashboard/home'], navigationExtras);}
+        this.router.navigate(['/dashboard/home/fdview/add-new-fd/'], navigationExtras);}
       
   }
 

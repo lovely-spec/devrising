@@ -7,8 +7,7 @@
           <a [routerLink]="['/dashboard/home/fdview']"><img src="../../../../../../assets/imgs/back-button.svg"></a>
         </ion-col>
         <ion-col size="2">
-          <div class="notification_numbur"> <span class="">12</span></div>
-          <img class="bell_icon relative" src="../../../../../../assets/imgs/bell.svg">
+         
         </ion-col>
       </ion-row>
       <ion-row>
@@ -41,7 +40,7 @@
         <ion-input type="text" class="amount" [(ngModel)]="amount"></ion-input>
       </ion-item>
 
-      <div class="address_confirmation">
+      <!-- <div class="address_confirmation">
         <p>Joint A/C</p>
         <ion-radio-group class="adress_radio_input" style="display: flex;" [(ngModel)]="jac" >
           <ion-item lines="none" class="radio">
@@ -59,7 +58,7 @@
           <ion-label position="floating">Enter Member ID</ion-label>
           <ion-input type="number" maxlength="4" [(ngModel)]="joint"></ion-input>
         </ion-item>
-      </div>
+      </div> -->
       <div class="address_confirmation">
         <p>Nominee Available</p>
         <div>
@@ -132,13 +131,13 @@
       </ion-radio-group>
     </div>
 
-      <ion-row>
+      <!-- <ion-row>
         <ion-col size="12" class="calc_maturity">
           <button class="large_gray_btn" id="cal">Calculate Maturity</button>
         </ion-col>
-      </ion-row>
+      </ion-row> -->
     </div>
-    <div class="rd_fd_amt_details comman_page_padding">
+    <!-- <div class="rd_fd_amt_details comman_page_padding">
       <ion-row>
         <ion-col size="6">
           <p class="color_theme_gray">Deposited Amount :</p>
@@ -155,13 +154,13 @@
           <p class="color_theme_purple">66,630.00</p>
         </ion-col>
       </ion-row>
-    </div>
+    </div> -->
     <ion-row class="comman_page_padding page_footer_row" *ngIf="SavingDetails">
       <ion-col size="12" *ngFor="let SavingDetails of SavingDetails;let i=index">
         <ion-radio-group [(ngModel)]="is_saving" >
           <ion-item lines="none" class="radio">
             <ion-label >Deposit From Saving Account : {{SavingDetails.account_number}}</ion-label> <br>
-            <ion-radio slot="start" class="input_type_radio"value="{{SavingDetails.account_number}}" (click)="saving(1)">{{SavingDetails.account_number}}</ion-radio>
+            <ion-radio slot="start" class="input_type_radio"value="{{SavingDetails.id}}" (click)="saving(1)">{{SavingDetails.account_number}}</ion-radio>
           </ion-item>
         </ion-radio-group>
         <span class="margin_for_element">Available Balance :  {{SavingDetails.balance_available}}</span>

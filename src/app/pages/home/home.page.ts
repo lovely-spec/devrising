@@ -12,7 +12,6 @@ import { PopoverController } from '@ionic/angular';
 import { NotificationPage } from './notification/notification.page';
 import { IonSlides } from '@ionic/angular';
 import {SharedService } from './add-member/shared.service';
-
 @Component({
   selector: 'app-tabs',
   templateUrl: './home.page.html',
@@ -58,7 +57,7 @@ export class HomePage {
     private router: Router,
     public popoverController: PopoverController,
     public platform: Platform,
-    public shared: SharedService
+    public shared: SharedService,
     
     ){
       
@@ -77,7 +76,13 @@ export class HomePage {
           slidesPerView: 1,
           autoplay: true
         };
-        
+        this.storage.get('notifications').then((val) => {
+          if(val['status'] == "success"){
+          this.notification =  val.data
+          // console.log( '6yh7rfuh', this.notification.length)
+          }
+        });
+        // this.badge.set(this.notification.length);
        
     }
 async presentPopover(ev: any) {
@@ -90,10 +95,12 @@ async presentPopover(ev: any) {
   return await popover.present();
 }
 ionViewDidEnter() {
+  this.shared.setback(false);
+  this.shared.sethome(true);
   this.storage.get('notifications').then((val) => {
     if(val['status'] == "success"){
     this.notification =  val.data
-    console.log( '6yh7rfuh', this.notification.length)
+    // console.log( '6yh7rfuh', this.notification.length)
     }
   });
   this.provider.presentLoading()
@@ -111,12 +118,12 @@ this.provider.UserPanel().subscribe(data=>{
   if(this.UserResponse){
     
     this.RdDdResponse = this.UserResponse.RDDD;
-    console.log('both',this.RdDdResponse)
+    // console.log('both',this.RdDdResponse)
     this.member_id = this.UserResponse.current_member.id
     this.slug = this.UserResponse.current_member.slug
     this.shared.setmember_id(this.member_id)
     this.shared.setslug(this.slug)
-    console.log('mem',this.member_id,this.slug)
+    // console.log('mem',this.member_id,this.slug)
     this.DdResponse = [];
     this.RdResponse = []
     this.FdResponse = this.UserResponse.FD;
@@ -130,19 +137,13 @@ this.provider.UserPanel().subscribe(data=>{
       if(element.is_dds == true){
          this.DdResponse.push(element)
       }if(element.is_dds == false){
-        console.log('yha ni aay')
+        // console.log('yha ni aay')
         this.RdResponse.push(element)
       }
       
       
     });
-    console.log('RD',this.RdResponse)
-    console.log('FD',this.FdResponse)
-    console.log('DD',this.DdResponse)
-    console.log('OL',this.OlResponse)
-    console.log('PL',this.PlResponse)
-    console.log('GL',this.GlResponse)
-    console.log('DL',this.DlResponse)
+    
 
     // this.DdResponse = this.UserResponse.DD;
     
@@ -220,6 +221,7 @@ SavingClick(type:string,slug:string){
       special: JSON.stringify(this.saving)
     }
   };
+  this.provider.presentLoading();
   this.router.navigate(['dashboard/saving'], navigationExtras);
 }
 //End Saving Click
@@ -251,6 +253,7 @@ RdClick(type:string,slug:string){
       special: JSON.stringify(this.rd)
     }
   };
+  this.provider.presentLoading();
   this.router.navigate(['/dashboard/rd/rdview'], navigationExtras);
 }
 // End RD CLick 
@@ -266,6 +269,7 @@ FdClick(type:string,slug:string){
       special: JSON.stringify(this.fd)
     }
   };
+  this.provider.presentLoading();
   this.router.navigate(['/dashboard/fd/fdview'], navigationExtras);
 }
 // End FD CLick 
@@ -337,6 +341,9 @@ logout(){
 }
 transaction(){
   this.router.navigate(['/transaction'],);
+}
+add_money(){
+  this.router.navigate(['/dashboard/transaction/saving-credit'],);
 }
   
  

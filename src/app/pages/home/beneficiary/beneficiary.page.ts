@@ -58,10 +58,12 @@ export class BeneficiaryPage implements OnInit {
         special: JSON.stringify(ben_id)
       }
     };
+    this.provider.presentLoading();
     this.router.navigate(['dashboard/detailsview'], navigationExtras);
 
   }
   async add_ben() {
+    // console.log('sdad')
     const modal = await this.modalController.create({
       component: AddBeneficiaryPage,
       cssClass: 'my-custom-class',

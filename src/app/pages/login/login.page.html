@@ -1,52 +1,70 @@
 <link rel="stylesheet" href="/src/assets/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Open+Sans&display=swap" rel="stylesheet">
- <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap" rel="stylesheet">
- <ion-content>
-  <div class="header">
-    <!--===bg_theme===-->
-    <div class="bg_theme">
-      <div class="dev_logo ion-text-center">
-        <img src="../../assets/imgs/logo.png">
-      </div>
-    </div>
-    <!--===bg_theme close===-->
-  </div>
-  <!--==login_page Start==-->
-  <div class="login_page">
-    <!--===login_card start===-->
-    <ion-card class="login_card card_purple comman_input_field">
-      <ion-card-content class="">
-        <ion-item lines="none" >
-          <ion-label position="floating">Member Id</ion-label>
-          <ion-input (ionFocus)="focusInput($event)" (focusout)="focusOut($event)"  [(ngModel)]="username" name="name" type="text" placeholder="Username" ngModel required></ion-input>
-        </ion-item>
-
-        <ion-item lines="none">
-          <ion-label position="floating">Password</ion-label>
-          <ion-input class="spacing"  (ionFocus)="focusInput($event)" (focusout)="focusOut($event)"  [(ngModel)]="password" name="password" type="password" placeholder="Password" ngModel required></ion-input>
-        </ion-item>
-
-        <div class="ion-text-center">
-          <button class="large_btn_filled gradient_fill_btn mrg_botm" (click)="doLogin()" >Login</button>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap" rel="stylesheet">
+<ion-content>
+    <div class="header">
+        <!--===bg_theme===-->
+        <div class="bg_theme">
+            <div class="dev_logo ion-text-center">
+                <img src="../../assets/imgs/logo.png">
+            </div>
         </div>
-      </ion-card-content>
-    </ion-card>
-    <!--====login_card_close====-->
-  </div>
-  <div class="login_page_radio_input">
-    <ion-row class="login_page_bottom_row">
-      <ion-col size="6">
-        <ion-radio-group>
-          <ion-item lines="none" class="radio">
-            <ion-label>Remember Me</ion-label> <br>
-            <ion-radio slot="start" class="input_type_radio"></ion-radio>
-          </ion-item>
-        </ion-radio-group>
-      </ion-col>
-      <ion-col size="6" class="forgot_password">
-        <a [routerLink]="['/forgot-password']">Forget Password?</a>
-      </ion-col>
-    </ion-row>
-  </div>
-  
+        <!--===bg_theme close===-->
+    </div>
+    <!--==login_page Start==-->
+    <div class="login_page">
+        <!--===login_card start===-->
+        <ion-card class="login_card card_purple comman_input_field">
+            <ion-card-content class="">
+                <div class="login_with_member_id" style="display: none;">
+                    <ion-item lines="none">
+                        <ion-label position="floating">Member Id</ion-label>
+                        <ion-input (ionFocus)="focusInput($event)" (focusout)="focusOut($event)" [(ngModel)]="username" name="name" type="text" placeholder="Username" ngModel required></ion-input>
+                    </ion-item>
+
+                    <ion-item lines="none">
+                        <ion-label position="floating">Password</ion-label>
+                        <ion-input class="spacing" (ionFocus)="focusInput($event)" (focusout)="focusOut($event)" [(ngModel)]="password" name="password" type="password" placeholder="Password" ngModel required></ion-input>
+                    </ion-item>
+                    <div class="ion-text-center">
+                        <button class="large_btn_filled gradient_fill_btn2 mrg_botm" (click)="doLogin()">Login With Member ID</button>
+                    </div>
+                </div>
+                <div class="login_with_otp">
+                    <ion-item lines="none">
+                        <ion-label position="floating">Registered Mobile Number</ion-label>
+                        <ion-input (ionFocus)="focusInput($event)" (focusout)="focusOut($event)" [(ngModel)]="mobile_no" name="mobile_no" type="text" placeholder="Enter your registered number" ngModel required></ion-input>
+                    </ion-item>
+                    <div class="ion-text-center">
+                        <button class="large_btn_filled gradient_fill_btn mrg_botm" (click)="doLoginOtp()">Login With OTP</button>
+                    </div>
+                </div>
+                <p class="ion-text-center">OR</p>
+                <div class="ion-text-center login_with_member_id_btn" style="display: none;">
+                    <button class="large_btn_filled gradient_fill_btn mrg_botm" (click)="switch_between('otp')">Login Using OTP</button>
+                </div>
+
+                <div class="ion-text-center login_with_otp_btn">
+                    <button class="large_btn_filled gradient_fill_btn2 mrg_botm" (click)="switch_between('member')">Login With Member ID</button>
+                </div>
+            </ion-card-content>
+        </ion-card>
+        <!--====login_card_close====-->
+    </div>
+    <div class="login_page_radio_input">
+        <ion-row class="login_page_bottom_row">
+            <ion-col size="6">
+                <ion-radio-group>
+                    <ion-item lines="none" class="radio">
+                        <ion-label>Remember Me</ion-label> <br>
+                        <ion-radio slot="start" class="input_type_radio"></ion-radio>
+                    </ion-item>
+                </ion-radio-group>
+            </ion-col>
+            <ion-col size="6" class="forgot_password">
+                <a [routerLink]="['/forgot-password']">Forget Password?</a>
+            </ion-col>
+        </ion-row>
+    </div>
+
 </ion-content>

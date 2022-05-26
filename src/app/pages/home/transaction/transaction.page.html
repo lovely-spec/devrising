@@ -7,8 +7,10 @@
           <a [routerLink]="['/dashboard/home']"><img src="../../../assets/imgs/back-button.svg"></a>
         </ion-col>
         <ion-col size="2">
-          <div class="notification_numbur"> <span class="">12</span></div>
-         <img class="bell_icon relative" src="../../../assets/imgs/bell.svg" >
+          <div class="notification_bell" (click)="presentPopover('any')">
+            <img src="../../../assets/imgs/bell.svg" class="relative">
+            <div class="notification_numbur"><span class="">{{notification.length}}</span></div>
+          </div>
         </ion-col>
       </ion-row>
       <ion-row>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "542881720515",
+    "project_id": "devrising-b2705",
+    "storage_bucket": "devrising-b2705.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542881720515:android:56b211bc4555a61c275a76",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542881720515-44tvk6308lu84n8m53ql36cdf90pe2np.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUAigLe9B5kbBBSc_75WW2pao_ZECkC0s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "542881720515-44tvk6308lu84n8m53ql36cdf90pe2np.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

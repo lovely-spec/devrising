@@ -32,15 +32,15 @@
         </div>
         <ion-item lines="none">
           <ion-label position="floating">Nominee Name</ion-label>
-          <ion-input [(ngModel)]="nominee_name" type="text" value="{{Member.nominee_name}}"></ion-input>
+          <ion-input [(ngModel)]="nominee_name" type="text" value="{{Member.nominee_name}}" oninput="this.value = this.value.toUpperCase()"></ion-input>
         </ion-item>
         <ion-item lines="none">
           <ion-label position="floating">Father's Name</ion-label>
-          <ion-input [(ngModel)]="nominee_f_name" type="text" value="{{Member.nominee_f_name}}"></ion-input>
+          <ion-input [(ngModel)]="nominee_f_name" type="text" value="{{Member.nominee_father_name}}" oninput="this.value = this.value.toUpperCase()"></ion-input>
         </ion-item>
         <ion-item lines="none">
           <ion-label position="floating">Nominee Relation</ion-label>
-          <ion-input [(ngModel)]="nominee_relation" type="text" value="{{Member.nominee_relation}}"></ion-input>
+          <ion-input [(ngModel)]="nominee_relation" type="text" value="{{Member.nominee_relation}}" oninput="this.value = this.value.toUpperCase()"></ion-input>
         </ion-item>
         <ion-item lines="none">
           <ion-label position="floating">Nominee Mobile No.</ion-label>
@@ -48,18 +48,18 @@
         </ion-item>
         <ion-item lines="none">
           <ion-label position="floating">Nominee Address</ion-label>
-          <ion-textarea [(ngModel)]="nominee_address" class="textarea" value="{{Member.nominee_address}}" ></ion-textarea>
+          <ion-input [(ngModel)]="nominee_address" type="text" value="{{Member.nominee_address}}" oninput="this.value = this.value.toUpperCase()"></ion-input>
         </ion-item>
         <ion-item lines="none">
           <ion-label position="floating">Nominee Aadhar No</ion-label>
-          <ion-textarea [(ngModel)]="nominee_aadhar" class="number" value="{{Member.nominee_aadhar_no}}" ></ion-textarea>
+          <ion-input [(ngModel)]="nominee_aadhar"  type="number" value="{{Member.nominee_aadhar_no}}" ></ion-input>
         </ion-item>
         <ion-item lines="none">
           <ion-label position="floating">Nominee Pan No</ion-label>
-          <ion-textarea [(ngModel)]="nominee_pan" class="textarea" value="{{Member.nominee_pan_no}}" ></ion-textarea>
+          <ion-input [(ngModel)]="nominee_pan"  type="text" value="{{Member.nominee_pan_no}}" ></ion-input>
         </ion-item>
         <div class="add_member_form_btns">
-          <button class="small_btn_gray" [routerLink]="['/address-details']">Back</button>
+          <button class="small_btn_gray" (click)="go_back()" >Back</button>
           <button class="gradient_fill_btn small_btn_filled"  (click)="next()" >Next</button>
         </div>
       </ion-card>

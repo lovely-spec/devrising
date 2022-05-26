@@ -42,6 +42,7 @@ export class FullstatementPage implements OnInit {
        if (params && params.special) {
          this.fddata = JSON.parse(params.special);
          this.provider.MemberFD(this.fddata.type,this.fddata.slug).subscribe(data=>{
+           console.log('FdData',data)
            this.provider.presentLoading();
            this.FdResponse = this.provider.MemberFD_Details(data);
            if(this.FdResponse){

@@ -40,7 +40,7 @@ export class RdviewPage implements OnInit {
   start_date: '';
   pdfObj = null;
   show_filter: boolean = true;
-  isShown: boolean = false;
+  isShown: any ;
   slid_down: boolean = false;
   btn_text = 'more'
   changed_text = 'more'
@@ -195,18 +195,20 @@ add_installment(){
   };
   this.router.navigate(['dashboard/rdaddpayment'], navigationExtras);
 }
-accordionShow() {
-  this.isShown = !this.isShown;
+accordionShow(a) {
+  this.isShown = a
+  console.log('hf',this.isShown)
   this.mgTop = "10px";
 }
 
-change_text() {
+change_text(a) {
   if (this.changed_text == 'more') {
-    this.changed_text = 'less'
+    this.changed_text = a;
     this.isthisbtnshow = true;
     this.mgBotm = "16px";
   } else {
     this.changed_text = 'more'
+    this.isShown = '';
     this.isthisbtnshow = false;
     this.mgTop = "-12px"
     this.mgBotm = "0";
@@ -243,7 +245,8 @@ RdClick(type:string,slug:string){
       special: JSON.stringify(this.rd)
     }
   };
-  this.router.navigate(['/dashboard/rd/fullstatement'], navigationExtras);
+  this.router.navigate(['/dashboard/home/rdview/fullstatement'], navigationExtras);
 }
+
 }
 

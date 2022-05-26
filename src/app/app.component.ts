@@ -32,7 +32,7 @@ export class AppComponent {
     },
     {
       title: 'Update Bank Details',
-      url: '/dashboard/bank',
+      url: '/dashboard/beneficiary',
       iconsrc: './assets/icon/bank-details.svg',
       icon: 'heart'
     },

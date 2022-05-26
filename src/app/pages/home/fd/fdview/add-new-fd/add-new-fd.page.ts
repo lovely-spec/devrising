@@ -151,7 +151,9 @@ export class AddNewFdPage implements OnInit {
         if (nominee == true){
           if (n_name==null||n_name==''|| rel_nomineee==null||rel_nomineee==null||a_nominee==''||a_nominee==null){
             this.provider.show_alert('Please fill Nominee details')
-          }else{ console.log('res', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee,is_saving,joint,jac,j);
+          }else{ 
+            this.provider.presentLoading();
+            // console.log('res', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee,is_saving,joint,jac,j);
           this.provider.createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving,joint,jac,senior).subscribe(data=>{
           console.log('response',data)
           if(data['status'] == true){

@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
+    path: 'login-otp',
+    loadChildren: () => import('./pages/login/login-otp/login-otp.module').then( m => m.LoginOtpPageModule)
+  },
+  {
     path: 'bottom-nav',
     loadChildren: () => import('./pages/bottom-nav/bottom-nav.module').then( m => m.BottomNavPageModule)
   },

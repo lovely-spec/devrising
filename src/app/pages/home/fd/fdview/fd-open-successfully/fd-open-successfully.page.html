@@ -2,29 +2,21 @@
   <div class="rd_fd_confirmation_page">
     <!--===bg_theme_small===-->
     <div class="bg_theme bg_theme_small comman_page_padding">
-      <ion-row class="">
-        <ion-col size="10">
-          <a [routerLink]="['/dashboard/home']"><img src="../../../../../../assets/imgs/back-button.svg"></a>
-        </ion-col>
-        <ion-col size="2">
-          <div class="notification_numbur"> <span class="">12</span></div>
-          <img class="bell_icon relative" src="../../../../../../assets/imgs/bell.svg">
-        </ion-col>
-      </ion-row>
+      
       <ion-row>
         <h1>New FD Account</h1>
       </ion-row>
     </div>
     <!--===bg_theme_small End==-->
     <div class="comman_page_headline">
-      <h2 class="color_theme_green">FD Open Successfully !</h2>
+      <h2 class="color_theme_green">Your request for New Fd Account Submitted Successfully <span></span> Please wait for Approval!</h2>
     </div>
-    <div class="rd_fd_detials comman_page_padding">
-      <p>Dear <span class="color_theme_purple"> Customer Name</span><br>
+    <div class="rd_fd_detials comman_page_padding" *ngIf="user">
+      <p>Dear <span class="color_theme_purple"> {{user.first_name}}</span><br>
         We have pleasure in confirming details of the following amount held in deposit with us. Thank you for banking
         with us.</p>
     </div>
-    <div class="comman_page_padding">
+    <div class="comman_page_padding" *ngIf="FdDetails ">
       <div>
         <!--===Card_purple===-->
         <ion-card class="card_purple box_shadow">
@@ -34,9 +26,6 @@
               <ion-col size="10">
                 <h3>FD Details</h3>
               </ion-col>
-              <ion-col size="2" class="">
-                <img src="../../../../../../assets/imgs/pdf_icon.svg" class="float_right pdf_icon">
-              </ion-col>
             </ion-row>
           </ion-card-header>
           <!--===ion-card-content===-->
@@ -44,13 +33,13 @@
             <div class="card_details">
               <ion-row class="dotted">
                 <ion-col size="4">
-                  <div>Account No.</div>
+                  <div>Account</div>
                 </ion-col>
                 <ion-col size="1">
                   <div>:</div>
                 </ion-col>
                 <ion-col size="7">
-                  <div> RD03391</div>
+                  <div> {{FdDetails .account_number}}</div>
                 </ion-col>
               </ion-row>
               <ion-row class="dotted">
@@ -61,18 +50,7 @@
                   <div>:</div>
                 </ion-col>
                 <ion-col size="7">
-                  <div> DEV RD 2(April 21)</div>
-                </ion-col>
-              </ion-row>
-              <ion-row class="dotted">
-                <ion-col size="4">
-                  <div>Scheme Name</div>
-                </ion-col>
-                <ion-col size="1">
-                  <div>:</div>
-                </ion-col>
-                <ion-col size="7">
-                  <div>Dev Rising RD 2</div>
+                  <div> {{FdDetails .scheme}}</div>
                 </ion-col>
               </ion-row>
               <ion-row class="dotted">
@@ -83,18 +61,20 @@
                   <div>:</div>
                 </ion-col>
                 <ion-col size="7">
-                  <div>24 Months</div>
+                  <div *ngIf="FdDetails.total_installment == '90' || FdDetails.total_installment == '180' || FdDetails.total_installment == '270' ; else ins">{{FdDetails.total_installment}} Days</div>
+                  
+                  <ng-template #ins> <div >{{FdDetails.total_installment}} Month</div></ng-template>
                 </ion-col>
               </ion-row>
               <ion-row class="dotted">
                 <ion-col size="4">
-                  <div>Interest @</div>
+                  <div>Interest </div>
                 </ion-col>
                 <ion-col size="1">
                   <div>:</div>
                 </ion-col>
                 <ion-col size="7">
-                  <div>8.0%</div>
+                  <div> {{FdDetails .interest_rate}}%</div>
                 </ion-col>
               </ion-row>
               <ion-row class="dotted">
@@ -105,7 +85,7 @@
                   <div>:</div>
                 </ion-col>
                 <ion-col size="7">
-                  <div>INR 10,000.00</div>
+                  <div>INR {{FdDetails .principal_amount}}</div>
                 </ion-col>
               </ion-row>
               <ion-row class="dotted">
@@ -116,7 +96,7 @@
                   <div>:</div>
                 </ion-col>
                 <ion-col size="7">
-                  <div>20/08/2021</div>
+                  <div>{{FdDetails .open_date}}</div>
                 </ion-col>
               </ion-row>
               <ion-row class="dotted">
@@ -127,7 +107,7 @@
                   <div>:</div>
                 </ion-col>
                 <ion-col size="7">
-                  <div>20/08/2021</div>
+                  <div>{{FdDetails .maturity_date}}</div>
                 </ion-col>
               </ion-row>
               <ion-row>
@@ -138,13 +118,22 @@
                   <div>:</div>
                 </ion-col>
                 <ion-col size="7">
-                  <div>13,046.00 (approx.)</div>
+                  <div>INR {{FdDetails .maturity_amount}}</div>
                 </ion-col>
               </ion-row>
             </div>
           </ion-card-content>
         </ion-card>
         <!--====Card purple End====-->
+      
+          <ion-row>
+            <ion-col>
+              <div class="ion-text-center">
+                <button class="gradient_fill_btn large_btn_filled"  [routerLink]="['/dashboard/home']" >Go Home</button>
+              </div>
+            </ion-col>
+          </ion-row>
+      
       </div>
     </div>
   </div>

@@ -1,0 +1,44 @@
+<ion-content>
+    <div class="transaction_otp_page">
+        <div class="header">
+            <!--===bg_theme===-->
+            <div class="bg_theme">
+                
+                <div class="dev_logo ion-text-center">
+                    <img src="../../../../../../assets/imgs/dev-rising.svg" />
+                </div>
+            </div>
+            <!--===bg_theme close===-->
+        </div>
+        <div class="page_content">
+            <div class="ion-text-center page_headings">
+                <div class="comman_page_headline_2">
+                    <h2>Verify your mobile number</h2>
+                </div>
+                <div>Enter Your 6 Digits OTP here?</div>
+            </div>
+            <ion-row class="comman_input_field">
+                <ion-col>
+                    <ion-item lines="none">
+                        <ion-label position="floating">Enter OTP</ion-label>
+                        <ion-input required pattern="[0-9]*" maxlength="6" [(ngModel)]="otpmsg" type="tel"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <div class="sub_headings">
+                <div>Didn't received the verification OTP?</div>
+                <div>Resend Again in <span class="color_theme_purple">1 minute.</span></div>
+            </div>
+            <ion-row class="ion-text-center verfiy_resend_btns">
+                <ion-col size="12">
+                    <button class="large_btn_filled gradient_fill_btn" (click)="send_money()">Verify</button>
+                </ion-col>
+                <ion-col size="12">
+                    <button color="success" *ngIf="show" size="small" (click)="resend()"   class="extra_large_btn_gray ">Resend OTP</button>
+                    
+
+                </ion-col>
+            </ion-row>
+        </div>
+    </div>
+</ion-content>

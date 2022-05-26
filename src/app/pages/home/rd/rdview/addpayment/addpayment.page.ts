@@ -21,7 +21,7 @@ export class AddpaymentPage implements OnInit {
   
   public UserResponse: any=[]
   public Saving: any=[]
-  public amount: any = ''
+  public amount: number;
   public Rddata: any = []
   public data: any = []
   ngOnInit() {
@@ -43,6 +43,7 @@ export class AddpaymentPage implements OnInit {
       if (params && params.special) {
         console.log(JSON.parse(params.special))
         this.Rddata = JSON.parse(params.special)
+        console.log('adsasd');
         this.amount = parseInt(this.Rddata.principal_amount)
       }
     })
@@ -50,9 +51,10 @@ export class AddpaymentPage implements OnInit {
   
   AddPayment(){
     var num = this.amount;
+    console.log('dsasd',num);
     this.data = {
       'account_number': this.Saving['0'].account_number,
-      'amount': parseInt(num),
+      'amount': num,
       'slug': this.Rddata.slug,
       'type': 'RD',
       'base_amount': this.Rddata.principal_amount

@@ -1,5 +1,5 @@
 {
-  "name": "devising",
+  "name": "devrising",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
@@ -26,7 +26,7 @@
     "@angular/router": "^12.2.2",
     "@awesome-cordova-plugins/in-app-browser": "^5.39.0",
     "@capacitor-community/native-market": "^0.1.4",
-    "@capacitor/android": "3.4.0",
+    "@capacitor/android": "3.4.3",
     "@capacitor/core": "^3.4.0",
     "@ionic-native/android-permissions": "^5.36.0",
     "@ionic-native/base64": "^5.36.0",
@@ -58,7 +58,6 @@
     "aws-sdk": "^2.1062.0",
     "capacitor-data-storage-sqlite": "^2.4.7",
     "com-badrit-base64": "^0.2.0",
-    "cordova-android": "9.1.0",
     "cordova-ios": "6.2.0",
     "cordova-pdf-generator": "^2.1.1",
     "cordova-plugin-advanced-http": "^3.2.0",
@@ -83,7 +82,7 @@
     "ionic-select-searchable": "^2.10.0",
     "ionic-selectable": "^4.9.0",
     "jquery": "^3.6.0",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "ng-circle-progress": "^1.6.0",
     "pdfmake": "^0.1.72",
     "rxjs": "~6.5.1",
@@ -136,8 +135,7 @@
     },
     "platforms": [
       "browser",
-      "ios",
-      "android"
+      "ios"
     ]
   }
 }

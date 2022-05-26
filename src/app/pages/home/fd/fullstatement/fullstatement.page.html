@@ -6,8 +6,7 @@
         <a [routerLink]="['/dashboard/home']"><img src="../../../../../assets/imgs/back-button.svg"></a>
       </ion-col>
       <ion-col size="2">
-        <div class="notification_numbur"> <span class="">12</span></div>
-        <img class="bell_icon relative" src="../../../../../assets/imgs/bell.svg">
+       
       </ion-col>
     </ion-row>
     <ion-row>
@@ -71,14 +70,14 @@
             </div>
           <!--===savings_account_details===-->
           <div class="comman_card_details">
-            <ion-row class="dotted row" *ngFor= "let FdTransactions of FdTransactions; let i=index">
+            <ion-row class="dotted row" *ngFor="let FdTransaction of FdTransactions; let i=index">
                   <ion-col size="6">
-                    <span>{{FdTransactions.message}}</span>
-                    <p class="color_brown">{{FdTransactions.payment_mode}} | <span class="color_purple">{{FdTransactions.transaction_date}}</span></p>
+                    <span>{{FdTransaction.message}}</span>
+                    <p class="color_brown">{{FdTransaction.payment_mode}} | <span class="color_purple">{{FdTransaction.transaction_date}}</span></p>
                   </ion-col>
                   <ion-col size="5" class="right_col">
-                    <span>{{FdTransactions.amount.toLocaleString('en-IN')}}</span>
-                    <span>{{FdTransactions.transaction_type}}</span>
+                    <span>{{FdTransaction.amount}}</span>
+                    <span>{{FdTransaction.transaction_type}}</span>
                   </ion-col>
                     <ion-col size="1">
                     <img class="" src="../../../../../assets/imgs/plus_green.svg">
@@ -86,7 +85,7 @@
           </ion-row>
           
     
-            <ion-row  *ngFor= "let FdTransactions of FdTransactions; let i=index"> 
+            <!-- <ion-row  *ngFor= "let FdTransactions of FdTransactions; let i=index"> 
             <ion-row class="dotted row" > 
               <div *ngIf="show_filter ==  false">
                   <ion-col size="6">
@@ -104,7 +103,7 @@
               </div>
               
             </ion-row>
-            </ion-row>
+            </ion-row> -->
             </div>
         </ion-card-content>
       </ion-card>

@@ -4,12 +4,11 @@
     <div class="bg_theme bg_theme_small comman_page_padding">
       <ion-row class="">
         <ion-col size="10">
-          <a [routerLink]="['/transaction']"><img src="../../../assets/imgs/back-button.svg"></a>
+          <a (click)="backClicked()" ><img src="../../../assets/imgs/back-button.svg"></a>
         </ion-col>
-        <ion-col size="2">
-          <div class="notification_numbur"> <span class="">12</span></div>
-         <img class="bell_icon relative" src="../../../assets/imgs/bell.svg" >
-        </ion-col>
+        <ion-row>
+          <h1>Saving Credit</h1>
+        </ion-row>
       </ion-row>
      </div>
      <div class="saving_credit_field">
@@ -21,7 +20,7 @@
        </ion-item>
   <ion-row class="page_checkbox">
             <ion-col size="12" class="algn">
-              <ion-checkbox (click)="($event)" ></ion-checkbox>
+              <ion-checkbox (click)="yes()" ></ion-checkbox>
               <ion-label> I accept all <a>term and Conditions.</a></ion-label>
             </ion-col>
           </ion-row>

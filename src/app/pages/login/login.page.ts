@@ -4,6 +4,9 @@ import { ApihelperProvider } from 'src/providers/apihelper/apihelper';
 import { Storage } from '@ionic/storage';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio/ngx';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import {SharedService } from '../home/add-member/shared.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'page-login',
@@ -14,10 +17,13 @@ export class LoginPage {
 
   
   public username : string = "";
+  public mobile_no : string = "";
   public password : string = "";
   public isUsernameValid: boolean;
   public isPasswordValid: boolean;
   public LoginReponse : any;
+  public hideMember : boolean = false;
+  public hideOtp : boolean = false;
   private message : any;
   clsaa: any = '';
   clsaa2: any= '';
@@ -29,8 +35,9 @@ export class LoginPage {
     private storage: Storage,
     private faio: FingerprintAIO,
     private platform: Platform,
+    public SharedService: SharedService ,
     private alertController: AlertController,
-    private provider : ApihelperProvider) {
+    private provider : ApihelperProvider,private router: Router,) {
     this.isUsernameValid= true;
     this.isPasswordValid = true; 
     
@@ -59,7 +66,7 @@ export class LoginPage {
        this.provider.UserLogin( val.username, val.password).subscribe(data=>{
         this.LoginReponse = data;
         if(this.LoginReponse){
-
+          this.provider.SetHeader(this.LoginReponse.token,this.LoginReponse.user_id);
         this.faio.isAvailable().then(result =>{
           if(result = true)
           {
@@ -69,7 +76,8 @@ export class LoginPage {
             })
             
         .then((result: any) => {
-        this.provider.SetHeader(this.LoginReponse.token,this.LoginReponse.user_id);
+          
+         
         this.navCtrl.navigateRoot('/dashboard/home');
 
       })
@@ -114,7 +122,7 @@ export class LoginPage {
       // show processing
        this.provider.presentLoading();
        this.provider.UserLogin(this.username,this.password).subscribe(data=>{
-         console.log('kaka',data);
+        this.message = data['message']
         this.LoginReponse = data;
         // set header values
         this.provider.SetHeader(this.LoginReponse.token,this.LoginReponse.user_id);
@@ -134,18 +142,40 @@ export class LoginPage {
         this.storage.get('offline-user').then((val) => {
           console.log('User Details', val);
         });
+        if(data['status'] == "SUCCESS"){
+          console.log('asda',data);
         this.navCtrl.navigateRoot('/dashboard/home');
-      }
-      ,(err)=> {
-          this.message = "Wrong username and password!"
+        }
+        else{
+
           this.provider.show_alert
-(this.message)
+          (data['message'])
+        }
       });
     }else{
-      this.message = "Wrong username and password!"
+
       this.provider.show_alert
-(this.message)
+      ('Somthing Went Wrong')
     }
+  }
+  doLoginOtp(){
+    if (!this.mobile_no ||this.mobile_no.length == 0) {
+      this.message = "Mobile number is blank"
+      this.provider.show_alert(this.message)
+    }else{
+      console.log('asdas')
+      this.provider.UserLoginOtp(this.mobile_no).subscribe(data=>{
+        console.log('dataotp',data)
+        if(data['status'] == true){
+          this.SharedService.setnumber(this.mobile_no);
+          this.navCtrl.navigateRoot('login-otp');
+          // this.router.navigate(['login-otp'], navigationExtras);
+        }else{
+          this.provider.show_alert(data['message'])
+        }
+      })
+    }
+
   }
   validate():boolean {
     
@@ -194,6 +224,26 @@ export class LoginPage {
   public showFingerprintAuthDlg(){
     
 }
-
+switch_between(type) {
+  if (type == "otp"){
+    $('.login_with_otp').show()
+    $('.login_with_member_id').hide()
+    $('.login_with_member_id_btn').hide()
+    $('.login_with_otp_btn').show()
+  }else{
+    $('.login_with_otp').hide()
+    $('.login_with_member_id').show()
+    $('.login_with_member_id_btn').show()
+    $('.login_with_otp_btn').hide()
+  }
+  // setTimeout(function(){ 
+  //   var max = 150.72259521484375;
+    // $.each($('.progress_cal'), function( index, value ){
+    // var percent = $(value).data('progress');
+    //   $(value).children('.fill').attr('style', 'stroke-dashoffset: ' + ((100 - percent) / 100) * max);
+    //   $(value).children('.value').text(percent + '%');
+    // });
+  // }, 1);
+}
 
 }

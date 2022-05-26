@@ -171,8 +171,7 @@
           <a [routerLink]="['/dashboard/home']"><img src="../../../../../assets/imgs/back-button.svg"></a>
         </ion-col>
         <ion-col size="2">
-          <div class="notification_numbur"> <span class="">12</span></div>
-          <img class="bell_icon relative" src="../../../../../assets/imgs/bell.svg">
+          
         </ion-col>
       </ion-row>
       <ion-row>
@@ -218,7 +217,7 @@
           </ion-col>
           <span class="background_font_faded">FD</span>
         </ion-row>
-        <div class=" accordion" *ngIf="isShown">
+        <div class=" accordion" *ngIf=" isShown == FdResponse.account_number ">
           <ion-row class="dotted">
             <ion-col size="5">
               <div>Status</div>
@@ -311,12 +310,14 @@
           </ion-row>
         </div>
         <div class="card_bottom_btns" [style.margin-top]="mgTop" [style.margin-bottom]="mgBotm">
-          <button class="medium_filled_btn gradient_fill_btn" [routerLink]="['fullstatement']" (click)="FdClick('fd', FdResponse.slug)"
-            [ngStyle]="{'visibility':isthisbtnshow? 'visible' : 'hidden'}">Full Statement</button>
-            <button class="medium_filled_btn gradient_fill_btn" [routerLink]="['/rd-statement']"
-            [ngStyle]="{'visibility':isthisbtnshow? 'visible' : 'hidden'}">Deposit Installment</button>
-          <button class="extra_small_gray_btn" (click)="accordionShow()"
-            (click)="change_text()">{{changed_text}}</button>
+          <button class="medium_filled_btn gradient_fill_btn" (click)="FdClick('fd', FdResponse.slug)"
+              [ngStyle]="{'visibility':isthisbtnshow? 'visible' : 'hidden'}">Full Statement</button>
+              
+            <button type="button" class="extra_small_gray_btn" (click)="accordionShow(FdResponse.account_number)" *ngIf="changed_text == FdResponse.account_number ; else ins"
+              (click)="change_text(FdResponse.account_number)" >Less
+            </button>
+            <ng-template #ins><button type="button" class="extra_small_gray_btn" (click)="accordionShow(FdResponse.account_number)"
+              (click)="change_text(FdResponse.account_number)" >More</button> </ng-template>
         </div>
         
         <div><div class="progressbar">

@@ -83,6 +83,7 @@ export class AddMinorPage implements OnInit {
   next(){
     var fd = this.shared.getfd();
     if (fd == true){
+      this.provider.presentLoading();
       let navigationExtras: NavigationExtras = {
         
       };

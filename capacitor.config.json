@@ -1,8 +1,16 @@
 {
   "webDir": "www",
   "appId": "com.example.app",
-  "appName": "devising",
+  "appName": "devrising",
   "bundledWebRuntime": false,
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    },
+    "PushNotifications": {
+      "presentationOptions": ["badge", "sound", "alert"]
+    }
+  },
   
   "cordova": {
     "preferences": {
@@ -13,6 +21,7 @@
       "FadeSplashScreenDuration": "300",
       "SplashShowOnlyFirstTime": "false",
       "SplashScreen": "screen",
+      "linuxAndroidStudioPath": "/snap/android-studio/119/android-studio/bin/studio.sh",
       "SplashScreenDelay": "500"
     }
   }

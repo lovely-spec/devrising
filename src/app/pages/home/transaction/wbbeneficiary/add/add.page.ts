@@ -10,6 +10,7 @@ import { ApihelperProvider } from 'src/providers/apihelper/apihelper';
 })
 export class AddPage implements OnInit {
   name: string = '';
+  response:any ;
   mobile_no: string = '';
   bank_name: string = '';
   ifsc_code: string = '';
@@ -22,6 +23,25 @@ export class AddPage implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+  onkeyup(event:any){
+    if (event.target.value.length == 10){
+      console.log(event.target.value)
+      var mobile_no = event.target.value
+      this.provider.check_saving(mobile_no).subscribe(data=>{
+        console.log(data);
+        if(data['status'] == true ){
+        this.response = data['saving']
+        }else{
+          this.provider.show_alert(data['message'])
+        }
+      })
+    }else if (event.target.value.length < 10){
+      this.response = []
+    }
+  }
+  select_account(a){
+    this.account_no = a
   }
   add_new(){
     var name = this.name;

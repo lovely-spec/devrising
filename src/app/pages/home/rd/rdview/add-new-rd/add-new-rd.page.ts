@@ -22,15 +22,16 @@ export class AddNewRdPage implements OnInit {
   optionValue: any;
   scheme: any;
   amount:number;
-  is_nominee:string;
-  n_name:string;
-  rel_nomineee:string;
-  a_nominee:string;
-  is_minor:string;
-  is_saving:string;
-  minor:string;
-  joint:string;
-  jac:string;
+  is_nominee:string = '';
+  n_name:string = '';
+  rel_nomineee:string = '';
+  a_nominee:string = '';
+  is_minor:string = '';
+  is_saving:string = '';
+  saving_id:string ;
+  minor:string = '';
+  joint:string = '';
+  jac:string = '';
   constructor(
     public platform: Platform,
     public navCtrl: NavController,
@@ -52,8 +53,9 @@ export class AddNewRdPage implements OnInit {
       if(this.UserResponse){
         this.SavingDetails = []
         this.SavingDetails = this.UserResponse.Saving;
+        
       }
-      console.log('FD',this.SavingDetails)
+      console.log('saving',this.SavingDetails)
     });
     this.provider.rd_schemes().subscribe(data=>{
       this.schemesdetails = this.provider.rd_scheme_details(data);
@@ -122,6 +124,7 @@ export class AddNewRdPage implements OnInit {
   var is_minor = this.is_minor;
   var minor_id = this.minor;
   var is_saving= this.is_saving;
+  var saving_id= this.saving_id;
   var nominee_type = 'RdAccount';
   var nominee = this.show_detail;
   var minor = this.form;
@@ -129,21 +132,25 @@ export class AddNewRdPage implements OnInit {
     var joint = this.joint;
     var jac = this.jac;
   console.log('res2', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee); 
-  if (scheme==null||scheme==''|| amount==null||is_nominee==null||is_nominee==''||is_minor==null||is_minor==''|| is_saving==null||is_saving==''){
+  if (scheme==null||scheme==''|| amount==null||is_nominee==null||is_nominee==''||is_minor==null||is_minor==''){
     this.provider.show_alert('All fields required ') 
     // console.log('res2', scheme,amount,is_nominee,is_minor,); 
-   if (nominee == true){
-          if (n_name==null||n_name==''|| rel_nomineee==null||rel_nomineee==null||a_nominee==''||a_nominee==null){
-            this.provider.show_alert('Please fill Nominee details')
-          }
-  } 
-  if (minor == true){
-    if (minor_id==null||minor_id==''){
-      this.provider.show_alert('Please fill Nominee details')
-    }
+    
+  
+}else if (nominee == true){
+  if (n_name==null||n_name==''|| rel_nomineee==null||rel_nomineee==null||a_nominee==''||a_nominee==null){
+    this.provider.show_alert('Please fill Nominee details')
+  }
 }
-}else{ console.log('res2', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee);
-    this.provider.createrd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id).subscribe(data=>{
+else if (minor == true){
+  if (minor_id==null||minor_id==''){
+    this.provider.show_alert('Please fill Minor details')
+  }
+}
+else{ 
+  // console.log('res2', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee);
+    this.provider.presentLoading();
+    this.provider.createrd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving_id).subscribe(data=>{
     console.log('response',data)
     if(data['status'] == true){
       let navigationExtras: NavigationExtras = {

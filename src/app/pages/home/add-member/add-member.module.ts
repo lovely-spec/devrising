@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AddMemberPageRoutingModule } from './add-member-routing.module';
 
 import { AddMemberPage } from './add-member.page';
+import { HeaderComponent } from 'src/app/header/header.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { AddMemberPage } from './add-member.page';
     IonicModule,
     AddMemberPageRoutingModule
   ],
-  declarations: [AddMemberPage]
+  declarations: [AddMemberPage,
+  HeaderComponent]
 })
 export class AddMemberPageModule {}

@@ -19,6 +19,10 @@ const routes: Routes = [
   {
     path: 'rd-open-successfully',
     loadChildren: () => import('./rd-open-successfully/rd-open-successfully.module').then( m => m.RdOpenSuccessfullyPageModule)
+  },
+  {
+    path: 'add_payment',
+    loadChildren: () => import('./addpayment/addpayment.module').then( m => m.AddpaymentPageModule)
   }
   
 ];

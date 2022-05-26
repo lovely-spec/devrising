@@ -35,7 +35,7 @@ export class FdviewPage implements OnInit {
   start_date: '';
   pdfObj = null;
   show_filter: boolean = true;
-  isShown: boolean = false;
+  isShown: any ;
   slid_down: boolean = false;
   btn_text = 'more'
   changed_text = 'more'
@@ -167,18 +167,19 @@ createPdf() {
   this.pdfmake.createPdf(this.FdTransactions); 
 }
 
-accordionShow() {
-  this.isShown = !this.isShown;
+accordionShow(a) {
+  this.isShown =  a;
   this.mgTop = "10px";
 }
 
-change_text() {
+change_text(a) {
   if (this.changed_text == 'more') {
-    this.changed_text = 'less'
+    this.changed_text = a;
     this.isthisbtnshow = true;
     this.mgBotm = "16px";
   } else {
     this.changed_text = 'more'
+    this.isShown = '';
     this.isthisbtnshow = false;
     this.mgTop = "-12px"
     this.mgBotm = "0";

@@ -4,8 +4,9 @@ import { ApihelperProvider } from 'src/providers/apihelper/apihelper';
 import { HttpClient,HttpHeaders} from '@angular/common/http';
 import { Storage } from '@ionic/storage';
 import { NavigationExtras, Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
-
+import { ModalController ,NavController} from '@ionic/angular';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-add-new-member',
@@ -16,7 +17,7 @@ export class AddNewMemberPage implements OnInit {
   First_name:string;
   Last_name:string;
   Father_name:string;
-  H_W_name:string;
+  H_W_name:string= '';
   D_O_B:string;
   Marital_status:string;
   Occupation:string;
@@ -24,8 +25,11 @@ export class AddNewMemberPage implements OnInit {
   gender:string;
   number:string;
   edit: boolean = false;
+  back: boolean = false;
   Member: any =[];
   Contact: any =[];
+  today:any;
+  mDate:any;
   public personaldetails:string[];
   
   constructor(
@@ -33,18 +37,23 @@ export class AddNewMemberPage implements OnInit {
     private storage: Storage,
     private provider : ApihelperProvider,
     public router: Router,
+    public navCtrl: NavController,
     public modalController: ModalController,
     public SharedService: SharedService ) {
   }
    
   ionViewDidEnter() {
+    console.log(this.SharedService.getback());
+    console.log(this.SharedService.geteditm());
     this.edit = this.SharedService.geteditm();
     if (this.edit == true){
+      console.log('ssys');
       var id = this.SharedService.getmid();
     this.provider.editm(id).subscribe(data=>{
       console.log('member',data);
       this.Member = data['message'];
-      console.log('Member',this.Member);
+      this.H_W_name = this.Member.spouse_name;
+      console.log('Member',this.Member.spouse_name);
 
     })
     this.provider.contact(id).subscribe(data=>{
@@ -52,7 +61,30 @@ export class AddNewMemberPage implements OnInit {
       this.Contact = data['message']
       console.log('Contact',data);
     })
+    }else{
+
     }
+    var back = this.SharedService.getback();
+    // console.log('sdf',back);
+    if (back == true ){
+      console.log('aays');
+    this.First_name = this.SharedService.getfname();
+    this.Last_name = this.SharedService.getlname();
+    this.Father_name = this.SharedService.getftname();
+    this.H_W_name = this.SharedService.gethwname();
+    this.D_O_B =this.SharedService.getdob();
+    this.Marital_status = this.SharedService.getms();
+    this.Occupation = this.SharedService.getoc();
+    this.Email = this.SharedService.getemail();
+    this.gender = this.SharedService.getgender();
+    }else
+  {}
+  
+
+this.today =  moment().format("YYYY-MM-DD");
+
+let maxDate=  new Date((new Date().getFullYear() - 18),new Date().getMonth(), new Date().getDate());
+       this.mDate=moment(maxDate).format("YYYY-MM-DD");
   }
   ngOnInit() {
 
@@ -97,8 +129,9 @@ export class AddNewMemberPage implements OnInit {
       else{
         title = "ms"
       }
+
       this.number = this.SharedService.getnumber();
-      console.log('this.number', this.number);
+      // console.log('this.number', this.H_W_name);
       this.SharedService.setfname(this.First_name);
       this.SharedService.setlname(this.Last_name);
       this.SharedService.setftname(this.Father_name);
@@ -109,6 +142,7 @@ export class AddNewMemberPage implements OnInit {
       this.SharedService.setemail(this.Email);
       this.SharedService.setgender(this.gender);
       this.SharedService.settitle(title);
+      this.provider.presentLoading();
       let navigationExtras: NavigationExtras = {
       };
       this.router.navigate(['address-details'], navigationExtras);
@@ -117,6 +151,13 @@ export class AddNewMemberPage implements OnInit {
   // let navigationExtras: NavigationExtras = {
   // };
   // this.router.navigate(['address-details'], navigationExtras);
+  }
+  go_back(){
+    this.SharedService.setback(this.back);
+    this.navCtrl.navigateRoot('/dashboard/home/add-member');
+  }home(){
+    this.SharedService.setback(this.back);
+    this.navCtrl.navigateRoot('/dashboard/home');
   }
 
 }

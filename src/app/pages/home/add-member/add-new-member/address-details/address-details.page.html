@@ -22,15 +22,15 @@
         <ion-card-content>
           <ion-item lines="none">
             <ion-label position="floating">Village/House No./Town</ion-label>
-            <ion-input type="text" [(ngModel)]="village_house_town" value="{{stng[1]}}"></ion-input>
+            <ion-input type="text" [(ngModel)]="village_house_town" value="{{stng[1]}} " oninput="this.value = this.value.toUpperCase()"></ion-input>
           </ion-item>
           <ion-item lines="none">
             <ion-label position="floating">Post Office (P.O.)</ion-label>
-            <ion-input type="text" [(ngModel)]="p_o" value="{{stng[3]}}" ></ion-input>
+            <ion-input type="text" [(ngModel)]="p_o" value="{{stng[3]}}" oninput="this.value = this.value.toUpperCase()" ></ion-input>
           </ion-item>
           <ion-item lines="none">
             <ion-label position="floating">Panchayat</ion-label>
-            <ion-input type="text" [(ngModel)]="panchayat" value="{{Contact.panchayat}}"></ion-input>
+            <ion-input type="text" [(ngModel)]="panchayat" value="{{Contact.panchayat}}" oninput="this.value = this.value.toUpperCase()"> </ion-input>
           </ion-item>
           <ion-item lines="none">
             <ion-label position="floating">Tehsil</ion-label>
@@ -39,8 +39,17 @@
           <ion-item lines="none">
             <ion-select class="custom-options" placeholder="Distt." [(ngModel)]="distt" value="{{stng[7]}}">
               <ion-select-option value="SHIMLA">Shimla</ion-select-option>
-              <ion-select-option value="KULLU">Kullu</ion-select-option>
-              <ion-select-option value="BILASPUR">Bilaspur</ion-select-option>
+                <ion-select-option value="SOLAN">Solan</ion-select-option>
+                <ion-select-option value="SIRMAUR">Sirmaur</ion-select-option>
+                <ion-select-option value="CHAMBA">Chamba</ion-select-option>
+                <ion-select-option value="HAMIRPUR">Hamirpur</ion-select-option>
+                <ion-select-option value="KANGRA">Kangra</ion-select-option>
+                <ion-select-option value="KINNAUR">Kinnaur</ion-select-option>
+                <ion-select-option value="KULLU">Kullu</ion-select-option>
+                <ion-select-option value="BILASPUR">Bilaspur</ion-select-option>
+                <ion-select-option value="L&S">Lahaul & Spiti</ion-select-option>
+                <ion-select-option value="MANDI">Mandi</ion-select-option>
+                <ion-select-option value="UNA">Una</ion-select-option>
             </ion-select>
           </ion-item>
           <ion-item lines="none">
@@ -65,20 +74,21 @@
           <div class="slider_form" *ngIf=show_detail>
             <ion-item lines="none">
               <ion-label position="floating">Village/House No./Town</ion-label>
-              <ion-input type="text" [(ngModel)]="P_village_house_town" value="{{prst[1]}}"></ion-input>
+              <ion-input type="text" [(ngModel)]="P_village_house_town" value="{{prst[1]}}" oninput="this.value = this.value.toUpperCase()"></ion-input>
             </ion-item>
             <ion-item lines="none">
               <ion-label position="floating">Post Office (P.O.)</ion-label>
-              <ion-input type="text" [(ngModel)]="P_p_o" value="{{prst[3]}}"></ion-input>
+              <ion-input type="text" [(ngModel)]="P_p_o" value="{{prst[3]}}" oninput="this.value = this.value.toUpperCase()"></ion-input>
             </ion-item>
             <ion-item lines="none">
               <ion-label position="floating">Panchayat</ion-label>
-              <ion-input type="text" [(ngModel)]="P_panchayat" value="{{Contact.pincode}}"></ion-input>
+              <ion-input type="text" [(ngModel)]="P_panchayat" value="{{Contact.permanent_panchayat}}" oninput="this.value = this.value.toUpperCase()"></ion-input>
             </ion-item>
             <ion-item lines="none">
               <ion-label position="floating">Tehsil</ion-label>
-              <ion-input type="text" [(ngModel)]="P_tehsil" value="{{prst[5]}}"></ion-input>
+              <ion-input type="text" [(ngModel)]="P_tehsil" value="{{prst[5]}}" oninput="this.value = this.value.toUpperCase()"></ion-input>
             </ion-item>
+            
             <ion-item lines="none">
               <ion-select class="custom-options" placeholder="Distt." [(ngModel)]="P_distt" value="{{prst[7]}}">
                 <ion-select-option value="SHIMLA">Shimla</ion-select-option>
@@ -94,21 +104,25 @@
                 <ion-select-option value="MANDI">Mandi</ion-select-option>
                 <ion-select-option value="UNA">Una</ion-select-option>
               </ion-select>
+             </ion-item>
+      
               <ion-item lines="none">
-                <ion-select class="custom-options" placeholder="State" [(ngModel)]="P_state" value="{{Contact.state}}">
-                  <ion-select-option value="Himachal Pradesh">Himachal Pradesh</ion-select-option>
-                  <ion-select-option value="Bihar">Bihar</ion-select-option>
+                <!-- <ion-select class="custom-options" placeholder="State" [(ngModel)]="P_state" value="{{Contact.state}}">
+                  <ion-select-option value="Himachal Pradesh">Himachal Pradesh</ion-select-option> -->
+                  <ion-label position="floating">State</ion-label>
+                  <ion-input type="text" [(ngModel)]="P_state" value="{{Contact.state}}"></ion-input>
+                  <!-- <ion-select-option value="Bihar">Bihar</ion-select-option>
                   <ion-select-option value="Uttar Pradesh">Uttar Pradesh</ion-select-option>
-                </ion-select>
+                </ion-select> -->
               </ion-item>
-            </ion-item>
+            
             <ion-item lines="none">
               <ion-label position="floating">Pin</ion-label>
               <ion-input type="number" [(ngModel)]="P_pin" value="{{Contact.permanent_pincode}}"></ion-input>
             </ion-item>
           </div>
           <div class="add_member_form_btns">
-            <button class="small_btn_gray" [routerLink]="['/add-new-member']">Back</button>
+            <button class="small_btn_gray" (click)="go_back()">Back</button>
             <button class="gradient_fill_btn small_btn_filled"  (click)="next()">Next</button>
           </div>
         </ion-card-content>

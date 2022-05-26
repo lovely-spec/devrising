@@ -177,7 +177,20 @@ const routes: Routes = [
       {
         path: 'new-member-address',
         loadChildren: () => import('../home/add-member/add-new-member/address-details/address-details.module').then( m => m.AddressDetailsPageModule)
+      },
+      {
+        path: 'member-kyc',
+        loadChildren: () => import('../home/add-member/add-new-member/member-kyc/member-kyc.module').then( m => m.MemberKycPageModule)
+      },
+      {
+        path: 'transaction',
+        loadChildren: () => import('../home/transaction/transaction.module').then( m => m.TransactionPageModule )
+      },
+      {
+        path: 'member-preview',
+        loadChildren: () => import('../home/add-member/add-new-member/preview-details/preview-details.module').then( m => m.PreviewDetailsPageModule)
       }
+     
     ]
   },
   {

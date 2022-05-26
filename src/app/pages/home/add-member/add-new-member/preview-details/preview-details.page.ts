@@ -28,7 +28,7 @@ export class PreviewDetailsPage implements OnInit {
     this.provider.contact(id).subscribe(data=>{
       console.log('contact',data);
       this.contact = data['message'];
-      console.log('contactsas',this.contact );
+      console.log('contactsas',this.contact.permanent_panchayat );
       let arr = this.contact['address_line_1']
       this.stng = arr.split(",");
       let ads =  this.contact['permanent_address']

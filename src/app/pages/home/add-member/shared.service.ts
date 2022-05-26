@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class SharedService {
   filterdata: string;
   number:string;
+  home:boolean;
   //personal details 
   First_name:string;
   Last_name:string;
@@ -36,11 +37,82 @@ export class SharedService {
   mid:string;
   fd:boolean;
   rd:boolean;
+  back:boolean;
   slug:boolean;
   member_id:boolean;
   edit:boolean;
   pay:string;
+  addhar_no:string;
+  pan_no:string;
+  nominee_name:string;
+  nominee_f_name:string;
+  nominee_relation:string;
+  nominee_number:string;
+  nominee_address:string;
+  nominee_aadhar:string;
+  nominee_pan:string;
   constructor() { }
+    sethome(data){
+    this.home=data
+    }
+    gethome(){
+      return this.home
+    }
+    setaddhar_no(data){
+    this.addhar_no=data
+    }
+    getaddhar_no(){
+      return this.addhar_no
+    }
+    setpan_no(data){
+      this.pan_no=data
+      }
+      getpan_no(){
+        return this.pan_no
+      }
+      setnominee_name(data){
+        this.nominee_name=data
+        }
+        getnominee_name(){
+          return this.nominee_name
+        }
+        setnominee_f_name(data){
+          this.nominee_f_name=data
+          }
+          getnominee_f_name(){
+            return this.nominee_f_name
+          }
+          setnominee_relation(data){
+            this.nominee_relation=data
+            }
+            getnominee_relation(){
+              return this.nominee_relation
+            }
+            setnominee_address(data){
+              this.nominee_address=data
+              }
+              getnominee_address(){
+                return this.nominee_address
+              }
+              setnominee_aadhar(data){
+                this.nominee_aadhar=data
+                }
+                getnominee_aadhar(){
+                  return this.nominee_aadhar
+                }
+                setnominee_pan(data){
+                  this.nominee_pan=data
+                  }
+                  getnominee_pan(){
+                    return this.nominee_pan
+                  }
+                  setnominee_number(data){
+                  this.nominee_number=data
+                  }
+                  getnominee_number(){
+                    return this.nominee_number
+                  }
+
   setfd(data){
   this.fd=data
   }
@@ -88,6 +160,11 @@ export class SharedService {
   }
   getrd(){
         return this.rd
+  }setback(data){
+    this.back=data
+  }
+  getback(){
+        return this.back
   }
   setdata(data){
     this.filterdata=data

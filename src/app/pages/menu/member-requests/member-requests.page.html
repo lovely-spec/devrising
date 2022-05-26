@@ -7,8 +7,7 @@
               <a [routerLink]="['/dashboard/home']"><img src="../../../../../../assets/imgs/back-button.svg"></a>
             </ion-col>
             <ion-col size="2">
-              <div class="notification_numbur"> <span class="">12</span></div>
-              <img class="bell_icon relative" src="../../../../../../assets/imgs/bell.svg">
+              
             </ion-col>
           </ion-row>
         </div>
@@ -28,9 +27,8 @@
                <ion-col size="6">
                <h1 class="ap">{{rqs.member_number}}</h1>
                <h1 class="ap">{{rqs.first_name}} {{rqs.last_name}}</h1>
-               <h1 *ngIf="rqs.status == 'pending'" class="pe-1" >{{rqs.status}}</h1>
-               <h1 *ngIf="rqs.status == 'dissapproved'" class="dis-1" >{{rqs.status}}</h1>
-               <h1 *ngIf="rqs.status == 'active'" class="ap-1" >{{rqs.status}}</h1>
+               <h1 *ngIf="rqs.status == 'disapproved'" class="dis-1" >Disapproved</h1>
+               <h1 *ngIf="rqs.status == 'inactive'" class="pe-1" >Pending</h1>
                <h1 class="ap" >{{rqs.remarks}}</h1>
                <br><button type="button" class="extra_small_gray_btn" (click)="edit_member(Id=rqs.id)">Edit</button>
               </ion-col>

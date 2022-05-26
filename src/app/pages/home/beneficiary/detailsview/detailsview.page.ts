@@ -60,6 +60,7 @@ export class DetailsviewPage {
                     special: JSON.stringify(data['message'])
                   }
                 };
+                this.provider.presentLoading();
                 this.route.navigate(['dashboard/beneficiary'], navigationExtras);
               }else{
                 this.provider.show_alert('Something Went wrong! Please try in a few minutes')
@@ -78,6 +79,7 @@ export class DetailsviewPage {
         special: JSON.stringify(this.bene_data)
       }
     };
+    this.provider.presentLoading();
     this.route.navigate(['dashboard/transfer'], navigationExtras);
   }
   async presentPopover(ev: any) {

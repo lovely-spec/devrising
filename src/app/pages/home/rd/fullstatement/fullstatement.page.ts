@@ -50,6 +50,25 @@ export class FullstatementPage implements OnInit {
   marginbottom: any;
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      if (params && params.special) {
+        this.rddata = JSON.parse(params.special);
+        this.provider.MemberRD(this.rddata.type,this.rddata.slug).subscribe(data=>{
+          this.RdResponse = this.provider.MemberRD_Details(data);
+          console.log('RdView', this.RdResponse)
+          if(this.RdResponse){
+            this.RdDetails = this.RdResponse.details;
+            console.log('rddetails',this.RdDetails)
+            this.RdTransactions = this.RdResponse.transactions;
+            if(this.RdTransactions){
+              this.RdTransactions = this.RdResponse.transactions;
+            }else{
+              this.RdTransactions = [];
+            }
+          }
+        });
+      }
+    });
   }
   StartDate(){
     if(!this.start_date){
@@ -77,6 +96,7 @@ export class FullstatementPage implements OnInit {
             this.MemberRdTransactions = this.provider.MemberSaving_Details(data);
             if(this.MemberRdTransactions.length != 0){
             this.RdTransactions = this.MemberRdTransactions.transactions; 
+            console.log('rdtransection',this.RdTransactions)
             }else{
               this.RdTransactions = [];
             }
@@ -113,5 +133,16 @@ export class FullstatementPage implements OnInit {
     
     
   }
+  }
+  createPdf() {
+    this.pdfmake.createPdf(this.RdTransactions); 
+  }
+  add_installment(){
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        special: JSON.stringify(this.RdDetails)
+      }
+    };
+    this.router.navigate(['/dashboard/home/rdview/fullstatement/add_payment'], navigationExtras);
   }
 }

@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: FullstatementPage
+  },
+  {
+    path: 'add_payment',
+    loadChildren: () => import('../rdview/addpayment/addpayment.module').then( m => m.AddpaymentPageModule)
   }
 ];
 
