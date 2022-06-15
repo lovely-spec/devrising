@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: SavingPage
+  },
+  {
+    path: 'transaction',
+    loadChildren: () => import('./transaction/transaction.module').then( m => m.TransactionPageModule)
   }
 ];
 

@@ -7,10 +7,6 @@
           <ion-col size="10">
             <a [routerLink]="['/transaction/saving-credit']"><img src="../../../assets/imgs/back-button.svg"></a>
           </ion-col>
-          <ion-col size="2">
-            <div class="notification_numbur"> <span class="">12</span></div>
-           <img class="bell_icon relative" src="../../../assets/imgs/bell.svg" >
-          </ion-col>
         </ion-row>
        </div>
        </div>
@@ -39,7 +35,7 @@
 
     <ion-item  lines="none">
       <ion-label><img src="../../../../../assets/imgs/g_pay.jpg" class="select_img"></ion-label>
-      <ion-radio slot="end" value="g_pay" ></ion-radio>
+      <ion-radio slot="end"  (click)="opengpay()" value="g_pay" ></ion-radio>
     </ion-item>
   </ion-radio-group>
 </ion-list>

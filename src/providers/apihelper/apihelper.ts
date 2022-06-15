@@ -21,7 +21,7 @@ import { Router } from '@angular/router';
 export class ApihelperProvider {
   
 
-  // private RootURL: string = "http://localhost:3000/api/";
+  // private RootURL: string = "http://localhost:3001/api/";
   // private RootURL: string = "https://staging.devrising.in/api/";
   private RootURL: string = "https://app.devrising.in/api/";
    loading: any;

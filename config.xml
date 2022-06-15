@@ -6,6 +6,7 @@
     <content src="index.html" />
     <access origin="*" />
     <access origin="http://localhost:3000/api/" />
+    <access origin="market:*" launch-external="yes"/>
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="mailto:*" />

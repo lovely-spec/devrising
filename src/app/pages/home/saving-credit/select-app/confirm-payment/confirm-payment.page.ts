@@ -16,7 +16,7 @@ export class ConfirmPaymentPage implements OnInit {
   member_id:string;
   public UserResponse: any = [];
   saving_account_id:string;
-  utr_no:string;
+  utr_no:null;
   bank:string;
   upi:string;
   account:string;
@@ -34,6 +34,7 @@ export class ConfirmPaymentPage implements OnInit {
     this.slug = this.shared.getslg()
     this.am = this.shared.getamount()
     this.provider.bank_details().subscribe(data=>{
+      console.log('datadada',data)
       if(data['status'] == true){
         this.bank = data['data'][0].upi_id;
         this.upi = this.bank 
@@ -129,7 +130,8 @@ export class ConfirmPaymentPage implements OnInit {
   //   })
   // }
   submit(){
-    if (this.utr_no !="" ||this.utr_no != null ){
+    console.log('utr',this.utr_no)
+    if (this.utr_no != '' && this.utr_no != null ){
       this.provider.presentLoading();
     this.provider.utrno(this.slug,this.utr_no).subscribe(data=>{
           console.log('responsed',data)

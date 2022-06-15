@@ -103,7 +103,7 @@
     <div class="new_list" *ngIf="i<10">
       <ion-col size="5">
         <h3 class="blue-text">
-        {{OlTransactions.transaction_date}}
+        {{OlTransactions.transaction_date.split('T')[0]}}
         </h3>
         <p class="faded-text">
           {{OlTransactions.transaction_type}}
@@ -134,7 +134,7 @@
     <div class="new_list">
       <ion-col size="5">
         <h3 class="blue-text">
-        {{OlTransactions.transaction_date}}
+        {{OlTransactions.transaction_date.split('T')[0]}}
         </h3>
         <p class="faded-text">
           {{OlTransactions.transaction_type}}

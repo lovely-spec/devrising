@@ -208,7 +208,7 @@
             <div class="ion-card">
               <div class="box-1">
                 <h1 class="add"> Transactions</h1>
-              <div class="plus_img" ><img class="plus" [routerLink]="['/dashboard/transactions']" src="../../assets/imgs/plus_icon.svg"></div>
+              <div *ngIf="SavingDetails" class="plus_img" ><img class="plus" (click)="SavingClick('sv', SavingDetails.slug)" src="../../assets/imgs/plus_icon.svg"></div>
             </div>
             </div>
           

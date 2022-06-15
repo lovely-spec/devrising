@@ -6,7 +6,7 @@ import { ApihelperProvider } from 'src/providers/apihelper/apihelper';
 import { MemberSavingResponse } from '../../../../providers/Models/MemberSaving';
 import * as moment from 'moment';
 import { CreatePdf } from 'src/providers/CreatePdf';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { NotificationPage } from '../notification/notification.page';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 @Component({
@@ -39,6 +39,7 @@ export class SavingPage implements OnInit {
   constructor(public navParams: NavParams,
     public navCtrl: NavController,
     private route: ActivatedRoute,
+    private router: Router,
     private provider: ApihelperProvider,
     private pdfmake:  CreatePdf,
     public popoverController: PopoverController,
@@ -140,6 +141,19 @@ Apply_Date(){
   
   
 }
+}
+saving: any;
+SavingClick(type:string,slug:string){
+  this.saving = {
+    type: type,
+    slug: slug
+  };
+  let navigationExtras: NavigationExtras = {
+    queryParams: {
+      special: JSON.stringify(this.saving)
+    }
+  };
+  this.router.navigate(['dashboard/saving/transaction'], navigationExtras);
 }
 
 createPdf() {

@@ -1,0 +1,31 @@
+{
+	"webDir": "www",
+	"appId": "com.example.app",
+	"appName": "devrising",
+	"bundledWebRuntime": false,
+	"plugins": {
+		"SplashScreen": {
+			"launchShowDuration": 0
+		},
+		"PushNotifications": {
+			"presentationOptions": [
+				"badge",
+				"sound",
+				"alert"
+			]
+		}
+	},
+	"cordova": {
+		"preferences": {
+			"ScrollEnabled": "false",
+			"android-minSdkVersion": "28",
+			"BackupWebStorage": "none",
+			"SplashMaintainAspectRatio": "false",
+			"FadeSplashScreenDuration": "300",
+			"SplashShowOnlyFirstTime": "false",
+			"SplashScreen": "screen",
+			"linuxAndroidStudioPath": "/snap/android-studio/119/android-studio/bin/studio.sh",
+			"SplashScreenDelay": "500"
+		}
+	}
+}

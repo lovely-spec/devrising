@@ -73,7 +73,7 @@
             <ion-row class="dotted row" *ngFor="let FdTransaction of FdTransactions; let i=index">
                   <ion-col size="6">
                     <span>{{FdTransaction.message}}</span>
-                    <p class="color_brown">{{FdTransaction.payment_mode}} | <span class="color_purple">{{FdTransaction.transaction_date}}</span></p>
+                    <p class="color_brown">{{FdTransaction.payment_mode}} | <span class="color_purple">{{FdTransaction.transaction_date.split('T')[0]}}</span></p>
                   </ion-col>
                   <ion-col size="5" class="right_col">
                     <span>{{FdTransaction.amount}}</span>

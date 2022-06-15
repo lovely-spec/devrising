@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { PluginsConfig} from '@capacitor/cli';
 // import { AnyPlugin } from '@capacitor/core';
 // import { Plugins, AppState } from '@capacitor/core';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { InAppBrowser, InAppBrowserObject } from '@ionic-native/in-app-browser/ngx';
 import { NavigationExtras, Router } from '@angular/router';
 import {SharedService } from '../../add-member/shared.service';
 import { ApihelperProvider } from 'src/providers/apihelper/apihelper';
-
+import { AppAvailability } from '@ionic-native/app-availability/ngx';
+import { Platform } from '@ionic/angular';
 // const { App } = Plugins;
 @Component({
   selector: 'app-select-app',
@@ -44,22 +45,22 @@ export class SelectAppPage implements OnInit {
   }
   opengpay(){
     
-    this.iab.create('upi://pay?pa=UPIID@oksbi&amp;pn=JOHN BRITAS AK &amp;cu=INR' ,'_blank');
+    this.iab.create('http://com.google.android.apps.nbu.paisa.user' ,'_blank');
     
   }
   openphonepe(){
     
-    this.iab.create('http://com.phonepe.app' ,'_blank');
+    this.iab.create('http://com.phonepe.app' ,'_system');
     
   }
   openpaytm(){
     
-    this.iab.create('http://net.one97.paytm' ,'_blank');
+    this.iab.create('http://net.one97.paytm' ,'_system');
     
   }
   openamazonpay(){
     
-    this.iab.create('http://in.amazon.mShop.android.shopping' ,'_blank');
+    this.iab.create('http://in.amazon.mShop.android.shopping' ,'_system');
     
   }
   
