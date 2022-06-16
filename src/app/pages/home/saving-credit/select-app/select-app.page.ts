@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { PluginsConfig} from '@capacitor/cli';
 // import { AnyPlugin } from '@capacitor/core';
-// import { Plugins, AppState } from '@capacitor/core';
+// import { Plugins} from '@capacitor/core';
 import { InAppBrowser, InAppBrowserObject } from '@ionic-native/in-app-browser/ngx';
 import { NavigationExtras, Router } from '@angular/router';
 import {SharedService } from '../../add-member/shared.service';
 import { ApihelperProvider } from 'src/providers/apihelper/apihelper';
-import { AppAvailability } from '@ionic-native/app-availability/ngx';
-import { Platform } from '@ionic/angular';
+// import { AppAvailability } from '@ionic-native/app-availability/ngx';
+// import { Platform } from '@ionic/angular';
 // const { App } = Plugins;
 @Component({
   selector: 'app-select-app',
@@ -28,6 +28,8 @@ export class SelectAppPage implements OnInit {
   constructor(
     private iab: InAppBrowser,
     public router: Router,
+    // public platform: Platform,
+    // public appAvailability: AppAvailability,
     public shared: SharedService,
     private provider : ApihelperProvider,
   ) { }
@@ -41,26 +43,26 @@ export class SelectAppPage implements OnInit {
       console.log('response',this.member_id,this.saving_account_id)
     })
   }
+  openGpay() {
+             this.iab.create('android-app://'+ 'com.google.android.apps.nbu.paisa.user', '_system', 'location=yes')
+  }
+  
   ngOnInit() {
   }
-  opengpay(){
-    
-    this.iab.create('http://com.google.android.apps.nbu.paisa.user' ,'_blank');
-    
-  }
+  
   openphonepe(){
     
-    this.iab.create('http://com.phonepe.app' ,'_system');
+    this.iab.create('android-app://'+ 'com.phonepe.app' ,'_system' , 'location=yes');
     
   }
   openpaytm(){
     
-    this.iab.create('http://net.one97.paytm' ,'_system');
+    this.iab.create('android-app://'+ 'net.one97.paytm' ,'_system', 'location=yes');
     
   }
   openamazonpay(){
     
-    this.iab.create('http://in.amazon.mShop.android.shopping' ,'_system');
+    this.iab.create('android-app://'+ 'in.amazon.mShop.android.shopping' ,'_system', 'location=yes');
     
   }
   

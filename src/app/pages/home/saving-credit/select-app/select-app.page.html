@@ -20,22 +20,22 @@
     <ion-radio-group [(ngModel)]="app_response" > 
     <ion-item>
       <ion-label><img src="../../../../../assets/imgs/phone_pay.jpg" class="select_img" ></ion-label>
-      <ion-radio slot="end"  value="phone_pay" ></ion-radio>
+      <ion-radio slot="end" (click)="openphonepe()"  value="phone_pay" ></ion-radio>
     </ion-item>
 
     <ion-item>
       <ion-label><img src="../../../../../assets/imgs/paytm.jpg" class="select_img"></ion-label>
-      <ion-radio slot="end" value="paytm" ></ion-radio>
+      <ion-radio slot="end" (click)="openpaytm()" value="paytm" ></ion-radio>
     </ion-item>
 
     <ion-item>
       <ion-label><img src="../../../../../assets/imgs/amazon-pay.png" class="select_img"></ion-label>
-      <ion-radio slot="end" value="amazon_pay" ></ion-radio>
+      <ion-radio slot="end" (click)="openamazonpay()" value="amazon_pay" ></ion-radio>
     </ion-item>
 
     <ion-item  lines="none">
       <ion-label><img src="../../../../../assets/imgs/g_pay.jpg" class="select_img"></ion-label>
-      <ion-radio slot="end"  (click)="opengpay()" value="g_pay" ></ion-radio>
+      <ion-radio slot="end"  (click)="openGpay()" value="g_pay" ></ion-radio>
     </ion-item>
   </ion-radio-group>
 </ion-list>
