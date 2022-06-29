@@ -67,6 +67,8 @@ export class AddressDetailsPage implements OnInit {
       console.log('contactsadasdasd',this.stng);
     })
     }
+    var back = this.SharedService.getback();
+    if (back == true ){
     this.village_house_town = this.SharedService.getvht();
     this.p_o = this.SharedService.getpo();
     this.panchayat = this.SharedService.getpan();
@@ -80,6 +82,8 @@ export class AddressDetailsPage implements OnInit {
     this.P_distt = this.SharedService.getpdiss();
     this.P_state = this.SharedService.getpstate();
     this.P_pin = this.SharedService.getppin();
+  }else
+  {}
   }
 
   ngOnInit() {

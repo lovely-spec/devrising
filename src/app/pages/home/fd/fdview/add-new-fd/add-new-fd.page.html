@@ -101,8 +101,8 @@
           <ion-radio slot="start"  class="input_type_radio" value="0" (click)=showform1(1)></ion-radio>
         </ion-item>
       </ion-radio-group>
-    </div>
-    
+    </div> 
+   
     <div class="slider_form" *ngIf=form >
       <ion-item lines="none"*ngIf="minordetails">
         <ion-select class="custom-options" placeholder="Select Minor (if any)" [(ngModel)]="minor">
@@ -115,6 +115,27 @@
             Minor</button>
         </ion-col>
       </ion-row>
+    </div>
+    <div class="address_confirmation">
+      <p>Self Registration</p>
+      <ion-radio-group class="adress_radio_input" style="display: flex;" [(ngModel)]="is_self">
+        <ion-item lines="none" class="radio">
+          <ion-label>Yes</ion-label> 
+          <ion-radio slot="start"   class="input_type_radio" value="1" (click)=showform2(2)></ion-radio>
+        </ion-item>
+        <ion-item lines="none" class="radio">
+          <ion-label>NO</ion-label> 
+          <ion-radio slot="start"  class="input_type_radio" value="0" (click)=showform2(1)></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </div>
+    <div class="slider_form" *ngIf=self >
+      <ion-item lines="none"*ngIf="employeedetails">
+        <ion-select class="custom-options" placeholder="Select Agent or Employee" [(ngModel)]="minor">
+          <ion-select-option *ngFor="let employeedetail of employeedetails;let i=index" value={{employeedetail.id}}>{{employeedetail.name}} ({{employeedetail.code}})</ion-select-option>
+        </ion-select>
+      </ion-item>
+      
     </div>
 
     <div class="address_confirmation">

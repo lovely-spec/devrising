@@ -15,10 +15,14 @@ import { ApihelperProvider } from 'src/providers/apihelper/apihelper';
   styleUrls: ['./select-app.page.scss'],
 })
 export class SelectAppPage implements OnInit {
-  app_response:string;
+  app_response:string = '';
   res:string;
   slug:string;
   am:string;
+  bank:string;
+  upi:string;
+  account:string;
+  ifsc:string;
   member_id:string;
   public UserResponse: any = [];
   saving_account_id:string;
@@ -41,6 +45,16 @@ export class SelectAppPage implements OnInit {
       this.member_id = this.UserResponse.Saving[0].member_id
       this.saving_account_id = this.UserResponse.Saving[0].id
       console.log('response',this.member_id,this.saving_account_id)
+    })
+    this.provider.bank_details().subscribe(data=>{
+      console.log('datadada',data)
+      if(data['status'] == true){
+        this.bank = data['data'][0].upi_id;
+        this.upi = this.bank 
+        this.account = data['data'][0].account_number;
+        this.ifsc = data['data'][0].ifsc;
+        console.log('datadada',this.bank)
+      }
     })
   }
   openGpay() {
@@ -68,10 +82,27 @@ export class SelectAppPage implements OnInit {
   
   next(){
 
-    this.payment_mode = this.app_response
+    if(this.app_response == ''){
+      this.payment_mode = 'other'
+    }else{
+      this.payment_mode = this.app_response
+    }
     this.amount = this.am
     this.shared.setpay(this.app_response)
     console.log('jgfdj0', this.app_response)
+
+    if(this.app_response == 'g_pay'){
+      this.iab.create('android-app://'+ 'com.google.android.apps.nbu.paisa.user', '_system', 'location=yes')
+    }if(this.app_response == 'phone_pay'){
+      this.iab.create('android-app://'+ 'com.phonepe.app' ,'_system' , 'location=yes');
+    }if(this.app_response == 'amazon_pay'){
+      this.iab.create('android-app://'+ 'in.amazon.mShop.android.shopping' ,'_system', 'location=yes');
+    }if(this.app_response == 'paytm'){
+      this.iab.create('android-app://'+ 'net.one97.paytm' ,'_system', 'location=yes');
+    }else{
+      
+    }
+    
     this.provider.transec(this.member_id,this.saving_account_id,this.payment_mode,this.amount,).subscribe(data=>{
       console.log('responsed',data)
       if(data['status'] == true){
@@ -89,5 +120,19 @@ export class SelectAppPage implements OnInit {
    })
   }
   
-    
+  copyMessage(){
+    var val:string;
+    val = this.upi
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.innerText = val;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+  }
 }

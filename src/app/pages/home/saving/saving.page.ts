@@ -156,8 +156,11 @@ SavingClick(type:string,slug:string){
   this.router.navigate(['dashboard/saving/transaction'], navigationExtras);
 }
 
+// createPdf() {
+//   this.pdfmake.createPdf(this.SavingResponse); 
+// }
 createPdf() {
-  this.pdfmake.createPdf(this.SavingResponse); 
+  this.pdfmake.createPdf(this.SavingTransactions); 
 }
 //END PDF CODE 
 

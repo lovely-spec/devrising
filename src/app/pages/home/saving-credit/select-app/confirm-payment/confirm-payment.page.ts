@@ -151,12 +151,17 @@ export class ConfirmPaymentPage implements OnInit {
       }
   }
   upload(){
-    this.div = false
+    
     var v = this.shared.getslg()
+    if (this.utr_no != '' && this.utr_no != null ){
+      this.div = false
     // this.iab.create('https://staging.devrising.in/trans-image/' + v ,'_blank');
     this.iab.create('https://app.devrising.in/trans-image/' + v ,'_blank');
     // this.iab.create('https://app.devrising.in/' + v ,'_blank');
     // this.iab.create('http://localhost:3000/trans-image/' + v ,'_blank');
+  }else{
+    this.provider.show_alert("please enter UTR No or Transection Id")
+  }
   }
 
 

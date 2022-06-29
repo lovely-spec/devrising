@@ -46,6 +46,7 @@ export class HomePage {
   public PlPercent: any = [];
   public GlPercent: any = [];
   public DlPercent: any = [];
+  public version: number ;
   public today_interest: number;
   public TransactionResponse: TransactionResponse; 
   
@@ -95,19 +96,52 @@ async presentPopover(ev: any) {
   return await popover.present();
 }
 ionViewDidEnter() {
-  this.shared.setback(false);
-  this.shared.sethome(true);
-  this.storage.get('notifications').then((val) => {
-    if(val['status'] == "success"){
-    this.notification =  val.data
-    // console.log( '6yh7rfuh', this.notification.length)
-    }
-  });
-  this.provider.presentLoading()
-  this.platform.backButton.subscribe(() => {
-    this.navCtrl.navigateRoot('/dashboard/home'); 
-  });
-    this.UserApi();
+  this.version = 3
+  this.provider.getversion(this.version).subscribe(data=>{
+    console.log('getversion')
+    if(data['status'] == true){
+      // var v = data['data'][0].app_version
+      // var version = 2
+      // if(v == version){
+        this.shared.setback(false);
+        this.shared.sethome(true);
+        this.storage.get('notifications').then((val) => {
+          if(val['status'] == "success"){
+          this.notification =  val.data
+          // console.log( '6yh7rfuh', this.notification.length)
+          }
+        });
+        this.provider.presentLoading()
+        this.platform.backButton.subscribe(() => {
+          this.navCtrl.navigateRoot('/dashboard/home'); 
+        });
+          this.UserApi();
+    // }else{
+    //   this.provider.show_alert('Please Update App')
+    //   this.navCtrl.navigateRoot('/login'); 
+    // }
+      
+
+  }else{
+    var msg = data['message']
+    var route = data['route']
+    this.navCtrl.navigateRoot('/login');
+    this.provider.update_alert(msg,route)
+}
+  })
+  // this.shared.setback(false);
+  // this.shared.sethome(true);
+  // this.storage.get('notifications').then((val) => {
+  //   if(val['status'] == "success"){
+  //   this.notification =  val.data
+  //   // console.log( '6yh7rfuh', this.notification.length)
+  //   }
+  // });
+  // this.provider.presentLoading()
+  // this.platform.backButton.subscribe(() => {
+  //   this.navCtrl.navigateRoot('/dashboard/home'); 
+  // });
+  //   this.UserApi();
 }
 UserApi(){
   this.provider.Notification().subscribe(data=>{
@@ -224,6 +258,7 @@ SavingClick(type:string,slug:string){
   this.provider.presentLoading();
   this.router.navigate(['dashboard/saving'], navigationExtras);
 }
+
 //End Saving Click
 //DD Click
 dd: any;

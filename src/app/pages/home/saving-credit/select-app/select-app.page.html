@@ -12,6 +12,7 @@
        </div>
   </ion-toolbar>
   <ion-content>
+
 <div class="select_app">
      <h2>Select Payment Method</h2>
 </div>
@@ -20,28 +21,37 @@
     <ion-radio-group [(ngModel)]="app_response" > 
     <ion-item>
       <ion-label><img src="../../../../../assets/imgs/phone_pay.jpg" class="select_img" ></ion-label>
-      <ion-radio slot="end" (click)="openphonepe()"  value="phone_pay" ></ion-radio>
+      <ion-radio slot="end"    value="phone_pay" ></ion-radio>
     </ion-item>
 
     <ion-item>
       <ion-label><img src="../../../../../assets/imgs/paytm.jpg" class="select_img"></ion-label>
-      <ion-radio slot="end" (click)="openpaytm()" value="paytm" ></ion-radio>
+      <ion-radio slot="end"   value="paytm" ></ion-radio>
     </ion-item>
 
     <ion-item>
       <ion-label><img src="../../../../../assets/imgs/amazon-pay.png" class="select_img"></ion-label>
-      <ion-radio slot="end" (click)="openamazonpay()" value="amazon_pay" ></ion-radio>
+      <ion-radio slot="end" value="amazon_pay" ></ion-radio>
     </ion-item>
 
     <ion-item  lines="none">
       <ion-label><img src="../../../../../assets/imgs/g_pay.jpg" class="select_img"></ion-label>
-      <ion-radio slot="end"  (click)="openGpay()" value="g_pay" ></ion-radio>
+      <ion-radio slot="end"  value="g_pay" ></ion-radio>
     </ion-item>
+    
   </ion-radio-group>
 </ion-list>
+<div class="select_app">
+  <h2>UPI ID : {{upi}} 
+    <!-- <button class="select-app" style="background-color: #49026d;
+   color: aliceblue;
+   height: 20px;
+   border-radius: 6px;" (click)="copyMessage()">Copy</button>  -->
+   </h2>
+</div>
 </div>
 <div class="upi">
-  <button class="gradient_fill_btn large_btn_filled-2" (click)="next()" >Make Payment</button>
+  <button class="gradient_fill_btn large_btn_filled-2"  (click)="copyMessage()"  (click)="next()"> Copy UPI ID & Make Payment</button>
 </div>
 
 

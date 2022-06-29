@@ -23,7 +23,7 @@ export class MemberRequestsPage implements OnInit {
   ionViewDidEnter() {
     this.provider.rq().subscribe(data=>{
       this.rq = this.provider.rq_details(data);
-      console.log('rqasda',this.rq[0].remarks);
+      console.log('rqasda',this.rq);
       
     });
   

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MemberSavingResponse } from '../../../../../../providers/Models/MemberSaving';
-import { NavParams, NavController, PopoverController, Platform } from '@ionic/angular';
+import { NavParams, NavController, PopoverController, Platform, LoadingController } from '@ionic/angular';
 import { ApihelperProvider } from 'src/providers/apihelper/apihelper';
 import { UserResponse } from '../../../../../../providers/Models/UserDetails';
 import {SharedService } from '../../../add-member/shared.service';
@@ -39,6 +39,7 @@ export class AddNewRdPage implements OnInit {
     public shared: SharedService,
     public router: Router,
     private provider: ApihelperProvider,
+    public loadingController : LoadingController,
   ) { }
   addressRadio:string;
   show_detail:boolean;
@@ -48,6 +49,7 @@ export class AddNewRdPage implements OnInit {
   sch:any;
   j:boolean;
   ionViewDidEnter() {
+    
     this.provider.UserPanel().subscribe(data=>{
       this.UserResponse = this.provider.User_details(data);
       if(this.UserResponse){
@@ -114,7 +116,11 @@ export class AddNewRdPage implements OnInit {
     this.router.navigate(['/dashboard/home/rdview/add-new-rd/schemes'], navigationExtras);
 
   }
-  openrd(){
+  async openrd(){
+    const loading = await this.loadingController.create({
+      message: 'Please Wait',
+      translucent: true,
+    });
   var scheme = this.scheme;
   var amount = this.amount;
   var is_nominee =  this.is_nominee;
@@ -131,38 +137,112 @@ export class AddNewRdPage implements OnInit {
   var j = this.j;
     var joint = this.joint;
     var jac = this.jac;
-  console.log('res2', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee); 
+  console.log('res1', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee); 
   if (scheme==null||scheme==''|| amount==null||is_nominee==null||is_nominee==''||is_minor==null||is_minor==''){
     this.provider.show_alert('All fields required ') 
-    // console.log('res2', scheme,amount,is_nominee,is_minor,); 
-    
+    console.log('nominee', nominee,); 
+  }else{ 
   
-}else if (nominee == true){
-  if (n_name==null||n_name==''|| rel_nomineee==null||rel_nomineee==null||a_nominee==''||a_nominee==null){
-    this.provider.show_alert('Please fill Nominee details')
-  }
-}
-else if (minor == true){
-  if (minor_id==null||minor_id==''){
-    this.provider.show_alert('Please fill Minor details')
-  }
-}
-else{ 
-  // console.log('res2', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee);
-    this.provider.presentLoading();
+  if (nominee == true && minor == true ){
+  
+    if (n_name==null||n_name==''|| rel_nomineee==null||rel_nomineee==null||a_nominee==''||a_nominee==null || minor_id==null||minor_id==''){
+      this.provider.show_alert('Please fill Nominee And Minor details')
+    }else{
+      await loading.present();
     this.provider.createrd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving_id).subscribe(data=>{
-    console.log('response',data)
-    if(data['status'] == true){
-      let navigationExtras: NavigationExtras = {
-        
-      };
-      this.router.navigate(['/dashboard/home/rdview/add-new-rd/rd-open-successfully'], navigationExtras);
-
+      console.log('response',data)
+      if(data['status'] == true){
+        loading.dismiss();
+        let navigationExtras: NavigationExtras = {
+          
+        };
+        this.router.navigate(['/dashboard/home/rdview/add-new-rd/rd-open-successfully'], navigationExtras);
+  
+    }else{
+      loading.dismiss();
+    this.provider.show_alert(data['message'])
+  
+    }
+  })
+    }
+  }else if (nominee == true  ){
+  
+    if (n_name==null||n_name==''|| rel_nomineee==null||rel_nomineee==null||a_nominee==''||a_nominee==null){
+      this.provider.show_alert('Please fill Nominee details')
+    }else{
+      await loading.present();
+    this.provider.createrd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving_id).subscribe(data=>{
+      console.log('response',data)
+      if(data['status'] == true){
+        loading.dismiss();
+        let navigationExtras: NavigationExtras = {
+          
+        };
+        this.router.navigate(['/dashboard/home/rdview/add-new-rd/rd-open-successfully'], navigationExtras);
+  
+    }else{
+      loading.dismiss();
+    this.provider.show_alert(data['message'])
+  
+    }
+  })
+    }
+  }else if( minor == true ){
+  
+    if (minor_id==null||minor_id==''){
+      this.provider.show_alert('Please fill Minor details')
+    }else{
+      await loading.present();
+    this.provider.createrd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving_id).subscribe(data=>{
+      console.log('response',data)
+      if(data['status'] == true){
+        loading.dismiss();
+        let navigationExtras: NavigationExtras = {
+          
+        };
+        this.router.navigate(['/dashboard/home/rdview/add-new-rd/rd-open-successfully'], navigationExtras);
+  
+    }else{
+      loading.dismiss();
+    this.provider.show_alert(data['message'])
+  
+    }
+  })
+    }
   }else{
-  this.provider.show_alert(data['message'])
-
+    await loading.present();
+    this.provider.createrd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving_id).subscribe(data=>{
+      console.log('response',data)
+      if(data['status'] == true){
+        loading.dismiss();
+        let navigationExtras: NavigationExtras = {
+          
+        };
+        this.router.navigate(['/dashboard/home/rdview/add-new-rd/rd-open-successfully'], navigationExtras);
+  
+    }else{
+      loading.dismiss();
+    this.provider.show_alert(data['message'])
+  
+    }
+  })
   }
-})
+ 
+    
+//     this.provider.createrd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving_id).subscribe(data=>{
+//     console.log('response',data)
+//     this.provider.presentLoading();
+//     if(data['status'] == true){
+//       let navigationExtras: NavigationExtras = {
+        
+//       };
+//       this.router.navigate(['/dashboard/home/rdview/add-new-rd/rd-open-successfully'], navigationExtras);
+
+//   }else{
+//   this.provider.show_alert(data['message'])
+
+//   }
+// })
 
 }
 

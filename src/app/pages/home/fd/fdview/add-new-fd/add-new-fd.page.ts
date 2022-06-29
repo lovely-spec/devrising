@@ -18,16 +18,19 @@ export class AddNewFdPage implements OnInit {
   MemberSavingResponse: MemberSavingResponse;
   schemesdetails: any= [];
   minordetails: any= [];
+  employeedetails: any= [];
   optionValue: any;
   scheme: any;
   amount:string;
-  is_nominee:string;
-  n_name:string;
-  rel_nomineee:string;
-  a_nominee:string;
+  is_nominee:string ='';
+  n_name:string = '';
+  rel_nomineee:string = '';
+  a_nominee:string = '';
   is_minor:string;
+  is_self:string;
   is_saving:string;
-  minor:string;
+  minor:string = '';
+  agent_user_id:string = '';
   joint:string = null;
   jac:string;
   senior:string;
@@ -43,6 +46,7 @@ export class AddNewFdPage implements OnInit {
   show_detail:boolean=false;
   show_joint:boolean;
   form:boolean=false;
+  self:boolean=false;
   fd:boolean;
   resp:boolean = false;
   j:boolean = false;
@@ -63,6 +67,11 @@ export class AddNewFdPage implements OnInit {
     this.provider.minor().subscribe(data=>{
       this.minordetails = this.provider.minor_details(data);
       console.log('minors',this.minordetails);
+    });
+    this.provider.employee().subscribe(data=>{
+      // console.log('response',data);
+      this.employeedetails = data['details']
+      console.log('employee',this.employeedetails);
     });
   }
 
@@ -86,6 +95,13 @@ export class AddNewFdPage implements OnInit {
       this.form = true;
     }else{
       this.form = false;
+    } 
+  }
+  showform2(f){
+    if(f == 2){
+      this.self = false;
+    }else{
+      this.self = true;
     } 
   }
   saving(r){
@@ -132,6 +148,7 @@ export class AddNewFdPage implements OnInit {
     var a_nominee = this.a_nominee;
     var is_minor = this.is_minor;
     var minor_id = this.minor;
+    var agent_user_id = this.agent_user_id;
     var is_saving= this.is_saving;
     var saving = this.resp;
     var nominee_type = 'FdAccount';
@@ -140,9 +157,9 @@ export class AddNewFdPage implements OnInit {
     var j = this.j;
     var joint = this.joint;
     var jac = this.jac
-    var senior = this.senior
+    var senior = this.s
     var re = /^\d{4}(?:\s*,\s*\d{4)*$/;
-    console.log('res2', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee,this.j); 
+    console.log('res2', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee,this.j,this.s); 
     if (scheme==null||scheme==''|| amount==null||is_nominee==null||is_nominee==''||is_minor==null||is_minor==''|| is_saving==null||is_saving==''){
       this.provider.show_alert('All fields required ') 
       // console.log('res2', scheme,amount,is_nominee,is_minor,); 
@@ -153,8 +170,8 @@ export class AddNewFdPage implements OnInit {
             this.provider.show_alert('Please fill Nominee details')
           }else{ 
             this.provider.presentLoading();
-            // console.log('res', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee,is_saving,joint,jac,j);
-          this.provider.createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving,joint,jac,senior).subscribe(data=>{
+            // console.log('resn', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee,is_saving,joint,jac,j);
+          this.provider.createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving,joint,jac,senior,agent_user_id).subscribe(data=>{
           console.log('response',data)
           if(data['status'] == true){
             let navigationExtras: NavigationExtras = {
@@ -173,8 +190,8 @@ export class AddNewFdPage implements OnInit {
   else if (minor == true){
     if (minor_id==null||minor_id==''){
       this.provider.show_alert('Please fill Minor details')
-    }else{ console.log('res', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee,is_saving,joint,jac,j);
-    this.provider.createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving,joint,jac,senior).subscribe(data=>{
+    }else{ console.log('resm', minor_id);
+    this.provider.createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving,joint,jac,senior,agent_user_id).subscribe(data=>{
     console.log('response',data)
     if(data['status'] == true){
       let navigationExtras: NavigationExtras = {
@@ -190,12 +207,34 @@ export class AddNewFdPage implements OnInit {
 
 }
   }
-  else if (this.j == true ){
-  console.log('joint',joint); 
-  if (!re.test(joint) || joint==null||joint==''){
-    this.provider.show_alert('Please fill Member ID details')
-  }else{ console.log('res', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee,is_saving,joint,jac,j);
-  this.provider.createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving,joint,jac,senior).subscribe(data=>{
+//   else if (this.j == true ){
+//   console.log('joint',joint); 
+//   if (!re.test(joint) || joint==null||joint==''){
+//     this.provider.show_alert('Please fill Member ID details')
+//   }else{ console.log('resj', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee,is_saving,joint,jac,j);
+//   this.provider.createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving,joint,jac,senior).subscribe(data=>{
+//   console.log('response',data)
+//   if(data['status'] == true){
+//     let navigationExtras: NavigationExtras = {
+      
+//     };
+//     this.router.navigate(['/dashboard/home/fdview/add-new-fd/fd-open-successfully'], navigationExtras);
+
+// }else{
+// this.provider.show_alert(data['message'])
+
+// }
+// })
+
+// }
+//   }
+//   else if (this.s == true){
+//   if (senior==null||senior==''){
+//   this.provider.show_alert('Please fill Member ID details')
+//   }
+//   }else{
+  //  console.log('ress', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee,is_saving,joint,jac,j);
+  this.provider.createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving,joint,jac,senior,agent_user_id).subscribe(data=>{
   console.log('response',data)
   if(data['status'] == true){
     let navigationExtras: NavigationExtras = {
@@ -209,30 +248,9 @@ this.provider.show_alert(data['message'])
 }
 })
 
-}
-  }
-  else if (this.s == true){
-  if (senior==null||senior==''){
-  this.provider.show_alert('Please fill Member ID details')
-  }
-  }else{ console.log('res', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee,is_saving,joint,jac,j);
-  this.provider.createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving,joint,jac,senior).subscribe(data=>{
-  console.log('response',data)
-  if(data['status'] == true){
-    let navigationExtras: NavigationExtras = {
-      
-    };
-    this.router.navigate(['/dashboard/home/fdview/add-new-fd/fd-open-successfully'], navigationExtras);
-
-}else{
-this.provider.show_alert(data['message'])
-
-}
-})
-
-}
-  }else{ console.log('res', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee,is_saving,joint,jac,j);
-      this.provider.createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving,joint,jac,senior).subscribe(data=>{
+// }
+  // }else{ console.log('res', scheme,amount,is_nominee,is_minor,n_name,rel_nomineee,a_nominee,is_saving,joint,jac,j);
+      this.provider.createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving,joint,jac,senior,agent_user_id).subscribe(data=>{
       console.log('response',data)
       if(data['status'] == true){
         let navigationExtras: NavigationExtras = {

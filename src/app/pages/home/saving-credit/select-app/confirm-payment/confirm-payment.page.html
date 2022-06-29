@@ -14,7 +14,7 @@
 
 <ion-content>
 <div class="confirm-payment-section">
-  <ion-row>
+  <!-- <ion-row>
   <ion-col size="8">
   <div id="myDiv" >
   <h6 class="upi-id">UPI ID: {{upi}}</h6>
@@ -23,7 +23,7 @@
   <ion-col size="4">
   <button class="copy" (click)="copyMessage()" >copy</button>
   </ion-col>
-  </ion-row>
+  </ion-row> -->
   <ion-row>
     <ion-col size="8">
   <h6 class="rupe" id="amount">&#8377;{{am}}</h6>
@@ -45,6 +45,23 @@
         </ion-col>
   </ion-row>  
 </ion-card>
+<ion-card class="card-1"  >
+<div class="ion-text-center">
+  <ion-row>
+    <ion-col>
+      
+        <div class="enter_amount_ field comman_input_field">
+          <ion-item lines="none" >
+            <!-- <form #form="ngForm"> -->
+              <ion-label position="floating">Enter UTR No</ion-label>
+              <ion-input required pattern="[0-9]*" name="amount" type="number" [(ngModel)]="utr_no" ></ion-input>
+            </ion-item>
+        </div>
+      
+       
+    </ion-col>
+  </ion-row>
+  </div>
 <div class="ion-text-center">
   <h1 class="upload">Please Go to your UPI app And make payment After Completing the payment please upload transaction's Screenshot Below .</h1>
 </div>
@@ -61,23 +78,10 @@
       </ion-col>
     </ion-row>
     </div>
+    <button class="gradient_fill_btn large_btn_filled-2" (click)="submit()" >Submit</button>
   </div>
-  <div class="ion-text-center">
-  <ion-row>
-    <ion-col>
-      
-        <div class="enter_amount_ field comman_input_field">
-          <ion-item lines="none" >
-            <!-- <form #form="ngForm"> -->
-              <ion-label position="floating">Enter UTR No</ion-label>
-              <ion-input required pattern="[0-9]*" name="amount" type="number" [(ngModel)]="utr_no" ></ion-input>
-            </ion-item>
-        </div>
-      
-        <button class="gradient_fill_btn large_btn_filled-2" (click)="submit()" >Submit</button>
-    </ion-col>
-  </ion-row>
-  </div>
+</ion-card>
+  
   <script>
 
   </script>

@@ -3,6 +3,7 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import {  AlertController, NavController, NavParams, PopoverController } from '@ionic/angular';
 import { ApihelperProvider } from 'src/providers/apihelper/apihelper';
 import { NotificationPage } from '../../../notification/notification.page';
+import {Location} from '@angular/common';
 
 /**
  * Generated class for the OtpVerificationPage page.
@@ -28,7 +29,8 @@ export class OtpPage {
     public route: ActivatedRoute,
     public alertController: AlertController,
     public popoverController: PopoverController,
-    public navParams: NavParams, public provider: ApihelperProvider) {
+    public navParams: NavParams, public provider: ApihelperProvider,
+    private _location: Location,) {
   }
   gohome(){
     this.navCtrl.navigateRoot('/dashboard/home'); 
@@ -63,6 +65,9 @@ export class OtpPage {
       this.provider.show_alert('Please enter the otp sent to your registered mobile number')
     }
     
+  }
+  backClicked() {
+    this._location.back();
   }
   resend(){
     this.provider.ResendOtp().subscribe(data=>{

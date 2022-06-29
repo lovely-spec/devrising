@@ -4,6 +4,7 @@ import {  AlertController, NavController, NavParams, PopoverController } from '@
 import { ApihelperProvider } from 'src/providers/apihelper/apihelper';
 import {SharedService } from '../../home/add-member/shared.service';
 import { Storage } from '@ionic/storage';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-login-otp',
@@ -29,6 +30,7 @@ export class LoginOtpPage implements OnInit {
     public alertController: AlertController,
     public popoverController: PopoverController,
     public navParams: NavParams, public provider: ApihelperProvider,
+    private _location: Location,
     
   ) { }
 
@@ -51,6 +53,10 @@ export class LoginOtpPage implements OnInit {
     }, 60000);
     }
     console.log(this.data.amount)
+  }
+
+  backClicked() {
+    this._location.back();
   }
 
   send_money(){

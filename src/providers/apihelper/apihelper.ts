@@ -8,6 +8,7 @@ import { DdResponse } from '../../providers/Models/MemberDD';
 import { FdResponse } from '../../providers/Models/MemberFD';
 import { OlResponse } from '../../providers/Models/MemberOL';
 import { MemberSavingResponse } from '../../providers/Models/MemberSaving';
+import { InAppBrowser,} from '@ionic-native/in-app-browser/ngx';
 import { Router } from '@angular/router';
 
 
@@ -22,8 +23,8 @@ export class ApihelperProvider {
   
 
   // private RootURL: string = "http://localhost:3001/api/";
-  private RootURL: string = "https://staging.devrising.in/api/";
-  // private RootURL: string = "https://app.devrising.in/api/";
+  // private RootURL: string = "https://staging.devrising.in/api/";
+  private RootURL: string = "https://app.devrising.in/api/";
    loading: any;
    HeaderConfig : any = [];
    Saving: any = [];
@@ -44,7 +45,7 @@ export class ApihelperProvider {
    minors: any = [];
 
 
-  constructor(public http: HttpClient, public router: Router, public alertController: AlertController, private toastCtrl: ToastController, public loadingCtrl : LoadingController, private storage: Storage) {
+  constructor(private iab: InAppBrowser,public http: HttpClient, public router: Router, public alertController: AlertController, private toastCtrl: ToastController, public loadingCtrl : LoadingController, private storage: Storage) {
       
   }
   
@@ -179,6 +180,11 @@ contact(id){
   minor(){
     let postData = new FormData();
     let data =this.http.post(this.RootURL + 'member/minors',postData,this.HeaderConfig);
+    return  data;
+  }
+  employee(){
+    let postData = new FormData();
+    let data =this.http.post(this.RootURL + 'member/employees',postData,this.HeaderConfig);
     return  data;
   }
   minor_details(data){
@@ -581,6 +587,11 @@ creditreq(){
   let postData = new FormData();
   return this.http.post(this.RootURL + 'member/creditreq',postData,this.HeaderConfig);
 }
+getversion(version){
+  let postData = new FormData();
+  postData.append('version' , version);
+  return this.http.post(this.RootURL + 'member/getversion',postData,this.HeaderConfig);
+}
 // add member api starts 
 
 // phone no check api
@@ -610,7 +621,7 @@ createrd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nom
 //end rd
 
 //creat fd
-createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving,joint,jac,senior){
+createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nomineee,a_nominee,minor_id,saving,joint,jac,senior,agent_user_id){
   let postData = new FormData();
   postData.append('scheme',scheme);
   postData.append('amount',amount);
@@ -626,6 +637,7 @@ createfd(scheme,amount,is_nominee,is_minor,is_saving,nominee_type,n_name,rel_nom
   postData.append('joint',joint);
   postData.append('jac',jac);
   postData.append('senior',senior);
+  postData.append('agent_user_id',agent_user_id);
   return this.http.post(this.RootURL + 'member/createfd',postData,this.HeaderConfig);
 }
 
@@ -906,6 +918,23 @@ async success_alert(msg, route){
         text: 'Okay',
         handler: () => {
           this.router.navigate([route])
+        }
+      }
+    ]
+  });
+
+  await alert.present();
+}
+async update_alert(msg, route){
+  const alert = await this.alertController.create({
+    cssClass: 'success_alert',
+    header: 'Update',
+    message: msg,
+    buttons: [
+       {
+        text: 'Update Now',
+        handler: () => {
+          this.iab.create(route,'_system' , 'location=yes')
         }
       }
     ]
