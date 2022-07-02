@@ -97,7 +97,7 @@ async presentPopover(ev: any) {
 }
 ionViewDidEnter() {
   this.version = 3
-  this.provider.getversion(this.version).subscribe(data=>{
+  this.provider.check_version(this.version).subscribe(data=>{
     console.log('getversion')
     if(data['status'] == true){
       // var v = data['data'][0].app_version

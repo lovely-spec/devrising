@@ -22,9 +22,9 @@ import { Router } from '@angular/router';
 export class ApihelperProvider {
   
 
-  // private RootURL: string = "http://localhost:3001/api/";
+  private RootURL: string = "http://localhost:3001/api/";
   // private RootURL: string = "https://staging.devrising.in/api/";
-  private RootURL: string = "https://app.devrising.in/api/";
+  // private RootURL: string = "https://app.devrising.in/api/";
    loading: any;
    HeaderConfig : any = [];
    Saving: any = [];
@@ -587,10 +587,10 @@ creditreq(){
   let postData = new FormData();
   return this.http.post(this.RootURL + 'member/creditreq',postData,this.HeaderConfig);
 }
-getversion(version){
+check_version(version){
   let postData = new FormData();
   postData.append('version' , version);
-  return this.http.post(this.RootURL + 'member/getversion',postData,this.HeaderConfig);
+  return this.http.post(this.RootURL + 'member/check-version',postData,this.HeaderConfig);
 }
 // add member api starts 
 
